@@ -1,0 +1,84 @@
+.tool_area:after {
+    clear: both;
+    content: "​";
+    display: block;
+    height: 0;
+}
+.page_appmsg_edit .tool_area {
+    clear: both;
+    margin: 0;
+    padding: 20px 0;
+}
+.tool_bar:after {
+    clear: both;
+    content: "​";
+    display: block;
+    height: 0;
+}
+.page_appmsg_edit .tool_bar {
+    margin-left: 0;
+    margin-right: 0;
+}
+.tool_bar.border {
+    border-top: 1px solid rgb(230, 230, 230);
+    box-shadow: 0 1px 0 rgb(251, 251, 251) inset;
+}
+.tc {
+    text-align: center;
+}
+.tool_bar {
+    padding-bottom: 50px;
+}
+.tool_bar {
+    margin-top: 40px;
+    padding-top: 25px;
+}
+.tool_bar.tc .btn {
+    margin-left: 0.3em;
+    margin-right: 0.3em;
+}
+.btn.btn_input {
+    padding: 0;
+}
+.btn_default {
+    background-color: rgb(244, 244, 244);
+    background-image: linear-gradient(to bottom, rgb(249, 249, 249) 0px, rgb(240, 240, 240) 100%);
+    border-color: rgb(195, 195, 195);
+    color: rgb(0, 0, 0);
+}
+.btn {
+    border-radius: 3px 3px 3px 3px;
+    border-style: solid;
+    border-width: 1px;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    height: 30px;
+    line-height: 30px;
+    overflow: visible;
+    padding: 0 36px;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+}
+.btn_default button {
+    color: rgb(0, 0, 0);
+}
+.btn button {
+    background-color: transparent;
+    border: 0 none;
+    display: block;
+    height: 100%;
+    outline: 0 none;
+    overflow: visible;
+    padding: 0 36px;
+}
+.btn_primary {
+    background-color: rgb(90, 170, 75);
+    background-image: linear-gradient(to bottom, rgb(96, 180, 82) 0px, rgb(86, 164, 71) 100%);
+    border-color: rgb(61, 129, 12);
+    color: rgb(255, 255, 255);
+}
+.btn_primary button {
+    color: rgb(255, 255, 255);
+}

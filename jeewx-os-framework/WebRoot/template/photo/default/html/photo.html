@@ -1,0 +1,234 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>捷微团队</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<!-- Mobile Devices Support @begin -->
+	<meta content="application/xhtml+xml;charset=UTF-8" http-equiv="Content-Type">
+	<meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+	<meta content="no-cache" http-equiv="pragma">
+	<meta content="0" http-equiv="expires">
+	<meta content="telephone=no, address=no" name="format-detection">
+	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+	<meta name="apple-mobile-web-app-capable" content="yes" /> <!-- apple devices fullscreen -->
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+	<!-- Mobile Devices Support @end -->
+	<meta name="keywords" content="eeeeeeeeeeeee11111111" />
+	<meta name="description" content="" />
+	<script type="text/javascript" src="${cmsData.base}/js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="${cmsData.base}/js/common.js"></script>
+		<link type="text/css" rel="stylesheet" href="${cmsData.base}/css/bootstrap.css">
+	<script type="text/javascript" src="${cmsData.base}/js/bootstrap.js"></script>
+		<link type="text/css" rel="stylesheet" href="${cmsData.base}/css/font-awesome.min.css" />
+	<link type="text/css" rel="stylesheet" href="${cmsData.base}/css/common.mobile.css">
+	<script type="text/javascript" src="${cmsData.base}/js/cascade.js"></script>
+	<script type="text/javascript" src="${cmsData.base}/js/jquery.touchwipe.js"></script>
+	<script type="text/javascript" src="${cmsData.base}/js/swipe.js"></script>
+</head>
+<style>
+/*重定义bootstrap样式*/
+select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input{width:100%; margin-bottom:0; box-sizing:border-box; -webkit-box-sizing:border-box; -moz-box-sizing:border-box;}
+input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input{height:30px;}
+.input-append, .input-prepend{width:100%; margin-bottom:0;}
+select{padding:0 5px; line-height:28px; -webkit-appearance:button;}
+.checkbox.inline{margin-top:0;}
+.checkbox.inline + .checkbox.inline {margin-left:0;}
+.checkbox input[type="checkbox"]{filter:alpha(opacity:0); opacity:0;}
+.file{position:relative;}
+.file input[type="file"]{position:absolute; top:0; left:0; width:100%; filter:alpha(opacity:0); opacity:0;}
+.file button{width:100%; text-align:left;}
+.form-item{border-left:3px #ED2F2F solid; padding-left:10px; height:30px; line-height:30px; background:#F7F7F7; margin-bottom:10px;}
+</style>
+<body>
+<link rel="stylesheet" type="text/css" href="${cmsData.base}/css/photo.mobile.css" media="all" />
+<link rel="stylesheet" type="text/css" href="${cmsData.base}/css/photoswipe.mobile.css" media="all" />
+<script type="text/javascript" src="${cmsData.base}/js/jquery.imagesloaded.js"></script>
+<script type="text/javascript" src="${cmsData.base}/js/jquery.wookmark.min.js"></script>
+<script type="text/javascript" src="${cmsData.base}/js/klass.min.js"></script>
+<script type="text/javascript" src="${cmsData.base}/js/code.photoswipe.min.js"></script>
+<script type="text/javascript" src="${cmsData.base}/js/jquery.lazyload.js"></script>
+<style>
+img{width:100%!important;}
+.show-more{text-align:center; margin:10px 0;}
+.show-more a{display:inline-block; color:#555; font-size:13px; text-shadow:0 1px 1px #fff; box-shadow:0 1px 1px 0 rgba(0,0,0,0.2) inset; padding:8px 50px; background:#DDD; text-decoration:none;}
+</style>
+<div id="photo">
+	<div class="body">
+		<div class="qiandaobanner">
+			
+			<a href="#">
+				<img src="template/photo/default/images/albums_head.jpg" alt="" style="max-height:200px;"/>
+			</a>
+		</div>
+		<div id="main">
+			<ul id="gallery" class="gallery">
+				<#list cmsData.photoList as data>
+				<li style=""><a href="${data.realpath}">
+				<img src="${data.realpath}" alt=""></a>
+				</li>
+				</#list>
+			</ul>
+		</div>
+	</div>
+	<div class="show-more"><a href="javascript:;" onclick="loadRecPage();" class="img-rounded pager">显示更多</a></div>
+</div>
+
+<script type="text/javascript">
+var pindex = 1;
+function loadRecPage() {
+	pindex = parseInt(pindex) + 1;
+	var pager = $('.pager');
+	pager.html('正在加载数据...');
+	var url = "mobile.php?act=module&name=album&do=detailmore&weid=1";
+	$.get(url, {'page': pindex, 'id': '3'}, function(html){
+		if (html.indexOf('li') > - 1) {
+			$('#gallery').append(html);
+			//瀑布流处理
+			$('#gallery').imagesLoaded(function() {
+				var options = {
+				autoResize: false,
+				container: $('#main'),
+				offset: 4,
+				itemWidth: 150
+				};
+				var handler = $('#gallery li');
+				handler.wookmark(options);
+			});
+			var myPhotoSwipe = $("#gallery a").photoSwipe({loop:false});
+
+			pager.html('显示更多');
+		} else {
+			pager.html('已全部加载');
+		}
+	});
+}
+
+(function(window){
+	document.addEventListener('DOMContentLoaded', function(){
+		var PhotoSwipe = window.Code.PhotoSwipe;
+		var options = {loop:false},
+		instance = PhotoSwipe.attach( window.document.querySelectorAll('#gallery a'), options );
+	}, false);
+})(window);
+
+//下面是瀑布流js
+$(function() {
+  $('#gallery').imagesLoaded(function() {
+	// Prepare layout options.
+	var options = {
+	  autoResize: false, // This will auto-update the layout when the browser window is resized.
+	  container: $('#main'), // Optional, used for some extra CSS styling
+	  offset: 4, // Optional, the distance between grid items
+	  itemWidth: 150 // Optional, the width of a grid item
+	};
+
+	// Get a reference to your grid items.
+	var handler = $('#gallery li');
+	// Call the layout function.
+	handler.wookmark(options);
+  });
+});
+</script>
+	<div id="footer"></div>
+<script type="text/javascript">
+$(function() {
+	$(".user-box .box-item").each(function(i) {
+		i = i +1;
+		if(i%3 == 0) $(this).css("border-right", "0");
+	});
+	$(window).scroll(function(){
+		$(".menu-button").find("i").removeClass("icon-minus-sign").addClass("icon-plus-sign");
+		$(".menu-main").hide();
+	});
+	$(".menu-main a").click(function(){ $(".menu-main").hide(); });
+
+	//控制tab宽度
+	var profile_tab = $(".nav-tabs li");
+	profile_tab.css({"width": 100/profile_tab.length+"%", "text-align": "center"});
+
+	//手机表单处理
+	$(".form-table").delegate(".checkbox input[type='checkbox']", "click", function(){
+		$(this).parent().toggleClass("btn-inverse");
+	});
+	$(".form-table").delegate(".file input[type='file']", "change", function(){
+		var a = $(this).next("button");
+		a.html(a.html() +' '+  $(this).val());
+	});
+
+	//处理固定横向导航条
+	var navbarFixedTop = false, navbarFixedBottom = false;
+	navbarFixedTop = $(".navbar").hasClass("navbar-fixed-top");
+	navbarFixedBottom = $(".navbar").hasClass("navbar-fixed-bottom");
+	if(navbarFixedTop) $("body").css("padding-top", "41px");
+	if(navbarFixedBottom) $("body").css("padding-bottom", "41px");
+});
+
+//对分享时的数据处理
+function _removeHTMLTag(str) {
+	str = str.replace(/<script[^>]*?>[\s\S]*?<\/script>/g,'');
+	str = str.replace(/<style[^>]*?>[\s\S]*?<\/style>/g,'');
+    str = str.replace(/<\/?[^>]*>/g,'');
+    str = str.replace(/\s+/g,'');
+    str = str.replace(/&nbsp;/ig,'');
+    return str;
+}
+document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+			var _share_img = $('body img:eq(0)').attr("src");
+	if(typeof(_share_img) == "undefined") _share_img = "http://wx.we7.cc/source/modules/album/icon.jpg";
+	if(_share_img.indexOf("http://") == -1 || _share_img.indexOf("https://") == -1 ) _share_img = "http://wx.we7.cc/" + _share_img;
+			var _share_content = _removeHTMLTag($('body').html()).replace("捷微团队",'');
+		window.shareData = {
+		"imgUrl": _share_img,
+		"timeLineLink": "http://wx.we7.cc/mobile.php?act=module&id=3&weid=1&name=album&do=detail&wxref=mp.weixin.qq.com&wxref=mp.weixin.qq.com",
+		"sendFriendLink": "http://wx.we7.cc/mobile.php?act=module&id=3&weid=1&name=album&do=detail&wxref=mp.weixin.qq.com&wxref=mp.weixin.qq.com",
+		"weiboLink": "http://wx.we7.cc/mobile.php?act=module&id=3&weid=1&name=album&do=detail&wxref=mp.weixin.qq.com&wxref=mp.weixin.qq.com",
+		"tTitle": "捷微团队",
+		"tContent":  _share_content,
+		"fTitle": "捷微团队",
+		"fContent":  _share_content,
+		"wContent":  "捷微团队"
+	};
+
+	// 发送给好友
+	WeixinJSBridge.on('menu:share:appmessage', function (argv) {
+		WeixinJSBridge.invoke('sendAppMessage', {
+			"img_url": window.shareData.imgUrl,
+			"img_width": "640",
+			"img_height": "640",
+			"link": window.shareData.sendFriendLink,
+			"desc": window.shareData.fContent,
+			"title": window.shareData.fTitle
+		}, function (res) {
+			_report('send_msg', res.err_msg);
+		})
+	});
+
+	// 分享到朋友圈
+	WeixinJSBridge.on('menu:share:timeline', function (argv) {
+		WeixinJSBridge.invoke('shareTimeline', {
+			"img_url": window.shareData.imgUrl,
+			"img_width": "640",
+			"img_height": "640",
+			"link": window.shareData.timeLineLink,
+			"desc": window.shareData.tContent,
+			"title": window.shareData.tTitle
+		}, function (res) {
+			_report('timeline', res.err_msg);
+		});
+	});
+
+	// 分享到微博
+	WeixinJSBridge.on('menu:share:weibo', function (argv) {
+		WeixinJSBridge.invoke('shareWeibo', {
+			"content": window.shareData.wContent,
+			"url": window.shareData.weiboLink
+		}, function (res) {
+			_report('weibo', res.err_msg);
+		});
+	});
+}, false);
+</script>
+</body>
+</html>
