@@ -317,13 +317,13 @@ public class WechatService {
 					article.setTitle(news.getTitle());
 					article.setPicUrl(bundler.getString("domain")+ "/" + news.getImagePath());
 					String url = "";
-					if ("commond".equals(newsTemplate.getType())) {
+					if (oConvertUtils.isEmpty(news.getUrl())) {
 						url = bundler.getString("domain")+ "/newsItemController.do?newscontent&id="+ news.getId();
 					} else {
-						url = news.getContent();
+						url = news.getUrl();
 					}
 					article.setUrl(url);
-					article.setDescription(news.getContent());
+					article.setDescription(news.getDescription());
 					articleList.add(article);
 				}
 				NewsMessageResp newsResp = new NewsMessageResp();
