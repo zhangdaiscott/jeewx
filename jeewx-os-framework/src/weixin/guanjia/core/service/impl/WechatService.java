@@ -240,7 +240,7 @@ public class WechatService {
 					article.setPicUrl(bundler.getString("domain") + "/"+ news.getImagePath());
 					String url = "";
 					if (oConvertUtils.isEmpty(news.getUrl())) {
-						url = bundler.getString("domain")+ "/newsItemController.do?newscontent&id="+ news.getId();
+						url = bundler.getString("domain")+ "/newsItemController.do?goContent&id="+ news.getId();
 					} else {
 						url = news.getUrl();
 					}
@@ -318,7 +318,7 @@ public class WechatService {
 					article.setPicUrl(bundler.getString("domain")+ "/" + news.getImagePath());
 					String url = "";
 					if (oConvertUtils.isEmpty(news.getUrl())) {
-						url = bundler.getString("domain")+ "/newsItemController.do?newscontent&id="+ news.getId();
+						url = bundler.getString("domain")+ "/newsItemController.do?goContent&id="+ news.getId();
 					} else {
 						url = news.getUrl();
 					}
@@ -376,8 +376,8 @@ public class WechatService {
 					article.setTitle(news.getTitle());
 					article.setPicUrl(bundler.getString("domain")+ "/" + news.getImagePath());
 					String url = "";
-					if ("commond".equals(newsTemplate.getType())) {
-						url = bundler.getString("domain")+ "/newsItemController.do?newscontent&id="+ news.getId();
+					if (oConvertUtils.isEmpty(news.getUrl())) {
+						url = bundler.getString("domain")+ "/newsItemController.do?goContent&id="+ news.getId();
 					} else {
 						url = news.getContent();
 					}

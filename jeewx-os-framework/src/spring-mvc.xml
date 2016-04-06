@@ -128,7 +128,7 @@
 					    <value>zpController.do?zp</value>
 					    <value>zpController.do?goZhuanpan</value>
 					    <value>weixinCmsStyleController.do?upload</value>
-					    <value>newsItemController.do?newscontent</value>
+					    <value>newsItemController.do?goContent</value>
 					    <!-- 保存用户 -->
 					    <value>userController.do?saveUser</value>
 					    <value>weixinLinksucaiController.do?link</value>

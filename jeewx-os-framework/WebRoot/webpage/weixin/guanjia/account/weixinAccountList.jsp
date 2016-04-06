@@ -8,7 +8,7 @@
    <t:dgCol title="公众帐号名称"  field="accountname"  hidden="true"  queryMode="single"  width="120"></t:dgCol>
    <t:dgCol title="公众帐号TOKEN"  field="accounttoken"  hidden="true"  queryMode="single"  width="120"></t:dgCol>
    <t:dgCol title="公众微信号"  field="accountnumber"  hidden="true"  queryMode="single"  width="120"></t:dgCol>
-   <t:dgCol title="原始ID"  field="accountid"  hidden="true"  queryMode="single"  width="120"></t:dgCol>
+   <t:dgCol title="原始ID"  field="weixin_accountid"  hidden="false"  queryMode="single"  width="120"></t:dgCol>
    <t:dgCol title="公众号类型"  dictionary="weixintype" field="accounttype"  hidden="true"  queryMode="single"  width="120"></t:dgCol>
    <t:dgCol title="电子邮箱"  field="accountemail"  hidden="true"  queryMode="single"  width="120"></t:dgCol>
    <t:dgCol title="公众帐号描述"  field="accountdesc"  hidden="true"  queryMode="single"  width="120"></t:dgCol>
