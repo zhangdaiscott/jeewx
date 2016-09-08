@@ -1,6 +1,7 @@
 package org.jeecgframework.web.system.pojo.base;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -103,6 +104,24 @@ public class TSFunction extends IdEntity implements java.io.Serializable {
 	}
 	public void setFunctionIframe(Short functionIframe) {
 		this.functionIframe = functionIframe;
+	}
+	
+	public boolean hasSubFunction(Map<Integer, List<TSFunction>> map) {
+		if(map.containsKey(this.getFunctionLevel()+1)){
+			return hasSubFunction(map.get(this.getFunctionLevel()+1));
+		}
+		return false;
+	}
+	public boolean hasSubFunction(List<TSFunction> functions) {
+		for (TSFunction f : functions) {
+			if(f.getTSFunction()!=null){
+				if(f.getTSFunction().getId().equals(this.getId())){
+					return true;
+				}
+			}
+			
+		}
+		return false;
 	}
 
 }

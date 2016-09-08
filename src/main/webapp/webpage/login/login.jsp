@@ -105,7 +105,7 @@ label.iPhoneCheckLabelOn span {
                     </div>
                      <div>
                         <div style="float: right; margin-left:-220px; margin-right: 40px;">
-                           	  版本号：<font color="red">jeewx_2.4.1</font>  &nbsp;&nbsp;&nbsp;  
+                           	  版本号：<font color="red">jeewx_2.4.2</font>  &nbsp;&nbsp;&nbsp;  
                            	   论坛：<a href="http://www.jeecg.org" target="_blank"><font color="red">www.jeecg.org</font></a> &nbsp;&nbsp;&nbsp; 
                            	   商业支持: <a href="http://www.jeewx.com" target="_blank"> <font color="red">www.jeewx.com</font></a> &nbsp;&nbsp;&nbsp; 
                         </div>

@@ -63,7 +63,7 @@ public class ChooseTag extends TagSupport {
 		sb.append("if(typeof(windowapi) == 'undefined'){");
 			sb.append("$.dialog({");
 			sb.append("content: \'url:"+url+"\',");
-			sb.append("zIndex: 2100,");
+			sb.append("zIndex: getzIndex(false),");
 			if (title != null) {
 				sb.append("title: \'" + title + "\',");
 			}
@@ -102,7 +102,7 @@ public class ChooseTag extends TagSupport {
 		sb.append("}else{");
 			sb.append("$.dialog({");
 			sb.append("content: \'url:"+url+"\',");
-			sb.append("zIndex: 2100,");
+			sb.append("zIndex: getzIndex(false),");
 			if (title != null) {
 				sb.append("title: \'" + title + "\',");
 			}

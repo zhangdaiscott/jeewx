@@ -26,6 +26,9 @@
 			<tr>
 				<td class="value"><input type="radio" value="sliding" name="indexStyle"  /><span>Sliding云桌面</span></td>
 			</tr>
+			<tr>
+				<td class="value"><input type="radio" value="hplus" name="indexStyle"  /><span>Hplus风格</span></td>
+			</tr>
 			<!-- update-end--Author:gaofeng  Date:2014-01-24 for:新增首页风格  -->	
 		</tbody>
 	</table>

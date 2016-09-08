@@ -2,10 +2,13 @@ package org.jeecgframework.tag.core.easyui;
 
 import java.io.IOException;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.TagSupport;
 
+import org.apache.commons.lang.StringUtils;
 import org.jeecgframework.core.util.oConvertUtils;
 
 
@@ -33,6 +36,19 @@ public class BaseTag extends TagSupport {
 	
 	public int doEndTag() throws JspException {
 		try {
+			// 默认风格
+			String indexStyle = "shortcut";
+			HttpServletRequest request = (HttpServletRequest) super.pageContext.getRequest();
+			Cookie[] cookies = request.getCookies();
+			for (Cookie cookie : cookies) {
+				if (cookie == null || StringUtils.isEmpty(cookie.getName())) {
+					continue;
+				}
+				if (cookie.getName().equalsIgnoreCase("JEECGINDEXSTYLE")) {
+					indexStyle = cookie.getValue();
+				}
+			}
+			
 			JspWriter out = this.pageContext.getOut();
 			StringBuffer sb = new StringBuffer();
 
@@ -51,9 +67,15 @@ public class BaseTag extends TagSupport {
 				sb.append("<script type=\"text/javascript\" src=\"plug-in/tools/ckfinderTool.js\"></script>");
 			}
 			if (oConvertUtils.isIn("easyui", types)) {
+				if("hplus".equals(indexStyle)){
+					sb.append("<link id=\"easyuiTheme\" rel=\"stylesheet\" href=\"plug-in/easyui/themes/hplus/easyui.css\" type=\"text/css\"></link>");
+					sb.append("<link id=\"easyuiTheme\" rel=\"stylesheet\" href=\"plug-in/easyui/themes/hplus/main.css\" type=\"text/css\"></link>");
+					sb.append("<link id=\"easyuiTheme\" rel=\"stylesheet\" href=\"plug-in/easyui/themes/hplus/icon.css\" type=\"text/css\"></link>");
+				}else{
+					sb.append("<link id=\"easyuiTheme\" rel=\"stylesheet\" href=\"plug-in/easyui/themes/default/easyui.css\" type=\"text/css\"></link>");
+					sb.append("<link rel=\"stylesheet\" href=\"plug-in/easyui/themes/icon.css\" type=\"text/css\"></link>");
+				}
 				sb.append("<script type=\"text/javascript\" src=\"plug-in/tools/dataformat.js\"></script>");
-				sb.append("<link id=\"easyuiTheme\" rel=\"stylesheet\" href=\"plug-in/easyui/themes/default/easyui.css\" type=\"text/css\"></link>");
-				sb.append("<link rel=\"stylesheet\" href=\"plug-in/easyui/themes/icon.css\" type=\"text/css\"></link>");
 				sb.append("<link rel=\"stylesheet\" type=\"text/css\" href=\"plug-in/accordion/css/accordion.css\">");
 				sb.append("<script type=\"text/javascript\" src=\"plug-in/easyui/jquery.easyui.min.1.3.2.js\"></script>");
 				sb.append("<script type=\"text/javascript\" src=\"plug-in/easyui/locale/easyui-lang-zh_CN.js\"></script>");
@@ -117,7 +139,11 @@ public class BaseTag extends TagSupport {
 
 			}
 			if (oConvertUtils.isIn("tools", types)) {
-				sb.append("<link rel=\"stylesheet\" href=\"plug-in/tools/css/common.css\" type=\"text/css\"></link>");
+				if("hplus".equals(indexStyle)){
+					sb.append("<link rel=\"stylesheet\" href=\"plug-in/tools/css/hplus/common.css\" type=\"text/css\"></link>");
+				}else{
+					sb.append("<link rel=\"stylesheet\" href=\"plug-in/tools/css/common.css\" type=\"text/css\"></link>");
+				}
 				sb.append("<script type=\"text/javascript\" src=\"plug-in/lhgDialog/lhgdialog.min.js\"></script>");
 				sb.append("<script type=\"text/javascript\" src=\"plug-in/tools/curdtools.js\"></script>");
 				sb.append("<script type=\"text/javascript\" src=\"plug-in/tools/easyuiextend.js\"></script>");

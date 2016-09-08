@@ -80,6 +80,9 @@ public class MenuTag extends TagSupport {
 		{
 			sb.append(ListtoMenu.getBootstrapMenu(menuFun));
 		}
+		if(style.equals("hplus")){
+			sb.append(ListtoMenu.getHplusMultistageTree(menuFun));
+		}
 		return sb;
 	}
 	public void setStyle(String style) {

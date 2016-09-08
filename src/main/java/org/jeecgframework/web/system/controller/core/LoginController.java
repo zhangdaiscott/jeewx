@@ -218,6 +218,11 @@ public class LoginController extends BaseController{
 					&& indexStyle.equalsIgnoreCase("sliding")) {
 				return "main/sliding_main";
 			}
+			if (StringUtils.isNotEmpty(indexStyle)
+					&& indexStyle.equalsIgnoreCase("hplus")) {
+				request.setAttribute("menuMap", getFunctionMap(user));
+				return "main/hplus_main";
+			}
 			return "main/main";
 		} else {
 			return "login/login";
@@ -426,7 +431,24 @@ public class LoginController extends BaseController{
 
                     floor += " <li><img class='imag1' src='plug-in/login/images/xtjk.png' /> "
                             + " <img class='imag2' src='plug-in/login/images/xtjk_up.png' style='display: none;' />" + " </li> ";
-                }else{
+                }else if("公众号平台".equals(function.getFunctionName())){
+
+                    floor += " <li><img class='imag1' src='plug-in/login/images/menu/weixin.png' /> "
+                            + " <img class='imag2' src='plug-in/login/images/menu/weixin_on.png' style='display: none;' />" + " </li> ";
+                }else if("企业号平台".equals(function.getFunctionName())){
+
+                    floor += " <li><img class='imag1' src='plug-in/login/images/menu/weixinorg.png' /> "
+                            + " <img class='imag2' src='plug-in/login/images/menu/weixinorg_on.png' style='display: none;' />" + " </li> ";
+                }else if("微博".equals(function.getFunctionName())){
+
+                    floor += " <li><img class='imag1' src='plug-in/login/images/menu/weibo.png' /> "
+                            + " <img class='imag2' src='plug-in/login/images/menu/weibo_on.png' style='display: none;' />" + " </li> ";
+                }else if("支付窗".equals(function.getFunctionName())){
+
+                    floor += " <li><img class='imag1' src='plug-in/login/images/menu/alipay.png' /> "
+                            + " <img class='imag2' src='plug-in/login/images/menu/alipay_on.png' style='display: none;' />" + " </li> ";
+                }
+                else{
                     //其他的为默认通用的图片模式
                     String s = "";
                     if(function.getFunctionName().length()>=5 && function.getFunctionName().length()<7){

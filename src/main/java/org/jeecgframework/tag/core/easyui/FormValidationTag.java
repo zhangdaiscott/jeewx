@@ -2,10 +2,13 @@ package org.jeecgframework.tag.core.easyui;
 
 import java.io.IOException;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.TagSupport;
 
+import org.apache.commons.lang.StringUtils;
 import org.jeecgframework.core.util.StringUtil;
 
 /**
@@ -79,6 +82,18 @@ public class FormValidationTag extends TagSupport {
 	
 	public int doEndTag() throws JspException {
 		try {
+			// 默认风格
+			String indexStyle = "shortcut";
+			HttpServletRequest request = (HttpServletRequest) super.pageContext.getRequest();
+			Cookie[] cookies = request.getCookies();
+			for (Cookie cookie : cookies) {
+				if (cookie == null || StringUtils.isEmpty(cookie.getName())) {
+					continue;
+				}
+				if (cookie.getName().equalsIgnoreCase("JEECGINDEXSTYLE")) {
+					indexStyle = cookie.getValue();
+				}
+			}
 			JspWriter out = this.pageContext.getOut();
 			StringBuffer sb = new StringBuffer();
 			if (layout.equals("div")) {
@@ -86,8 +101,13 @@ public class FormValidationTag extends TagSupport {
 				if (tabtitle != null)
 					sb.append("<script type=\"text/javascript\" src=\"plug-in/Validform/js/form.js\"></script>");
 			}
-			sb.append("<link rel=\"stylesheet\" href=\"plug-in/Validform/css/style.css\" type=\"text/css\"/>");
-			sb.append("<link rel=\"stylesheet\" href=\"plug-in/Validform/css/tablefrom.css\" type=\"text/css\"/>");
+			if("hplus".equals(indexStyle)){
+				sb.append("<link rel=\"stylesheet\" href=\"plug-in/Validform/css/hplus/style.css\" type=\"text/css\"/>");
+				sb.append("<link rel=\"stylesheet\" href=\"plug-in/Validform/css/hplus/tablefrom.css\" type=\"text/css\"/>");
+			}else{
+				sb.append("<link rel=\"stylesheet\" href=\"plug-in/Validform/css/style.css\" type=\"text/css\"/>");
+				sb.append("<link rel=\"stylesheet\" href=\"plug-in/Validform/css/tablefrom.css\" type=\"text/css\"/>");
+			}
 			sb.append("<script type=\"text/javascript\" src=\"plug-in/Validform/js/Validform_v5.3.1_min.js\"></script>");
 			sb.append("<script type=\"text/javascript\" src=\"plug-in/Validform/js/Validform_Datatype.js\"></script>");
 			sb.append("<script type=\"text/javascript\" src=\"plug-in/Validform/js/datatype.js\"></script>");

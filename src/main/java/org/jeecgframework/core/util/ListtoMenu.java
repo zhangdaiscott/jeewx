@@ -599,6 +599,77 @@ public class ListtoMenu {
 
         return dataString.toString();
     }
+    
+    public static String getHplusMultistageTree(Map<Integer, List<TSFunction>> map) {
+		if(map==null||map.size()==0||!map.containsKey(0)){return "不具有任何权限,\n请找管理员分配权限";}
+		StringBuffer menuString = new StringBuffer();
+		List<TSFunction> list = map.get(0);
+		int curIndex = 0;
+		for (TSFunction function : list) {
+			menuString.append("<li>");
+	           //        update-begin--Author:chenj  Date:20160722 for：添加菜单图标样式
+				menuString.append("<a href=\"#\" class=\"\" ><i class=\"fa fa-columns\"></i>");
+	           //        update-begin--Author:chenj  Date:20160722 for：添加菜单图标样式
+			menuString.append("<span class=\"menu-text\">");
+			menuString.append(function.getFunctionName());
+			menuString.append("</span>");
+			menuString.append("<span class=\"fa arrow\">");
+			menuString.append("</span>");
+			if(!function.hasSubFunction(map)){
+				menuString.append("</a></li>");
+				//menuString.append(getSubMenu(function,1,map));
+			}else{
+				//menuString.append("<b class=\"arrow icon-angle-down\"></b></a><ul  class=\"submenu\" >");
+				menuString.append("</a><ul  class=\"nav nav-second-level\" >");
+				menuString.append(getHplusSubMenu(function,1,map));
+				menuString.append("</ul></li>");
+			}
+			curIndex++;
+		}
+
+		return menuString.toString();
+	}
+    
+    private static String getHplusSubMenu(TSFunction parent, int level, Map<Integer, List<TSFunction>> map) {
+		StringBuffer menuString = new StringBuffer();
+		List<TSFunction> list = map.get(level);
+		for (TSFunction function : list) {
+			if (function.getTSFunction().getId().equals(parent.getId())){
+				if(!function.hasSubFunction(map)){
+					menuString.append(getLeafOfHplusTree(function,map));
+				}else{
+					menuString.append(getLeafOfHplusTree(function,map));
+
+				}
+			}
+		}
+		return menuString.toString();
+	}
+
+	private static String getLeafOfHplusTree(TSFunction function,Map<Integer, List<TSFunction>> map) {
+		StringBuffer menuString = new StringBuffer();
+		//addTabs({id:'home',title:'首页',close: false,url: 'loginController.do?home'});
+		String name = function.getFunctionName() ;
+		menuString.append("<li> <a class=\"J_menuItem\" href=\"").append(function.getFunctionUrl()).append("\">");
+		if(!function.hasSubFunction(map)){
+			menuString.append(name);
+			menuString.append("</a>");
+			menuString.append("</li>");
+		}else {
+			menuString.append("<i class=\"fa fa-columns\"></i>");
+			menuString.append("<span class=\"menu-text\">");
+			menuString.append(name);
+			menuString.append("</span>");
+			menuString.append("<span class=\"fa arrow\">");
+			menuString.append("</span>");
+			menuString.append("</a>");
+			menuString.append("<ul class=\"nav nav-third-level\" >");
+			menuString.append(getHplusSubMenu(function,2,map));
+			menuString.append("</ul></li>");
+		}
+		return menuString.toString();
+	}
+    
     @Deprecated
 	private static String getIconandName(String functionName) {
 		StringBuffer dataString = new StringBuffer();
