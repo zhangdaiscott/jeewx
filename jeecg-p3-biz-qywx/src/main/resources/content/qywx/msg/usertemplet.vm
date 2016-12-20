@@ -1,0 +1,84 @@
+#parse("content/base/back/common/macro.vm")
+<!DOCTYPE html>
+<html lang="en">
+#parse("content/base/back/common/head.vm")
+		<table class="table table-striped">
+			        <thead>
+			                <th></th>
+							<th>账号</th>
+							<th>姓名</th>
+							<th>部门</th>
+							<th>职位</th>
+							<th>性别</th>
+							<th>邮箱</th>
+							<th>微信号</th>
+							<th>头像url</th>
+							<th>关注状态</th>
+							<th>关注时间</th>
+							<th>创建日期</th>
+			        </thead>
+			        <tobody>
+			    	  #if($!{pageInfos})
+		                #foreach($!{info} in $!{pageInfos})
+			            	<tr>		  <th width="30px" align="center">
+                                          <input name="userchecks" type="checkbox" value="$!{info.userid},$!{info.name}"  onclick="fun();"/>
+                                          </th>
+											<td>$!{info.userid}</td>
+											<td>$!{info.name}</td>
+											<td>$!{info.department}</td>
+											<td>$!{info.province}</td>
+											<td>
+											#if($!info.gender=="1")
+											男
+											#elseif($!info.gender=="2")
+											女
+											#else
+											未知
+											#end
+											</td>
+											<td>$!{info.email}</td>
+											<td>$!{info.weixinid}</td>
+											<td><img style="width:30px;height:30px" src="$!{info.avatar}"></td>
+											<td>
+											#if($!info.subscribeStatus=='1')
+											已关注
+											#elseif($!info.subscribeStatus=='2')
+											已冻结
+											#else($!info.subscribeStatus=='4')
+											未关注
+											#end
+											</td>
+											<td>$!dateTool.format("yyyy-MM-dd ",$!{info.subscribeTime})</td>
+											<td>$!dateTool.format("yyyy-MM-dd ",$!{info.createDate})</td>
+			           		</tr>
+			             #end
+			    	 #end
+			    </tobody>
+		    </table>
+			<div class="text-right">
+				<!--公用翻页代码-->
+	               #set($attr='formSubmit')
+	           	   #showPageList($pageInfos $attr)
+	               <!--END公用翻页代码-->
+			</div>
+			 <input type="hidden" id="framid" value=""/>
+			 <input type="hidden" id="framname" value=""/>
+			<script type="text/javascript" src="$!{basePath}/plug-in-ui/js/jquery-1.9.1.js"></script>
+			<script type="text/javascript" src="$!{basePath}/plug-in-ui/js/jquery-1.9.1.min.js"></script>
+			<script type="text/javascript">
+				function fun(){
+					var obj=$("input:checkbox[name='userchecks']:checked");
+					check_val = [];
+					check_name=[];
+					for(k in obj){
+						if(obj[k].checked){
+						    var value = obj[k].value;
+						    var str = value.split(",")
+							check_val.push(str[0]);
+							check_name.push(str[1]);
+						}
+					}
+					$('#framid').val( check_val);
+					$('#framname').val( check_name);
+				}
+		</script>

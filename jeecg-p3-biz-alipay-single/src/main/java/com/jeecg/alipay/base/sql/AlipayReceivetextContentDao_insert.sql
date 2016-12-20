@@ -1,0 +1,25 @@
+INSERT  INTO
+	alipay_receivetext_content
+      ( 
+      id                            
+      ,receivetext_id                 
+      ,content                        
+      ,create_name                    
+      ,create_by                      
+      ,create_date                    
+      ,update_name                    
+      ,update_by                      
+      ,update_date                    
+      ) 
+values
+      (
+      :alipayReceivetextContent.id                            
+      ,:alipayReceivetextContent.receivetextId                 
+      ,:alipayReceivetextContent.content                       
+      ,:alipayReceivetextContent.createName                    
+      ,:alipayReceivetextContent.createBy                      
+      ,:alipayReceivetextContent.createDate                    
+      ,:alipayReceivetextContent.updateName                    
+      ,:alipayReceivetextContent.updateBy                      
+      ,:alipayReceivetextContent.updateDate                    
+      )

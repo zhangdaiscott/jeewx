@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+#parse("content/base/back/common/head.vm")
+  <link type="text/css" rel="stylesheet" href="$!{basePath}/content/qywx/plug-in/weixin/css/appmsg_edit.css" />
+  <link type="text/css" rel="stylesheet" href="$!{basePath}/content/qywx/plug-in/weixin/css/jquery.fileupload.css" />
+  <link type="text/css" rel="stylesheet" href="$!{basePath}/content/qywx/plug-in/weixin/css/tablefrom.css" />
+  <!--fileupload-->
+  <script type="text/javascript" src="$!{basePath}/content/qywx/plug-in/weixin/js/vendor/jquery.ui.widget.js"></script>
+  <script type="text/javascript" src="$!{basePath}/content/qywx/plug-in/weixin/js/load-image.min.js"></script>
+  <script type="text/javascript" src="$!{basePath}/content/qywx/plug-in/weixin/js/jquery.fileupload.js"></script>
+  <script type="text/javascript" src="$!{basePath}/content/qywx/plug-in/weixin/js/jquery.fileupload-process.js"></script>
+  <script type="text/javascript" src="$!{basePath}/content/qywx/plug-in/weixin/js/jquery.fileupload-image.js"></script>
+  <script type="text/javascript" src="$!{basePath}/content/qywx/plug-in/weixin/js/jquery.iframe-transport.js"></script>
+  <!--UEditor 放弃
+  <script type="text/javascript"  charset="utf-8" src="$!{basePath}/content/qywx/plug-in/ueditor/ueditor.config.js"></script>
+  <script type="text/javascript"  charset="utf-8" src="$!{basePath}/content/qywx/plug-in/ueditor/ueditor.all.min.js"></script>
+  -->
+   <!--UEditor-->
+  <script type="text/javascript"  charset="utf-8" src="$!{basePath}/content/plug-in/ueditor/ueditor.config.js"></script>
+  <script type="text/javascript"  charset="utf-8" src="$!{basePath}/content/plug-in/ueditor/ueditor.all.min.js"></script>
+    
+  <!--建议手动加在语言，避免在ie下有时因为加载语言失败导致编辑器加载失败-->
+  <!--这里加载的语言文件会覆盖你在配置项目里添加的语言类型，比如你在配置项目里配置的是英文，这里加载的中文，那最后就是中文
+  <script type="text/javascript" charset="utf-8" src="$!{basePath}/content/qywx/plug-in/ueditor/lang/zh-cn/zh-cn.js"></script>
+  <script type="text/javascript"  charset="utf-8" src="$!{basePath}/content/qywx/plug-in/ueditor/demo/weixinplugs.js"></script>
+  -->
+  
+    <script src = "$!{basePath}/content/qywx/sucai/qywxNewsitem-add.js"></script>	
+<script type="text/javascript">
+$(function () {
+    var basePath="$!{basePath}";
+	initUpload(basePath);
+
+});
+</script>	
+
+  
+ </head>
+ <body>
+ 	<div class="main_bd">
+ 		<div class="media_preview_area">
+				<div class="appmsg editing">
+					<div class="appmsg_content" id="js_appmsg_preview">
+							<h4 class="appmsg_title">
+								<a target="_blank" href="javascript:void(0);"
+									onclick="return false;">标题</a>
+							</h4>
+							<div class="appmsg_info">
+								<em class="appmsg_date"></em>
+							</div>
+							<div id="files" class="files">
+								<i class="appmsg_thumb default">封面图片</i>
+							</div>
+							 <div id="progress" class="progress">
+						        <div class="progress-bar progress-bar-success"></div>
+						    </div>
+							<p class="appmsg_desc"></p>
+					</div>
+				</div>
+		</div>
+ 
+ 		<div class="media_edit_area" id="js_appmsg_editor">	
+ 			<div class="appmsg_editor" style="margin-top: 0px;">
+	 			<div class="inner">
+		  		<form id="dailogForm" action="$!{basePath}/qywx/qywxNewsitem.do?doAdd" name="dailogForm" method="post">
+		  					<input type="hidden" id="btn_sub" class="btn_sub"/>
+							<input id="templateid" name="templateid" type="hidden" value="$!{templateId}">
+				<table style="width: 100%;" cellpadding="0" cellspacing="1" class="formtable">
+						<tr>
+							<td align="right" style="width: 60px;" >
+								<label class="Validform_label">
+									标题:
+								</label>
+							</td>
+							<td class="value">
+							     	 <input id="title" name="title" type="text" style="width: 300px" class="inputxt"  datatype="*">
+									<span class="Validform_checktip"></span>
+									<label class="Validform_label" style="display: none;">标题</label>
+								</td>
+						</tr>
+						<tr>
+							<td align="right">
+								<label class="Validform_label">
+									作者:
+								</label>
+							</td>
+							<td class="value">
+							     	 <input id="author" name="author" type="text" style="width: 300px" class="inputxt" >
+									 <span class="Validform_checktip">请输入作者（选填）</span>
+								</td>
+						</tr>
+						
+						<tr>
+							<td align="right">
+								<label class="Validform_label">
+									图片链接:
+								</label>
+							</td>
+							<td class="value">
+								<span class="btn btn-success fileinput-button">
+							        <i class="glyphicon glyphicon-plus"></i>
+							        <span>浏览</span> 
+							        <!-- The file input field used as target for the file upload widget -->
+							        <input id="fileupload" type="file" name="files[]" >
+							        <input id="imagePath" name="imagePath" type="hidden"  datatype="*" nullmsg="请添加图片">
+							    </span>
+							    <span id="imgName"></span> 
+								<span class="Validform_checktip"></span>
+								<label class="Validform_label" style="display: none;">图片链接</label>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								<label class="Validform_label">
+									摘要:
+								</label>
+							</td>
+							<td class="value">
+							     	<textarea rows="2" cols="50" id="description" name="description" style="width: 500px; margin-top: 0px; margin-bottom: 9px; height: 41px;"></textarea>
+							     	
+									<span class="Validform_checktip"></span>
+									<label class="Validform_label" style="display: none;">摘要</label>
+								</td>
+						</tr>
+						
+						<tr>
+							<td align="right">
+								<label class="Validform_label">
+									正文:
+								</label>
+							</td>
+							<td class="value">
+								 <textarea name="content" id="content"></textarea>
+							    <script type="text/javascript">
+							        var editor = UE.getEditor('content');
+							    </script>
+								</td>
+						</tr>
+						<tr>
+					     <td align="right">
+					      <label class="Validform_label">
+					   			 原文链接:
+					      </label>
+					     </td>
+					     <td class="value">
+					       <input id="url" class="inputxt" name="url" value="" style="width: 300px"  datatype="url" ignore="ignore">
+					       <span class="Validform_checktip">请输入阅读原文链接（选填）</span> 
+					     </td>
+					    </tr>
+						<tr>
+							<td align="right">
+								<label class="Validform_label">
+									序号:
+								</label>
+							</td>
+							<td class="value">
+							     	 <input id="orderNo" name="orderNo" type="text" style="width: 50px" class="inputxt" datatype="*">
+									<span class="Validform_checktip"></span>
+									<label class="Validform_label" style="display: none;">序号</label>
+								</td>
+						</tr>
+						<tr>
+							<td align="right">
+								
+							</td>
+							<td class="value">
+							     	 <div class="form-group mno">
+											<div class="col-sm-offset-1 col-sm-6">
+												<button type="button" class="btn btn-default" id="formReturn" data-dismiss="modal" onclick="doUrl('$!{basePath}/qywx/qywxNewstemplate.do?list')">返回</button>
+												<button type="button" class="btn btn-primary" id="formSubmit">提交</button>
+											 </div>
+									</div>
+							</td>
+						</tr>
+					</table>
+				
+				</form>
+				</div>
+				<i class="arrow arrow_out" style="margin-top: 0px;"></i>
+				<i class="arrow arrow_in" style="margin-top: 0px;"></i>
+		</div>
+	</div>
+   </div>
+   
+ </body>
+ <script type="text/javascript" src="$!{basePath}/plug-in-ui/js/Validform_v5.3.2.js"></script> 
+<script type="text/javascript" src="$!{basePath}/plug-in-ui/js/forminit.p3.js"></script> 
+  </html> 

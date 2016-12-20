@@ -1,0 +1,177 @@
+#parse("content/base/back/common/macro.vm")
+<!DOCTYPE html>
+<html lang="en">
+#parse("content/base/back/common/head.vm")
+<link href="$!{basePath}/plug-in-ui/css/treetable/default/treeTable.css" rel="stylesheet" type="text/css" />
+<body style='overflow:scroll;overflow-x:hidden'>
+<div class="panel" style="display: block;width:100%;">
+	<div class="container bs-docs-container" style="display: block;width:10%;float:left;">
+		<table class="table table-striped table-hover table-condensed table-bordered tree_table" id="treeTable1" 
+		pa_ui_select_mode="single" pa_ui_selectable="true" pa_ui_select_trigger="tr">
+			<thead>
+				<tr>
+					<th>应用列表</th>
+				</tr>
+			</thead>
+			<tbody id="agentList" class="check">
+				 #if($!{agentList})
+					#foreach($!{info} in $!{agentList})
+						<tr id="21" pid="" previd="" depth="1">			
+							<td id="$!{info.wxAgentid}td" #if($!{qywxMenu.agentId}==$!{info.wxAgentid}) style="background-color: #e5e5e5;" #end>
+								<span class="prev_sp" onclick="refreshMenu('$!{info.wxAgentid}')">$!{info.AgentName}</span>
+							</td>
+						</tr>
+				 #end
+			  #end							    	 									         
+			</tbody>
+		</table>
+	</div>
+	<div class="container bs-docs-container" style="width:90%;float:left;">
+		<div class="row">
+			<form role="form" class="form-inline" action="$!{basePath}/qywx/qywxMenu.do?list" method="post"  id="formSubmit">
+				<input type="hidden" value="$!{qywxMenu.agentId}" name="agentId" id="agentId"/>
+				<div  class="col-md-10" style="width:100%">
+								<div class="panel panel-default">
+								  <div class="panel-heading">菜单列表</div>
+								  <div class="panel-body">
+								  		<div class="search"> 
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="menuName" class="control-label col-sm-3 line34">菜单名称</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="menuName" id="menuName" value="$!{qywxMenu.menuName}" class="form-control">
+															  	</div>
+															 </div>
+											  <button type="submit" class="btn btn-primary">搜  索</button>
+											  <div class="clearfix"></div>
+								  		</div>
+								  		<div id="legend">
+								          <legend  class="le">
+											     <button type="button" class="btn btn-primary" onclick="goAdd();" >新增</button>
+												 <button type="button" class="btn btn-primary" onclick="doSynch();" >同步菜单</button>
+										  </legend>
+								        </div>
+								        <table class="table table-striped table-hover table-condensed table-bordered" id="treeTable">                                          
+									        <thead>
+													<th>菜单标题</th>
+													<th>菜单类型</th>
+													<th>菜单KEY</th>
+													<th>响应消息类型</th>
+						                			<th>操作</th>
+									        </thead>
+									        <tobody>
+									    	  #if($!{pageInfos})
+								                #foreach($!{info} in $!{pageInfos})
+									            	<tr id="$!{info.id}" pId="$!{info.fatherId}">			
+																	<td>$!{info.menuName}</td>
+																	<td>#if($!info.menuType=='click') 消息触发类 #elseif ($!info.menuType=='view') 网页连接类  #end</td>
+																	<td>$!{info.menuKey}</td>
+																	<td>#if($!info.msgType=='text') 文本 #elseif ($!info.msgType=='news') 图文  #end</td>
+										                <td class="last">
+							                			<a href="javascript:doUrl('$!{basePath}/qywx/qywxMenu.do?toEdit&id=$!{info.id}')" >编辑</a>
+							                			<a href="javascript:delData('$!{basePath}/qywx/qywxMenu.do?doDelete&id=$!{info.id}')">删除</a>
+							                			<a href="javascript:doUrl('$!{basePath}/qywx/qywxMenu.do?toDetail&id=$!{info.id}')">详情</a>
+						                				</td>
+									           		</tr>
+									             #end
+									    	 #end
+									         </tobody>
+									    </table>
+										<div class="text-right">
+											<!--公用翻页代码-->
+							                #set($attr='formSubmit')
+							            	#showPageList($pageInfos $attr)
+							                <!--END公用翻页代码-->
+										</div>
+								  </div>	
+								</div>
+				</div>  
+				</form>
+		</div>
+	</div>
+</div>
+</body>
+<script type="text/javascript" src="$!{basePath}/plug-in-ui/js/treetable/jquery.treeTable.js"></script> 
+<script type="text/javascript">
+	$(document).ready(function(){
+		var selectValue = $("#menuType").children('option:selected').val();
+ 			if("click"==selectValue){
+ 				$("#urlDiv").attr("style","display:none");
+ 				$("#clickDiv").removeAttr("style");
+ 				$("#sucaiDiv").removeAttr("style");
+ 				//提交校验切换
+ 				$("#url").removeAttr("datatype");
+ 				$("#msgType").attr("datatype","*");
+ 				$("#templateId").attr("datatype","*");
+ 			}else if("view"==selectValue){
+ 				$("#urlDiv").removeAttr("style");
+ 				$("#clickDiv").attr("style","display:none");
+ 				$("#sucaiDiv").attr("style","display:none");
+ 				
+ 				//提交校验切换
+ 				$("#url").attr("datatype","*");
+ 				$("#msgType").removeAttr("datatype");
+ 				$("#templateId").removeAttr("datatype");
+ 			}
+ 			
+			var msgvalue = $("#msgType").children('option:selected').val();
+ 			if("text"==msgvalue){
+ 				getsucailist("text");
+ 			}else if("news"==msgvalue){
+ 				getsucailist("news");
+ 			}
+	});
+
+	function refreshMenu(agentId){
+			$("#"+agentId+"td").attr("style","background-color: #e5e5e5;");
+			$("#agentId").val(agentId);
+			document.getElementById('formSubmit').submit();
+		}
+
+	function goAdd(){
+		var agentId = $("#agentId").val();
+		if(agentId==""){
+			alert("请先选择应用。");
+			return;
+		}
+		var url = "$!{basePath}/qywx/qywxMenu.do?toAdd&agentId="+agentId;
+		doUrl(url);
+	}
+	
+	function doSynch(){
+		var agentId = $("#agentId").val();
+		var url = "$!{basePath}/qywx/qywxMenu.do?doSynch&agentId="+agentId;
+		if(agentId==""){
+			alert("请先选择应用。");
+			return;
+		}
+		jQuery.ajax({
+			url:url,
+			cache:false,
+			dataType:"json",
+			success: function(data){
+				alert(data.msg);
+			},
+			error: function(data){
+				alert(data.msg);
+	        }
+		});
+	}
+	
+	 $(function(){
+            var option = {
+                theme:'default',
+                expandLevel : 1,
+                beforeExpand : function($treeTable, id) {
+                    
+                },
+                onSelect : function($treeTable, id) {
+                    window.console && console.log('onSelect:' + id);
+                    
+                }
+
+            };
+            $('#treeTable').treeTable(option);
+        });
+</script>
+</html>

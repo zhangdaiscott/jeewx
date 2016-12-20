@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+#parse("content/base/back/common/head.vm")
+<link rel="stylesheet" href="$!{basePath}/content/qywx/plug-in/bootstrap-multiselect/css/bootstrap-multiselect.css">
+<script src="$!{basePath}/content/qywx/plug-in/bootstrap-multiselect/js/bootstrap-multiselect.js"></script>
+<body style='overflow:scroll;overflow-x:hidden'>
+	<div class="container bs-docs-container" style="width:100%;">
+		<div class="row">
+			<div class="panel panel-default">
+				<div class="panel-heading">新增</div>
+					<div class="panel-body">
+						<form class="form-horizontal" role="form" id="dailogForm" action="$!{basePath}/qywx/qywxConversation.do?doAdd" method="POST">
+					  		<input type="hidden" id="btn_sub" class="btn_sub" />
+													<div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">会话标题</label>
+													    <div class="col-sm-8">
+													      <input type="text" value="$!{qywxConversation.title}" name="title" id="title" class="form-control" datatype="*"/>
+													    </div>
+													</div>
+													<div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">会话用户</label>
+													    	<input type="hidden" value="$!{qywxConversation.useridlist}" name="useridlist" id="useridlist" class="form-control" />
+													        <input type="hidden" value="$!{qywxConversation.usernamelist}" name="usernamelist" id="usernamelist" class="form-control"/>
+													    <div class="col-sm-8">
+													      <select id="userlist" name="userlist" class="form-control" multiple="multiple"  datatype="*" ></select>
+													    </div>
+													</div>
+													<div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">管理员</label>
+													    <div class="col-sm-8">
+													    	<input type="hidden"  name="managername" id="managername"  class="form-control" />
+													    	<select id="managerid" name="managerid" class="form-control" datatype="*" ></select>
+													    </div>
+													</div>
+										<div class="form-group mno">
+											<div class="col-sm-offset-1 col-sm-6">
+												<button type="button" class="btn btn-default" id="formReturn" data-dismiss="modal" onclick="doUrl('$!{basePath}/qywx/qywxConversation.do?list')">返回</button>
+	        									<button type="button" class="btn btn-primary" id="formSubmit">提交</button>
+        									 </div>
+        								</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+<script type="text/javascript" src="$!{basePath}/plug-in-ui/js/Validform_v5.3.2.js"></script> 
+<script type="text/javascript" src="$!{basePath}/plug-in-ui/js/forminit.p3.js"></script> 
+<script>
+	$(function (){ 
+		setUserlist();
+		setUserlist2();
+	});
+	function ajaxdoFormSubmit(formId){
+	 	var name="";
+		var id ="";
+		$("#userlist option:selected").each(function (){  
+	    	id = id +$(this).val()+",";
+	    	name = name+$(this).text()+",";
+	     }); 
+	     $("#usernamelist").val(name); 
+	     $("#useridlist").val(id); 
+	     $("#managername").val($("#managerid option:selected").text());
+		var url = $('#' + formId).attr("action");
+		$('#'+formId).ajaxSubmit({
+	        url: url,
+	        type: 'post',
+	        dataType: 'json',
+	        success: function(data, status){
+	        	if(data.status == "401"){
+					alert("没有权限！");
+					return;
+				}
+	        	if(data.success){
+	        		alert(data.msg);
+	        		//location.reload();
+	        		$('#formReturn').click();
+	        	}else{
+	        		alert(data.msg);
+	        	}
+	        },  
+	        error: function(data, status, e){  
+	        	if(data.status == "401"){
+					alert("没有权限！");
+					return;
+				}
+	        }
+		}); 
+	}
+	function setUserlist(){
+	 $('#userlist').multiselect( );
+		 var url = "$!{basePath}/qywx/qywxGzuserinfo.do?combobox";
+		 jQuery.ajax({
+	      url: url,
+	      cache: false,
+	      async:true,
+		  dataType: "json",
+	      success: function(data){
+	      //加载用户列表
+	      		var html = "";
+	      		for(var i = 0; i <data.length;i++){
+	      			html = html + "<option value="+data[i].userid+">"+data[i].name+"</option>";
+	      		}
+	      		 $('#userlist').append(html);
+	      		  $('#userlist').multiselect('rebuild');
+	      },  
+	        error: function(data, status, e){  
+	        	if(data.status == "401"){
+					alert("没有权限！");
+					return;
+				}
+	        }
+	    });
+	    
+	}
+	function setUserlist2(){
+		 var url = "$!{basePath}/qywx/qywxGzuserinfo.do?combobox";
+		 jQuery.ajax({
+	      url: url,
+	      cache: false,
+	      async:true,
+		  dataType: "json",
+	      success: function(data){
+	      //加载用户列表
+	      		var html = "";
+	      		for(var i = 0; i <data.length;i++){
+	      			html = html + "<option value="+data[i].userid+">"+data[i].name+"</option>";
+	      		}
+	      		$("#managerid").html(html);
+	      },  
+	        error: function(data, status, e){  
+	        	if(data.status == "401"){
+					alert("没有权限！");
+					return;
+				}
+	        }
+	    });
+	}
+</script>

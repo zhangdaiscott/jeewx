@@ -1,0 +1,64 @@
+#parse("content/base/back/common/macro.vm")
+<!DOCTYPE html>
+<html lang="en">
+#parse("content/base/back/common/head.vm")
+<body style='overflow:scroll;overflow-x:hidden'>
+	<div class="container bs-docs-container" style="width:100%;">
+		<div class="row">
+			<form role="form" class="form-inline" action="$!{basePath}/qywx/qywxConversation.do?list" method="post"  id="formSubmit">
+				<div  class="col-md-10" style="width:100%">
+								<div class="panel panel-default">
+								  <div class="panel-heading">企业会话列表</div>
+								  <div class="panel-body">
+								  		<div class="search">
+													
+															 <div class="form-group col-sm-3">
+															    <label for="title" class="control-label col-sm-3 line34">标题</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="title" id="title" value="$!{qywxConversation.title}" class="form-control">
+															  	</div>
+															 </div>
+											  <button type="submit" class="btn btn-primary">搜  索</button>
+											  <div class="clearfix"></div>
+								  		</div>
+								  		<div id="legend">
+								          <legend  class="le"><button type="button" class="btn btn-primary" onclick="doUrl('$!{basePath}/qywx/qywxConversation.do?toAdd')" >创建会话</button></legend> 
+								        </div>
+								        <table class="table table-striped">
+									        <thead>
+													<th>会话标题</th>
+													<th>用户列表</th>
+													<th>管理员</th>
+						                			<th>操作</th>
+									        </thead>
+									        <tobody>
+									    	  #if($!{pageInfos})
+								                #foreach($!{info} in $!{pageInfos})
+									            	<tr>			
+																	<td>$!{info.title}</td>
+																	<td>$!{info.usernamelist}</td>
+																	<td>$!{info.managername}</td>
+										                <td class="last">
+							                			<a href="javascript:doUrl('$!{basePath}/qywx/qywxConversation.do?toEdit&id=$!{info.id}')" >编辑</a>
+							                			<a href="javascript:delData('$!{basePath}/qywx/qywxConversation.do?doDelete&id=$!{info.id}')">删除</a>
+							                			<a href="javascript:doUrl('$!{basePath}/qywx/qywxConversation.do?toDetail&id=$!{info.id}')">详情</a>
+						                				</td>
+									           		</tr>
+									             #end
+									    	 #end
+									         </tobody>
+									    </table>
+										<div class="text-right">
+											<!--公用翻页代码-->
+							                #set($attr='formSubmit')
+							            	#showPageList($pageInfos $attr)
+							                <!--END公用翻页代码-->
+										</div>
+								  </div>	
+								</div>
+				</div>  
+				</form>
+		</div>
+	</div>
+</body>
+</html>

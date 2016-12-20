@@ -1,0 +1,171 @@
+#parse("content/base/back/common/macro.vm")
+<!DOCTYPE html>
+<html lang="en">
+#parse("content/base/back/common/head.vm")
+<body style='overflow:scroll;overflow-x:hidden'>
+	<div class="container bs-docs-container" style="width:100%;">
+		<div class="row">
+			<form role="form" class="form-inline" action="$!{basePath}/qywx/qywxNewsitem.do?list" method="post"  id="formSubmit">
+				<div  class="col-md-10" style="width:100%">
+								<div class="panel panel-default">
+								  <div class="panel-heading">活动配置列表</div>
+								  <div class="panel-body">
+								  		<div class="search">
+															 <div class="form-group col-sm-3">
+															    <label for="title" class="control-label col-sm-3 line34">标题</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="title" id="title" value="$!{qywxNewsitem.title}" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="author" class="control-label col-sm-3 line34">作者</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="author" id="author" value="$!{qywxNewsitem.author}" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="imagePath" class="control-label col-sm-3 line34">图片路径</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="imagePath" id="imagePath" value="$!{qywxNewsitem.imagePath}" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="content" class="control-label col-sm-3 line34">内容</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="content" id="content" value="$!{qywxNewsitem.content}" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="templateid" class="control-label col-sm-3 line34">图文模板id</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="templateid" id="templateid" value="$!{qywxNewsitem.templateid}" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="description" class="control-label col-sm-3 line34">摘要</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="description" id="description" value="$!{qywxNewsitem.description}" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="orderNo" class="control-label col-sm-3 line34">新闻顺序</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="orderNo" id="orderNo" value="$!{qywxNewsitem.orderNo}" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="url" class="control-label col-sm-3 line34">消息内容的url</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="url" id="url" value="$!{qywxNewsitem.url}" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="hdid" class="control-label col-sm-3 line34">活动id</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="hdid" id="hdid" value="$!{qywxNewsitem.hdid}" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="createName" class="control-label col-sm-3 line34">创建人名称</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="createName" id="createName" value="$!{qywxNewsitem.createName}" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="createBy" class="control-label col-sm-3 line34">创建人登录名称</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="createBy" id="createBy" value="$!{qywxNewsitem.createBy}" class="form-control">
+															  	</div>
+															 </div>
+															<div class="form-group col-sm-3">
+															    <label for="createDate" class="control-label col-sm-3 line34">创建日期</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="createDate" id="createDate" value="$!dateTool.format('yyyy-MM-dd',$!{qywxNewsitem.createDate})" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="updateName" class="control-label col-sm-3 line34">更新人名称</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="updateName" id="updateName" value="$!{qywxNewsitem.updateName}" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="updateBy" class="control-label col-sm-3 line34">更新人登录名称</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="updateBy" id="updateBy" value="$!{qywxNewsitem.updateBy}" class="form-control">
+															  	</div>
+															 </div>
+															<div class="form-group col-sm-3">
+															    <label for="updateDate" class="control-label col-sm-3 line34">更新日期</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="updateDate" id="updateDate" value="$!dateTool.format('yyyy-MM-dd',$!{qywxNewsitem.updateDate})" class="form-control">
+															  	</div>
+															 </div>
+											  <button type="submit" class="btn btn-primary">搜  索</button>
+											  <div class="clearfix"></div>
+								  		</div>
+								  		<div id="legend">
+								          <legend  class="le"><button type="button" class="btn btn-primary" onclick="doUrl('$!{basePath}/qywx/qywxNewsitem.do?toAdd')" >新增</button></legend> 
+								        </div>
+								        <table class="table table-striped">
+									        <thead>
+													<th>标题</th>
+													<th>作者</th>
+													<th>图片路径</th>
+													<th>内容</th>
+													<th>图文模板id</th>
+													<th>摘要</th>
+													<th>新闻顺序</th>
+													<th>消息内容的url</th>
+													<th>活动id</th>
+													<th>创建人名称</th>
+													<th>创建人登录名称</th>
+													<th>创建日期</th>
+													<th>更新人名称</th>
+													<th>更新人登录名称</th>
+													<th>更新日期</th>
+						                			<th>操作</th>
+									        </thead>
+									        <tobody>
+									    	  #if($!{pageInfos})
+								                #foreach($!{info} in $!{pageInfos})
+									            	<tr>			
+																	<td>$!{info.title}</td>
+																	<td>$!{info.author}</td>
+																	<td>$!{info.imagePath}</td>
+																	<td>$!{info.content}</td>
+																	<td>$!{info.templateid}</td>
+																	<td>$!{info.description}</td>
+																	<td>$!{info.orderNo}</td>
+																	<td>$!{info.url}</td>
+																	<td>$!{info.hdid}</td>
+																	<td>$!{info.createName}</td>
+																	<td>$!{info.createBy}</td>
+																	<td>$!dateTool.format("yyyy-MM-dd",$!{info.createDate})</td>
+																	<td>$!{info.updateName}</td>
+																	<td>$!{info.updateBy}</td>
+																	<td>$!dateTool.format("yyyy-MM-dd",$!{info.updateDate})</td>
+										                <td class="last">
+							                			<a href="javascript:doUrl('$!{basePath}/qywx/qywxNewsitem.do?toEdit&id=$!{info.id}')" >编辑</a>
+							                			<a href="javascript:delData('$!{basePath}/qywx/qywxNewsitem.do?doDelete&id=$!{info.id}')">删除</a>
+							                			<a href="javascript:doUrl('$!{basePath}/qywx/qywxNewsitem.do?toDetail&id=$!{info.id}')">详情</a>
+						                				</td>
+									           		</tr>
+									             #end
+									    	 #end
+									         </tobody>
+									    </table>
+										<div class="text-right">
+											<!--公用翻页代码-->
+							                #set($attr='formSubmit')
+							            	#showPageList($pageInfos $attr)
+							                <!--END公用翻页代码-->
+										</div>
+								  </div>	
+								</div>
+				</div>  
+				</form>
+		</div>
+	</div>
+</body>
+</html>

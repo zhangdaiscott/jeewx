@@ -1,0 +1,23 @@
+INSERT  INTO
+	qywx_location
+      ( 
+      id                            
+      ,corpid                         
+      ,userid                         
+      ,createtime                     
+      ,latitude                       
+      ,longitude                      
+      ,location_precision             
+      ,agentid                        
+      ) 
+values
+      (
+      :qywxLocation.id                            
+      ,:qywxLocation.corpid                        
+      ,:qywxLocation.userid                        
+      ,:qywxLocation.createtime                    
+      ,:qywxLocation.latitude                      
+      ,:qywxLocation.longitude                     
+      ,:qywxLocation.locationPrecision             
+      ,:qywxLocation.agentid                       
+      )

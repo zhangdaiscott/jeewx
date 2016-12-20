@@ -1,0 +1,102 @@
+#parse("content/base/back/common/macro.vm")
+<!DOCTYPE html>
+<html lang="en">
+#parse("content/base/back/common/head.vm")
+<body style='overflow:scroll;overflow-x:hidden'>
+	<div class="container bs-docs-container" style="width:100%;">
+		<div class="row">
+			<form role="form" class="form-inline" action="$!{basePath}/alipay/alipayReceivetext.do?toGetMesage" method="post"  id="formSubmit">
+				<div  class="col-md-10" style="width:100%">
+								<div class="panel panel-default">
+								  <div class="panel-heading">用户信息详情列表</div>
+								  <div class="panel-body">
+								  		<div class="search">
+															 #*<div class="form-group col-sm-3">
+															    <label for="receivetextId" class="control-label col-sm-3 line34">用户消息表 id</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="receivetextId" id="receivetextId" value="$!{alipayReceivetextContent.receivetextId}" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="content" class="control-label col-sm-3 line34">消息内容</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="content" id="content" value="$!{alipayReceivetextContent.content}" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="createName" class="control-label col-sm-3 line34">创建人名称</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="createName" id="createName" value="$!{alipayReceivetextContent.createName}" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="createBy" class="control-label col-sm-3 line34">创建人登录名称</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="createBy" id="createBy" value="$!{alipayReceivetextContent.createBy}" class="form-control">
+															  	</div>
+															 </div>
+															<div class="form-group col-sm-3">
+															    <label for="createDate" class="control-label col-sm-3 line34">创建日期</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="createDate" id="createDate" value="$!dateTool.format('yyyy-MM-dd',$!{alipayReceivetextContent.createDate})" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="updateName" class="control-label col-sm-3 line34">更新人名称</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="updateName" id="updateName" value="$!{alipayReceivetextContent.updateName}" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="updateBy" class="control-label col-sm-3 line34">更新人登录名称</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="updateBy" id="updateBy" value="$!{alipayReceivetextContent.updateBy}" class="form-control">
+															  	</div>
+															 </div>
+															<div class="form-group col-sm-3">
+															    <label for="updateDate" class="control-label col-sm-3 line34">更新日期</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="updateDate" id="updateDate" value="$!dateTool.format('yyyy-MM-dd',$!{alipayReceivetextContent.updateDate})" class="form-control">
+															  	</div>
+															 </div>
+															 *#
+											  <button type="submit" class="btn btn-primary">搜  索</button>
+											  <div class="clearfix"></div>
+								  		</div>
+								        <table class="table table-striped">
+									        <thead>
+													<th>消息内容</th>
+													<th>创建日期</th>
+						                			<th>操作</th>
+									        </thead>
+									        <tobody>
+									    	  #if($!{pageInfos})
+								                #foreach($!{info} in $!{pageInfos})
+									            	<tr>			
+																	<td>$!{info.content}</td>
+																	<td>$!dateTool.format("yyyy-MM-dd",$!{info.createDate})</td>
+										                <td class="last">
+							                			<a href="javascript:delData('$!{basePath}/alipay/alipayReceivetext.do?doDeleteMesage&id=$!{info.id}')">删除</a>
+						                				</td>
+									           		</tr>
+									             #end
+									    	 #end
+									         </tobody>
+									    </table>
+										<div class="text-right">
+											<!--公用翻页代码-->
+							                #set($attr='formSubmit')
+							            	#showPageList($pageInfos $attr)
+							                <!--END公用翻页代码-->
+										</div>
+								  </div>	
+								</div>
+				</div>  
+				<!--update-end--Author:chenchunpeng  Date:20160715 for：新增返回按钮 -->
+						<center><button type="button" class="btn btn-default" id="formReturn" data-dismiss="modal" onclick="doUrl('$!{basePath}/alipay/alipayReceivetext.do?list')">返回</button></center>
+        		 <!--update-end--Author:chenchunpeng  Date:20160715 for：新增返回按钮 -->
+				</form>
+		</div>
+	</div>
+</body>
+</html>

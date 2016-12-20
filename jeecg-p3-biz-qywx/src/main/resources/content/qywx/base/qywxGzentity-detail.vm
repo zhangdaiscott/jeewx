@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+#parse("content/base/back/common/head.vm")
+<body style='overflow:scroll;overflow-x:hidden'>
+	<div class="container bs-docs-container" style="width:100%;">
+		<div class="row">
+			<div class="panel panel-default">
+				<div class="panel-heading">详情</div>
+				  	<div class="panel-body">
+				   		<form class="form-horizontal" role="form">
+							  <fieldset disabled>
+							  																 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">模板名称</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{qywxGzentity.templateName}" name="templateName" id="templateName" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">模板id</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{qywxGzentity.templateId}" name="templateId" id="templateId" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">类型 文本_text,图文_news</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{qywxGzentity.templateType}" name="templateType" id="templateType" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">是否启用 未启用_0,启用_1</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{qywxGzentity.isWork}" name="isWork" id="isWork" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">微信账号id</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{qywxGzentity.accountid}" name="accountid" id="accountid" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">创建人名称</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{qywxGzentity.createName}" name="createName" id="createName" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">创建人登录名称</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{qywxGzentity.createBy}" name="createBy" id="createBy" class="form-control" />
+													    </div>
+													  </div>
+													  <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">创建日期</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!dateTool.format("yyyy-MM-dd",$!{qywxGzentity.createDate})" name="createDate" id="createDate" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">更新人名称</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{qywxGzentity.updateName}" name="updateName" id="updateName" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">更新人登录名称</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{qywxGzentity.updateBy}" name="updateBy" id="updateBy" class="form-control" />
+													    </div>
+													  </div>
+													  <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">更新日期</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!dateTool.format("yyyy-MM-dd",$!{qywxGzentity.updateDate})" name="updateDate" id="updateDate" class="form-control" />
+													    </div>
+													  </div>
+							  </fieldset>
+							  			<div class="form-group mno">
+											<div class="col-sm-offset-1 col-sm-6">
+												<button type="button" class="btn btn-default" id="formReturn" data-dismiss="modal" onclick="doUrl('$!{basePath}/qywx/qywxGzentity.do?list')">返回</button>
+        									 </div>
+        							    </div>
+						</form>
+					</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

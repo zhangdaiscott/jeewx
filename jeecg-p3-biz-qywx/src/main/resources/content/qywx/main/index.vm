@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+#parse("content/base/back/common/head.vm")
+<body style='overflow:scroll;overflow-x:hidden'>
+	#parse("content/qywx/main/navigation.vm")
+	<input type="hidden" id="top" name="top"/>
+	<div class="container bs-docs-container" style="width:100%;">
+		<div class="row">
+			#parse("content/qywx/main/menu.vm")
+			<div  class="col-md-10">
+				<iframe width="100%" height="600px" id="center" onload="javascript:dyniframesize('center');"  src="$!{basePath}/system/back.do?home" style="border:1px #fff solid; background:#ffffff;"></iframe>
+			</div>
+		</div>
+	</div>
+</body>
+#parse("content/base/back/common/bottom.vm")
+</html>

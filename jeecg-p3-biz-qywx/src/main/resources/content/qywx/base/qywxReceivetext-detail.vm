@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+#parse("content/base/back/common/head.vm")
+<body style='overflow:scroll;overflow-x:hidden'>
+	<div class="container bs-docs-container" style="width:100%;">
+		<div class="row">
+			<div class="panel panel-default">
+				<div class="panel-heading">详情</div>
+				  	<div class="panel-body">
+				   		<form class="form-horizontal" role="form">
+							  <fieldset disabled>
+							  																 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">开发者微信号</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{qywxReceivetext.tousername}" name="tousername" id="tousername" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">发送方帐号（一个OpenID）</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{qywxReceivetext.fromusername}" name="fromusername" id="fromusername" class="form-control" />
+													    </div>
+													  </div>
+													  <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">消息创建时间 （整型）</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!dateTool.format("yyyy-MM-dd",$!{qywxReceivetext.createtime})" name="createtime" id="createtime" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">消息类型（text/image/location/link）</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{qywxReceivetext.msgtype}" name="msgtype" id="msgtype" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">消息id，64位整型</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{qywxReceivetext.msgid}" name="msgid" id="msgid" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">消息内容</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{qywxReceivetext.content}" name="content" id="content" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">是否回复</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{qywxReceivetext.response}" name="response" id="response" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">回复内容</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{qywxReceivetext.rescontent}" name="rescontent" id="rescontent" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">用户昵称</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{qywxReceivetext.nickname}" name="nickname" id="nickname" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">微信账号Id</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{qywxReceivetext.accountid}" name="accountid" id="accountid" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">创建人名称</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{qywxReceivetext.createName}" name="createName" id="createName" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">创建人登录名称</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{qywxReceivetext.createBy}" name="createBy" id="createBy" class="form-control" />
+													    </div>
+													  </div>
+													  <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">创建日期</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!dateTool.format("yyyy-MM-dd",$!{qywxReceivetext.createDate})" name="createDate" id="createDate" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">更新人名称</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{qywxReceivetext.updateName}" name="updateName" id="updateName" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">更新人登录名称</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{qywxReceivetext.updateBy}" name="updateBy" id="updateBy" class="form-control" />
+													    </div>
+													  </div>
+													  <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">更新日期</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!dateTool.format("yyyy-MM-dd",$!{qywxReceivetext.updateDate})" name="updateDate" id="updateDate" class="form-control" />
+													    </div>
+													  </div>
+							  </fieldset>
+							  			<div class="form-group mno">
+											<div class="col-sm-offset-1 col-sm-6">
+												<button type="button" class="btn btn-default" id="formReturn" data-dismiss="modal" onclick="doUrl('$!{basePath}/qywx/qywxReceivetext.do?list')">返回</button>
+        									 </div>
+        							    </div>
+						</form>
+					</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

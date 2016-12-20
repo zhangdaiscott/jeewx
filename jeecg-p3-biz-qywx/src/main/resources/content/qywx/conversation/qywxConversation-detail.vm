@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+#parse("content/base/back/common/head.vm")
+<body style='overflow:scroll;overflow-x:hidden'>
+	<div class="container bs-docs-container" style="width:100%;">
+		<div class="row">
+			<div class="panel panel-default">
+				<div class="panel-heading">详情</div>
+				  	<div class="panel-body">
+				   		<form class="form-horizontal" role="form">
+							  <fieldset disabled>
+							  																 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">TITLE</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{qywxConversation.title}" name="title" id="title" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">USERNAMELIST</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{qywxConversation.usernamelist}" name="usernamelist" id="usernamelist" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">USERIDLIST</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{qywxConversation.useridlist}" name="useridlist" id="useridlist" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">STATUS</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{qywxConversation.status}" name="status" id="status" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">MANAGERID</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{qywxConversation.managerid}" name="managerid" id="managerid" class="form-control" />
+													    </div>
+													  </div>
+							  </fieldset>
+							  			<div class="form-group mno">
+											<div class="col-sm-offset-1 col-sm-6">
+												<button type="button" class="btn btn-default" id="formReturn" data-dismiss="modal" onclick="doUrl('$!{basePath}/qywx/qywxConversation.do?list')">返回</button>
+        									 </div>
+        							    </div>
+						</form>
+					</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+#parse("content/base/back/common/head.vm")
+<body style='overflow:scroll;overflow-x:hidden'>
+	<div class="container bs-docs-container" style="width:100%;">
+		<div class="row">
+			<div class="panel panel-default">
+				<div class="panel-heading">详情</div>
+				  	<div class="panel-body">
+				   		<form class="form-horizontal" role="form">
+							  <fieldset disabled>
+							  																 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">账号</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{alipayGzuserinfo.userid}" name="userid" id="userid" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">姓名</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{alipayGzuserinfo.name}" name="name" id="name" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">部门</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{alipayGzuserinfo.department}" name="department" id="department" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">职位</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{alipayGzuserinfo.position}" name="position" id="position" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">电话</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{alipayGzuserinfo.mobile}" name="mobile" id="mobile" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">省份</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{alipayGzuserinfo.province}" name="province" id="province" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">性别gender=0表示男，=1表示女</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{alipayGzuserinfo.gender}" name="gender" id="gender" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">邮箱</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{alipayGzuserinfo.email}" name="email" id="email" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">微信号</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{alipayGzuserinfo.weixinid}" name="weixinid" id="weixinid" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">头像url</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{alipayGzuserinfo.avatar}" name="avatar" id="avatar" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">关注状态: 1=已关注，2=已冻结，4=未关注</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{alipayGzuserinfo.subscribeStatus}" name="subscribeStatus" id="subscribeStatus" class="form-control" />
+													    </div>
+													  </div>
+													  <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">关注时间</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!dateTool.format("yyyy-MM-dd",$!{alipayGzuserinfo.subscribeTime})" name="subscribeTime" id="subscribeTime" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">微信账号ID</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{alipayGzuserinfo.accountid}" name="accountid" id="accountid" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">创建人名称</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{alipayGzuserinfo.createName}" name="createName" id="createName" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">创建人登录名称</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{alipayGzuserinfo.createBy}" name="createBy" id="createBy" class="form-control" />
+													    </div>
+													  </div>
+													  <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">创建日期</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!dateTool.format("yyyy-MM-dd",$!{alipayGzuserinfo.createDate})" name="createDate" id="createDate" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">更新人名称</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{alipayGzuserinfo.updateName}" name="updateName" id="updateName" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">更新人登录名称</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{alipayGzuserinfo.updateBy}" name="updateBy" id="updateBy" class="form-control" />
+													    </div>
+													  </div>
+													  <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">更新日期</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!dateTool.format("yyyy-MM-dd",$!{alipayGzuserinfo.updateDate})" name="updateDate" id="updateDate" class="form-control" />
+													    </div>
+													  </div>
+							  </fieldset>
+							  			<div class="form-group mno">
+											<div class="col-sm-offset-1 col-sm-6">
+												<button type="button" class="btn btn-default" id="formReturn" data-dismiss="modal" onclick="doUrl('$!{basePath}/alipay/alipayGzuserinfo.do?list')">返回</button>
+        									 </div>
+        							    </div>
+						</form>
+					</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

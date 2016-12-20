@@ -1,0 +1,23 @@
+INSERT  INTO
+	qywx_messagelog
+      ( 
+      id                            
+      ,wx_agent_id                    
+      ,topartys_id                    
+      ,message_type                   
+      ,message_content                
+      ,content_id                     
+      ,receive_message                
+      ,create_date                    
+      ) 
+values
+      (
+      :qywxMessagelog.id                            
+      ,:qywxMessagelog.wxAgentId                     
+      ,:qywxMessagelog.topartysId                    
+      ,:qywxMessagelog.messageType                   
+      ,:qywxMessagelog.messageContent                
+      ,:qywxMessagelog.contentId                     
+      ,:qywxMessagelog.receiveMessage                
+      ,:qywxMessagelog.createDate                    
+      )

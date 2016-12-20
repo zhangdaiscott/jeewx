@@ -1,0 +1,27 @@
+INSERT  INTO
+	alipay_newstemplate
+      ( 
+      id                            
+      ,template_name                   
+      ,template_type                   
+      ,accountid                      
+      ,create_name                    
+      ,create_by                      
+      ,create_date                    
+      ,update_name                    
+      ,update_by                      
+      ,update_date                    
+      ) 
+values
+      (
+      :alipayNewstemplate.id                            
+      ,:alipayNewstemplate.templateName                   
+      ,:alipayNewstemplate.templateType                   
+      ,:alipayNewstemplate.accountid                     
+      ,:alipayNewstemplate.createName                    
+      ,:alipayNewstemplate.createBy                      
+      ,:alipayNewstemplate.createDate                    
+      ,:alipayNewstemplate.updateName                    
+      ,:alipayNewstemplate.updateBy                      
+      ,:alipayNewstemplate.updateDate                    
+      )

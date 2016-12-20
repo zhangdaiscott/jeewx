@@ -1,0 +1,139 @@
+#parse("content/base/back/common/macro.vm")
+<!DOCTYPE html>
+<html lang="en">
+#parse("content/base/back/common/head.vm")
+<body style='overflow:scroll;overflow-x:hidden'>
+	<div class="container bs-docs-container" style="width:100%;">
+		<div class="row">
+			<form role="form" class="form-inline" action="$!{basePath}/alipay/alipayAutoresponseDefault.do?list" method="post"  id="formSubmit">
+				<div  class="col-md-10" style="width:100%">
+								<div class="panel panel-default">
+								  <div class="panel-heading">活动配置列表</div>
+								  <div class="panel-body">
+								  		<div class="search">
+															 <div class="form-group col-sm-3">
+															    <label for="templatename" class="control-label col-sm-3 line34">模板名称</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="templatename" id="templatename" value="$!{alipayAutoresponseDefault.templatename}" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="templateid" class="control-label col-sm-3 line34">模板Id</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="templateid" id="templateid" value="$!{alipayAutoresponseDefault.templateid}" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="msgtype" class="control-label col-sm-3 line34">消息类型</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="msgtype" id="msgtype" value="$!{alipayAutoresponseDefault.msgtype}" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="accountid" class="control-label col-sm-3 line34">微信账号Id</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="accountid" id="accountid" value="$!{alipayAutoresponseDefault.accountid}" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="iswork" class="control-label col-sm-3 line34">是否启用</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="iswork" id="iswork" value="$!{alipayAutoresponseDefault.iswork}" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="createName" class="control-label col-sm-3 line34">创建人名称</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="createName" id="createName" value="$!{alipayAutoresponseDefault.createName}" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="createBy" class="control-label col-sm-3 line34">创建人登录名称</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="createBy" id="createBy" value="$!{alipayAutoresponseDefault.createBy}" class="form-control">
+															  	</div>
+															 </div>
+															<div class="form-group col-sm-3">
+															    <label for="createDate" class="control-label col-sm-3 line34">创建日期</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="createDate" id="createDate" value="$!dateTool.format('yyyy-MM-dd',$!{alipayAutoresponseDefault.createDate})" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="updateName" class="control-label col-sm-3 line34">更新人名称</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="updateName" id="updateName" value="$!{alipayAutoresponseDefault.updateName}" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="updateBy" class="control-label col-sm-3 line34">更新人登录名称</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="updateBy" id="updateBy" value="$!{alipayAutoresponseDefault.updateBy}" class="form-control">
+															  	</div>
+															 </div>
+															<div class="form-group col-sm-3">
+															    <label for="updateDate" class="control-label col-sm-3 line34">更新日期</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="updateDate" id="updateDate" value="$!dateTool.format('yyyy-MM-dd',$!{alipayAutoresponseDefault.updateDate})" class="form-control">
+															  	</div>
+															 </div>
+											  <button type="submit" class="btn btn-primary">搜  索</button>
+											  <div class="clearfix"></div>
+								  		</div>
+								  		<div id="legend">
+								          <legend  class="le"><button type="button" class="btn btn-primary" onclick="doUrl('$!{basePath}/alipay/alipayAutoresponseDefault.do?toAdd')" >新增</button></legend> 
+								        </div>
+								        <table class="table table-striped">
+									        <thead>
+													<th>模板名称</th>
+													<th>模板Id</th>
+													<th>消息类型</th>
+													<th>微信账号Id</th>
+													<th>是否启用</th>
+													<th>创建人名称</th>
+													<th>创建人登录名称</th>
+													<th>创建日期</th>
+													<th>更新人名称</th>
+													<th>更新人登录名称</th>
+													<th>更新日期</th>
+						                			<th>操作</th>
+									        </thead>
+									        <tobody>
+									    	  #if($!{pageInfos})
+								                #foreach($!{info} in $!{pageInfos})
+									            	<tr>			
+																	<td>$!{info.templatename}</td>
+																	<td>$!{info.templateid}</td>
+																	<td>$!{info.msgtype}</td>
+																	<td>$!{info.accountid}</td>
+																	<td>$!{info.iswork}</td>
+																	<td>$!{info.createName}</td>
+																	<td>$!{info.createBy}</td>
+																	<td>$!dateTool.format("yyyy-MM-dd",$!{info.createDate})</td>
+																	<td>$!{info.updateName}</td>
+																	<td>$!{info.updateBy}</td>
+																	<td>$!dateTool.format("yyyy-MM-dd",$!{info.updateDate})</td>
+										                <td class="last">
+							                			<a href="javascript:doUrl('$!{basePath}/alipay/alipayAutoresponseDefault.do?toEdit&id=$!{info.id}')" >编辑</a>
+							                			<a href="javascript:delData('$!{basePath}/alipay/alipayAutoresponseDefault.do?doDelete&id=$!{info.id}')">删除</a>
+							                			<a href="javascript:doUrl('$!{basePath}/alipay/alipayAutoresponseDefault.do?toDetail&id=$!{info.id}')">详情</a>
+						                				</td>
+									           		</tr>
+									             #end
+									    	 #end
+									         </tobody>
+									    </table>
+										<div class="text-right">
+											<!--公用翻页代码-->
+							                #set($attr='formSubmit')
+							            	#showPageList($pageInfos $attr)
+							                <!--END公用翻页代码-->
+										</div>
+								  </div>	
+								</div>
+				</div>  
+				</form>
+		</div>
+	</div>
+</body>
+</html>

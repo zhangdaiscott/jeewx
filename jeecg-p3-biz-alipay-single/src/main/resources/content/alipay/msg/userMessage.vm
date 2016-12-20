@@ -1,0 +1,152 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+#parse("content/base/back/common/head.vm")
+	<script type="text/javascript" src="$!{basePath}/plug-in-ui/js/jquery-1.9.1.js"></script>
+	<script type="text/javascript" src="$!{basePath}/plug-in-ui/js/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="$!{basePath}/plug-in-ui/js/zTree/jquery.ztree.core.js$!{version}"></script>
+	<script type="text/javascript" src="$!{basePath}/plug-in-ui/js/zTree/jquery.ztree.excheck.js$!{version}"></script>
+	<script type="text/javascript" src="$!{basePath}/plug-in-ui/js/zTree/jquery.ztree.exedit.js$!{version}"></script>
+	
+</head>
+<body>
+	<div class="container bs-docs-container" style="width:100%;">
+		<div class="row">
+			<div class="col-md-3">
+				<div class="panel panel-default minHeight" style="margin-left:1%;width:25%;">
+						<div class="panel-body">
+							<div class="modal-body">
+							<div id="menuContent" class="menuContent" style="position: absolute;">
+    						<ul id="treeDemo" class="ztree" style="border:none;overflow:hidden;width:auto !important"></ul>
+     							 </div>
+							</div>
+						</div>
+				</div>
+			</div>
+		<div  class="col-md-8" style="margin-left: 250; margin-top: -650;">	       
+		</div>
+	</div>			
+</div>
+<input type="hidden" value="$!{lists.parentid}" name="parentid" id="pId" onchange="result(this.value)"/>
+</body>
+		<script type="text/javascript" src="$!{basePath}/plug-in-ui/js/Validform_v5.3.2.js"></script> 
+		<script type="text/javascript" src="$!{basePath}/plug-in-ui/js/forminit.p3.js"></script>
+		<script type="text/javascript">
+		//加载部门树通过部门树加载用户列表
+		$(function(){
+		var vid="";
+		jQuery.ajax({
+						url:"groupMsg.do?getUserTempletNew",
+						data:{"pid":vid},
+						dataType:"JSON",
+						method:"POST",
+						success:function(data){
+					    $(".col-md-8").html(data.obj);
+				        	}
+						});
+		
+		function receive() {
+		
+		var cityObj = $("#parentid");
+		var cityOffset = $("#parentid").offset();
+			if($("#menuContent").is(':hidden')){
+		     $("#menuContent").css({left:cityOffset.left + "px", top:cityOffset.top + cityObj.outerHeight() + "px"}).slideDown("fast");
+			}else{
+			  $("#menuContent").fadeOut("fast");
+			}
+		    $("body").bind("mousedown", onBodyDown);
+		}
+		function hideMenu() {
+			$("#menuContent").fadeOut("fast");
+			$("body").unbind("mousedown", onBodyDown);
+		}
+		function onBodyDown(event) {
+			if (!(event.target.id == "parentid" || event.target.id == "menuContent" || $(event.target).parents("#menuContent").length>0)) {
+				hideMenu();
+			}
+		}
+		var setting = {
+					check: {
+						enable: true,
+						radioType: "all",
+						chkboxType:{"Y" : "undefined", "N" : "" }
+					},
+					view: {
+						addHoverDom: addHoverDom,
+						removeHoverDom: removeHoverDom,
+						dblClickExpand: false
+					},
+					data: {
+						simpleData: {
+							enable: true,
+							idKey: "id",
+							pIdKey: "pId",
+							rootPId: null
+						}
+					},
+					callback: {
+					
+						onClick: onClick,
+						onCheck: onCheck,
+					},
+					
+				};
+		function onClick(e, treeId, treeNode) {
+		   var tree = zTree.getZTreeObj("treeDemo");
+			tree.checkNode(treeNode, !treeNode.checked, null, true);
+			return false;
+		}
+		function onCheck(e, treeId, treeNode) {
+			var tree = zTree.getZTreeObj("treeDemo"),
+			nodes = tree.getCheckedNodes(true),
+			v = "",vid = "";
+			for (var i=0, l=nodes.length; i<l; i++) {
+				v += nodes[i].name + ",";
+				vid += nodes[i].id + ",";
+			}
+			if (v.length > 0 ) v = v.substring(0, v.length-1);
+			if (vid.length > 0 ) vid = vid.substring(0, vid.length-1);
+			$("#parentid").val(v);
+			$("#pId").val(vid);
+			jQuery.ajax({
+						url:"groupMsg.do?getUserTempletNew",
+						data:{"pid":vid},
+						dataType:"JSON",
+						method:"POST",
+						success:function(data){
+					    $(".col-md-8").html(data.obj);
+				        	}
+						});
+		}
+		function addHoverDom(treeId, treeNode) {
+			if (treeNode.parentNode && treeNode.parentNode.id!=1) return;
+			var aObj = $("#" + treeNode.tId + IDMark_A);
+				if ($("#diyBtn_"+treeNode.id).length>0) return;
+				var editStr = "<span id='diyBtn_" +treeNode.id+ "'></span>";
+			
+				aObj.after(editStr);
+		}
+		function removeHoverDom(treeId, treeNode) {
+				$("#diyBtn_"+treeNode.id).unbind().remove();
+				$("#diyBtn_space_" +treeNode.id).unbind().remove();
+		}
+		var zNodes;
+		$(document).ready(function(){
+			jQuery.ajax({  
+			        async : false,  
+			        cache:false,  
+			        type: 'POST',  
+			        dataType : "json",  
+			        url: "groupMsg.do?getAuthTree",//请求的action路径  
+			        error: function () {//请求失败处理函数  
+			            alert('请求失败');  
+			        },  
+			        success:function(data){ //请求成功后处理函数。    
+			            zNodes = data.obj;   //把后台封装好的简单Json格式赋给zNodes  
+			        }  
+			    });  
+			zTree.init($("#treeDemo"), setting, zNodes);
+		});  
+		});
+</script>
+</html>

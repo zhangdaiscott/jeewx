@@ -1,0 +1,71 @@
+<div class="col-md-2 ">
+		<div class="bs_border h95">
+			<span class="apply">
+				<a href="http://www.jeecg.org" target="_blank">
+					官方网站
+				</a>
+			</span>
+			<span class="SubM">
+				<a href="http://git.oschina.net/jeecg/jeecg-p3" target="_blank">
+					开发指南
+				</a>
+			</span>
+		</div>
+		<div class="bs_border accor" style="padding:0;">
+			<div id="accordion">
+				<div>
+					<h5 class="a_right"><a href="javascript:void(0);">账号配置</a></h5>
+		             <ul>
+		                <li><a href="javascript:loadContent('$!{basePath}/qywx/qywxAccount.do?list')">企业号管理</a></li>
+		                <li><a href="javascript:loadContent('$!{basePath}/qywx/qywxAgent.do?list')">应用管理</a></li>
+		            </ul>
+		        </div>
+				<div>
+					<h5 class="a_right"><a href="javascript:void(0);">基础管理</a></h5>
+		             <ul>
+		                <li><a href="javascript:loadContent('$!{basePath}/qywx/qywxAutoresponse.do?list')">关键字管理</a></li>
+		                <li><a href="javascript:loadContent('$!{basePath}/qywx/qywxGzentity.do?list')">关注回复</a></li>
+						<li><a href="javascript:loadContent('$!{basePath}/qywx/qywxMenu.do?list')">菜单管理</a></li>
+		            </ul>
+		        </div>
+		         <div>
+					<h5 class="a_right"><a href="javascript:void(0);">微信素材</a></h5>
+		             <ul>
+		                <li><a href="javascript:loadContent('$!{basePath}/qywx/qywxTexttemplate.do?list')">文本消息</a></li> 
+		                <li><a href="javascript:loadContent('$!{basePath}/qywx/qywxNewstemplate.do?list')">图文消息</a></li>
+		            </ul>
+		        </div>
+				<div>
+					<h5 class="a_right"><a href="javascript:void(0);">消息管理</a></h5>
+		             <ul>
+		                <li><a href="javascript:loadContent('$!{basePath}/qywx/qywxReceivetext.do?list')">用户消息</a></li>
+						<li><a href="javascript:loadContent('$!{basePath}/qywx/qywxGzuserinfo.do?list')">关注用户</a></li>
+						<li><a href="javascript:loadContent('$!{basePath}/qywx/qywxGroup.do?list')">组织机构</a></li>
+						<li><a href="javascript:loadContent('$!{basePath}/qywx/groupMsg.do?toGroupMsgSend')">消息群发</a></li>
+						<li><a href="javascript:loadContent('$!{basePath}/qywx/qywxMessagelog.do?list')">群发消息记录</a></li>
+						<li><a href="javascript:loadContent('$!{basePath}/qywx/qywxLocation.do?list')">用户地理位置</a></li>
+		            </ul>
+		        </div>
+		        <div>
+					<h5 class="a_right"><a href="javascript:void(0);">会话管理</a></h5>
+		             <ul>
+		                <li><a href="javascript:loadContent('$!{basePath}/qywx/qywxConversation.do?list')">企业会话管理</a></li>
+		            </ul>
+		        </div>
+		    </div>	
+		</div>
+		<div class="bs_border h85">
+			<p>Jeecg-P3 插件开发平台</p>
+			<p>QQ群 : 293658367</p>
+			<p>论坛  : www.jeecg.org</p>
+		</div>		
+</div>
+
+<script type="text/javascript">
+	 /**加载主体页面**/
+    function loadContent(url){
+			//location.href="#navi";
+			$("#center").attr("src",url);
+	}
+	control(); 
+</script>

@@ -1,0 +1,87 @@
+#parse("content/base/back/common/macro.vm")
+<!DOCTYPE html>
+<html lang="en">
+#parse("content/base/back/common/head.vm")
+<body style='overflow:scroll;overflow-x:hidden'>
+	<div class="container bs-docs-container" style="width:100%;">
+		<div class="row">
+			<form role="form" class="form-inline" action="$!{basePath}/alipay/alipayReceivetext.do?list" method="post"  id="formSubmit">
+				<div  class="col-md-10" style="width:100%">
+								<div class="panel panel-default">
+								  <div class="panel-heading">回复消息文本列表</div>
+								  <div class="panel-body">
+								  		<div class="search">
+															 <div class="form-group col-sm-3">
+															    <label for="nickname" class="control-label col-sm-3 line34">用户昵称</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="nickname" id="nickname" value="$!{alipayReceivetext.nickname}" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="nickname" class="control-label col-sm-3 line34">发送方账号</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="fromusername" id="fromusername" value="$!{alipayReceivetext.fromusername}" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="msgtype" class="control-label col-sm-3 line34">消息类型</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="msgtype" id="msgtype" value="$!{alipayReceivetext.msgtype}" class="form-control">
+															  	</div>
+															 </div>
+											  <button type="submit" class="btn btn-primary">搜  索</button>
+											  <div class="clearfix"></div>
+								  		</div>
+								  		<div id="legend">
+								          <legend  class="le"><button type="button" class="btn btn-primary" onclick="doUrl('$!{basePath}/alipay/alipayReceivetext.do?toAdd')" >新增</button></legend> 
+								        </div>
+								        <table class="table table-striped">
+									        <thead>
+									        		<th>用户昵称</th>
+													<th>消息类型</th>
+													<th>开发者服务窗账号</th>
+													<th>发送方账号</th>
+													<th>消息时间 </th>
+													<th>消息内容</th>
+													<th>是否回复</th>
+													<!--<th>回复内容</th>-->
+						                			<th>操作</th>
+									        </thead>
+									        <tobody>
+									    	  #if($!{pageInfos})
+								                #foreach($!{info} in $!{pageInfos})
+									            	<tr>			
+						            					<td>$!{info.nickname}</td>
+														<td>$!{info.msgtype}</td>
+														<td>$!{info.tousername}</td>
+														<td>$!{info.fromusername}</td>
+														<td>$!dateTool.format("yyyy-MM-dd HH:mm:ss",$!{info.createtime})</td>
+														<td>$!{info.content}</td>
+														<td>$!{info.response}</td>
+														<!--<td>$!{info.rescontent}</td>-->
+										                <td class="last">
+							                			<a href="javascript:delData('$!{basePath}/alipay/alipayReceivetext.do?doDelete&id=$!{info.id}')">删除</a>
+							                			<a href="javascript:doUrl('$!{basePath}/alipay/alipayReceivetext.do?toSendmessage&id=$!{info.id}')">快捷回复</a>
+							                			<!--update-start--Author:chenchunpeng  Date:20160715 for：新增查看回复信息按钮 -->
+							                			<a href="javascript:doUrl('$!{basePath}/alipay/alipayReceivetext.do?toGetMesage&receivetextId=$!{info.id}')">查看回复信息</a>
+							                			<!--update-end--Author:chenchunpeng  Date:20160715 for：新增查看回复信息按钮 -->
+						                				</td>
+									           		</tr>
+									             #end
+									    	 #end
+									         </tobody>
+									    </table>
+										<div class="text-right">
+											<!--公用翻页代码-->
+							                #set($attr='formSubmit')
+							            	#showPageList($pageInfos $attr)
+							                <!--END公用翻页代码-->
+										</div>
+								  </div>	
+								</div>
+				</div>  
+				</form>
+		</div>
+	</div>
+</body>
+</html>

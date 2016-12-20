@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+#parse("content/base/back/common/head.vm")
+<body style='overflow:scroll;overflow-x:hidden'>
+	<div class="container bs-docs-container" style="width:100%;">
+		<div class="row">
+			<div class="panel panel-default">
+				<div class="panel-heading">详情</div>
+				  	<div class="panel-body">
+				   		<form class="form-horizontal" role="form">
+							  <fieldset disabled>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">菜单标题</label>
+													    <div class="col-sm-4">
+													      <input type="text" value="$!{qywxMenu.menuName}" name="menuName" id="menuName" class="form-control" />
+													    </div>
+													  </div>
+													  <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">菜单KEY</label>
+													    <div class="col-sm-4">
+													      <input type="text" value="$!{qywxMenu.menuKey}" name="menuKey" id="menuKey" class="form-control" />
+													    </div>
+													  </div>
+													 
+													  <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">菜单类型</label>
+													    <div class="col-sm-4">
+													      <select id="menuType" name="menuType" ignore="ignore"  class="form-control">
+															<option value="click" #if("$!{qywxMenu.menuType}" == "click")selected="selected" #end>消息触发类</option>
+															<option value="view" #if("$!{qywxMenu.menuType}" == "view")selected="selected" #end>网页链接类</option>
+														  </select>
+													    </div>
+													  </div>
+													 <div class="form-group mno" id="clickDiv">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">响应消息类型</label>
+													     <div class="col-sm-4">
+												          <select id="msgType" name="msgType" ignore="ignore"  class="form-control">
+															<option value="text" #if("$!{qywxMenu.msgType}" == "text")selected="selected" #end>文本</option>
+															<option value="news" #if("$!{qywxMenu.msgType}" == "news")selected="selected" #end>图文</option>
+														 </select>
+													    </div>
+													  </div>
+													 <div class="form-group mno" id="sucaiDiv">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">关联素材</label>
+													    <div class="col-sm-4">
+													      <select type="text" value="$!{qywxMenu.templateId}" name="templateId" id="templateId" class="form-control" />
+													      </select>
+													    </div>
+													  </div>
+													 <div class="form-group mno" id="urlDiv">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">网页链接</label>
+													    <div class="col-sm-8">
+													      <textarea type="text" value="" name="url" id="url" class="form-control">$!{qywxMenu.url}</textarea>
+													    </div>
+													  </div>
+													  <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">菜单位置</label>
+													    <div class="col-sm-4">
+													      <select name="orders" id="orders" class="form-control">
+													      	<optgroup label="位置1">
+													      		<option value="1" #if("$!{qywxMenu.orders}" == "1")selected="selected" #end>一级菜单1</option>
+													      		<option value="11" #if("$!{qywxMenu.orders}" == "11")selected="selected" #end>子菜单1*1</option>
+													      		<option value="12" #if("$!{qywxMenu.orders}" == "12")selected="selected" #end>子菜单1*2</option>
+													      		<option value="13" #if("$!{qywxMenu.orders}" == "13")selected="selected" #end>子菜单1*3</option>
+													      		<option value="14" #if("$!{qywxMenu.orders}" == "14")selected="selected" #end>子菜单1*4</option>
+													      		<option value="15" #if("$!{qywxMenu.orders}" == "15")selected="selected" #end>子菜单1*5</option>
+													      	</optgroup>
+													      	<optgroup label="位置2">
+													      		<option value="2" #if("$!{qywxMenu.orders}" == "2")selected="selected" #end>一级菜单2</option>
+													      		<option value="21" #if("$!{qywxMenu.orders}" == "21")selected="selected" #end>子菜单2*1</option>
+													      		<option value="22" #if("$!{qywxMenu.orders}" == "22")selected="selected" #end>子菜单2*2</option>
+													      		<option value="23" #if("$!{qywxMenu.orders}" == "23")selected="selected" #end>子菜单2*3</option>
+													      		<option value="24" #if("$!{qywxMenu.orders}" == "24")selected="selected" #end>子菜单2*4</option>
+													      		<option value="25" #if("$!{qywxMenu.orders}" == "25")selected="selected" #end>子菜单2*5</option>
+													      	</optgroup>
+													      	<optgroup label="位置3">
+													      		<option value="3" #if("$!{qywxMenu.orders}" == "3")selected="selected" #end>一级菜单3</option>
+													      		<option value="31" #if("$!{qywxMenu.orders}" == "31")selected="selected" #end>子菜单3*1</option>
+													      		<option value="32" #if("$!{qywxMenu.orders}" == "32")selected="selected" #end>子菜单3*2</option>
+													      		<option value="33" #if("$!{qywxMenu.orders}" == "33")selected="selected" #end>子菜单3*3</option>
+													      		<option value="34" #if("$!{qywxMenu.orders}" == "34")selected="selected" #end>子菜单3*4</option>
+													      		<option value="35" #if("$!{qywxMenu.orders}" == "35")selected="selected" #end>子菜单3*5</option>
+													      	</optgroup>
+													      </select>
+													    </div>
+													  </div>
+							  </fieldset>
+							  			<div class="form-group mno">
+											<div class="col-sm-offset-1 col-sm-6">
+												<button type="button" class="btn btn-default" id="formReturn" data-dismiss="modal" onclick="doUrl('$!{basePath}/qywx/qywxMenu.do?list&agentId=$!{qywxMenu.agentId}')">返回</button>
+        									 </div>
+        							    </div>
+						</form>
+					</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+<script type="text/javascript">
+$(document).ready(function(){
+		var selectValue = $("#menuType").children('option:selected').val();
+ 			if("click"==selectValue){
+ 				$("#urlDiv").attr("style","display:none");
+ 				$("#clickDiv").removeAttr("style");
+ 				$("#sucaiDiv").removeAttr("style");
+ 			}else if("view"==selectValue){
+ 				$("#urlDiv").removeAttr("style");
+ 				$("#clickDiv").attr("style","display:none");
+ 				$("#sucaiDiv").attr("style","display:none");
+ 			}
+ 			
+			var msgvalue = $("#msgType").children('option:selected').val();
+ 			if("text"==msgvalue){
+ 				getsucailist("text");
+ 			}else if("news"==msgvalue){
+ 				getsucailist("news");
+ 			}
+	});
+	
+	function getsucailist(msgType){
+		var url = "$!{basePath}/qywx/qywxMenu.do?getSucaiList&msgType="+msgType;
+		var templateId = "$!{templateId}";
+		var templateObj = $("#templateId");
+	 	templateObj.html("");
+		jQuery.ajax({
+			url:url,
+			cache:false,
+	        async:true,
+			dataType:"json",
+			success: function(data){
+				var msg ="";
+				for(var i=0;i<data.length;i++){
+					var sucai = data[i];
+	 				if(templateId == sucai.id){
+	 				   msg += "<option value='" +sucai.id+ "' selected='selected'>"+sucai.templateName+ "</option>";
+	 				}else{
+		 			   msg += "<option value='"+sucai.id+"' >"+sucai.templateName+"</option>";
+	 				}
+	 			}
+	 			templateObj.html(msg);
+			},
+			error: function(data){
+				alert(data.msg); 
+	        }
+		});
+	}
+</script>

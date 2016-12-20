@@ -1,0 +1,4 @@
+<div class="header">
+		<div class="pull-left logo">JEECG 开源支付窗口平台 </div>
+		<div class="pull-right">Jeecg开源社区，欢迎您&nbsp$!{userid}  | <a href="$!{basePath}">退出</a></div>
+</div>

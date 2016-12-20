@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+#parse("content/base/back/common/head.vm")
+<body style='overflow:scroll;overflow-x:hidden'>
+	<div class="container bs-docs-container" style="width:100%;">
+		<div class="row">
+			<div class="panel panel-default">
+				<div class="panel-heading">编辑</div>
+				<div class="panel-body">
+					<form class="form-horizontal" role="form" id="dailogForm" action="$!{basePath}/qywx/qywxMessagelog.do?doEdit" method="POST">
+						 <input type="hidden" id="btn_sub" class="btn_sub" />
+						 <input type="hidden" value="$!{qywxMessagelog.id}" name="id" id="id" />
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">应用id</label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{qywxMessagelog.wxAgentId}" name="wxAgentId" id="wxAgentId" class="form-control" datatype="*"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">部门id</label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{qywxMessagelog.topartysId}" name="topartysId" id="topartysId" class="form-control" datatype="*"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">消息类型</label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{qywxMessagelog.messageType}" name="messageType" id="messageType" class="form-control" datatype="*"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">文本内容</label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{qywxMessagelog.messageContent}" name="messageContent" id="messageContent" class="form-control" datatype="*"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">内容id</label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{qywxMessagelog.contentId}" name="contentId" id="contentId" class="form-control" datatype="*"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">消息状态</label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{qywxMessagelog.receiveMessage}" name="receiveMessage" id="receiveMessage" class="form-control" datatype="*"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">创建时间</label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!dateTool.format("yyyy-MM-dd",$!{qywxMessagelog.createDate})" name="createDate" id="createDate" class="form-control" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd'})"   style="background: url('$!{basePath}/plug-in-ui/images/datetime.png') no-repeat scroll right center transparent;" datatype="*"/>
+												    </div>
+												</div>
+									<div class="form-group mno">
+											<div class="col-sm-offset-1 col-sm-6">
+												<button type="button" class="btn btn-default" id="formReturn" data-dismiss="modal" onclick="doUrl('$!{basePath}/qywx/qywxMessagelog.do?list')">返回</button>
+	        									<button type="button" class="btn btn-primary" id="formSubmit">提交</button>
+        									 </div>
+        							</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+<script type="text/javascript" src="$!{basePath}/plug-in-ui/js/Validform_v5.3.2.js"></script> 
+<script type="text/javascript" src="$!{basePath}/plug-in-ui/js/forminit.p3.js"></script>  

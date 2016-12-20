@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+#parse("content/base/back/common/head.vm")
+<body style='overflow:scroll;overflow-x:hidden'>
+	<div class="container bs-docs-container" style="width:100%;">
+		<div class="row">
+			<div class="panel panel-default">
+				<div class="panel-heading">快捷回复</div>
+				<div class="panel-body">
+					<form class="form-horizontal" role="form" id="dailogForm" action="$!{basePath}/qywx/qywxReceivetext.do?doResponseMessage" method="POST">
+						 <input type="hidden" id="btn_sub" class="btn_sub" />
+						 <input type="hidden" value="$!{qywxReceivetext.id}" name="id" id="id" />
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">开发者微信号</label>
+												    <div class="col-sm-8">
+												      $!{qywxReceivetext.tousername}
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">发送方帐号</label>
+												    <div class="col-sm-8">
+												      $!{qywxReceivetext.fromusername}
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">消息创建时间</label>
+												    <div class="col-sm-8">
+												      $!dateTool.format("yyyy-MM-dd HH:mm:ss",$!{qywxReceivetext.createtime})
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">消息类型</label>
+												    <div class="col-sm-8">
+												     $!{qywxReceivetext.msgtype}
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">消息id</label>
+												    <div class="col-sm-8">
+												      $!{qywxReceivetext.msgid}
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">消息内容</label>
+												    <div class="col-sm-8">
+												      $!{qywxReceivetext.content}
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">用户昵称</label>
+												    <div class="col-sm-8">
+												      $!{qywxReceivetext.nickname}
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">微信账号Id</label>
+												    <div class="col-sm-8">
+												      $!{qywxReceivetext.accountid}
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">回复内容</label>
+												    <div class="col-sm-8">
+												      <textarea  rows="7" cols="60" name="rescontent" id="rescontent" class="form-control" datatype="*">$!{qywxReceivetext.rescontent}</textarea>
+												    </div>
+												</div>
+												
+									<div class="form-group mno">
+											<div class="col-sm-offset-1 col-sm-6">
+												<button type="button" class="btn btn-default" id="formReturn" data-dismiss="modal" onclick="doUrl('$!{basePath}/qywx/qywxReceivetext.do?list')">返回</button>
+	        									<button type="button" class="btn btn-primary" id="formSubmit">提交</button>
+        									 </div>
+        							</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+<script type="text/javascript" src="$!{basePath}/plug-in-ui/js/Validform_v5.3.2.js"></script> 
+<script type="text/javascript" src="$!{basePath}/plug-in-ui/js/forminit.p3.js"></script>  

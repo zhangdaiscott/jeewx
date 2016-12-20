@@ -1,0 +1,88 @@
+#parse("content/base/back/common/macro.vm")
+<!DOCTYPE html>
+<html lang="en">
+#parse("content/base/back/common/head.vm")
+<body style='overflow:scroll;overflow-x:hidden'>
+	<div class="container bs-docs-container" style="width:100%;">
+		<div class="row">
+			<form role="form" class="form-inline" action="$!{basePath}/qywx/qywxNewstemplate.do?list" method="post"  id="formSubmit">
+				<div  class="col-md-10" style="width:100%">
+								<div class="panel panel-default">
+								  <div class="panel-heading">图文模板列表</div>
+								  <div class="panel-body">
+								  		<div class="search">
+											 <div class="form-group col-sm-3">
+											    <label for="templateName" class="control-label col-sm-3 line34">模板名称</label>
+											     <div class="col-sm-8">
+											    <input type="text" name="templateName" id="templateName" value="$!{qywxNewstemplate.templateName}" class="form-control">
+											  	</div>
+											 </div>
+											 #*
+											 <div class="form-group col-sm-3">
+											    <label for="templateType" class="control-label col-sm-3 line34">模板类型</label>
+											     <div class="col-sm-8">
+											     <select name="templateType" id="templateType" class="form-control">
+											        <option value="" >--请选择--</option>
+											      	<option value="common" #if($!qywxNewstemplate.templateType=="common")selected #end>多图文消息</option>
+											        <option value="cl"     #if($!qywxNewstemplate.templateType=="cl")selected #end>单图文消息</option>
+											      </select>
+											    
+											  	</div>
+											 </div>
+											 *#
+															 
+											  <button type="submit" class="btn btn-primary">搜  索</button>
+											  <div class="clearfix"></div>
+								  		</div>
+								  		<div id="legend">
+								          <legend  class="le"><button type="button" class="btn btn-primary" onclick="doUrl('$!{basePath}/qywx/qywxNewstemplate.do?toAdd')" >新增</button></legend> 
+								        </div>
+								        <table class="table table-striped">
+									        <thead>
+													<th>模板名称</th>
+													 #*<th>模板类型</th>*#
+													<th>创建日期</th>
+						                			<th>操作</th>
+									        </thead>
+									        <tobody>
+									    	  #if($!{pageInfos})
+								                #foreach($!{info} in $!{pageInfos})
+									            	<tr>			
+														<td>$!{info.templateName}</td>
+														#*
+														<td>
+															#if($!info.templateType=="common")
+															多图文消息
+															#elseif($!info.templateType=="cl")
+															单图文消息
+															#else
+															$!{info.templateType}
+															#end
+														</td>
+														*#
+														<td>$!dateTool.format("yyyy-MM-dd HH:mm:ss",$!{info.createDate})</td>
+										                <td class="last">
+							                			<a href="javascript:doUrl('$!{basePath}/qywx/qywxNewstemplate.do?toEdit&id=$!{info.id}')" >编辑</a>
+							                			<a href="javascript:delData('$!{basePath}/qywx/qywxNewstemplate.do?doDelete&id=$!{info.id}')">删除</a>
+							                			<a href="javascript:doUrl('$!{basePath}/qywx/qywxNewsitem.do?toAdd&templateId=$!{info.id}')" >添加图文</a>
+							                			<a href="javascript:doUrl('$!{basePath}/qywx/qywxNewsitem.do?goMessage&templateId=$!{info.id}')" >编辑图文</a>
+						                				</td>
+									           		</tr>
+									             #end
+									    	 #end
+									         </tobody>
+									    </table>
+										<div class="text-right">
+											<!--公用翻页代码-->
+							                #set($attr='formSubmit')
+							            	#showPageList($pageInfos $attr)
+							                <!--END公用翻页代码-->
+										</div>
+								  </div>	
+								</div>
+				</div>  
+				</form>
+		</div>
+	</div>
+</body>
+</html>

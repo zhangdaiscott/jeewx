@@ -1,0 +1,27 @@
+INSERT  INTO
+	alipay_texttemplate
+      ( 
+      id                            
+      ,template_name                  
+      ,template_content               
+      ,accountid                      
+      ,create_name                    
+      ,create_by                      
+      ,create_date                    
+      ,update_name                    
+      ,update_by                      
+      ,update_date                    
+      ) 
+values
+      (
+      :alipayTexttemplate.id                            
+      ,:alipayTexttemplate.templateName                  
+      ,:alipayTexttemplate.templateContent               
+      ,:alipayTexttemplate.accountid                     
+      ,:alipayTexttemplate.createName                    
+      ,:alipayTexttemplate.createBy                      
+      ,:alipayTexttemplate.createDate                    
+      ,:alipayTexttemplate.updateName                    
+      ,:alipayTexttemplate.updateBy                      
+      ,:alipayTexttemplate.updateDate                    
+      )

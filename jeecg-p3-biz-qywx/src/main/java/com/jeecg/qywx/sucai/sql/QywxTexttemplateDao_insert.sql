@@ -1,0 +1,27 @@
+INSERT  INTO
+	qywx_texttemplate
+      ( 
+      id                            
+      ,template_name                  
+      ,template_content               
+      ,accountid                      
+      ,create_name                    
+      ,create_by                      
+      ,create_date                    
+      ,update_name                    
+      ,update_by                      
+      ,update_date                    
+      ) 
+values
+      (
+      :qywxTexttemplate.id                            
+      ,:qywxTexttemplate.templateName                  
+      ,:qywxTexttemplate.templateContent               
+      ,:qywxTexttemplate.accountid                     
+      ,:qywxTexttemplate.createName                    
+      ,:qywxTexttemplate.createBy                      
+      ,:qywxTexttemplate.createDate                    
+      ,:qywxTexttemplate.updateName                    
+      ,:qywxTexttemplate.updateBy                      
+      ,:qywxTexttemplate.updateDate                    
+      )

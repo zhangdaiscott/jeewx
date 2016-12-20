@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+#parse("content/base/back/common/head.vm")
+  <link type="text/css" rel="stylesheet" href="$!{basePath}/content/alipay/plug-in/weixin/index.css" />
+<body>
+<!--  <div style="overflow:hidden;clear:both;">-->
+<div style="float:left;width:22%;">
+<div id="appmsg200159594" class="pp">
+<div class="appmsg multi" data-fileid="200159570" data-id="200159594">
+<div class="appmsg_content">
+#if($!{headerNews})
+<div class="appmsg_info">
+	<em class="appmsg_date">$!{addtime}</em>
+</div>
+
+<div class="cover_appmsg_item" onmouseover="mouseover('header','$!{headerNews.id}')" onmouseout="mouseout('header','$!{headerNews.id}')">
+	<h4 class="appmsg_title">
+		<a target="_blank" href="#">$!{headerNews.title}</a>
+	</h4>
+	<div class="appmsg_thumb_wrp">
+		<img class="appmsg_thumb" alt="" src="$!{basePath}/$!{headerNews.imagePath}">
+	</div>
+	<div class="fe" style="display: none">
+		<a class="edit1" href="#" onclick="goUpate('$!{headerNews.id}')"></a>
+		<!-- <a class="preview1" href="#" onclick="preview('$!{headerNews.id}')"></a> -->
+	</div>
+</div>
+#end
+#if($!{newsList})
+#foreach($!{news} in $!{newsList})
+	<div class="appmsg_item" onmouseover="mouseover('item','$!{news.id}')" onmouseout="mouseout('item','$!{news.id}')">
+		<div class="fd" style="display: none" id='${news.id}div'>
+			<a class="edit" id="edit" href="#" onclick="goUpate('$!{news.id}')" ></a>
+			<!-- <a class="info" id="preview"  href="#" onclick="preview('$!{news.id}')"></a>-->
+			<a class="dete" id="delete"  href="#" onclick="goDelete('$!{news.id}')"></a>
+		</div>
+		<div style="width:70%;float:left;">
+		<h4 class="appmsg_title">
+			<a target="_blank" href="#">$!{news.title}</a>
+		</h4>
+		</div>
+		<div style="width:30%;float:right;">
+		<img  alt="" src="$!{basePath}/$!{news.imagePath}" style="height: 78px;width: 78px;float:right;">
+		</div>
+	</div>
+
+#end
+#end
+	</div>
+</div>
+<div class="form-group mno">
+<div class="col-sm-offset-1 col-sm-6">
+	<button type="button" class="btn btn-default" id="formReturn" data-dismiss="modal" onclick="doUrl('$!{basePath}/alipay/alipayNewstemplate.do?list')">返回</button>
+ </div>
+</div>
+</div>
+</div>
+ 
+<div style="float:right;width:78%;height:100%;">
+<iframe scrolling="yes" id="showframe" src="" frameborder="0" style="width:100%;height:850px;"></iframe></div>
+
+</body>
+<script type="text/javascript">
+	function mouseover(symbol,id){
+		if(symbol=='header'){
+			$(".fe").removeAttr("style");
+			$(".fd").attr("style","display:none");
+		}else if(symbol=='item'){
+		    $(".fe").attr("style","display:none");
+		    $("#"+id+"div").removeAttr("style");
+		}
+	}
+	
+	function mouseout(symbol,id){
+		if(symbol=='header'){
+			$(".fe").attr("style","display:none");
+		}else if(symbol=='item'){
+			$("#"+id+"div").attr("style","display:none");
+		}
+	}
+	
+	
+	function goUpate(newsId){
+	    if(newsId){
+		 var  url = '$!{basePath}/alipay/alipayNewsitem.do?toEdit&id='+newsId;
+		 $("#showframe").attr("src",url);
+		}
+	}
+	
+	function goDelete(newsId){
+	
+		var url = "$!{basePath}/alipay/alipayNewsitem.do?doDelete&id="+newsId;
+		jQuery.ajax({
+	      url: url,
+	      cache: false,
+		  dataType: "json",
+	      success: function(data){
+	    	  	if(data.success){
+	        		alert(data.msg);
+	        	}else{
+	        		alert(data.msg);
+	        	}
+	        	location.reload(); 
+	      },  
+	        error: function(data, status, e){  
+	        	if(data.status == "401"){
+					alert("没有权限！");
+					return;
+				}
+	        }
+	    });
+	}
+	
+	function refresh(){
+		 location.reload(); 
+	}
+	
+	function preview(itemId){
+		var url = "newsItemController.do?goContent&id="+itemId;
+    	window.open(url);
+	}
+</script>
+</html>

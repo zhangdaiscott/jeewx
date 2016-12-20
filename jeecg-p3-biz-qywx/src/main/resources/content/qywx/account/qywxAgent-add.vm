@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+#parse("content/base/back/common/head.vm")
+<body style='overflow:scroll;overflow-x:hidden'>
+	<div class="container bs-docs-container" style="width:100%;">
+		<div class="row">
+			<div class="panel panel-default">
+				<div class="panel-heading">新增</div>
+					<div class="panel-body">
+						<form class="form-horizontal" role="form" id="dailogForm" action="$!{basePath}/qywx/qywxAgent.do?doAdd" method="POST">
+					  		<input type="hidden" id="btn_sub" class="btn_sub" />
+					  		 <input type="hidden" value="$!{qywxAgent.accountId}" name="accountId" id="accountId" />
+					  		 <input type="hidden" value="$!{agentId}" name="agentId" id="agentId" />
+													<div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">应用ID(微信端)</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{qywxAgent.wxAgentid}" name="wxAgentid" id="wxAgentid" class="form-control" datatype="n"/>
+													    </div>
+													</div>
+													<div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">应用名称</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{qywxAgent.agentName}" name="agentName" id="agentName" class="form-control" datatype="*"/>
+													    </div>
+													</div>
+													<div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">TOKEN</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{qywxAgent.token}" name="token" id="token" class="form-control" datatype="*"/>
+													    </div>
+													</div>
+													<div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">EncodingAESKey</label>
+													    <div class="col-sm-8">
+													      <input type="text" value="$!{qywxAgent.encodingAESKey}" name="encodingAESKey" id="encodingAESKey"  class="form-control" datatype="*"/>
+													    </div>
+													</div>
+													<div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">头像URL</label>
+													    <div class="col-sm-8">
+													      <input type="text" value="$!{qywxAgent.squareLogoUrl}" name="squareLogoUrl" id="squareLogoUrl" class="form-control" />
+													      <input type="hidden" id="img" value="$!{wxActJiugonggePrizes.img}" name="img">  
+													        <div id="fileQueue" style="width:200px;"></div>   
+														    <input type="file" name="uploadify" id="uploadify" />   
+														    <div id="pic_view_div" style="width:150px; height:180px">  
+														         <img src="$!{qywxAgent.squareLogoUrl}" width="150" height="150" id="pic_view">  
+														    </div>
+													    </div>
+													</div>
+													<div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">可信域名</label>
+													    <div class="col-sm-8">
+													      <input type="text" value="$!{qywxAgent.redirectDomain}" name="redirectDomain" id="redirectDomain" class="form-control" />
+													    </div>
+													</div>
+													<div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">是否被禁用</label>
+													    <div class="col-sm-2">
+													      <select id="closeStatus" name="closeStatus" ignore="ignore" class="form-control">
+															<option value="0" selected="selected">未禁用</option>
+															<option value="1">禁用</option>
+														  </select>
+													    </div>
+													</div>
+													<div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">是否打开地理位置上报</label>
+													    <div class="col-sm-2">
+													      <select id="reportLocationFlag" name="reportLocationFlag" ignore="ignore" class="form-control">
+															<option value="0" selected="selected">不上报</option>
+															<option value="1">进入会话上报</option>
+															<option value="1">持续上报</option>
+														  </select>
+													    </div>
+													</div>
+													<div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">是否接收用户变更通知</label>
+													    <div class="col-sm-2">
+													      <select id="isreportuser" name="isreportuser" ignore="ignore" class="form-control">
+															<option value="0" selected="selected">不接收</option>
+															<option value="1">接收</option>
+														  </select>
+													    </div>
+													</div>
+													<div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">是否上报用户进入应用事件</label>
+													    <div class="col-sm-2">
+													      <select id="isreportenter" name="isreportenter" ignore="ignore" class="form-control">
+															<option value="0" selected="selected">不接收</option>
+															<option value="1">接收</option>
+														  </select>
+													    </div>
+													</div>
+													<div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">应用类型</label>
+													    <div class="col-sm-2">
+													      <select id="appType" name="appType" ignore="ignore" class="form-control" datatype="*">
+															<option value="1" selected="selected">消息型</option>
+															<option value="2">主页型</option>
+														  </select>
+													    </div>
+													</div>
+													<div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">详情</label>
+													    <div class="col-sm-8">
+													      <textarea type="text" value="" name="description" id="description" class="form-control" >$!{qywxAgent.description}</textarea>
+													    </div>
+													</div>
+										<div class="form-group mno">
+											<div class="col-sm-offset-1 col-sm-6">
+												<button type="button" class="btn btn-default" id="formReturn" data-dismiss="modal" onclick="doUrl('$!{basePath}/qywx/qywxAgent.do?list')">返回</button>
+	        									<button type="button" class="btn btn-primary" id="formSubmit">提交</button>
+        									 </div>
+        								</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+<script type="text/javascript" src="$!{basePath}/plug-in-ui/js/Validform_v5.3.2.js"></script> 
+<script type="text/javascript" src="$!{basePath}/plug-in-ui/js/forminit.p3.js"></script> 

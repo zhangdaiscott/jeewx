@@ -1,0 +1,23 @@
+INSERT  INTO
+	qywx_conversation
+      ( 
+      ID                            
+      ,TITLE                          
+      ,USERNAMELIST                   
+      ,USERIDLIST                     
+      ,STATUS                         
+      ,MANAGERID
+      ,CHATID
+      ,MANAGERNAME
+      ) 
+values
+      (
+      :qywxConversation.id                            
+      ,:qywxConversation.title                         
+      ,:qywxConversation.usernamelist                  
+      ,:qywxConversation.useridlist                    
+      ,:qywxConversation.status                        
+      ,:qywxConversation.managerid
+      ,:qywxConversation.chatid
+      ,:qywxConversation.managername
+      )

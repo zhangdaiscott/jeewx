@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+#parse("content/base/back/common/head.vm")
+<body style='overflow:scroll;overflow-x:hidden'>
+	<div class="container bs-docs-container" style="width:100%;">
+		<div class="row">
+			<div class="panel panel-default">
+				<div class="panel-heading">详情</div>
+				  	<div class="panel-body">
+				   		<form class="form-horizontal" role="form">
+							  <fieldset disabled>
+							  																 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">模板名称</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{alipayNewstemplate.templateName}" name="templateName" id="templateName" class="form-control" />
+													    </div>
+													  </div>
+													 
+													  #*
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">模板类型</label>
+													    <div class="col-sm-2">
+													      <select name="templateType" id="templateType" class="form-control">
+													      	<option value="common" #if($!alipayNewstemplate.templateType=="common")selected #end>多图文消息</option>
+													        <option value="cl"     #if($!alipayNewstemplate.templateType=="cl")selected #end>单图文消息</option>
+													      </select>
+													    </div>
+													  </div>
+													  *#
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">微信企业号账号id</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{alipayNewstemplate.accountid}" name="accountid" id="accountid" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">创建人名称</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{alipayNewstemplate.createName}" name="createName" id="createName" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">创建人登录名称</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{alipayNewstemplate.createBy}" name="createBy" id="createBy" class="form-control" />
+													    </div>
+													  </div>
+													  <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">创建日期</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!dateTool.format("yyyy-MM-dd",$!{alipayNewstemplate.createDate})" name="createDate" id="createDate" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">更新人名称</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{alipayNewstemplate.updateName}" name="updateName" id="updateName" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">更新人登录名称</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{alipayNewstemplate.updateBy}" name="updateBy" id="updateBy" class="form-control" />
+													    </div>
+													  </div>
+													  <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">更新日期</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!dateTool.format("yyyy-MM-dd",$!{alipayNewstemplate.updateDate})" name="updateDate" id="updateDate" class="form-control" />
+													    </div>
+													  </div>
+							  </fieldset>
+							  			<div class="form-group mno">
+											<div class="col-sm-offset-1 col-sm-6">
+												<button type="button" class="btn btn-default" id="formReturn" data-dismiss="modal" onclick="doUrl('$!{basePath}/alipay/alipayNewstemplate.do?list')">返回</button>
+        									 </div>
+        							    </div>
+						</form>
+					</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+#parse("content/base/back/common/head.vm")
+<link href="$!{basePath}/plug-in-ui/css/zTreeStyle/zTreeStyle.css" rel="stylesheet" type="text/css" />
+<body style='overflow:scroll;overflow-x:hidden'>
+	<div class="container bs-docs-container" style="width:100%;">
+		<div class="row">
+			<div class="panel panel-default">
+				<div class="panel-heading">新增</div>
+					<div class="panel-body">
+						<form class="form-horizontal" role="form" id="dailogForm"  action="$!{basePath}/qywx/qywxGzuserinfo.do?doAdd" method="POST" ><!--文件上传-->
+					  		<input type="hidden" id="btn_sub" class="btn_sub" />
+													<div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">账号</label>
+													    <div class="col-sm-8">
+													      <input type="text" value="$!{qywxGzuserinfo.userid}" name="userid" id="userid" class="form-control" datatype="*"/>
+													    </div>
+													</div>
+													<div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">姓名</label>
+													    <div class="col-sm-8">
+													      <input type="text" value="$!{qywxGzuserinfo.name}" name="name" id="name" class="form-control" datatype="*"/>
+													    </div>
+													</div>
+													<div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">部门</label>
+													    <div class="col-sm-8">
+													      <input type="text" readonly="readonly" value="" id="parentGroupId" readonly class="form-control" onclick="showMenu();"/>
+													      <input type="hidden" value="$!{qywxGzuserinfo.department}" name="department" id="pId" class="form-control" />
+													    </div>
+													</div>
+													<div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">职位</label>
+													    <div class="col-sm-8">
+													      <input type="text" value="$!{qywxGzuserinfo.position}" name="position" id="position" class="form-control" />
+													    </div>
+													</div>
+													<div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">电话</label>
+													    <div class="col-sm-8">
+													      <input type="text" value="$!{qywxGzuserinfo.mobile}" name="mobile" id="mobile" class="form-control" />
+													    </div>
+													</div>
+													<div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">省份</label>
+													    <div class="col-sm-8">
+													      <input type="text" value="$!{qywxGzuserinfo.province}" name="province" id="province" class="form-control" />
+													    </div>
+													</div>
+													<div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">性别</label>
+													    <div class="col-sm-8">
+													      <select name="gender" id="gender" class="form-control" datatype="*" >
+													      	<option value="0" #if($!qywxGzuserinfo.gender=="1")selected #end>男</option>
+													      	<option value="1" #if($!qywxGzuserinfo.gender=="0")selected #end>女</option>
+													      </select>
+													    </div>
+													</div>
+													<div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">邮箱</label>
+													    <div class="col-sm-8">
+													      <input type="text" value="$!{qywxGzuserinfo.email}" name="email" id="email" class="form-control"/>
+													    </div>
+													</div>
+													<div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">微信号</label>
+													    <div class="col-sm-8">
+													      <input type="text" value="$!{qywxGzuserinfo.weixinid}" name="weixinid" id="weixinid" class="form-control" />
+													    </div>
+													</div>
+													<div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">头像url</label>
+													    <div class="col-sm-8">
+													      <!--<input type="text" value="$!{qywxGzuserinfo.avatar}" name="avatar_mediaid" id="avatar_mediaid" class="form-control" />-->
+													      <input type="file" name="avatar_file" id="avatar_file"  class="form-control"/>
+													    </div>
+													</div>
+													<div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">关注状态</label>
+													    <div class="col-sm-8">
+													      <select name="subscribeStatus" id="subscribeStatus" class="form-control" datatype="*" >
+													      	<option value="1" #if($!qywxGzuserinfo.subscribeStatus=="1")selected #end>已关注</option>
+													      	<option value="2" #if($!qywxGzuserinfo.subscribeStatus=="2")selected #end>已冻结</option>
+													      	<option value="4" #if($!qywxGzuserinfo.subscribeStatus=="4")selected #end>未关注</option>
+													      </select>
+													    </div>
+													</div>
+													<div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">关注时间</label>
+													    <div class="col-sm-8"><!--yqj datatype="*" 取消必填-->
+													      <input type="text" value="$!dateTool.format("yyyy-MM-dd HH:mm:ss",$!{qywxGzuserinfo.subscribeTime})" name="subscribeTime" id="subscribeTime" class="form-control" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})"   style="background: url('$!{basePath}/plug-in-ui/images/datetime.png') no-repeat scroll right center transparent;" />
+													    </div>
+													</div>
+										<div class="form-group mno">
+											<div class="col-sm-offset-1 col-sm-6">
+												<button type="button" class="btn btn-default" id="formReturn" data-dismiss="modal" onclick="doUrl('$!{basePath}/qywx/qywxGzuserinfo.do?list')">返回</button>
+	        									<button type="button" class="btn btn-primary" id="formSubmit">提交</button>
+        									 </div>
+        								</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="menuContent" class="menuContent" style="display:none; position: absolute;">
+		<ul id="treeDemo" class="ztree" style="margin-top:0; width:160px;"></ul>
+	</div>
+</body>
+</html>
+<script type="text/javascript" src="$!{basePath}/plug-in-ui/js/zTree/jquery.ztree.core.js"></script>
+<script type="text/javascript" src="$!{basePath}/plug-in-ui/js/zTree/jquery.ztree.excheck.js"></script>
+<script type="text/javascript" src="$!{basePath}/plug-in-ui/js/zTree/jquery.ztree.exedit.js"></script>
+<script type="text/javascript" src="$!{basePath}/plug-in-ui/js/Validform_v5.3.2.js"></script> 
+<script type="text/javascript" src="$!{basePath}/plug-in-ui/js/forminit.p3.js"></script> 
+
+
+<script >
+var IDMark_A = "_a";
+
+function showMenu() {
+var cityObj = $("#parentGroupId");
+var cityOffset = $("#parentGroupId").offset();
+	if($("#menuContent").is(':hidden')){
+     $("#menuContent").css({left:cityOffset.left + "px", top:cityOffset.top + cityObj.outerHeight() + "px"}).slideDown("fast");
+	}else{
+	  $("#menuContent").fadeOut("fast");
+	}
+    $("body").bind("mousedown", onBodyDown);
+}
+function hideMenu() {
+	$("#menuContent").fadeOut("fast");
+	$("body").unbind("mousedown", onBodyDown);
+}
+function onBodyDown(event) {
+	if (!(event.target.id == "parentGroupId" || event.target.id == "menuContent" || $(event.target).parents("#menuContent").length>0)) {
+		hideMenu();
+	}
+}
+var setting = {
+			check: {
+				enable: true,
+				chkStyle: "radio",
+				radioType: "all"
+			},
+			view: {
+				addHoverDom: addHoverDom,
+				removeHoverDom: removeHoverDom,
+				dblClickExpand: false
+			},
+			data: {
+				simpleData: {
+					enable: true,
+					idKey: "id",
+					pIdKey: "pId",
+					rootPId: null
+				}
+			},
+			callback: {
+				onClick: onClick,
+				onCheck: onCheck
+			}
+		};
+function onClick(e, treeId, treeNode) {
+   var tree = zTree.getZTreeObj("treeDemo");
+	tree.checkNode(treeNode, !treeNode.checked, null, true);
+	return false;
+}
+function onCheck(e, treeId, treeNode) {
+	var tree = zTree.getZTreeObj("treeDemo"),
+	nodes = tree.getCheckedNodes(true),
+	v = "",vid = "";
+	for (var i=0, l=nodes.length; i<l; i++) {
+		v += nodes[i].name + ",";
+		vid += nodes[i].id + ",";
+	}
+	if (v.length > 0 ) v = v.substring(0, v.length-1);
+	if (vid.length > 0 ) vid = vid.substring(0, vid.length-1);
+	$("#parentGroupId").val(v);
+	$("#pId").val(vid);
+}
+function addHoverDom(treeId, treeNode) {
+	if (treeNode.parentNode && treeNode.parentNode.id!=1) return;
+	var aObj = $("#" + treeNode.tId + IDMark_A);
+		if ($("#diyBtn_"+treeNode.id).length>0) return;
+		//var editStr = "<span id='diyBtn_" +treeNode.id+ "'>编码:"+treeNode.id+"</span>";
+		//aObj.after(editStr);
+}
+function removeHoverDom(treeId, treeNode) {
+		$("#diyBtn_"+treeNode.id).unbind().remove();
+		$("#diyBtn_space_" +treeNode.id).unbind().remove();
+}
+var zNodes;
+$(document).ready(function(){
+	jQuery.ajax({  
+	        async : false,  
+	        cache:false,  
+	        type: 'POST',  
+	        dataType : "json",  
+	        url: '$!{basePath}/qywx/qywxGroup.do?getGroupTree',//请求的action路径  
+	        error: function () {//请求失败处理函数  
+	            alert('请求失败');  
+	        },  
+	        success:function(data){ //请求成功后处理函数。    
+	            zNodes = data;   //把后台封装好的简单Json格式赋给zNodes  
+	        }  
+	    });  
+	zTree.init($("#treeDemo"), setting, zNodes);
+	//对微信号/手机/邮箱 不能同时为空 进行校验
+	/*
+	$("#formSubmit").click(function(){
+		var mobile=$("#mobile").val();
+		var email=$("#email").val();
+		var weixinid=$("#weixinid").val();
+		if(!mobile && !email && !weixinid){
+			alert("微信号/手机/邮箱 不能同时为空");
+			return false;
+		}
+	});
+	*/
+});
+</script> 
