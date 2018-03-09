@@ -97,9 +97,9 @@ Jeewx是一款开源、免费的微信管家系统（多触点管理平台），
 -----------------------------------
 *   在线演示: [http://www.jeewx.com/jeewx](http://www.jeewx.com/jeewx)
 *   体验账号：ceshi/123456 (可注册)
-
-    官方公众号："JEECG"  "H5互动汇"
-![github](http://img.blog.csdn.net/20160323155143399?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center "jeewx")
+*   官方公众号："JEECG"  "H5活动之家"
+	
+![github](http://img.blog.csdn.net/20180309122145466 "jeewx")
 ![github](http://img.blog.csdn.net/20160323154916164?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center "jeewx")
 
 
