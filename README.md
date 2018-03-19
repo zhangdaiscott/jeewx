@@ -88,14 +88,15 @@ Jeewx是一款开源、免费的微信管家系统（多触点管理平台），
 -----------------------------------
   * eclipse + jdk7 + tomcat6 + maven + mysql （注意：暂时不支持jdk8）
   * [依赖下载慢，享受一下mvn飞的感觉](http://www.jeecg.org/forum.php?mod=viewthread&tid=3949)
-  * [JEEWX3.0版本视频教程-New](http://pan.baidu.com/s/1i4PHOXn)
+  * [JEEWX 视频教程New](http://www.jeecg.org/forum.php?mod=viewthread&tid=2309&page=1&extra=#pid6304)
   * [JEECG Maven本地仓库下载](http://git.oschina.net/jeecg/jeecg-local-maven)
+  * [微信公众账号第三方平台全网发布源码（java）](http://blog.csdn.net/zhangdaiscott/article/details/48269837)
 
 五、技术交流
 -----------------------------------
 * 	官 网:  www.jeewx.com
 * 	邮 箱： jeecg@sina.com
-* 	QQ交流群:  289709451
+* 	QQ交流群:  ④289709451、②129190229（满）、③175449166(满)、①287090836（满）
 
 
 六、在线体验
