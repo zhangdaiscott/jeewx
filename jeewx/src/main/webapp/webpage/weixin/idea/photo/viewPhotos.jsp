@@ -96,8 +96,11 @@
   //返回到相册列表页
   function goPhotoAlbumList(){
   	var url = 'weixinPhotoAlbumController.do?weixinPhotoAlbum';
-  	formobj.action=url
-  	formobj.submit();
+
+  	window.location.href=url;
+  	/* formobj.action=url
+  	formobj.submit(); */
+
   }
 
 </script>

@@ -8,8 +8,13 @@
 var iframe;// iframe操作对象
 var win;//窗口对象
 var gridname="";//操作datagrid对象名称
-var windowapi = frameElement.api, W = windowapi.opener;//内容页中调用窗口实例对象接口
-
+//scott 20160426 JS异常报错
+var windowapi;
+var W;
+try {
+	windowapi = frameElement.api, W = windowapi.opener;//内容页中调用窗口实例对象接口
+} catch (e) {
+}
 /**
  * 设置 window的 zIndex
  * @param flag true: 不增量(因为 tip提示经常使用 zIndex, 所以如果是 tip的话 ,则不增量)

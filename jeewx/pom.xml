@@ -2,12 +2,12 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.jeecgframework</groupId>
-	<version>3.0.0</version>
+	<version>3.1.0</version>
 	<artifactId>jeewx-os</artifactId>
 	<packaging>war</packaging>
 	<properties>
         <codegenerate.version>3.4.7</codegenerate.version>
-        <minidao.version>1.6-SNAPSHOT</minidao.version>
+        <minidao.version>1.6.2</minidao.version>
         <jeewx-api.version>1.1-SNAPSHOT</jeewx-api.version>
 
 		<!-- 主要依赖库的版本定义 -->
@@ -83,37 +83,13 @@
 
 	<repositories>
 		<repository>
-			<id>central</id>
-			<name>Central Repository</name>
-			<url>http://repo.maven.apache.org/maven2</url>
-			<snapshots>
+            <id>aliyun</id>
+            <name>aliyun Repository</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public</url>
+            <snapshots>
 				<enabled>false</enabled>
 			</snapshots>
-		</repository>
-		<repository>
-			<id>spy</id>
-			<name>Spy Repository</name>
-			<url>http://files.couchbase.com/maven2/</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</repository>
-		<repository>
-			<id>xerces</id>
-			<name>xerces</name>
-			<url>https://xerces.apache.org/xerces2-j/</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</repository>
-		<repository>
-			<id>proxool</id>
-			<name>proxool</name>
-			<url>http://proxool.cvs.sourceforge.net/viewvc/proxool/</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</repository>
+        </repository>
 		<repository>
             <id>jeecg</id>
             <name>jeecg Repository</name>
@@ -761,7 +737,7 @@
 		  </exclusions>
 		</dependency>
 		
-		<!-- jeecg plugin -->
+		<!-- jeecg plugin  -->
 		<dependency>
 			<groupId>org.p3framework</groupId>
 			<artifactId>jeecg-p3-core</artifactId>
@@ -770,7 +746,20 @@
 		<dependency>
 			<groupId>org.p3framework</groupId>
 			<artifactId>jeecg-p3-ui</artifactId>
-			<version>1.1.2</version>
+			<version>1.1.3</version>
+			<type>jar</type>
+		</dependency>
+		<dependency>
+			<groupId>org.p3framework</groupId>
+			<artifactId>jeecg-p3-bizcore</artifactId>
+			<version>1.0-SNAPSHOT</version>
+			<type>jar</type>
+		</dependency>
+		<dependency>
+			<groupId>org.p3framework</groupId>
+			<artifactId>jeecg-p3-generate</artifactId>
+			<version>1.1-SNAPSHOT</version>
+			<type>jar</type>
 		</dependency>
 		<!-- 插件DEMO -->
 		<dependency>

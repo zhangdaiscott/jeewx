@@ -1,6 +1,7 @@
 package weixin.guanjia.message.controller;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -23,13 +24,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import net.sf.json.JSONObject;
 import weixin.guanjia.account.service.WeixinAccountServiceI;
 import weixin.guanjia.message.entity.NewsItem;
 import weixin.guanjia.message.entity.NewsTemplate;
-import weixin.guanjia.message.entity.TextTemplate;
+import weixin.guanjia.message.model.BaseGraphic;
+import weixin.guanjia.message.model.UploadGraphic;
 import weixin.guanjia.message.service.AutoResponseServiceI;
 import weixin.guanjia.message.service.NewsItemServiceI;
 import weixin.guanjia.message.service.NewsTemplateServiceI;
+import weixin.util.WeixinUtilOsc;
 
 
 /**
@@ -169,6 +173,9 @@ public class NewsTemplateController {
 		}else{
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			newsTemplate.setAddTime(sdf.format(new Date()));
+
+			newsTemplate.setIsup("0");
+
 			String accountId = ResourceUtil.getWeiXinAccountId();
 			if (!"-1".equals(accountId)) {
 				this.newsTemplateService.save(newsTemplate);
@@ -255,8 +262,88 @@ public class NewsTemplateController {
 		}
 		return j;
 	}
+
+	@RequestMapping(params = "doUpNews")
+	@ResponseBody
+	public AjaxJson doUploadwx(HttpServletRequest request, HttpServletResponse response) {
+		AjaxJson j = new AjaxJson();
+		try {
+			String tempid = request.getParameter("tempid");
+			//先判断图文模板下的图文消息是否都已经上传图片
+			NewsTemplate newsTemplate = this.newsTemplateService.get(NewsTemplate.class, tempid);
+			this.message="上传图文信息成功！";
+			if(newsTemplate!=null){
+				String hql = "from NewsItem where newsTemplate.id='"+tempid+"' order by orders asc";
+				org.jeecgframework.core.util.LogUtil.info("...hql..."+hql);
+				List<NewsItem> weixinnewsitem = this.systemService.findByQueryString(hql);
+				int size = weixinnewsitem.size();
+				if(size>0){
+					List<BaseGraphic> baseGraphicList = new ArrayList<BaseGraphic>();
+					for(int i=0;i<size;i++){
+						 NewsItem newItem = weixinnewsitem.get(i);
+						 BaseGraphic baseGraphic = new BaseGraphic();
+						 baseGraphic.setTitle(newItem.getTitle());
+						 String thumb_media_id = uploadPhoto(newItem.getImagePath(), newsTemplate.getAccountId(), request);
+						 baseGraphic.setThumb_media_id(thumb_media_id);
+						 baseGraphic.setAuthor(newItem.getAuthor());
+						 baseGraphic.setDigest(newItem.getDescription());
+						 //TODO:这里 暂定为不显示封面图
+					     baseGraphic.setShow_cover_pic("0");
+						 baseGraphic.setContent(newItem.getContent());
+						 baseGraphic.setContent_source_url(newItem.getUrl());
+						 baseGraphicList.add(baseGraphic);
+					 }
+					
+					 UploadGraphic graphic = new UploadGraphic();
+					 graphic.setArticles(baseGraphicList);
+					 JSONObject resultJson = this.newsTemplateService.uploadNewsTemplate(graphic);
+					 if(resultJson!=null && resultJson.containsKey("media_id")){
+						 newsTemplate.setMediaid(resultJson.getString("media_id"));
+						 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+						 newsTemplate.setAddTime(sdf.format(new Date()));
+						 newsTemplate.setIsup("1");
+						 this.newsTemplateService.updateEntitie(newsTemplate);
+					 }else{
+						 message= "分组群发图文消息同步出错，错误信息"+resultJson.toString();
+					 }
+				}else{
+					message="该图文模板尚未添加图文消息！";
+				}
+			}	
+			
+		} catch (Exception e) {
+			message= "图文素材上传失败。";
+			e.printStackTrace();
+		}
+		j.setMsg(message);
+		j.setSuccess(true);
+		return j;
+	}
 	
-	
+	/***
+	 * 图片上传微信服务器
+	 * @param realpath 图片路径
+	 * @param accountid 微信账号id
+	 * @param request
+	 * @return
+	 */
+	public String uploadPhoto(String realpath, String accountid, HttpServletRequest request) {
+		String media_id ="";
+		String accessToken =  this.weixinAccountService.getAccessToken(accountid,false);
+		String url = request.getSession().getServletContext().getRealPath("")+System.getProperty("file.separator")+realpath;
+		JSONObject jsonObj = WeixinUtilOsc.sendMedia("image",url,accessToken);
+		if(jsonObj!=null){
+			if(jsonObj.containsKey("errcode")){
+				String errcode = jsonObj.getString("errcode");
+				String errmsg = jsonObj.getString("errmsg");
+				org.jeecgframework.core.util.LogUtil.info("图片同步微信服务器失败【errcode="+errcode+"】【errmsg="+errmsg+"】");
+			}else{
+				org.jeecgframework.core.util.LogUtil.info("图片素材同步微信服务器成功");
+				media_id = jsonObj.getString("media_id");
+			}
+		}
+		return media_id;
+	}
 
 	public String getMessage() {
 		return message;

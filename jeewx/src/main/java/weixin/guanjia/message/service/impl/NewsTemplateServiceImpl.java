@@ -8,9 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import net.sf.json.JSONObject;
 import weixin.guanjia.account.service.WeixinAccountServiceI;
 import weixin.guanjia.message.entity.NewsTemplate;
+import weixin.guanjia.message.model.UploadGraphic;
 import weixin.guanjia.message.service.NewsTemplateServiceI;
+import weixin.util.WeixinUtilOsc;
 
 @Service("newsTemplateService")
 @Transactional
@@ -62,6 +65,12 @@ public class NewsTemplateServiceImpl extends CommonServiceImpl implements NewsTe
  	public boolean doDelSql(NewsTemplate t){
 	 	return true;
  	}
+	@Override
+	public JSONObject uploadNewsTemplate(UploadGraphic graphic) {
+		String accessToken =  this.weixinAccountService.getAccessToken();
+		//TODO 暂时只做新增 修改后期再加
+		return WeixinUtilOsc.uploadNewsTemplate(graphic, accessToken);
+	}
  	
  	/**
 	 * 替换sql中的变量

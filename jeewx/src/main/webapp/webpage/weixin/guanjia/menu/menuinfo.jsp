@@ -70,13 +70,38 @@
  					$(inputAttr[i]).removeAttr("disabled");
  					$(inputAttr[i]).attr("datatype","*");
  				}
- 				
  				$("#templateTr").removeAttr("style");
  				$("#templateId").removeAttr("disabled");
  				
  				//设置消息类型和验证
  				$("#msgType").attr("datatype","*");
  				$("#templateId").attr("datatype","*");
+ 				
+ 				$("#trappid").hide();
+ 				$("#trpagepath").hide();
+ 				$("#trmenuKey").show();
+ 				$("#menuKey").attr("datatype","*");
+ 			}else if("view"==selectValue){
+ 				$("#url").removeAttr("disabled");
+ 				$("#trurl").removeAttr("style");
+ 				
+ 				$("#xxtr").attr("style","display:none");
+ 				var inputAttr = $("input[name='msgType']");
+ 				for(var i=0;i<inputAttr.length;i++){
+ 					$(inputAttr[i]).attr("disabled","disabled");
+ 					$(inputAttr[i]).removeAttr("datatype");
+ 				}
+ 				
+ 				$("#templateTr").attr("style","display:none");
+ 				$("#templateId").attr("disabled","disabled");
+ 				//取消验证。防止无法提交
+ 				$("#msgType").removeAttr("datatype");
+ 				$("#templateId").removeAttr("datatype");
+ 				
+ 				$("#trappid").hide();
+ 				$("#trpagepath").hide();
+ 				$("#trmenuKey").show();
+ 				$("#menuKey").attr("datatype","*");
  			}else{
  				$("#url").removeAttr("disabled");
  				$("#trurl").removeAttr("style");
@@ -93,6 +118,11 @@
  				//取消验证。防止无法提交
  				$("#msgType").removeAttr("datatype");
  				$("#templateId").removeAttr("datatype");
+ 				
+ 				$("#trappid").show();
+ 				$("#trpagepath").show();
+ 				$("#trmenuKey").hide();
+ 				$("#menuKey").removeAttr("datatype");//TODO 菜单标识列是否需要隐藏 
  			}
  		});
  		
@@ -119,12 +149,24 @@
 			//设置消息类型和验证
 			$("#msgType").attr("datatype","*");
 			$("#templateId").attr("datatype","*");
+			$("#trappid").hide();
+			$("#trpagepath").hide();
 		}else if("view" == typeVal){
 			$("#xxtr").hide();
 			$("#trurl").show();
 			$("#templateTr").hide();
 			$("#msgType").removeAttr("datatype");
 			$("#templateId").removeAttr("datatype");
+			$("#trappid").hide();
+			$("#trpagepath").hide();
+		}else if("miniprogram"==typeVal){
+			$("#xxtr").hide();
+			$("#msgType").removeAttr("datatype");
+			$("#templateTr").hide();
+			$("#templateId").removeAttr("datatype");
+			$("#trurl").show();
+			$("#trappid").show();
+			$("#trpagepath").show();
 		}
 		
 		if (typeof(fatherId) == "undefined"){  
@@ -180,7 +222,7 @@
   </c:if>
    <table style="width:100%" cellpadding="0" cellspacing="1" class="formtable">
     <tr>
-     <td align="right" style="width:65px">
+     <td align="right" style="width:110px">
       <label class="Validform_label">
      	  菜单名称:
       </label>
@@ -192,7 +234,7 @@
     </tr>
     
      <tr>
-     <td align="right" style="width:65px">
+     <td align="right" style="width:110px">
       <label class="Validform_label">
      	  上级菜单:
       </label>
@@ -209,7 +251,7 @@
     </tr>
     
     <tr>
-     <td align="right" style="width:65px">
+     <td align="right" style="width:110px">
       <label class="Validform_label">
       动作设置:
       </label>
@@ -219,13 +261,14 @@
      
       	<option value="click"  <c:if test="${type=='click'}">selected="selected"</c:if>>消息触发类</option>
       	<option value="view"  <c:if test="${type=='view'}">selected="selected"</c:if>>网页链接类</option>
+      	<option value="miniprogram"  <c:if test="${type=='miniprogram'}">selected="selected"</c:if>>小程序类</option>
       </select>
       <span class="Validform_checktip">请设置动作</span>
      </td>
     </tr>
-   
+
     <tr id="trurl">
-     <td align="right" style="width:65px">
+     <td align="right" style="width:110px">
       <label class="Validform_label">
        URL:
       </label>
@@ -233,6 +276,30 @@
      <td colspan="3" class="value">
       <input id="url" class="inputxt" name="url" value="${url}"  style="width: 300px"><!-- disabled="disabled"  地址不能编辑？？ 业务不了解。所以先注释掉 --> 
       <span class="Validform_checktip">填写url，格式需要以http开头</span>
+     </td>
+    </tr>
+    
+    <tr id="trappid">
+     <td align="right" style="width:110px">
+      <label class="Validform_label">
+       小程序的appid:
+      </label>
+     </td>
+     <td colspan="3" class="value">
+      <input id="appid" class="inputxt" name="appid" value="${appid}"  style="width: 300px">
+      <span class="Validform_checktip">请填写小程序的appid</span>
+     </td>
+    </tr>
+   
+    <tr id="trpagepath">
+     <td align="right" style="width:110px">
+      <label class="Validform_label">
+       小程序的页面路径:
+      </label>
+     </td>
+     <td colspan="3" class="value">
+      <input id="pagepath" class="inputxt" name="pagepath" value="${pagepath}"  style="width: 300px">
+      <span class="Validform_checktip">请填写小程序的页面路径</span>
      </td>
     </tr>
     
@@ -264,20 +331,20 @@
      </td>
     </tr>
     
-    <tr>
-     <td align="right" style="width:65px">
+    <tr id="trmenuKey">
+     <td align="right" style="width:110px">
       <label class="Validform_label">
         菜单标识:
       </label>
      </td>
      <td class="value" colspan="3">
-      <input id="url" class="inputxt" name="menuKey" value="${menuKey}" datatype="*" nullmsg="菜单标示不能为空！">
+      <input id="menuKey" class="inputxt" name="menuKey" value="${menuKey}" datatype="*" nullmsg="菜单标示不能为空！">
       <span class="Validform_checktip">填写菜单标识</span>
      </td>
     </tr>
      
     <tr>
-     <td align="right" style="width:65px">
+     <td align="right" style="width:110px">
       <label class="Validform_label">
         顺序:
       </label>

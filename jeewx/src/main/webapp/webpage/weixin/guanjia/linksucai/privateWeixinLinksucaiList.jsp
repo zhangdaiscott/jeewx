@@ -4,7 +4,7 @@
 <script type="text/javascript" src="plug-in/tools/Map.js"></script>
 <div class="easyui-layout" fit="true">
   <div region="center" style="padding:1px;">
-  <t:datagrid name="privateWeixinLinksucaiList" checkbox="true" fitColumns="false" title="链接素材" actionUrl="weixinLinksucaiController.do?privateDatagrid" idField="id" fit="true" queryMode="group" sortOrder="desc" sortName="createDate">
+  <t:datagrid name="privateWeixinLinksucaiList" checkbox="true" fitColumns="true" title="链接素材" actionUrl="weixinLinksucaiController.do?privateDatagrid" idField="id" fit="true" queryMode="group" sortOrder="desc" sortName="createDate">
    <t:dgCol title="主键"  field="id"  hidden="false"  queryMode="single" ></t:dgCol>
    <t:dgCol title="微信公众ID" field="accountid" hidden="false" ></t:dgCol>
    <t:dgCol title="链接名称"  field="name"    queryMode="single"  width="120"></t:dgCol>

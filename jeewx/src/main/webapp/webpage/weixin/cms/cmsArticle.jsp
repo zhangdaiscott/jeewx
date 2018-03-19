@@ -169,7 +169,7 @@
 								</label>
 							</td>
 							<td class="value">
-								<input class="inputxt" id="title" name="title" style="width: 300px" value="${cmsArticlePage.title}" datatype="*" onblur="setimageTitle(this)">
+								<input class="inputxt" id="title" name="title" style="width: 345px" value="${cmsArticlePage.title}" datatype="*" onblur="setimageTitle(this)">
 								<span class="Validform_checktip"></span>
 								<label class="Validform_label" style="display: none;">标题</label>
 							</td>
@@ -181,7 +181,7 @@
 								</label>
 							</td>
 							<td class="value">
-								<t:dictSelect field="columnId" dictTable="weixin_cms_menu where accountid='${sessionScope.WEIXIN_ACCOUNT.id}'" dictField="id" dictText="name" defaultVal="${cmsArticlePage.columnId}"></t:dictSelect>
+								<t:dictSelect  extendJson="{style:'width:350px'}"  field="columnId" dictTable="weixin_cms_menu where accountid='${sessionScope.WEIXIN_ACCOUNT.id}'" dictField="id" dictText="name" defaultVal="${cmsArticlePage.columnId}"></t:dictSelect>
 								<span class="Validform_checktip"></span>
 								<label class="Validform_label" style="display: none;">所属栏目</label>
 							</td>
@@ -212,7 +212,7 @@
 								</label>
 							</td>
 							<td class="value">
-								<textarea class="inputxt" id="summary" name="summary" style="width: 300px" datatype="*">${cmsArticlePage.summary}</textarea>
+								<textarea class="inputxt" id="summary" name="summary" style="width: 345px" datatype="*">${cmsArticlePage.summary}</textarea>
 								<span class="Validform_checktip"></span>
 								<label class="Validform_label" style="display: none;">摘要</label>
 							</td>
@@ -224,7 +224,7 @@
 								</label>
 							</td>
 							<td class="value">
-								 <textarea name="content" id="content" style="width: 350px;height:300px">${cmsArticlePage.content}</textarea>
+								 <textarea name="content" id="content" style="width: 800px;height:300px">${cmsArticlePage.content}</textarea>
 							    <script type="text/javascript">
 							        var editor = UE.getEditor('content');
 							    </script>

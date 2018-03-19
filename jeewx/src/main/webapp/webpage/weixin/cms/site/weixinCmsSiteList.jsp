@@ -3,7 +3,7 @@
 <t:base type="jquery,easyui,tools,DatePicker"></t:base>
 <div class="easyui-layout" fit="true">
   <div region="center" style="padding:1px;">
-  <t:datagrid name="weixinCmsSiteList" checkbox="true" fitColumns="false" title="微站点信息" actionUrl="weixinCmsSiteController.do?datagrid" idField="id" fit="true" queryMode="group">
+  <t:datagrid name="weixinCmsSiteList" checkbox="true" fitColumns="true" title="微站点信息" actionUrl="weixinCmsSiteController.do?datagrid" idField="id" fit="true" queryMode="group">
    <t:dgCol title="主键"  field="id"  hidden="false"  queryMode="single"  width="120"></t:dgCol>
    <t:dgCol title="创建人名称"  field="createName"  hidden="false"  queryMode="single"  width="120"></t:dgCol>
    <t:dgCol title="创建日期"  field="createDate"  hidden="false"  queryMode="single"  width="120"></t:dgCol>

@@ -72,9 +72,9 @@ public class WeixinLinksucaiEntity implements java.io.Serializable {
 	@Excel(exportName="分享状态")
 	private java.lang.String shareStatus;
 	/**账号邮编名称对应下发公众账号名称*/
-	//update-begin--Author:macaholin  Date:20150404 for：新增微信公众账号邮编名称（不存储数据库，只有用于显示），用于区分相同素材标题情况下是哪个父亲账号分享下来的
+
 	private String postcodeName;
-	//update-  end--Author:macaholin  Date:20150404 for：新增微信公众账号邮编名称（不存储数据库，只有用于显示），用于区分相同素材标题情况下是哪个父亲账号分享下来的
+
 	
 	//add-begin-alax 20151109 for TASK #621 链接素材增加“是否加密”字段
 	/**是否加密*/

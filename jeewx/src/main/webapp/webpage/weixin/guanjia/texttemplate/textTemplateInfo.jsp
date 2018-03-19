@@ -33,6 +33,9 @@
           <textarea  rows="15" cols="80" name="content" id="content">${content}</textarea>
           <br>
       	  <span class="Validform_checktip">请输入模板内容！</span>
+      	  <!-- update-begin-author:taoYan date:20180313 for:模板内容增加提示信息 -->
+      	  <br><xmp>消息中如需插入超链接，请按照如下格式：<a href="http://×××">显示内容</a></xmp>
+      	  <!-- update-end-author:taoYan date:20180313 for:模板内容增加提示信息 -->
      </td>
     </tr>
    </table>

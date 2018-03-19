@@ -22,6 +22,9 @@ public class NewsTemplate extends IdEntity{
 	private List<NewsItem> newsItemList;
 	private String accountId;
 
+	private String isup;//上传状态：已经上传_1,未上传_0
+	private String mediaid;
+
 	@Column(name = "accountid",length=100)
 	public String getAccountId() {
 		return accountId;
@@ -59,6 +62,21 @@ public class NewsTemplate extends IdEntity{
 	}
 	public void setType(String type) {
 		this.type = type;
+	}
+	
+	@Column(name="isup")
+	public String getIsup() {
+		return isup;
+	}
+	public void setIsup(String isup) {
+		this.isup = isup;
+	}
+	@Column(name="mediaid")
+	public String getMediaid() {
+		return mediaid;
+	}
+	public void setMediaid(String mediaid) {
+		this.mediaid = mediaid;
 	}
 	
 }

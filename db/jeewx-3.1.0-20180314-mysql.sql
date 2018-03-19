@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : mysql
-Source Server Version : 50037
+Source Server         : mysql-local
+Source Server Version : 50505
 Source Host           : localhost:3306
-Source Database       : jeewx-os
+Source Database       : jeewx-os-new
 
 Target Server Type    : MYSQL
-Target Server Version : 50037
+Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2016-12-20 23:11:18
+Date: 2018-03-14 20:23:30
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -21,20 +21,20 @@ SET FOREIGN_KEY_CHECKS=0;
 DROP TABLE IF EXISTS `alipay_account`;
 CREATE TABLE `alipay_account` (
   `id` varchar(50) NOT NULL,
-  `accont_name` varchar(100) default NULL COMMENT '名称',
-  `appid` varchar(255) default NULL COMMENT '企业号标识CorpID',
-  `rsa_private_key` varchar(2000) default NULL COMMENT '管理组凭证密钥Secret',
-  `alipay_public_key` varchar(2000) default NULL COMMENT 'AccessToken',
-  `account_desc` varchar(300) default NULL COMMENT '描述',
-  `create_name` varchar(50) default NULL COMMENT '创建人名称',
-  `create_by` varchar(50) default NULL COMMENT '创建人登录名称',
-  `create_date` datetime default NULL COMMENT '创建日期',
-  `update_name` varchar(50) default NULL COMMENT '更新人名称',
-  `update_by` varchar(50) default NULL COMMENT '更新人登录名称',
-  `update_date` datetime default NULL COMMENT '更新日期',
-  `conversation_secret` varchar(255) default NULL,
-  `PUBLIC_KEY` varchar(2000) default NULL,
-  PRIMARY KEY  (`id`),
+  `accont_name` varchar(100) DEFAULT NULL COMMENT '名称',
+  `appid` varchar(255) DEFAULT NULL COMMENT '企业号标识CorpID',
+  `rsa_private_key` varchar(2000) DEFAULT NULL COMMENT '管理组凭证密钥Secret',
+  `alipay_public_key` varchar(2000) DEFAULT NULL COMMENT 'AccessToken',
+  `account_desc` varchar(300) DEFAULT NULL COMMENT '描述',
+  `create_name` varchar(50) DEFAULT NULL COMMENT '创建人名称',
+  `create_by` varchar(50) DEFAULT NULL COMMENT '创建人登录名称',
+  `create_date` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_name` varchar(50) DEFAULT NULL COMMENT '更新人名称',
+  `update_by` varchar(50) DEFAULT NULL COMMENT '更新人登录名称',
+  `update_date` datetime DEFAULT NULL COMMENT '更新日期',
+  `conversation_secret` varchar(255) DEFAULT NULL,
+  `PUBLIC_KEY` varchar(2000) DEFAULT NULL,
+  PRIMARY KEY (`id`),
   UNIQUE KEY `uniq_corpid` (`appid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='账号信息表';
 
@@ -49,18 +49,18 @@ INSERT INTO `alipay_account` VALUES ('402880a94742e24e014742e8942b0002', 'jeewx�
 DROP TABLE IF EXISTS `alipay_autoresponse`;
 CREATE TABLE `alipay_autoresponse` (
   `id` varchar(100) NOT NULL,
-  `key_word` varchar(200) default NULL COMMENT '关键字',
-  `res_content` varchar(500) default NULL COMMENT '回复内容',
-  `msg_type` varchar(100) default NULL COMMENT '消息类型',
-  `template_name` varchar(100) default NULL COMMENT '模板名称',
-  `accountid` varchar(100) default NULL COMMENT '微信账号id',
-  `create_name` varchar(50) default NULL COMMENT '创建人名称',
-  `create_by` varchar(50) default NULL COMMENT '创建人登录名称',
-  `create_date` datetime default NULL COMMENT '创建日期',
-  `update_name` varchar(50) default NULL COMMENT '更新人名称',
-  `update_by` varchar(50) default NULL COMMENT '更新人登录名称',
-  `update_date` datetime default NULL COMMENT '更新日期',
-  PRIMARY KEY  (`id`),
+  `key_word` varchar(200) DEFAULT NULL COMMENT '关键字',
+  `res_content` varchar(500) DEFAULT NULL COMMENT '回复内容',
+  `msg_type` varchar(100) DEFAULT NULL COMMENT '消息类型',
+  `template_name` varchar(100) DEFAULT NULL COMMENT '模板名称',
+  `accountid` varchar(100) DEFAULT NULL COMMENT '微信账号id',
+  `create_name` varchar(50) DEFAULT NULL COMMENT '创建人名称',
+  `create_by` varchar(50) DEFAULT NULL COMMENT '创建人登录名称',
+  `create_date` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_name` varchar(50) DEFAULT NULL COMMENT '更新人名称',
+  `update_by` varchar(50) DEFAULT NULL COMMENT '更新人登录名称',
+  `update_date` datetime DEFAULT NULL COMMENT '更新日期',
+  PRIMARY KEY (`id`),
   KEY `idx_accountid` (`accountid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='关键字管理';
 
@@ -79,16 +79,16 @@ CREATE TABLE `alipay_autoresponse_default` (
   `id` varchar(50) NOT NULL COMMENT '主键Id',
   `templatename` varchar(200) NOT NULL COMMENT '模板名称',
   `templateid` varchar(50) NOT NULL COMMENT '模板Id',
-  `msgtype` varchar(40) default NULL COMMENT '消息类型',
-  `accountid` varchar(40) default NULL COMMENT '微信账号Id',
-  `iswork` varchar(10) default NULL COMMENT '是否启用',
-  `create_name` varchar(50) default NULL COMMENT '创建人名称',
-  `create_by` varchar(50) default NULL COMMENT '创建人登录名称',
-  `create_date` datetime default NULL COMMENT '创建日期',
-  `update_name` varchar(50) default NULL COMMENT '更新人名称',
-  `update_by` varchar(50) default NULL COMMENT '更新人登录名称',
-  `update_date` datetime default NULL COMMENT '更新日期',
-  PRIMARY KEY  (`id`)
+  `msgtype` varchar(40) DEFAULT NULL COMMENT '消息类型',
+  `accountid` varchar(40) DEFAULT NULL COMMENT '微信账号Id',
+  `iswork` varchar(10) DEFAULT NULL COMMENT '是否启用',
+  `create_name` varchar(50) DEFAULT NULL COMMENT '创建人名称',
+  `create_by` varchar(50) DEFAULT NULL COMMENT '创建人登录名称',
+  `create_date` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_name` varchar(50) DEFAULT NULL COMMENT '更新人名称',
+  `update_by` varchar(50) DEFAULT NULL COMMENT '更新人登录名称',
+  `update_date` datetime DEFAULT NULL COMMENT '更新日期',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='默认关键字回复';
 
 -- ----------------------------
@@ -102,18 +102,18 @@ INSERT INTO `alipay_autoresponse_default` VALUES ('8a792db34fdf51b3014fdfb22e870
 DROP TABLE IF EXISTS `alipay_gzentity`;
 CREATE TABLE `alipay_gzentity` (
   `id` varchar(100) NOT NULL,
-  `template_name` varchar(100) default NULL COMMENT '模板名称',
-  `template_id` varchar(100) default NULL COMMENT '模板id',
-  `template_type` varchar(100) default NULL COMMENT '类型 文本_text,图文_news',
-  `is_work` varchar(100) default NULL COMMENT '是否启用 未启用_0,启用_1',
-  `accountid` varchar(100) default NULL COMMENT '微信账号id',
-  `create_name` varchar(50) default NULL COMMENT '创建人名称',
-  `create_by` varchar(50) default NULL COMMENT '创建人登录名称',
-  `create_date` datetime default NULL COMMENT '创建日期',
-  `update_name` varchar(50) default NULL COMMENT '更新人名称',
-  `update_by` varchar(50) default NULL COMMENT '更新人登录名称',
-  `update_date` datetime default NULL COMMENT '更新日期',
-  PRIMARY KEY  (`id`)
+  `template_name` varchar(100) DEFAULT NULL COMMENT '模板名称',
+  `template_id` varchar(100) DEFAULT NULL COMMENT '模板id',
+  `template_type` varchar(100) DEFAULT NULL COMMENT '类型 文本_text,图文_news',
+  `is_work` varchar(100) DEFAULT NULL COMMENT '是否启用 未启用_0,启用_1',
+  `accountid` varchar(100) DEFAULT NULL COMMENT '微信账号id',
+  `create_name` varchar(50) DEFAULT NULL COMMENT '创建人名称',
+  `create_by` varchar(50) DEFAULT NULL COMMENT '创建人登录名称',
+  `create_date` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_name` varchar(50) DEFAULT NULL COMMENT '更新人名称',
+  `update_by` varchar(50) DEFAULT NULL COMMENT '更新人登录名称',
+  `update_date` datetime DEFAULT NULL COMMENT '更新日期',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='关注回复';
 
 -- ----------------------------
@@ -127,27 +127,27 @@ INSERT INTO `alipay_gzentity` VALUES ('4B535E499E3342E5AFC94C2D72CA082E', '支�
 -- ----------------------------
 DROP TABLE IF EXISTS `alipay_gzuserinfo`;
 CREATE TABLE `alipay_gzuserinfo` (
-  `id` varchar(100) character set gbk NOT NULL COMMENT '主键',
-  `userid` varchar(100) default NULL COMMENT '账号',
-  `name` varchar(100) default NULL COMMENT '姓名',
-  `department` varchar(200) default NULL COMMENT '部门',
-  `position` varchar(100) default NULL COMMENT '职位',
-  `mobile` varchar(100) default NULL COMMENT '电话',
-  `province` varchar(100) default NULL COMMENT '省份',
-  `gender` varchar(100) default NULL COMMENT '性别gender=1表示男，=0表示女',
-  `email` varchar(400) default NULL COMMENT '邮箱',
-  `weixinid` varchar(100) default NULL COMMENT '微信号',
-  `avatar` varchar(100) default NULL COMMENT '头像url',
-  `subscribe_status` varchar(100) default NULL COMMENT '关注状态: 1=已关注，2=已冻结，4=未关注',
-  `subscribe_time` datetime default NULL COMMENT '关注时间',
-  `accountid` varchar(100) default NULL COMMENT '微信账号ID',
-  `create_name` varchar(50) default NULL COMMENT '创建人名称',
-  `create_by` varchar(50) default NULL COMMENT '创建人登录名称',
-  `create_date` datetime default NULL COMMENT '创建日期',
-  `update_name` varchar(50) default NULL COMMENT '更新人名称',
-  `update_by` varchar(50) default NULL COMMENT '更新人登录名称',
-  `update_date` datetime default NULL COMMENT '更新日期',
-  PRIMARY KEY  (`id`)
+  `id` varchar(100) CHARACTER SET gbk NOT NULL COMMENT '主键',
+  `userid` varchar(100) DEFAULT NULL COMMENT '账号',
+  `name` varchar(100) DEFAULT NULL COMMENT '姓名',
+  `department` varchar(200) DEFAULT NULL COMMENT '部门',
+  `position` varchar(100) DEFAULT NULL COMMENT '职位',
+  `mobile` varchar(100) DEFAULT NULL COMMENT '电话',
+  `province` varchar(100) DEFAULT NULL COMMENT '省份',
+  `gender` varchar(100) DEFAULT NULL COMMENT '性别gender=1表示男，=0表示女',
+  `email` varchar(400) DEFAULT NULL COMMENT '邮箱',
+  `weixinid` varchar(100) DEFAULT NULL COMMENT '微信号',
+  `avatar` varchar(100) DEFAULT NULL COMMENT '头像url',
+  `subscribe_status` varchar(100) DEFAULT NULL COMMENT '关注状态: 1=已关注，2=已冻结，4=未关注',
+  `subscribe_time` datetime DEFAULT NULL COMMENT '关注时间',
+  `accountid` varchar(100) DEFAULT NULL COMMENT '微信账号ID',
+  `create_name` varchar(50) DEFAULT NULL COMMENT '创建人名称',
+  `create_by` varchar(50) DEFAULT NULL COMMENT '创建人登录名称',
+  `create_date` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_name` varchar(50) DEFAULT NULL COMMENT '更新人名称',
+  `update_by` varchar(50) DEFAULT NULL COMMENT '更新人登录名称',
+  `update_date` datetime DEFAULT NULL COMMENT '更新日期',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='关注用户';
 
 -- ----------------------------
@@ -178,22 +178,22 @@ INSERT INTO `alipay_gzuserinfo` VALUES ('F641D6DF5CCA42B3835F4EB7F832D73E', '208
 DROP TABLE IF EXISTS `alipay_menu`;
 CREATE TABLE `alipay_menu` (
   `ID` varchar(32) NOT NULL,
-  `agent_id` varchar(255) default NULL COMMENT '应用主键ID',
-  `menu_name` varchar(255) default NULL COMMENT '菜单标题',
-  `menu_type` varchar(255) default NULL COMMENT '菜单类型',
-  `menu_key` varchar(255) default NULL COMMENT '菜单KEY',
-  `orders` varchar(10) default NULL COMMENT '菜单位置',
-  `msg_type` varchar(255) default NULL COMMENT '响应消息类型',
-  `template_id` varchar(255) default NULL COMMENT '关联素材ID',
-  `url` varchar(1000) default NULL COMMENT '网页链接',
-  `father_id` varchar(32) default NULL COMMENT '父ID',
-  `create_name` varchar(50) default NULL COMMENT '创建人名称',
-  `create_by` varchar(50) default NULL COMMENT '创建人登录名称',
-  `create_date` datetime default NULL COMMENT '创建日期',
-  `update_name` varchar(50) default NULL COMMENT '更新人名称',
-  `update_by` varchar(50) default NULL COMMENT '更新人登录名称',
-  `update_date` datetime default NULL COMMENT '更新日期',
-  PRIMARY KEY  (`ID`),
+  `agent_id` varchar(255) DEFAULT NULL COMMENT '应用主键ID',
+  `menu_name` varchar(255) DEFAULT NULL COMMENT '菜单标题',
+  `menu_type` varchar(255) DEFAULT NULL COMMENT '菜单类型',
+  `menu_key` varchar(255) DEFAULT NULL COMMENT '菜单KEY',
+  `orders` varchar(10) DEFAULT NULL COMMENT '菜单位置',
+  `msg_type` varchar(255) DEFAULT NULL COMMENT '响应消息类型',
+  `template_id` varchar(255) DEFAULT NULL COMMENT '关联素材ID',
+  `url` varchar(1000) DEFAULT NULL COMMENT '网页链接',
+  `father_id` varchar(32) DEFAULT NULL COMMENT '父ID',
+  `create_name` varchar(50) DEFAULT NULL COMMENT '创建人名称',
+  `create_by` varchar(50) DEFAULT NULL COMMENT '创建人登录名称',
+  `create_date` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_name` varchar(50) DEFAULT NULL COMMENT '更新人名称',
+  `update_by` varchar(50) DEFAULT NULL COMMENT '更新人登录名称',
+  `update_date` datetime DEFAULT NULL COMMENT '更新日期',
+  PRIMARY KEY (`ID`),
   UNIQUE KEY `menu_key` (`menu_key`),
   UNIQUE KEY `order` (`orders`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='自定义菜单表';
@@ -214,12 +214,12 @@ INSERT INTO `alipay_menu` VALUES ('EFF7B7D2662946AFA2DC9E230D8D5208', null, '捷
 DROP TABLE IF EXISTS `alipay_messagelog`;
 CREATE TABLE `alipay_messagelog` (
   `id` varchar(200) NOT NULL,
-  `message_type` varchar(50) default NULL,
-  `content_id` varchar(500) default NULL,
-  `receive_message` varchar(200) default NULL,
-  `create_date` datetime default NULL,
+  `message_type` varchar(50) DEFAULT NULL,
+  `content_id` varchar(500) DEFAULT NULL,
+  `receive_message` varchar(200) DEFAULT NULL,
+  `create_date` datetime DEFAULT NULL,
   `message_content` text,
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -232,22 +232,22 @@ CREATE TABLE `alipay_messagelog` (
 DROP TABLE IF EXISTS `alipay_newsitem`;
 CREATE TABLE `alipay_newsitem` (
   `id` varchar(100) NOT NULL,
-  `title` varchar(300) default NULL COMMENT '标题',
-  `author` varchar(100) default NULL COMMENT '作者',
-  `image_path` varchar(100) default NULL COMMENT '图片路径',
+  `title` varchar(300) DEFAULT NULL COMMENT '标题',
+  `author` varchar(100) DEFAULT NULL COMMENT '作者',
+  `image_path` varchar(100) DEFAULT NULL COMMENT '图片路径',
   `content` longtext COMMENT '内容',
-  `templateid` varchar(100) default NULL COMMENT '图文模板id',
-  `description` varchar(400) default NULL COMMENT '摘要',
-  `order_no` varchar(100) default NULL COMMENT '新闻顺序',
-  `url` varchar(100) default NULL COMMENT '消息内容的url',
-  `hdid` varchar(100) default NULL COMMENT '活动id',
-  `create_name` varchar(50) default NULL COMMENT '创建人名称',
-  `create_by` varchar(50) default NULL COMMENT '创建人登录名称',
-  `create_date` datetime default NULL COMMENT '创建日期',
-  `update_name` varchar(50) default NULL COMMENT '更新人名称',
-  `update_by` varchar(50) default NULL COMMENT '更新人登录名称',
-  `update_date` datetime default NULL COMMENT '更新日期',
-  PRIMARY KEY  (`id`)
+  `templateid` varchar(100) DEFAULT NULL COMMENT '图文模板id',
+  `description` varchar(400) DEFAULT NULL COMMENT '摘要',
+  `order_no` varchar(100) DEFAULT NULL COMMENT '新闻顺序',
+  `url` varchar(100) DEFAULT NULL COMMENT '消息内容的url',
+  `hdid` varchar(100) DEFAULT NULL COMMENT '活动id',
+  `create_name` varchar(50) DEFAULT NULL COMMENT '创建人名称',
+  `create_by` varchar(50) DEFAULT NULL COMMENT '创建人登录名称',
+  `create_date` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_name` varchar(50) DEFAULT NULL COMMENT '更新人名称',
+  `update_by` varchar(50) DEFAULT NULL COMMENT '更新人登录名称',
+  `update_date` datetime DEFAULT NULL COMMENT '更新日期',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='图文素材新闻';
 
 -- ----------------------------
@@ -268,16 +268,16 @@ INSERT INTO `alipay_newsitem` VALUES ('FFF442C7C80D4052B08E37FF4F96F3C0', 'jeewx
 DROP TABLE IF EXISTS `alipay_newstemplate`;
 CREATE TABLE `alipay_newstemplate` (
   `id` varchar(100) NOT NULL,
-  `template_name` varchar(200) default NULL COMMENT '模板名称',
-  `template_type` varchar(100) default NULL COMMENT '模板类型',
-  `accountid` varchar(100) default NULL COMMENT '微信企业号账号id',
-  `create_name` varchar(50) default NULL COMMENT '创建人名称',
-  `create_by` varchar(50) default NULL COMMENT '创建人登录名称',
-  `create_date` datetime default NULL COMMENT '创建日期',
-  `update_name` varchar(50) default NULL COMMENT '更新人名称',
-  `update_by` varchar(50) default NULL COMMENT '更新人登录名称',
-  `update_date` datetime default NULL COMMENT '更新日期',
-  PRIMARY KEY  (`id`)
+  `template_name` varchar(200) DEFAULT NULL COMMENT '模板名称',
+  `template_type` varchar(100) DEFAULT NULL COMMENT '模板类型',
+  `accountid` varchar(100) DEFAULT NULL COMMENT '微信企业号账号id',
+  `create_name` varchar(50) DEFAULT NULL COMMENT '创建人名称',
+  `create_by` varchar(50) DEFAULT NULL COMMENT '创建人登录名称',
+  `create_date` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_name` varchar(50) DEFAULT NULL COMMENT '更新人名称',
+  `update_by` varchar(50) DEFAULT NULL COMMENT '更新人登录名称',
+  `update_date` datetime DEFAULT NULL COMMENT '更新日期',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='图文素材模板';
 
 -- ----------------------------
@@ -292,23 +292,23 @@ DROP TABLE IF EXISTS `alipay_receivetext`;
 CREATE TABLE `alipay_receivetext` (
   `id` varchar(100) NOT NULL,
   `tousername` varchar(100) NOT NULL COMMENT '开发者微信号',
-  `fromusername` varchar(100) default NULL COMMENT '发送方帐号（一个OpenID）',
-  `createtime` timestamp NULL default CURRENT_TIMESTAMP COMMENT '消息创建时间 （整型）',
-  `msgtype` varchar(100) default NULL COMMENT '消息类型（text/image/location/link）',
-  `msgid` varchar(100) default NULL COMMENT '消息id，64位整型',
-  `content` varchar(400) default NULL COMMENT '消息内容',
-  `response` varchar(10) default NULL COMMENT '是否回复',
-  `rescontent` varchar(400) default NULL COMMENT '回复内容',
-  `nickname` varchar(100) default NULL COMMENT '用户昵称',
-  `accountid` varchar(40) default NULL COMMENT '微信账号Id',
-  `agent_id` varchar(200) default NULL COMMENT '应用ID(微信)',
-  `create_name` varchar(50) default NULL COMMENT '创建人名称',
-  `create_by` varchar(50) default NULL COMMENT '创建人登录名称',
-  `create_date` datetime default NULL COMMENT '创建日期',
-  `update_name` varchar(50) default NULL COMMENT '更新人名称',
-  `update_by` varchar(50) default NULL COMMENT '更新人登录名称',
-  `update_date` datetime default NULL COMMENT '更新日期',
-  PRIMARY KEY  (`id`)
+  `fromusername` varchar(100) DEFAULT NULL COMMENT '发送方帐号（一个OpenID）',
+  `createtime` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '消息创建时间 （整型）',
+  `msgtype` varchar(100) DEFAULT NULL COMMENT '消息类型（text/image/location/link）',
+  `msgid` varchar(100) DEFAULT NULL COMMENT '消息id，64位整型',
+  `content` varchar(400) DEFAULT NULL COMMENT '消息内容',
+  `response` varchar(10) DEFAULT NULL COMMENT '是否回复',
+  `rescontent` varchar(400) DEFAULT NULL COMMENT '回复内容',
+  `nickname` varchar(100) DEFAULT NULL COMMENT '用户昵称',
+  `accountid` varchar(40) DEFAULT NULL COMMENT '微信账号Id',
+  `agent_id` varchar(200) DEFAULT NULL COMMENT '应用ID(微信)',
+  `create_name` varchar(50) DEFAULT NULL COMMENT '创建人名称',
+  `create_by` varchar(50) DEFAULT NULL COMMENT '创建人登录名称',
+  `create_date` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_name` varchar(50) DEFAULT NULL COMMENT '更新人名称',
+  `update_by` varchar(50) DEFAULT NULL COMMENT '更新人登录名称',
+  `update_date` datetime DEFAULT NULL COMMENT '更新日期',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='文本消息';
 
 -- ----------------------------
@@ -342,14 +342,14 @@ DROP TABLE IF EXISTS `alipay_receivetext_content`;
 CREATE TABLE `alipay_receivetext_content` (
   `id` varchar(100) NOT NULL,
   `receivetext_id` varchar(100) NOT NULL COMMENT '用户消息表 id',
-  `content` varchar(400) default NULL COMMENT '消息内容',
-  `create_name` varchar(50) default NULL COMMENT '创建人名称',
-  `create_by` varchar(50) default NULL COMMENT '创建人登录名称',
-  `create_date` datetime default NULL COMMENT '创建日期',
-  `update_name` varchar(50) default NULL COMMENT '更新人名称',
-  `update_by` varchar(50) default NULL COMMENT '更新人登录名称',
-  `update_date` datetime default NULL COMMENT '更新日期',
-  PRIMARY KEY  (`id`)
+  `content` varchar(400) DEFAULT NULL COMMENT '消息内容',
+  `create_name` varchar(50) DEFAULT NULL COMMENT '创建人名称',
+  `create_by` varchar(50) DEFAULT NULL COMMENT '创建人登录名称',
+  `create_date` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_name` varchar(50) DEFAULT NULL COMMENT '更新人名称',
+  `update_by` varchar(50) DEFAULT NULL COMMENT '更新人登录名称',
+  `update_date` datetime DEFAULT NULL COMMENT '更新日期',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户消息详情';
 
 -- ----------------------------
@@ -365,14 +365,14 @@ CREATE TABLE `alipay_texttemplate` (
   `id` varchar(100) NOT NULL,
   `template_name` varchar(200) NOT NULL COMMENT '模板名称',
   `template_content` varchar(500) NOT NULL COMMENT '模板内容',
-  `accountid` varchar(100) default NULL COMMENT '微信企业账户id',
-  `create_name` varchar(50) default NULL COMMENT '创建人名称',
-  `create_by` varchar(50) default NULL COMMENT '创建人登录名称',
-  `create_date` datetime default NULL COMMENT '创建日期',
-  `update_name` varchar(50) default NULL COMMENT '更新人名称',
-  `update_by` varchar(50) default NULL COMMENT '更新人登录名称',
-  `update_date` datetime default NULL COMMENT '更新日期',
-  PRIMARY KEY  (`id`)
+  `accountid` varchar(100) DEFAULT NULL COMMENT '微信企业账户id',
+  `create_name` varchar(50) DEFAULT NULL COMMENT '创建人名称',
+  `create_by` varchar(50) DEFAULT NULL COMMENT '创建人登录名称',
+  `create_date` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_name` varchar(50) DEFAULT NULL COMMENT '更新人名称',
+  `update_by` varchar(50) DEFAULT NULL COMMENT '更新人登录名称',
+  `update_date` datetime DEFAULT NULL COMMENT '更新日期',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='文本模板';
 
 -- ----------------------------
@@ -391,16 +391,16 @@ INSERT INTO `alipay_texttemplate` VALUES ('ff808081538e81b40153a172bfcc0070', 'J
 DROP TABLE IF EXISTS `cgform_button`;
 CREATE TABLE `cgform_button` (
   `ID` varchar(32) NOT NULL,
-  `BUTTON_CODE` varchar(50) default NULL,
-  `button_icon` varchar(20) default NULL,
-  `BUTTON_NAME` varchar(50) default NULL,
-  `BUTTON_STATUS` varchar(2) default NULL,
-  `BUTTON_STYLE` varchar(20) default NULL,
-  `EXP` varchar(255) default NULL,
-  `FORM_ID` varchar(32) default NULL,
-  `OPT_TYPE` varchar(20) default NULL,
-  `order_num` int(11) default NULL,
-  PRIMARY KEY  (`ID`)
+  `BUTTON_CODE` varchar(50) DEFAULT NULL,
+  `button_icon` varchar(20) DEFAULT NULL,
+  `BUTTON_NAME` varchar(50) DEFAULT NULL,
+  `BUTTON_STATUS` varchar(2) DEFAULT NULL,
+  `BUTTON_STYLE` varchar(20) DEFAULT NULL,
+  `EXP` varchar(255) DEFAULT NULL,
+  `FORM_ID` varchar(32) DEFAULT NULL,
+  `OPT_TYPE` varchar(20) DEFAULT NULL,
+  `order_num` int(11) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -413,12 +413,12 @@ CREATE TABLE `cgform_button` (
 DROP TABLE IF EXISTS `cgform_button_sql`;
 CREATE TABLE `cgform_button_sql` (
   `ID` varchar(32) NOT NULL,
-  `BUTTON_CODE` varchar(50) default NULL,
+  `BUTTON_CODE` varchar(50) DEFAULT NULL,
   `CGB_SQL` tinyblob,
-  `CGB_SQL_NAME` varchar(50) default NULL,
+  `CGB_SQL_NAME` varchar(50) DEFAULT NULL,
   `CONTENT` longtext,
-  `FORM_ID` varchar(32) default NULL,
-  PRIMARY KEY  (`ID`)
+  `FORM_ID` varchar(32) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -432,10 +432,10 @@ DROP TABLE IF EXISTS `cgform_enhance_js`;
 CREATE TABLE `cgform_enhance_js` (
   `ID` varchar(32) NOT NULL,
   `CG_JS` blob,
-  `CG_JS_TYPE` varchar(20) default NULL,
+  `CG_JS_TYPE` varchar(20) DEFAULT NULL,
   `CONTENT` longtext,
-  `FORM_ID` varchar(32) default NULL,
-  PRIMARY KEY  (`ID`)
+  `FORM_ID` varchar(32) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -449,36 +449,36 @@ DROP TABLE IF EXISTS `cgform_field`;
 CREATE TABLE `cgform_field` (
   `id` varchar(32) NOT NULL,
   `content` varchar(200) NOT NULL,
-  `create_by` varchar(255) default NULL,
-  `create_date` datetime default NULL,
-  `create_name` varchar(32) default NULL,
-  `dict_field` varchar(100) default NULL,
-  `dict_table` varchar(100) default NULL,
-  `dict_text` varchar(100) default NULL,
-  `field_default` varchar(20) default NULL,
-  `field_href` varchar(200) default NULL,
-  `field_length` int(11) default NULL,
+  `create_by` varchar(255) DEFAULT NULL,
+  `create_date` datetime DEFAULT NULL,
+  `create_name` varchar(32) DEFAULT NULL,
+  `dict_field` varchar(100) DEFAULT NULL,
+  `dict_table` varchar(100) DEFAULT NULL,
+  `dict_text` varchar(100) DEFAULT NULL,
+  `field_default` varchar(20) DEFAULT NULL,
+  `field_href` varchar(200) DEFAULT NULL,
+  `field_length` int(11) DEFAULT NULL,
   `field_name` varchar(32) NOT NULL,
-  `field_valid_type` varchar(10) default NULL,
-  `is_key` varchar(2) default NULL,
-  `is_null` varchar(5) default NULL,
-  `is_query` varchar(5) default NULL,
-  `is_show` varchar(5) default NULL,
-  `is_show_list` varchar(5) default NULL,
+  `field_valid_type` varchar(10) DEFAULT NULL,
+  `is_key` varchar(2) DEFAULT NULL,
+  `is_null` varchar(5) DEFAULT NULL,
+  `is_query` varchar(5) DEFAULT NULL,
+  `is_show` varchar(5) DEFAULT NULL,
+  `is_show_list` varchar(5) DEFAULT NULL,
   `length` int(11) NOT NULL,
-  `main_field` varchar(100) default NULL,
-  `main_table` varchar(100) default NULL,
-  `old_field_name` varchar(32) default NULL,
-  `order_num` int(11) default NULL,
-  `point_length` int(11) default NULL,
-  `query_mode` varchar(10) default NULL,
-  `show_type` varchar(10) default NULL,
+  `main_field` varchar(100) DEFAULT NULL,
+  `main_table` varchar(100) DEFAULT NULL,
+  `old_field_name` varchar(32) DEFAULT NULL,
+  `order_num` int(11) DEFAULT NULL,
+  `point_length` int(11) DEFAULT NULL,
+  `query_mode` varchar(10) DEFAULT NULL,
+  `show_type` varchar(10) DEFAULT NULL,
   `type` varchar(32) NOT NULL,
-  `update_by` varchar(32) default NULL,
-  `update_date` datetime default NULL,
-  `update_name` varchar(32) default NULL,
+  `update_by` varchar(32) DEFAULT NULL,
+  `update_date` datetime DEFAULT NULL,
+  `update_name` varchar(32) DEFAULT NULL,
   `table_id` varchar(32) NOT NULL,
-  PRIMARY KEY  (`id`),
+  PRIMARY KEY (`id`),
   KEY `FK_iwtkke1oigq9ukafldrovslx6` (`table_id`),
   CONSTRAINT `FK_iwtkke1oigq9ukafldrovslx6` FOREIGN KEY (`table_id`) REFERENCES `cgform_head` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -583,17 +583,17 @@ CREATE TABLE `cgform_ftl` (
   `ID` varchar(32) NOT NULL,
   `CGFORM_ID` varchar(36) NOT NULL,
   `CGFORM_NAME` varchar(100) NOT NULL,
-  `CREATE_BY` varchar(36) default NULL,
-  `CREATE_DATE` datetime default NULL,
-  `CREATE_NAME` varchar(32) default NULL,
+  `CREATE_BY` varchar(36) DEFAULT NULL,
+  `CREATE_DATE` datetime DEFAULT NULL,
+  `CREATE_NAME` varchar(32) DEFAULT NULL,
   `FTL_CONTENT` longtext,
-  `FTL_STATUS` varchar(50) default NULL,
+  `FTL_STATUS` varchar(50) DEFAULT NULL,
   `FTL_VERSION` int(11) NOT NULL,
-  `FTL_WORD_URL` varchar(200) default NULL,
-  `UPDATE_BY` varchar(36) default NULL,
-  `UPDATE_DATE` datetime default NULL,
-  `UPDATE_NAME` varchar(32) default NULL,
-  PRIMARY KEY  (`ID`)
+  `FTL_WORD_URL` varchar(200) DEFAULT NULL,
+  `UPDATE_BY` varchar(36) DEFAULT NULL,
+  `UPDATE_DATE` datetime DEFAULT NULL,
+  `UPDATE_NAME` varchar(32) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -607,9 +607,9 @@ DROP TABLE IF EXISTS `cgform_head`;
 CREATE TABLE `cgform_head` (
   `id` varchar(32) NOT NULL,
   `content` varchar(200) NOT NULL,
-  `create_by` varchar(32) default NULL,
-  `create_date` datetime default NULL,
-  `create_name` varchar(32) default NULL,
+  `create_by` varchar(32) DEFAULT NULL,
+  `create_date` datetime DEFAULT NULL,
+  `create_name` varchar(32) DEFAULT NULL,
   `is_checkbox` varchar(5) NOT NULL,
   `is_dbsynch` varchar(20) NOT NULL,
   `is_pagination` varchar(5) NOT NULL,
@@ -617,16 +617,16 @@ CREATE TABLE `cgform_head` (
   `jform_type` int(11) NOT NULL,
   `jform_version` varchar(10) NOT NULL,
   `querymode` varchar(10) NOT NULL,
-  `relation_type` int(11) default NULL,
+  `relation_type` int(11) DEFAULT NULL,
   `sub_table_str` longtext,
   `table_name` varchar(20) NOT NULL,
-  `update_by` varchar(32) default NULL,
-  `update_date` datetime default NULL,
-  `update_name` varchar(32) default NULL,
-  `jform_pk_sequence` varchar(200) default NULL,
-  `jform_pk_type` varchar(100) default NULL,
-  `tab_order` int(11) default NULL,
-  PRIMARY KEY  (`id`)
+  `update_by` varchar(32) DEFAULT NULL,
+  `update_date` datetime DEFAULT NULL,
+  `update_name` varchar(32) DEFAULT NULL,
+  `jform_pk_sequence` varchar(200) DEFAULT NULL,
+  `jform_pk_type` varchar(100) DEFAULT NULL,
+  `tab_order` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -651,7 +651,7 @@ CREATE TABLE `cgform_uploadfiles` (
   `CGFORM_ID` varchar(36) NOT NULL,
   `CGFORM_NAME` varchar(100) NOT NULL,
   `id` varchar(32) NOT NULL,
-  PRIMARY KEY  (`id`),
+  PRIMARY KEY (`id`),
   KEY `FK_qwig8sn3okhvh4wye8nn8gdeg` (`id`),
   CONSTRAINT `FK_qwig8sn3okhvh4wye8nn8gdeg` FOREIGN KEY (`id`) REFERENCES `t_s_attachment` (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -667,7 +667,7 @@ DROP TABLE IF EXISTS `ck_editor`;
 CREATE TABLE `ck_editor` (
   `ID` varchar(32) NOT NULL,
   `CONTENTS` blob,
-  PRIMARY KEY  (`ID`)
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -681,10 +681,10 @@ INSERT INTO `ck_editor` VALUES ('4028d881436d514601436d5219250129', 0x3C68746D6C
 DROP TABLE IF EXISTS `ck_finder`;
 CREATE TABLE `ck_finder` (
   `ID` varchar(32) NOT NULL,
-  `ATTACHMENT` varchar(255) default NULL,
-  `IMAGE` varchar(255) default NULL,
+  `ATTACHMENT` varchar(255) DEFAULT NULL,
+  `IMAGE` varchar(255) DEFAULT NULL,
   `REMARK` longtext,
-  PRIMARY KEY  (`ID`)
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -696,13 +696,13 @@ CREATE TABLE `ck_finder` (
 -- ----------------------------
 DROP TABLE IF EXISTS `doc`;
 CREATE TABLE `doc` (
-  `ID` int(11) NOT NULL auto_increment,
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
   `DOCCONTENT` longblob,
-  `DOCDATE` datetime default NULL,
-  `DOCID` varchar(255) default NULL,
-  `DOCTITLE` varchar(255) default NULL,
-  `DOCTYPE` varchar(255) default NULL,
-  PRIMARY KEY  (`ID`)
+  `DOCDATE` datetime DEFAULT NULL,
+  `DOCID` varchar(255) DEFAULT NULL,
+  `DOCTITLE` varchar(255) DEFAULT NULL,
+  `DOCTYPE` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -715,20 +715,20 @@ CREATE TABLE `doc` (
 DROP TABLE IF EXISTS `jeecg_demo`;
 CREATE TABLE `jeecg_demo` (
   `ID` varchar(32) NOT NULL,
-  `AGE` int(11) default NULL,
-  `BIRTHDAY` datetime default NULL,
-  `content` varchar(255) default NULL,
-  `CREATE_TIME` datetime default NULL,
-  `DEP_ID` varchar(255) default NULL,
-  `EMAIL` varchar(255) default NULL,
-  `MOBILE_PHONE` varchar(255) default NULL,
-  `OFFICE_PHONE` varchar(255) default NULL,
-  `SALARY` decimal(19,2) default NULL,
-  `SEX` varchar(255) default NULL,
-  `status` varchar(255) default NULL,
+  `AGE` int(11) DEFAULT NULL,
+  `BIRTHDAY` datetime DEFAULT NULL,
+  `content` varchar(255) DEFAULT NULL,
+  `CREATE_TIME` datetime DEFAULT NULL,
+  `DEP_ID` varchar(255) DEFAULT NULL,
+  `EMAIL` varchar(255) DEFAULT NULL,
+  `MOBILE_PHONE` varchar(255) DEFAULT NULL,
+  `OFFICE_PHONE` varchar(255) DEFAULT NULL,
+  `SALARY` decimal(19,2) DEFAULT NULL,
+  `SEX` varchar(255) DEFAULT NULL,
+  `status` varchar(255) DEFAULT NULL,
   `USER_NAME` varchar(255) NOT NULL,
-  `create_date` datetime default NULL,
-  PRIMARY KEY  (`ID`)
+  `create_date` datetime DEFAULT NULL,
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -742,9 +742,9 @@ INSERT INTO `jeecg_demo` VALUES ('4028d881436d514601436d521ad4015e', '12', '2014
 DROP TABLE IF EXISTS `jeecg_demo_course`;
 CREATE TABLE `jeecg_demo_course` (
   `ID` varchar(32) NOT NULL,
-  `NAME` varchar(25) default NULL,
-  `teacher_ID` varchar(32) default NULL,
-  PRIMARY KEY  (`ID`),
+  `NAME` varchar(25) DEFAULT NULL,
+  `teacher_ID` varchar(32) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
   KEY `FK_g3jn8mfod69i7jfv5gnrcvgbx` (`teacher_ID`),
   CONSTRAINT `FK_g3jn8mfod69i7jfv5gnrcvgbx` FOREIGN KEY (`teacher_ID`) REFERENCES `jeecg_demo_teacher` (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -760,11 +760,11 @@ INSERT INTO `jeecg_demo_course` VALUES ('4028d881436d514601436d5219b0015b', '海
 DROP TABLE IF EXISTS `jeecg_demo_student`;
 CREATE TABLE `jeecg_demo_student` (
   `ID` varchar(32) NOT NULL,
-  `BIRTHDAY` datetime default NULL,
-  `NAME` varchar(32) default NULL,
-  `SEX` varchar(1) default NULL,
-  `COURSE_ID` varchar(32) default NULL,
-  PRIMARY KEY  (`ID`),
+  `BIRTHDAY` datetime DEFAULT NULL,
+  `NAME` varchar(32) DEFAULT NULL,
+  `SEX` varchar(1) DEFAULT NULL,
+  `COURSE_ID` varchar(32) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
   KEY `FK_r86q81koyocgod3cx6529hbpw` (`COURSE_ID`),
   CONSTRAINT `FK_r86q81koyocgod3cx6529hbpw` FOREIGN KEY (`COURSE_ID`) REFERENCES `jeecg_demo_course` (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -781,9 +781,9 @@ INSERT INTO `jeecg_demo_student` VALUES ('4028d881436d514601436d5219b7015d', nul
 DROP TABLE IF EXISTS `jeecg_demo_teacher`;
 CREATE TABLE `jeecg_demo_teacher` (
   `ID` varchar(32) NOT NULL,
-  `NAME` varchar(12) default NULL,
-  `pic` varchar(255) default NULL,
-  PRIMARY KEY  (`ID`)
+  `NAME` varchar(12) DEFAULT NULL,
+  `pic` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -797,17 +797,17 @@ INSERT INTO `jeecg_demo_teacher` VALUES ('4028d881436d514601436d5219ae015a', '�
 DROP TABLE IF EXISTS `jeecg_matter_bom`;
 CREATE TABLE `jeecg_matter_bom` (
   `ID` varchar(32) NOT NULL,
-  `address` varchar(255) default NULL,
+  `address` varchar(255) DEFAULT NULL,
   `code` varchar(50) NOT NULL,
   `name` varchar(50) NOT NULL,
   `price` decimal(21,6) NOT NULL,
-  `productionDate` datetime default NULL,
+  `productionDate` datetime DEFAULT NULL,
   `quantity` int(11) NOT NULL,
   `stock` int(11) NOT NULL,
-  `unit` varchar(50) default NULL,
-  `weight` varchar(50) default NULL,
-  `parent_ID` varchar(32) default NULL,
-  PRIMARY KEY  (`ID`),
+  `unit` varchar(50) DEFAULT NULL,
+  `weight` varchar(50) DEFAULT NULL,
+  `parent_ID` varchar(32) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
   KEY `FK_fldfyrevj0li4hej5b2gu2q7w` (`parent_ID`),
   CONSTRAINT `FK_fldfyrevj0li4hej5b2gu2q7w` FOREIGN KEY (`parent_ID`) REFERENCES `jeecg_matter_bom` (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -824,19 +824,19 @@ INSERT INTO `jeecg_matter_bom` VALUES ('4028d881436d514601436d521ae70164', '上�
 DROP TABLE IF EXISTS `jeecg_minidao`;
 CREATE TABLE `jeecg_minidao` (
   `ID` varchar(32) NOT NULL,
-  `AGE` int(11) default NULL,
-  `BIRTHDAY` datetime default NULL,
-  `CONTENT` varchar(255) default NULL,
-  `CREATE_TIME` datetime default NULL,
-  `DEP_ID` varchar(255) default NULL,
-  `EMAIL` varchar(255) default NULL,
-  `MOBILE_PHONE` varchar(255) default NULL,
-  `OFFICE_PHONE` varchar(255) default NULL,
-  `SALARY` decimal(19,2) default NULL,
-  `SEX` int(11) default NULL,
-  `STATUS` varchar(255) default NULL,
+  `AGE` int(11) DEFAULT NULL,
+  `BIRTHDAY` datetime DEFAULT NULL,
+  `CONTENT` varchar(255) DEFAULT NULL,
+  `CREATE_TIME` datetime DEFAULT NULL,
+  `DEP_ID` varchar(255) DEFAULT NULL,
+  `EMAIL` varchar(255) DEFAULT NULL,
+  `MOBILE_PHONE` varchar(255) DEFAULT NULL,
+  `OFFICE_PHONE` varchar(255) DEFAULT NULL,
+  `SALARY` decimal(19,2) DEFAULT NULL,
+  `SEX` int(11) DEFAULT NULL,
+  `STATUS` varchar(255) DEFAULT NULL,
   `USER_NAME` varchar(255) NOT NULL,
-  PRIMARY KEY  (`ID`)
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -849,22 +849,22 @@ CREATE TABLE `jeecg_minidao` (
 DROP TABLE IF EXISTS `jeecg_order_custom`;
 CREATE TABLE `jeecg_order_custom` (
   `ID` varchar(32) NOT NULL,
-  `CREATE_DT` datetime default NULL,
-  `CRTUSER` varchar(12) default NULL,
-  `CRTUSER_NAME` varchar(10) default NULL,
-  `DEL_DT` datetime default NULL,
-  `DELFLAG` int(11) default NULL,
+  `CREATE_DT` datetime DEFAULT NULL,
+  `CRTUSER` varchar(12) DEFAULT NULL,
+  `CRTUSER_NAME` varchar(10) DEFAULT NULL,
+  `DEL_DT` datetime DEFAULT NULL,
+  `DELFLAG` int(11) DEFAULT NULL,
   `GO_ORDER_CODE` varchar(12) NOT NULL,
-  `GOC_BUSS_CONTENT` varchar(33) default NULL,
-  `GOC_CONTENT` varchar(66) default NULL,
-  `GOC_CUS_NAME` varchar(16) default NULL,
-  `GOC_IDCARD` varchar(18) default NULL,
-  `GOC_PASSPORT_CODE` varchar(10) default NULL,
-  `GOC_SEX` varchar(255) default NULL,
-  `MODIFIER` varchar(12) default NULL,
-  `MODIFIER_NAME` varchar(10) default NULL,
-  `MODIFY_DT` datetime default NULL,
-  PRIMARY KEY  (`ID`)
+  `GOC_BUSS_CONTENT` varchar(33) DEFAULT NULL,
+  `GOC_CONTENT` varchar(66) DEFAULT NULL,
+  `GOC_CUS_NAME` varchar(16) DEFAULT NULL,
+  `GOC_IDCARD` varchar(18) DEFAULT NULL,
+  `GOC_PASSPORT_CODE` varchar(10) DEFAULT NULL,
+  `GOC_SEX` varchar(255) DEFAULT NULL,
+  `MODIFIER` varchar(12) DEFAULT NULL,
+  `MODIFIER_NAME` varchar(10) DEFAULT NULL,
+  `MODIFY_DT` datetime DEFAULT NULL,
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -878,24 +878,24 @@ INSERT INTO `jeecg_order_custom` VALUES ('4028d881436d514601436d521ae20162', nul
 DROP TABLE IF EXISTS `jeecg_order_main`;
 CREATE TABLE `jeecg_order_main` (
   `ID` varchar(32) NOT NULL,
-  `CREATE_DT` datetime default NULL,
-  `CRTUSER` varchar(12) default NULL,
-  `CRTUSER_NAME` varchar(10) default NULL,
-  `DEL_DT` datetime default NULL,
-  `DELFLAG` int(11) default NULL,
-  `GO_ALL_PRICE` decimal(10,2) default NULL,
-  `GO_CONTACT_NAME` varchar(16) default NULL,
-  `GO_CONTENT` varchar(66) default NULL,
+  `CREATE_DT` datetime DEFAULT NULL,
+  `CRTUSER` varchar(12) DEFAULT NULL,
+  `CRTUSER_NAME` varchar(10) DEFAULT NULL,
+  `DEL_DT` datetime DEFAULT NULL,
+  `DELFLAG` int(11) DEFAULT NULL,
+  `GO_ALL_PRICE` decimal(10,2) DEFAULT NULL,
+  `GO_CONTACT_NAME` varchar(16) DEFAULT NULL,
+  `GO_CONTENT` varchar(66) DEFAULT NULL,
   `GO_ORDER_CODE` varchar(12) NOT NULL,
-  `GO_ORDER_COUNT` int(11) default NULL,
-  `GO_RETURN_PRICE` decimal(10,2) default NULL,
-  `GO_TELPHONE` varchar(11) default NULL,
-  `GODER_TYPE` varchar(255) default NULL,
-  `MODIFIER` varchar(12) default NULL,
-  `MODIFIER_NAME` varchar(10) default NULL,
-  `MODIFY_DT` datetime default NULL,
-  `USERTYPE` varchar(255) default NULL,
-  PRIMARY KEY  (`ID`)
+  `GO_ORDER_COUNT` int(11) DEFAULT NULL,
+  `GO_RETURN_PRICE` decimal(10,2) DEFAULT NULL,
+  `GO_TELPHONE` varchar(11) DEFAULT NULL,
+  `GODER_TYPE` varchar(255) DEFAULT NULL,
+  `MODIFIER` varchar(12) DEFAULT NULL,
+  `MODIFIER_NAME` varchar(10) DEFAULT NULL,
+  `MODIFY_DT` datetime DEFAULT NULL,
+  `USERTYPE` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -909,22 +909,22 @@ INSERT INTO `jeecg_order_main` VALUES ('4028d881436d514601436d521adb0160', null,
 DROP TABLE IF EXISTS `jeecg_order_product`;
 CREATE TABLE `jeecg_order_product` (
   `ID` varchar(32) NOT NULL,
-  `CREATE_DT` datetime default NULL,
-  `CRTUSER` varchar(12) default NULL,
-  `CRTUSER_NAME` varchar(10) default NULL,
-  `DEL_DT` datetime default NULL,
-  `DELFLAG` int(11) default NULL,
+  `CREATE_DT` datetime DEFAULT NULL,
+  `CRTUSER` varchar(12) DEFAULT NULL,
+  `CRTUSER_NAME` varchar(10) DEFAULT NULL,
+  `DEL_DT` datetime DEFAULT NULL,
+  `DELFLAG` int(11) DEFAULT NULL,
   `GO_ORDER_CODE` varchar(12) NOT NULL,
-  `GOP_CONTENT` varchar(66) default NULL,
-  `GOP_COUNT` int(11) default NULL,
-  `GOP_ONE_PRICE` decimal(10,2) default NULL,
-  `GOP_PRODUCT_NAME` varchar(33) default NULL,
+  `GOP_CONTENT` varchar(66) DEFAULT NULL,
+  `GOP_COUNT` int(11) DEFAULT NULL,
+  `GOP_ONE_PRICE` decimal(10,2) DEFAULT NULL,
+  `GOP_PRODUCT_NAME` varchar(33) DEFAULT NULL,
   `GOP_PRODUCT_TYPE` varchar(1) NOT NULL,
-  `GOP_SUM_PRICE` decimal(10,2) default NULL,
-  `MODIFIER` varchar(12) default NULL,
-  `MODIFIER_NAME` varchar(10) default NULL,
-  `MODIFY_DT` datetime default NULL,
-  PRIMARY KEY  (`ID`)
+  `GOP_SUM_PRICE` decimal(10,2) DEFAULT NULL,
+  `MODIFIER` varchar(12) DEFAULT NULL,
+  `MODIFIER_NAME` varchar(10) DEFAULT NULL,
+  `MODIFY_DT` datetime DEFAULT NULL,
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -942,7 +942,7 @@ CREATE TABLE `jform_cgreport_head` (
   `CODE` varchar(36) NOT NULL,
   `CONTENT` longtext NOT NULL,
   `NAME` varchar(100) NOT NULL,
-  PRIMARY KEY  (`ID`)
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -956,18 +956,18 @@ INSERT INTO `jform_cgreport_head` VALUES ('402889f847666ae401476670bb72000a', 's
 DROP TABLE IF EXISTS `jform_cgreport_item`;
 CREATE TABLE `jform_cgreport_item` (
   `ID` varchar(36) NOT NULL,
-  `S_FLAG` varchar(2) default NULL,
-  `S_MODE` varchar(10) default NULL,
-  `CGRHEAD_ID` varchar(36) default NULL,
-  `DICT_CODE` varchar(36) default NULL,
-  `FIELD_HREF` varchar(120) default NULL,
-  `FIELD_NAME` varchar(36) default NULL,
+  `S_FLAG` varchar(2) DEFAULT NULL,
+  `S_MODE` varchar(10) DEFAULT NULL,
+  `CGRHEAD_ID` varchar(36) DEFAULT NULL,
+  `DICT_CODE` varchar(36) DEFAULT NULL,
+  `FIELD_HREF` varchar(120) DEFAULT NULL,
+  `FIELD_NAME` varchar(36) DEFAULT NULL,
   `FIELD_TXT` longtext,
-  `FIELD_TYPE` varchar(10) default NULL,
-  `IS_SHOW` varchar(5) default NULL,
-  `ORDER_NUM` int(11) default NULL,
-  `REPLACE_VA` varchar(36) default NULL,
-  PRIMARY KEY  (`ID`)
+  `FIELD_TYPE` varchar(10) DEFAULT NULL,
+  `IS_SHOW` varchar(5) DEFAULT NULL,
+  `ORDER_NUM` int(11) DEFAULT NULL,
+  `REPLACE_VA` varchar(36) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -994,12 +994,12 @@ CREATE TABLE `jform_leave` (
   `sex` varchar(10) NOT NULL COMMENT '性别',
   `begindate` datetime NOT NULL COMMENT '请假开始时间',
   `enddate` datetime NOT NULL COMMENT '请假结束时间',
-  `day_num` int(11) default NULL COMMENT '请假天数',
+  `day_num` int(11) DEFAULT NULL COMMENT '请假天数',
   `hol_dept` varchar(32) NOT NULL COMMENT '所属部门',
   `hol_reson` varchar(255) NOT NULL COMMENT '请假原因',
   `dep_leader` varchar(20) NOT NULL COMMENT '部门审批人',
   `content` varchar(255) NOT NULL COMMENT '部门审批意见',
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -1012,11 +1012,11 @@ CREATE TABLE `jform_leave` (
 DROP TABLE IF EXISTS `jform_order_main`;
 CREATE TABLE `jform_order_main` (
   `id` varchar(36) NOT NULL,
-  `order_code` varchar(50) default NULL COMMENT '订单号',
-  `order_date` datetime default NULL COMMENT '订单日期',
-  `order_money` double default NULL COMMENT '订单金额',
-  `content` varchar(255) default NULL COMMENT '备注',
-  PRIMARY KEY  (`id`)
+  `order_code` varchar(50) DEFAULT NULL COMMENT '订单号',
+  `order_date` datetime DEFAULT NULL COMMENT '订单日期',
+  `order_money` double DEFAULT NULL COMMENT '订单金额',
+  `content` varchar(255) DEFAULT NULL COMMENT '备注',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -1029,12 +1029,12 @@ CREATE TABLE `jform_order_main` (
 DROP TABLE IF EXISTS `jg_person`;
 CREATE TABLE `jg_person` (
   `ID` varchar(32) NOT NULL,
-  `AGE` int(11) default NULL,
-  `BIRTHDAY` datetime default NULL,
-  `CREATEDT` datetime default NULL,
+  `AGE` int(11) DEFAULT NULL,
+  `BIRTHDAY` datetime DEFAULT NULL,
+  `CREATEDT` datetime DEFAULT NULL,
   `NAME` varchar(255) NOT NULL,
-  `SALARY` decimal(19,2) default NULL,
-  PRIMARY KEY  (`ID`)
+  `SALARY` decimal(19,2) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -1049,10 +1049,10 @@ DROP TABLE IF EXISTS `jp_demo_activity`;
 CREATE TABLE `jp_demo_activity` (
   `id` varchar(32) NOT NULL COMMENT 'ID',
   `name` varchar(100) NOT NULL COMMENT '活动名称',
-  `begin_time` datetime default NULL COMMENT '活动开始时间',
-  `end_time` datetime default NULL COMMENT ' 活动结束时间',
-  `hdurl` varchar(300) default NULL COMMENT '入口地址',
-  PRIMARY KEY  (`id`)
+  `begin_time` datetime DEFAULT NULL COMMENT '活动开始时间',
+  `end_time` datetime DEFAULT NULL COMMENT ' 活动结束时间',
+  `hdurl` varchar(300) DEFAULT NULL COMMENT '入口地址',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='红包活动表';
 
 -- ----------------------------
@@ -1067,16 +1067,16 @@ INSERT INTO `jp_demo_activity` VALUES ('F4EAEF41A7DF4B59AE9A41455E1643F9', '3', 
 -- ----------------------------
 DROP TABLE IF EXISTS `jp_demo_auth`;
 CREATE TABLE `jp_demo_auth` (
-  `id` bigint(20) unsigned NOT NULL auto_increment COMMENT '序号',
-  `auth_id` varchar(32) collate utf8_bin NOT NULL default '' COMMENT '权限编码',
-  `auth_name` varchar(100) collate utf8_bin default NULL COMMENT '权限名称',
-  `auth_type` varchar(2) collate utf8_bin default NULL COMMENT '权限类型 0:菜单;1:功能',
-  `auth_contr` varchar(256) collate utf8_bin default NULL COMMENT '权限控制',
-  `parent_auth_id` char(12) collate utf8_bin default NULL COMMENT '上一级权限编码',
-  `leaf_ind` char(2) collate utf8_bin default NULL COMMENT '是否叶子节点',
-  PRIMARY KEY  (`id`),
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '序号',
+  `auth_id` varchar(32) COLLATE utf8_bin NOT NULL DEFAULT '' COMMENT '权限编码',
+  `auth_name` varchar(100) COLLATE utf8_bin DEFAULT NULL COMMENT '权限名称',
+  `auth_type` varchar(2) COLLATE utf8_bin DEFAULT NULL COMMENT '权限类型 0:菜单;1:功能',
+  `auth_contr` varchar(256) COLLATE utf8_bin DEFAULT NULL COMMENT '权限控制',
+  `parent_auth_id` char(12) COLLATE utf8_bin DEFAULT NULL COMMENT '上一级权限编码',
+  `leaf_ind` char(2) COLLATE utf8_bin DEFAULT NULL COMMENT '是否叶子节点',
+  PRIMARY KEY (`id`),
   UNIQUE KEY `uniq_authid` (`auth_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='运营系统权限表';
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='运营系统权限表';
 
 -- ----------------------------
 -- Records of jp_demo_auth
@@ -1100,11 +1100,11 @@ INSERT INTO `jp_demo_auth` VALUES ('12', '210302', '编辑权限', '1', '/system
 DROP TABLE IF EXISTS `optimistic_locking`;
 CREATE TABLE `optimistic_locking` (
   `ID` varchar(32) NOT NULL,
-  `ACCOUNT` int(11) default NULL,
-  `AGE` int(11) default NULL,
-  `NAME` varchar(85) default NULL,
-  `VER` int(11) default NULL,
-  PRIMARY KEY  (`ID`)
+  `ACCOUNT` int(11) DEFAULT NULL,
+  `AGE` int(11) DEFAULT NULL,
+  `NAME` varchar(85) DEFAULT NULL,
+  `VER` int(11) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -1117,19 +1117,19 @@ CREATE TABLE `optimistic_locking` (
 DROP TABLE IF EXISTS `qywx_account`;
 CREATE TABLE `qywx_account` (
   `id` varchar(50) NOT NULL,
-  `accont_name` varchar(100) default NULL COMMENT '名称',
-  `corpid` varchar(255) default NULL COMMENT '企业号标识CorpID',
-  `secret` varchar(255) default NULL COMMENT '管理组凭证密钥Secret',
-  `access_token` varchar(512) default NULL COMMENT 'AccessToken',
-  `account_desc` varchar(300) default NULL COMMENT '描述',
-  `create_name` varchar(50) default NULL COMMENT '创建人名称',
-  `create_by` varchar(50) default NULL COMMENT '创建人登录名称',
-  `create_date` datetime default NULL COMMENT '创建日期',
-  `update_name` varchar(50) default NULL COMMENT '更新人名称',
-  `update_by` varchar(50) default NULL COMMENT '更新人登录名称',
-  `update_date` datetime default NULL COMMENT '更新日期',
-  `conversation_secret` varchar(255) default NULL,
-  PRIMARY KEY  (`id`),
+  `accont_name` varchar(100) DEFAULT NULL COMMENT '名称',
+  `corpid` varchar(255) DEFAULT NULL COMMENT '企业号标识CorpID',
+  `secret` varchar(255) DEFAULT NULL COMMENT '管理组凭证密钥Secret',
+  `access_token` varchar(512) DEFAULT NULL COMMENT 'AccessToken',
+  `account_desc` varchar(300) DEFAULT NULL COMMENT '描述',
+  `create_name` varchar(50) DEFAULT NULL COMMENT '创建人名称',
+  `create_by` varchar(50) DEFAULT NULL COMMENT '创建人登录名称',
+  `create_date` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_name` varchar(50) DEFAULT NULL COMMENT '更新人名称',
+  `update_by` varchar(50) DEFAULT NULL COMMENT '更新人登录名称',
+  `update_date` datetime DEFAULT NULL COMMENT '更新日期',
+  `conversation_secret` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
   UNIQUE KEY `uniq_corpid` (`corpid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='账号信息表';
 
@@ -1145,28 +1145,28 @@ DROP TABLE IF EXISTS `qywx_agent`;
 CREATE TABLE `qywx_agent` (
   `id` varchar(50) NOT NULL COMMENT '主键Id',
   `account_id` varchar(200) NOT NULL COMMENT '企业号ID',
-  `wx_agentid` varchar(200) default NULL COMMENT '应用ID(微信)',
-  `agent_name` varchar(200) default NULL COMMENT '应用名称',
-  `token` varchar(50) default NULL COMMENT '回调token',
-  `encodingAESKey` varchar(100) default NULL COMMENT '回调EncodingAESKey',
-  `square_logo_url` varchar(200) default NULL COMMENT '方形头像',
-  `round_logo_url` varchar(200) default NULL COMMENT '圆形头像',
-  `logo_mediaid` varchar(100) default NULL COMMENT '头像mediaid',
-  `description` varchar(200) default NULL COMMENT '描述',
-  `close_status` varchar(200) default NULL COMMENT '是否被禁用',
-  `redirect_domain` varchar(200) default NULL COMMENT '可信域名',
-  `report_location_flag` varchar(2) default NULL COMMENT '是否打开地理位置上报 0：不上报；1：进入会话上报；2：持续上报',
-  `isreportuser` varchar(2) default NULL COMMENT '是否接收用户变更通知。0：不接收；1：接收',
-  `isreportenter` varchar(2) default NULL COMMENT '是否上报用户进入应用事件。0：不接收；1：接收',
-  `app_type` varchar(2) default NULL COMMENT '应用类型。1：消息型；2：主页型',
-  `home_url` varchar(200) default NULL COMMENT '主页型应用url',
-  `create_name` varchar(50) default NULL COMMENT '创建人名称',
-  `create_by` varchar(50) default NULL COMMENT '创建人登录名称',
-  `create_date` datetime default NULL COMMENT '创建日期',
-  `update_name` varchar(50) default NULL COMMENT '更新人名称',
-  `update_by` varchar(50) default NULL COMMENT '更新人登录名称',
-  `update_date` datetime default NULL COMMENT '更新日期',
-  PRIMARY KEY  (`id`),
+  `wx_agentid` varchar(200) DEFAULT NULL COMMENT '应用ID(微信)',
+  `agent_name` varchar(200) DEFAULT NULL COMMENT '应用名称',
+  `token` varchar(50) DEFAULT NULL COMMENT '回调token',
+  `encodingAESKey` varchar(100) DEFAULT NULL COMMENT '回调EncodingAESKey',
+  `square_logo_url` varchar(200) DEFAULT NULL COMMENT '方形头像',
+  `round_logo_url` varchar(200) DEFAULT NULL COMMENT '圆形头像',
+  `logo_mediaid` varchar(100) DEFAULT NULL COMMENT '头像mediaid',
+  `description` varchar(200) DEFAULT NULL COMMENT '描述',
+  `close_status` varchar(200) DEFAULT NULL COMMENT '是否被禁用',
+  `redirect_domain` varchar(200) DEFAULT NULL COMMENT '可信域名',
+  `report_location_flag` varchar(2) DEFAULT NULL COMMENT '是否打开地理位置上报 0：不上报；1：进入会话上报；2：持续上报',
+  `isreportuser` varchar(2) DEFAULT NULL COMMENT '是否接收用户变更通知。0：不接收；1：接收',
+  `isreportenter` varchar(2) DEFAULT NULL COMMENT '是否上报用户进入应用事件。0：不接收；1：接收',
+  `app_type` varchar(2) DEFAULT NULL COMMENT '应用类型。1：消息型；2：主页型',
+  `home_url` varchar(200) DEFAULT NULL COMMENT '主页型应用url',
+  `create_name` varchar(50) DEFAULT NULL COMMENT '创建人名称',
+  `create_by` varchar(50) DEFAULT NULL COMMENT '创建人登录名称',
+  `create_date` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_name` varchar(50) DEFAULT NULL COMMENT '更新人名称',
+  `update_by` varchar(50) DEFAULT NULL COMMENT '更新人登录名称',
+  `update_date` datetime DEFAULT NULL COMMENT '更新日期',
+  PRIMARY KEY (`id`),
   UNIQUE KEY `uniq_accountid_appid` (`account_id`,`wx_agentid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='应用信息表';
 
@@ -1182,18 +1182,18 @@ INSERT INTO `qywx_agent` VALUES ('DC46552CD5AE4DF2AE12680C4636C9BA', '402880a947
 DROP TABLE IF EXISTS `qywx_autoresponse`;
 CREATE TABLE `qywx_autoresponse` (
   `id` varchar(100) NOT NULL,
-  `key_word` varchar(200) default NULL COMMENT '关键字',
-  `res_content` varchar(500) default NULL COMMENT '回复内容',
-  `msg_type` varchar(100) default NULL COMMENT '消息类型',
-  `template_name` varchar(100) default NULL COMMENT '模板名称',
-  `accountid` varchar(100) default NULL COMMENT '微信账号id',
-  `create_name` varchar(50) default NULL COMMENT '创建人名称',
-  `create_by` varchar(50) default NULL COMMENT '创建人登录名称',
-  `create_date` datetime default NULL COMMENT '创建日期',
-  `update_name` varchar(50) default NULL COMMENT '更新人名称',
-  `update_by` varchar(50) default NULL COMMENT '更新人登录名称',
-  `update_date` datetime default NULL COMMENT '更新日期',
-  PRIMARY KEY  (`id`),
+  `key_word` varchar(200) DEFAULT NULL COMMENT '关键字',
+  `res_content` varchar(500) DEFAULT NULL COMMENT '回复内容',
+  `msg_type` varchar(100) DEFAULT NULL COMMENT '消息类型',
+  `template_name` varchar(100) DEFAULT NULL COMMENT '模板名称',
+  `accountid` varchar(100) DEFAULT NULL COMMENT '微信账号id',
+  `create_name` varchar(50) DEFAULT NULL COMMENT '创建人名称',
+  `create_by` varchar(50) DEFAULT NULL COMMENT '创建人登录名称',
+  `create_date` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_name` varchar(50) DEFAULT NULL COMMENT '更新人名称',
+  `update_by` varchar(50) DEFAULT NULL COMMENT '更新人登录名称',
+  `update_date` datetime DEFAULT NULL COMMENT '更新日期',
+  PRIMARY KEY (`id`),
   KEY `idx_accountid` (`accountid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='关键字管理';
 
@@ -1213,16 +1213,16 @@ CREATE TABLE `qywx_autoresponse_default` (
   `id` varchar(50) NOT NULL COMMENT '主键Id',
   `templatename` varchar(200) NOT NULL COMMENT '模板名称',
   `templateid` varchar(50) NOT NULL COMMENT '模板Id',
-  `msgtype` varchar(40) default NULL COMMENT '消息类型',
-  `accountid` varchar(40) default NULL COMMENT '微信账号Id',
-  `iswork` varchar(10) default NULL COMMENT '是否启用',
-  `create_name` varchar(50) default NULL COMMENT '创建人名称',
-  `create_by` varchar(50) default NULL COMMENT '创建人登录名称',
-  `create_date` datetime default NULL COMMENT '创建日期',
-  `update_name` varchar(50) default NULL COMMENT '更新人名称',
-  `update_by` varchar(50) default NULL COMMENT '更新人登录名称',
-  `update_date` datetime default NULL COMMENT '更新日期',
-  PRIMARY KEY  (`id`)
+  `msgtype` varchar(40) DEFAULT NULL COMMENT '消息类型',
+  `accountid` varchar(40) DEFAULT NULL COMMENT '微信账号Id',
+  `iswork` varchar(10) DEFAULT NULL COMMENT '是否启用',
+  `create_name` varchar(50) DEFAULT NULL COMMENT '创建人名称',
+  `create_by` varchar(50) DEFAULT NULL COMMENT '创建人登录名称',
+  `create_date` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_name` varchar(50) DEFAULT NULL COMMENT '更新人名称',
+  `update_by` varchar(50) DEFAULT NULL COMMENT '更新人登录名称',
+  `update_date` datetime DEFAULT NULL COMMENT '更新日期',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='默认关键字回复';
 
 -- ----------------------------
@@ -1236,14 +1236,14 @@ INSERT INTO `qywx_autoresponse_default` VALUES ('8a792db34fdf51b3014fdfb22e87004
 DROP TABLE IF EXISTS `qywx_conversation`;
 CREATE TABLE `qywx_conversation` (
   `ID` varchar(50) NOT NULL,
-  `TITLE` varchar(200) default NULL,
-  `USERNAMELIST` varchar(2000) default NULL,
-  `USERIDLIST` varchar(2000) default NULL,
-  `STATUS` int(2) default NULL,
-  `MANAGERID` varchar(50) default NULL,
-  `CHATID` varchar(100) default NULL,
-  `MANAGERNAME` varchar(50) default NULL,
-  PRIMARY KEY  (`ID`)
+  `TITLE` varchar(200) DEFAULT NULL,
+  `USERNAMELIST` varchar(2000) DEFAULT NULL,
+  `USERIDLIST` varchar(2000) DEFAULT NULL,
+  `STATUS` int(2) DEFAULT NULL,
+  `MANAGERID` varchar(50) DEFAULT NULL,
+  `CHATID` varchar(100) DEFAULT NULL,
+  `MANAGERNAME` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -1257,17 +1257,17 @@ INSERT INTO `qywx_conversation` VALUES ('725105D1D71948499B1CB7FFE465011A', '会
 DROP TABLE IF EXISTS `qywx_group`;
 CREATE TABLE `qywx_group` (
   `id` varchar(100) NOT NULL COMMENT '部门Id',
-  `name` varchar(200) default NULL COMMENT '部门名称',
-  `parentid` varchar(100) default NULL COMMENT '上级部门Id',
-  `accountid` varchar(100) default NULL COMMENT '微信账号ID',
-  `orders` varchar(11) default NULL,
-  `create_name` varchar(50) default NULL COMMENT '创建人名称',
-  `create_by` varchar(50) default NULL COMMENT '创建人登录名称',
-  `create_date` datetime default NULL COMMENT '创建日期',
-  `update_name` varchar(50) default NULL COMMENT '更新人名称',
-  `update_by` varchar(50) default NULL COMMENT '更新人登录名称',
-  `update_date` datetime default NULL COMMENT '更新日期',
-  PRIMARY KEY  (`id`)
+  `name` varchar(200) DEFAULT NULL COMMENT '部门名称',
+  `parentid` varchar(100) DEFAULT NULL COMMENT '上级部门Id',
+  `accountid` varchar(100) DEFAULT NULL COMMENT '微信账号ID',
+  `orders` varchar(11) DEFAULT NULL,
+  `create_name` varchar(50) DEFAULT NULL COMMENT '创建人名称',
+  `create_by` varchar(50) DEFAULT NULL COMMENT '创建人登录名称',
+  `create_date` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_name` varchar(50) DEFAULT NULL COMMENT '更新人名称',
+  `update_by` varchar(50) DEFAULT NULL COMMENT '更新人登录名称',
+  `update_date` datetime DEFAULT NULL COMMENT '更新日期',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='关注用户组';
 
 -- ----------------------------
@@ -1283,18 +1283,18 @@ INSERT INTO `qywx_group` VALUES ('8C3E0E85D3134B99BB15D4E16F5AFF36', '财务室'
 DROP TABLE IF EXISTS `qywx_gzentity`;
 CREATE TABLE `qywx_gzentity` (
   `id` varchar(100) NOT NULL,
-  `template_name` varchar(100) default NULL COMMENT '模板名称',
-  `template_id` varchar(100) default NULL COMMENT '模板id',
-  `template_type` varchar(100) default NULL COMMENT '类型 文本_text,图文_news',
-  `is_work` varchar(100) default NULL COMMENT '是否启用 未启用_0,启用_1',
-  `accountid` varchar(100) default NULL COMMENT '微信账号id',
-  `create_name` varchar(50) default NULL COMMENT '创建人名称',
-  `create_by` varchar(50) default NULL COMMENT '创建人登录名称',
-  `create_date` datetime default NULL COMMENT '创建日期',
-  `update_name` varchar(50) default NULL COMMENT '更新人名称',
-  `update_by` varchar(50) default NULL COMMENT '更新人登录名称',
-  `update_date` datetime default NULL COMMENT '更新日期',
-  PRIMARY KEY  (`id`)
+  `template_name` varchar(100) DEFAULT NULL COMMENT '模板名称',
+  `template_id` varchar(100) DEFAULT NULL COMMENT '模板id',
+  `template_type` varchar(100) DEFAULT NULL COMMENT '类型 文本_text,图文_news',
+  `is_work` varchar(100) DEFAULT NULL COMMENT '是否启用 未启用_0,启用_1',
+  `accountid` varchar(100) DEFAULT NULL COMMENT '微信账号id',
+  `create_name` varchar(50) DEFAULT NULL COMMENT '创建人名称',
+  `create_by` varchar(50) DEFAULT NULL COMMENT '创建人登录名称',
+  `create_date` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_name` varchar(50) DEFAULT NULL COMMENT '更新人名称',
+  `update_by` varchar(50) DEFAULT NULL COMMENT '更新人登录名称',
+  `update_date` datetime DEFAULT NULL COMMENT '更新日期',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='关注回复';
 
 -- ----------------------------
@@ -1308,27 +1308,27 @@ INSERT INTO `qywx_gzentity` VALUES ('8a792db34fdf51b3014fdfa74adf0034', '图文�
 -- ----------------------------
 DROP TABLE IF EXISTS `qywx_gzuserinfo`;
 CREATE TABLE `qywx_gzuserinfo` (
-  `id` varchar(100) character set gbk NOT NULL COMMENT '主键',
-  `userid` varchar(100) default NULL COMMENT '账号',
-  `name` varchar(100) default NULL COMMENT '姓名',
-  `department` varchar(200) default NULL COMMENT '部门',
-  `position` varchar(100) default NULL COMMENT '职位',
-  `mobile` varchar(100) default NULL COMMENT '电话',
-  `province` varchar(100) default NULL COMMENT '省份',
-  `gender` varchar(100) default NULL COMMENT '性别gender=1表示男，=0表示女',
-  `email` varchar(400) default NULL COMMENT '邮箱',
-  `weixinid` varchar(100) default NULL COMMENT '微信号',
-  `avatar` varchar(100) default NULL COMMENT '头像url',
-  `subscribe_status` varchar(100) default NULL COMMENT '关注状态: 1=已关注，2=已冻结，4=未关注',
-  `subscribe_time` datetime default NULL COMMENT '关注时间',
-  `accountid` varchar(100) default NULL COMMENT '微信账号ID',
-  `create_name` varchar(50) default NULL COMMENT '创建人名称',
-  `create_by` varchar(50) default NULL COMMENT '创建人登录名称',
-  `create_date` datetime default NULL COMMENT '创建日期',
-  `update_name` varchar(50) default NULL COMMENT '更新人名称',
-  `update_by` varchar(50) default NULL COMMENT '更新人登录名称',
-  `update_date` datetime default NULL COMMENT '更新日期',
-  PRIMARY KEY  (`id`)
+  `id` varchar(100) CHARACTER SET gbk NOT NULL COMMENT '主键',
+  `userid` varchar(100) DEFAULT NULL COMMENT '账号',
+  `name` varchar(100) DEFAULT NULL COMMENT '姓名',
+  `department` varchar(200) DEFAULT NULL COMMENT '部门',
+  `position` varchar(100) DEFAULT NULL COMMENT '职位',
+  `mobile` varchar(100) DEFAULT NULL COMMENT '电话',
+  `province` varchar(100) DEFAULT NULL COMMENT '省份',
+  `gender` varchar(100) DEFAULT NULL COMMENT '性别gender=1表示男，=0表示女',
+  `email` varchar(400) DEFAULT NULL COMMENT '邮箱',
+  `weixinid` varchar(100) DEFAULT NULL COMMENT '微信号',
+  `avatar` varchar(100) DEFAULT NULL COMMENT '头像url',
+  `subscribe_status` varchar(100) DEFAULT NULL COMMENT '关注状态: 1=已关注，2=已冻结，4=未关注',
+  `subscribe_time` datetime DEFAULT NULL COMMENT '关注时间',
+  `accountid` varchar(100) DEFAULT NULL COMMENT '微信账号ID',
+  `create_name` varchar(50) DEFAULT NULL COMMENT '创建人名称',
+  `create_by` varchar(50) DEFAULT NULL COMMENT '创建人登录名称',
+  `create_date` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_name` varchar(50) DEFAULT NULL COMMENT '更新人名称',
+  `update_by` varchar(50) DEFAULT NULL COMMENT '更新人登录名称',
+  `update_date` datetime DEFAULT NULL COMMENT '更新日期',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='关注用户';
 
 -- ----------------------------
@@ -1343,13 +1343,13 @@ DROP TABLE IF EXISTS `qywx_location`;
 CREATE TABLE `qywx_location` (
   `id` varchar(32) NOT NULL COMMENT 'id',
   `corpid` varchar(64) NOT NULL COMMENT '企业号corpId',
-  `userid` varchar(64) default NULL COMMENT ' 	成员UserID ',
-  `createtime` datetime default NULL COMMENT '创建时间',
-  `latitude` varchar(64) default NULL COMMENT '地理位置纬度',
-  `longitude` varchar(64) default NULL COMMENT '地理位置径度',
-  `precision` varchar(64) default NULL COMMENT '地理位置精度',
-  `agentid` int(32) default NULL COMMENT '企业应用id',
-  `location_precision` varchar(100) default NULL
+  `userid` varchar(64) DEFAULT NULL COMMENT ' 	成员UserID ',
+  `createtime` datetime DEFAULT NULL COMMENT '创建时间',
+  `latitude` varchar(64) DEFAULT NULL COMMENT '地理位置纬度',
+  `longitude` varchar(64) DEFAULT NULL COMMENT '地理位置径度',
+  `precision` varchar(64) DEFAULT NULL COMMENT '地理位置精度',
+  `agentid` int(32) DEFAULT NULL COMMENT '企业应用id',
+  `location_precision` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='地理位置表';
 
 -- ----------------------------
@@ -1364,24 +1364,24 @@ INSERT INTO `qywx_location` VALUES ('BF3219EA3F2840938BDA4FDE703A5E36', 'wx967db
 DROP TABLE IF EXISTS `qywx_menu`;
 CREATE TABLE `qywx_menu` (
   `ID` varchar(32) NOT NULL,
-  `agent_id` varchar(255) default NULL COMMENT '应用主键ID',
-  `menu_name` varchar(255) default NULL COMMENT '菜单标题',
-  `menu_type` varchar(255) default NULL COMMENT '菜单类型',
-  `menu_key` varchar(255) default NULL COMMENT '菜单KEY',
-  `orders` varchar(10) default NULL COMMENT '菜单位置',
-  `msg_type` varchar(255) default NULL COMMENT '响应消息类型',
-  `template_id` varchar(255) default NULL COMMENT '关联素材ID',
-  `url` varchar(1000) default NULL COMMENT '网页链接',
-  `father_id` varchar(32) default NULL COMMENT '父ID',
-  `create_name` varchar(50) default NULL COMMENT '创建人名称',
-  `create_by` varchar(50) default NULL COMMENT '创建人登录名称',
-  `create_date` datetime default NULL COMMENT '创建日期',
-  `update_name` varchar(50) default NULL COMMENT '更新人名称',
-  `update_by` varchar(50) default NULL COMMENT '更新人登录名称',
-  `update_date` datetime default NULL COMMENT '更新日期',
-  PRIMARY KEY  (`ID`),
-  KEY `menu_key` USING BTREE (`menu_key`),
-  KEY `order` USING BTREE (`orders`)
+  `agent_id` varchar(255) DEFAULT NULL COMMENT '应用主键ID',
+  `menu_name` varchar(255) DEFAULT NULL COMMENT '菜单标题',
+  `menu_type` varchar(255) DEFAULT NULL COMMENT '菜单类型',
+  `menu_key` varchar(255) DEFAULT NULL COMMENT '菜单KEY',
+  `orders` varchar(10) DEFAULT NULL COMMENT '菜单位置',
+  `msg_type` varchar(255) DEFAULT NULL COMMENT '响应消息类型',
+  `template_id` varchar(255) DEFAULT NULL COMMENT '关联素材ID',
+  `url` varchar(1000) DEFAULT NULL COMMENT '网页链接',
+  `father_id` varchar(32) DEFAULT NULL COMMENT '父ID',
+  `create_name` varchar(50) DEFAULT NULL COMMENT '创建人名称',
+  `create_by` varchar(50) DEFAULT NULL COMMENT '创建人登录名称',
+  `create_date` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_name` varchar(50) DEFAULT NULL COMMENT '更新人名称',
+  `update_by` varchar(50) DEFAULT NULL COMMENT '更新人登录名称',
+  `update_date` datetime DEFAULT NULL COMMENT '更新日期',
+  PRIMARY KEY (`ID`),
+  KEY `menu_key` (`menu_key`) USING BTREE,
+  KEY `order` (`orders`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='自定义菜单表';
 
 -- ----------------------------
@@ -1400,14 +1400,14 @@ INSERT INTO `qywx_menu` VALUES ('D7837CB701E845F6B5557AFACCDB2B98', '1', 'OA办�
 DROP TABLE IF EXISTS `qywx_messagelog`;
 CREATE TABLE `qywx_messagelog` (
   `id` varchar(32) NOT NULL,
-  `wx_agent_id` int(11) default NULL COMMENT '应用id',
-  `topartys_id` varchar(64) default NULL COMMENT '部门id',
-  `message_type` varchar(32) default NULL COMMENT '消息类型',
+  `wx_agent_id` int(11) DEFAULT NULL COMMENT '应用id',
+  `topartys_id` varchar(64) DEFAULT NULL COMMENT '部门id',
+  `message_type` varchar(32) DEFAULT NULL COMMENT '消息类型',
   `message_content` text COMMENT '文本内容',
-  `content_id` varchar(64) default NULL COMMENT '内容id',
-  `receive_message` varchar(300) default NULL COMMENT '消息状态',
-  `create_date` datetime default NULL,
-  PRIMARY KEY  (`id`)
+  `content_id` varchar(64) DEFAULT NULL COMMENT '内容id',
+  `receive_message` varchar(300) DEFAULT NULL COMMENT '消息状态',
+  `create_date` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -1421,22 +1421,22 @@ INSERT INTO `qywx_messagelog` VALUES ('41EEAB4A2C0D4E9B95228A526D50CEAA', '4', '
 DROP TABLE IF EXISTS `qywx_newsitem`;
 CREATE TABLE `qywx_newsitem` (
   `id` varchar(100) NOT NULL,
-  `title` varchar(300) default NULL COMMENT '标题',
-  `author` varchar(100) default NULL COMMENT '作者',
-  `image_path` varchar(100) default NULL COMMENT '图片路径',
+  `title` varchar(300) DEFAULT NULL COMMENT '标题',
+  `author` varchar(100) DEFAULT NULL COMMENT '作者',
+  `image_path` varchar(100) DEFAULT NULL COMMENT '图片路径',
   `content` longtext COMMENT '内容',
-  `templateid` varchar(100) default NULL COMMENT '图文模板id',
-  `description` varchar(400) default NULL COMMENT '摘要',
-  `order_no` varchar(100) default NULL COMMENT '新闻顺序',
-  `url` varchar(100) default NULL COMMENT '消息内容的url',
-  `hdid` varchar(100) default NULL COMMENT '活动id',
-  `create_name` varchar(50) default NULL COMMENT '创建人名称',
-  `create_by` varchar(50) default NULL COMMENT '创建人登录名称',
-  `create_date` datetime default NULL COMMENT '创建日期',
-  `update_name` varchar(50) default NULL COMMENT '更新人名称',
-  `update_by` varchar(50) default NULL COMMENT '更新人登录名称',
-  `update_date` datetime default NULL COMMENT '更新日期',
-  PRIMARY KEY  (`id`)
+  `templateid` varchar(100) DEFAULT NULL COMMENT '图文模板id',
+  `description` varchar(400) DEFAULT NULL COMMENT '摘要',
+  `order_no` varchar(100) DEFAULT NULL COMMENT '新闻顺序',
+  `url` varchar(100) DEFAULT NULL COMMENT '消息内容的url',
+  `hdid` varchar(100) DEFAULT NULL COMMENT '活动id',
+  `create_name` varchar(50) DEFAULT NULL COMMENT '创建人名称',
+  `create_by` varchar(50) DEFAULT NULL COMMENT '创建人登录名称',
+  `create_date` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_name` varchar(50) DEFAULT NULL COMMENT '更新人名称',
+  `update_by` varchar(50) DEFAULT NULL COMMENT '更新人登录名称',
+  `update_date` datetime DEFAULT NULL COMMENT '更新日期',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='图文素材新闻';
 
 -- ----------------------------
@@ -1455,16 +1455,16 @@ INSERT INTO `qywx_newsitem` VALUES ('ff808081538e81b40153a17b319a0076', 'sss', '
 DROP TABLE IF EXISTS `qywx_newstemplate`;
 CREATE TABLE `qywx_newstemplate` (
   `id` varchar(100) NOT NULL,
-  `template_name` varchar(200) default NULL COMMENT '模板名称',
-  `template_type` varchar(100) default NULL COMMENT '模板类型',
-  `accountid` varchar(100) default NULL COMMENT '微信企业号账号id',
-  `create_name` varchar(50) default NULL COMMENT '创建人名称',
-  `create_by` varchar(50) default NULL COMMENT '创建人登录名称',
-  `create_date` datetime default NULL COMMENT '创建日期',
-  `update_name` varchar(50) default NULL COMMENT '更新人名称',
-  `update_by` varchar(50) default NULL COMMENT '更新人登录名称',
-  `update_date` datetime default NULL COMMENT '更新日期',
-  PRIMARY KEY  (`id`)
+  `template_name` varchar(200) DEFAULT NULL COMMENT '模板名称',
+  `template_type` varchar(100) DEFAULT NULL COMMENT '模板类型',
+  `accountid` varchar(100) DEFAULT NULL COMMENT '微信企业号账号id',
+  `create_name` varchar(50) DEFAULT NULL COMMENT '创建人名称',
+  `create_by` varchar(50) DEFAULT NULL COMMENT '创建人登录名称',
+  `create_date` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_name` varchar(50) DEFAULT NULL COMMENT '更新人名称',
+  `update_by` varchar(50) DEFAULT NULL COMMENT '更新人登录名称',
+  `update_date` datetime DEFAULT NULL COMMENT '更新日期',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='图文素材模板';
 
 -- ----------------------------
@@ -1480,23 +1480,23 @@ DROP TABLE IF EXISTS `qywx_receivetext`;
 CREATE TABLE `qywx_receivetext` (
   `id` varchar(100) NOT NULL,
   `tousername` varchar(100) NOT NULL COMMENT '开发者微信号',
-  `fromusername` varchar(100) default NULL COMMENT '发送方帐号（一个OpenID）',
-  `createtime` timestamp NULL default CURRENT_TIMESTAMP COMMENT '消息创建时间 （整型）',
-  `msgtype` varchar(100) default NULL COMMENT '消息类型（text/image/location/link）',
-  `msgid` varchar(100) default NULL COMMENT '消息id，64位整型',
-  `content` varchar(400) default NULL COMMENT '消息内容',
-  `response` varchar(10) default NULL COMMENT '是否回复',
-  `rescontent` varchar(400) default NULL COMMENT '回复内容',
-  `nickname` varchar(100) default NULL COMMENT '用户昵称',
-  `accountid` varchar(40) default NULL COMMENT '微信账号Id',
-  `agent_id` varchar(200) default NULL COMMENT '应用ID(微信)',
-  `create_name` varchar(50) default NULL COMMENT '创建人名称',
-  `create_by` varchar(50) default NULL COMMENT '创建人登录名称',
-  `create_date` datetime default NULL COMMENT '创建日期',
-  `update_name` varchar(50) default NULL COMMENT '更新人名称',
-  `update_by` varchar(50) default NULL COMMENT '更新人登录名称',
-  `update_date` datetime default NULL COMMENT '更新日期',
-  PRIMARY KEY  (`id`)
+  `fromusername` varchar(100) DEFAULT NULL COMMENT '发送方帐号（一个OpenID）',
+  `createtime` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '消息创建时间 （整型）',
+  `msgtype` varchar(100) DEFAULT NULL COMMENT '消息类型（text/image/location/link）',
+  `msgid` varchar(100) DEFAULT NULL COMMENT '消息id，64位整型',
+  `content` varchar(400) DEFAULT NULL COMMENT '消息内容',
+  `response` varchar(10) DEFAULT NULL COMMENT '是否回复',
+  `rescontent` varchar(400) DEFAULT NULL COMMENT '回复内容',
+  `nickname` varchar(100) DEFAULT NULL COMMENT '用户昵称',
+  `accountid` varchar(40) DEFAULT NULL COMMENT '微信账号Id',
+  `agent_id` varchar(200) DEFAULT NULL COMMENT '应用ID(微信)',
+  `create_name` varchar(50) DEFAULT NULL COMMENT '创建人名称',
+  `create_by` varchar(50) DEFAULT NULL COMMENT '创建人登录名称',
+  `create_date` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_name` varchar(50) DEFAULT NULL COMMENT '更新人名称',
+  `update_by` varchar(50) DEFAULT NULL COMMENT '更新人登录名称',
+  `update_date` datetime DEFAULT NULL COMMENT '更新日期',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='文本消息';
 
 -- ----------------------------
@@ -1519,14 +1519,14 @@ CREATE TABLE `qywx_texttemplate` (
   `id` varchar(100) NOT NULL,
   `template_name` varchar(200) NOT NULL COMMENT '模板名称',
   `template_content` varchar(500) NOT NULL COMMENT '模板内容',
-  `accountid` varchar(100) default NULL COMMENT '微信企业账户id',
-  `create_name` varchar(50) default NULL COMMENT '创建人名称',
-  `create_by` varchar(50) default NULL COMMENT '创建人登录名称',
-  `create_date` datetime default NULL COMMENT '创建日期',
-  `update_name` varchar(50) default NULL COMMENT '更新人名称',
-  `update_by` varchar(50) default NULL COMMENT '更新人登录名称',
-  `update_date` datetime default NULL COMMENT '更新日期',
-  PRIMARY KEY  (`id`)
+  `accountid` varchar(100) DEFAULT NULL COMMENT '微信企业账户id',
+  `create_name` varchar(50) DEFAULT NULL COMMENT '创建人名称',
+  `create_by` varchar(50) DEFAULT NULL COMMENT '创建人登录名称',
+  `create_date` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_name` varchar(50) DEFAULT NULL COMMENT '更新人名称',
+  `update_by` varchar(50) DEFAULT NULL COMMENT '更新人登录名称',
+  `update_date` datetime DEFAULT NULL COMMENT '更新日期',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='文本模板';
 
 -- ----------------------------
@@ -1543,23 +1543,23 @@ INSERT INTO `qywx_texttemplate` VALUES ('F65B42281D1E46E69FBEAEEC43587F6D', 'nih
 DROP TABLE IF EXISTS `t_finance`;
 CREATE TABLE `t_finance` (
   `ID` varchar(32) NOT NULL,
-  `APPROFILETYPE` varchar(255) default NULL,
-  `BUYMONEY` float default NULL,
-  `BUYPROJECTNO` varchar(255) default NULL,
-  `BUYPROJECTORG` varchar(255) default NULL,
-  `BUYUSE` varchar(255) default NULL,
-  `BUYYEAR` varchar(255) default NULL,
-  `CATEGORY` varchar(255) default NULL,
-  `COLLECTORG` varchar(255) default NULL,
-  `EXPENSEACCOUNT` varchar(255) default NULL,
-  `HAPPENYEAR` int(11) default NULL,
-  `MONEYAREA` varchar(255) default NULL,
-  `MONEYSOURCE` varchar(255) default NULL,
-  `MONEYTOTAL` float default NULL,
-  `MONEYUSE` varchar(255) default NULL,
-  `PAYTIME` datetime default NULL,
-  `ZBWNO` varchar(255) default NULL,
-  PRIMARY KEY  (`ID`)
+  `APPROFILETYPE` varchar(255) DEFAULT NULL,
+  `BUYMONEY` float DEFAULT NULL,
+  `BUYPROJECTNO` varchar(255) DEFAULT NULL,
+  `BUYPROJECTORG` varchar(255) DEFAULT NULL,
+  `BUYUSE` varchar(255) DEFAULT NULL,
+  `BUYYEAR` varchar(255) DEFAULT NULL,
+  `CATEGORY` varchar(255) DEFAULT NULL,
+  `COLLECTORG` varchar(255) DEFAULT NULL,
+  `EXPENSEACCOUNT` varchar(255) DEFAULT NULL,
+  `HAPPENYEAR` int(11) DEFAULT NULL,
+  `MONEYAREA` varchar(255) DEFAULT NULL,
+  `MONEYSOURCE` varchar(255) DEFAULT NULL,
+  `MONEYTOTAL` float DEFAULT NULL,
+  `MONEYUSE` varchar(255) DEFAULT NULL,
+  `PAYTIME` datetime DEFAULT NULL,
+  `ZBWNO` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -1578,8 +1578,8 @@ INSERT INTO `t_finance` VALUES ('4028948151dc770f0151dc7e8b100003', null, null, 
 DROP TABLE IF EXISTS `t_finance_files`;
 CREATE TABLE `t_finance_files` (
   `id` varchar(32) NOT NULL,
-  `financeId` varchar(32) default NULL,
-  PRIMARY KEY  (`id`),
+  `financeId` varchar(32) DEFAULT NULL,
+  PRIMARY KEY (`id`),
   KEY `FK_ij2p74feypwcda4n0n96pyd10` (`financeId`),
   KEY `FK_28m7vvi0cy5r5keke68b6f7rt` (`id`),
   CONSTRAINT `FK_28m7vvi0cy5r5keke68b6f7rt` FOREIGN KEY (`id`) REFERENCES `t_s_attachment` (`ID`),
@@ -1597,18 +1597,18 @@ DROP TABLE IF EXISTS `t_s_attachment`;
 CREATE TABLE `t_s_attachment` (
   `ID` varchar(32) NOT NULL,
   `attachmentcontent` longblob,
-  `attachmenttitle` varchar(100) default NULL,
-  `businesskey` varchar(32) default NULL,
-  `createdate` datetime default NULL,
-  `extend` varchar(32) default NULL,
+  `attachmenttitle` varchar(100) DEFAULT NULL,
+  `businesskey` varchar(32) DEFAULT NULL,
+  `createdate` datetime DEFAULT NULL,
+  `extend` varchar(32) DEFAULT NULL,
   `note` longtext,
-  `realpath` varchar(100) default NULL,
+  `realpath` varchar(100) DEFAULT NULL,
   `subclassname` longtext,
   `swfpath` longtext,
-  `BUSENTITYNAME` varchar(100) default NULL,
-  `INFOTYPEID` varchar(32) default NULL,
-  `USERID` varchar(32) default NULL,
-  PRIMARY KEY  (`ID`),
+  `BUSENTITYNAME` varchar(100) DEFAULT NULL,
+  `INFOTYPEID` varchar(32) DEFAULT NULL,
+  `USERID` varchar(32) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
   KEY `FK_mnq23hlc835n4ufgjl7nkn3bd` (`USERID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -1619,7 +1619,14 @@ INSERT INTO `t_s_attachment` VALUES ('402880f2590749060159075431330013', null, '
 INSERT INTO `t_s_attachment` VALUES ('402880f25907490601590754343a0014', null, 'e1fe9925bc315c60addea1b98eb1cb1349547719', null, null, 'jpg', null, 'upload/files/20161216191116rMyqV3XX.jpg', null, 'upload/files/20161216191116rMyqV3XX.swf', null, null, null);
 INSERT INTO `t_s_attachment` VALUES ('402880f2590749060159075436400015', null, 'ppx01814elfynejrpjjhm47', null, null, 'png', null, 'upload/files/20161216191116LdpGOmwr.png', null, 'upload/files/20161216191116LdpGOmwr.swf', null, null, null);
 INSERT INTO `t_s_attachment` VALUES ('402880f2590749060159075438570016', null, 'profile_small', null, null, 'jpg', null, 'upload/files/201612161911174ruvdxws.jpg', null, 'upload/files/201612161911174ruvdxws.swf', null, null, null);
-INSERT INTO `t_s_attachment` VALUES ('402881865907db74015908069bf6000c', 0xFFD8FFE000104A46494600010101004800480000FFDB00430006040506050406060506070706080A100A0A09090A140E0F0C1017141818171416161A1D251F1A1B231C1616202C20232627292A29191F2D302D283025282928FFDB0043010707070A080A130A0A13281A161A2828282828282828282828282828282828282828282828282828282828282828282828282828282828282828282828282828FFC000110800C4010C03011100021101031101FFC4001F0000010501010101010100000000000000000102030405060708090A0BFFC400B5100002010303020403050504040000017D01020300041105122131410613516107227114328191A1082342B1C11552D1F02433627282090A161718191A25262728292A3435363738393A434445464748494A535455565758595A636465666768696A737475767778797A838485868788898A92939495969798999AA2A3A4A5A6A7A8A9AAB2B3B4B5B6B7B8B9BAC2C3C4C5C6C7C8C9CAD2D3D4D5D6D7D8D9DAE1E2E3E4E5E6E7E8E9EAF1F2F3F4F5F6F7F8F9FAFFC4001F0100030101010101010101010000000000000102030405060708090A0BFFC400B51100020102040403040705040400010277000102031104052131061241510761711322328108144291A1B1C109233352F0156272D10A162434E125F11718191A262728292A35363738393A434445464748494A535455565758595A636465666768696A737475767778797A82838485868788898A92939495969798999AA2A3A4A5A6A7A8A9AAB2B3B4B5B6B7B8B9BAC2C3C4C5C6C7C8C9CAD2D3D4D5D6D7D8D9DAE2E3E4E5E6E7E8E9EAF2F3F4F5F6F7F8F9FAFFDA000C03010002110311003F00FAA6800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A0028011D9510B3B055032493800526ECAEC2D7D0E4EFFC7FA25A48634965BA60704C0995FCCE01AF2EB67186A6ED7B9E952CAB13515ED6F529AFC4BD249F9ADAF40F5DAA7FAD60B3DC3F666CF24C42EC5DB6F1FE833101AE2587FEBAC440FCC66B78671869F5309E558987D93A0D3F54B1D457758DDC138FF61C123F0EB5DF4EBD3A9AC25738AA529D3769AB172B6330A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A00280388F8B575341E1F86188954B8982484775009C7E24578B9DD594285A3D4F5B26A51A988F7BA23C86BE34FB20A401400E8DDA370F1B3238E8CA7047E22AE13941DE2EC44E9C66AD2573AFF000FF8FB52D3D963BF26FAD871F31C48A3D9BBFE3F9D7B584CEAAD3F76AEA8F1B1792D3A9EF52D1FE07A9E89ACD96B5682E2C260EBD194F0C87D08ED5F5187C4D3C4479A9B3E66BE1EA509725456668D7418850014005001400500140050014005001400500140050014005001400500140050014005001400500140050014019FAEE936DAD69D259DD83E5B72197AAB0E847BD6188C3C311074E7B1B50AF3A135521B9E7EFF000C26F30ECD523D99E374273FCEBC07C3FAE933DC59FBB6B0264F85E36FCFAAB67FD98063F9D52E1F8F5992F3F9F48146FF00E1A5FC4A5ACAF20B8C7F0BA98C9FC7915855C82697EEE5737A59FC5E9523638ED4F4BBDD2E7F2B50B692073D370E1BE87A1AF1ABE12AE1DDAA23D8C3E2E96215E9B29D731D25DD2353BAD26F52EAC6531CABC1F461E847715D386C554C34F9A0CE6C4E169E261C9347B778575FB7F1069C278BE4993E59A2CF28DFE07B1AFB8C163218AA7CF1DCF8AC5E16785A9C9236ABB0E50A002800A002800A002800A002800A002800A002800A002800A002800A00A5AAEAB61A45A9B9D4EEE0B5807F1CCE1413E83D4D4CA4A2AECD29519D6972D3576703ABFC65F0D59965B2177A838E8618F6A1FC5B1FCAB9678DA51F33DAA1C398CABAB5CABCCE52F7E3A5CB31FB16870A2F6335C127F202B09662BA44F529F093FB753EE4558FE396AC1C79BA458327A2C8E0FE7CD4FF0068BEB135970942DA547F71E87E00F897A6F8B2E0D9BC4D63A8E372C323861201D7637723D3AD7650C546B68B73C0CCB26AF80F7A5AC7B9DED749E385001400500364758D0B3B0551C924E00A4E4A2AEC695F4465CBE24D1A27DAFAA5986F4F341AE778CA09D9CD1B2C2D67AA8BFB8B967A8D9DF0CD9DD413FF00D739037F2AD215A9D4F8657339D39C3E25616FACADB50B57B7BC852685BAAB8C8A752942AC7966AE8215254E5CD1766790F8DBC1F2E86C6EACF74BA731EA79688FA1F51EFF009D7C8E65953C3FEF29EB1FC8FAACB73455FF007757E2FCCE46BC53DB363C29AD49A16B115D293E49F92641FC49DFF11D4577E5D8B786AA9F47B9E7E6383589A4D755B1EF7148B2C6B246C191806523B83DEBEEE32525747C434D3B31D5420A002800A002800A002800A002800A002800A002800A00280026803CAFC7FF0016ACB47696C74011DFEA0B95697398623F51F78FB0E3DEB8B118C8D3D23AB3E872CE1FAB8BB54ABEEC7F16783EB7ACEA1AE5F35DEAD772DD4E7A173C28F451D147B0AF22A559D477933EEF0981A1848F2D28D8CFACCEC0A0028027B2BB9AC2F20BCB5731DC40E258D81E8C0E455D39B84949186268C6BD29539ECD1F6568F78BA8E93677AA30B710A4A07A6E507FAD7D1C5F324CFC8AAC3D9CDC3B32DD51985001401E59F17AF6E0EA16963B996D7CAF34A8E8EC491CFAE31FAD7CC67D5A6A5182D8FA3C8A8C24A551EE79ED7CD5CFA5B58744ED14824899A39072190E08FC45542A4A0EF1644E9C26AD2573D03C1FE3D9A1963B3D724F32163B56E4FDE4FF007BD47BF5AFA2CBB397754EBFDE7CEE6193A49D4A1F71E9D34515CDBBC72AAC9148B8653C8606BE95C54E367B33E75371775B9E19E31D09B41D65E05C9B593E7818FF0077D3EA3A7E55F0F99E0FEAB56CB67B1F6B96E33EB34B5DD6E61579C7A47B1FC2DD4CDEF87BECD23665B36F2F9FEE1E57FA8FC2BED726C47B5A167BA3E2F37A1EC710DAD9EA7655EB9E58500140050014005001400500140050014005001400500417D776F63692DCDE4D1C36F129679246C2A8F52693692BB2A1094E4A31576CF9E7E24FC51BAD79A5D3B42692D74AE55E51F2C9703FF655F6EA7BFA579389C6397BB0D8FBACA387A34AD5B12AF2EDD8F30AF38FAB4ADA20A06140050014001CE0E064F614D2BBB133928C5B67D8FE14B57B2F0C6936B2822486D224607B10A335F494D5A291F906266A75A725D5B356ACC033400D2EA0E0B007DCD2B8ECCCCD7F42B0D76DD62BF8892A729229C321F635CD89C253C4C796A237C3E26A61E5CD4D9C6CFF000C2124F91AA4AA3B078837F222BC79F0FC1FC323D68E7F517C514723E26F0A6A1A06249C2CD6AC70268FA03E8476AF1F1B95D5C2AE6DD1EBE0B34A78A7CBB339FAF34F4CF5FF0085BAC3DFE8EF653B169ACC85524F2633D3F2E47E55F6592E29D6A3C92DD1F1B9BE1550ADCD1D993FC4ED305EF86DEE157335A1F354F7DBD187E5CFE15A671875570EDF5446535FD8E212E8F43C66BE20FB53B8F84B7661D7EE2D89F967809C7BA9CFF226BE8320AB6AAE1DD1E067D4EF4E33ECCF5DAFAD3E582800A002800A002800A002800A002800A002800A00ADA9DFDB6996135E5FCE905B42A5E491CE028A52928ABB2E9D3954928415DB3E64F895E3EBBF175E18202F068D1366283A1908FE37F7F41DBEB5E262B14EABE58EC7E89936490C1C555A9ACFF2387AE33E842800A002800A0028034BC372DA41E21D325D4B8B28EE63798E33F20604F15AD1694D396C716630A93C34E34BE268FA135AF8BFE18D3D08B39A7D465ECB6F190BF8B36057B13C6528F5B9F9FE1F87F1959EB1E5F5381D77E366B175B9347B2B6B14ECF29F39FF00A28FD6B92798C9FC28F7B0DC294D6B5E77F4385D53C61E22D5189BDD66F9D4FF0002CA635FC9702B92589AB2DD9EDD0C9B0747E182319A7999B734D2B37A9724FF003ACFDA4BB9DAB0B452B28A35745F14EB9A24AB2699AA5D43839D8642E87EAAD906B48626A43667262729C26215A705F23DFF00E17FC458BC5886C6FD12DF5789771553F24CA3AB2FA1F515EBE1B12AB2B3DCF83CDF279E5F2E68EB07D4EDF57B48AFB4CBAB69D43472C6CA41FA75AD2BD35529CA323C9A53709A947747CEDF5AFCEE6AD268FD0A0F9A299DBFC249197C473C63EEBDB1CFE0C3FC6BDCC824D566BC8F0B3E8AF6517E67AA6AD109F4CBB898643C2EA7F106BEA6BC54A9C93EC7CCD2972CD33E731D07D2BF39968D9FA1C5DD2674BF0EE431F8C74FC7F1175FCD4D7A793CAD8A89E66731BE199EE35F707C60500140050014005001400500140050014005003279A382179667548D14B3331C05039249A4DD869393B23E64F8ABE3C97C57A81B5B2764D16DDBF76BD3CE61FF002D1BFA0EDD7AD78D8BC4FB47CB1D8FD0F22C996123EDAAAF7DFE07035C27D205001400500140050014005002D002500140050014017F42D4E6D1B59B2D46D98ACB6D2AC831DC03C8FA1191F8D69466E134D1C78FC3C713879D397547D8CE7ED164C63FF96919DBF88E2BE866B9A0D23F255EECB53E727468DD91C10CA4A907B11C1AFCE6AC5C66D33F42A52528268EFF00E105A3B6A77D7654F971C4220DFED139C7E42BE8320A4F9A550F033EAAAD1A7D773D235A985B6917B31E91C2EDF929AFA3C44B96949F91F3D463CD522BCCF9D87DD1F4AFCEA4EEDB3F438AB248E97E1D4664F18D863F877B1FC14D7A7932BE291E5E732B6159EE35F707C60500140050014005001400500140050014001A00F07F8E5E383733C9E1BD2E5FDC467FD36453F7DBFE79FD077F7E3B1AF331B89B7EEE27D970E653CDFED5557A7F99E375E51F6C140050014005001919C679F4EF4D26F626538C7593B17ADB49D4AEB1F66D3AF6507A14B773FD2B45466F6472CF30C343E29AFBCB5FF08BEBF8CFF626A78FFAF57FF0A7F57ABFCA65FDAD83FF009F8BEF2B5CE8FA9DAE7ED3A6DF42075DF6EE3FA54BA335BA358661869FC3517DE50C8CE33CFA77A869ADCEA8CE32D62C291414005001401B3E0FD125F117892C34C841FDF483CC6FEEC63963F97F315BE1E9BA95123CECD716B09869547BF4F53EC18D4246AAA30A0600F6AFA13F286EFA9CCEADE07D2353BF7BB95268A57399044FB439F5231D7E95E657CAA8569F3C96A77D0CCABD087245E86F699A7DB6996896B630AC30A7451FCC9EE7DEBBA9518518F2C1591C752ACAACB9A6EECCFF001AA4B278575458012E606E07A77FD3358E3937879A8F636C1B4ABC1CB6B9E095F9F33EFCEEFE11D99975BBABB23E5821DA0FFB4C7FC01AFA0C8295EA4AA763E7F3EAB684699EB55F587CB850014005001400500140050014005001401C3FC58F178F0AF874FD9987F69DDE63B61FDDFEF3FE03F522B9F135BD942FD4F5727CBDE3ABA8BF856ACF97198B316662CC4E4927249F535E03777767EA3082845463B2129141400AA0B305504B138000C927D05349BD11339C60B9A4EC8F41F0BFC27F10EB4A935DC69A5DAB73BAE41F308F641CFE78AEDA5819CB59688F9CC6F1361E85E34BDE7F81EA1A17C1CF0DD82AB5F8B8D4A51D4CCFB13FEF95C7EA4D7743054E3BEA7CCE2788B195F48BE55E476FA6E81A4698A174FD36CED80EF1C2A0FE78CD74C6118EC8F22A622AD5779C9BF99A78AB310C50018A00CBD53C3DA46AA85751D32CEE41EF242A4FE7D6A254E32DD1B53C4D5A4EF0935F3381F10FC18D0AF559F48967D3263D141F323FFBE4F23F035CB53034E5B687B785E24C5D1D2A7BCBCCF20F17F80B5DF0B6E92FADC4D640E05DDBE5A3FF0081775FC7F3AF3AB612A53D7747D6E033DC3633DDBF2CBB3394AE53DA0A00F4BF81BAEE8DA1EB97CDAC4C96D2DC44B1C13C9C20E72CA4F6CF1CFB57A180A90836A5B9F2BC4D85C457841D2574B73E8BB5BAB7BB884B693C53C47A3C6E187E62BD74D3D8F83942507692B1353242800201183D29357038BD43E1D6937576D34325C5B2B1CB47111B7F0C8E2BC8AD92D0A93E6D8F56967188A51E5DCE9745D26CF46B25B5B08B6460E493CB31F527B9AF470F87861E1C90479F5AB4EBCB9EA3BB2FD6E6414005001400500140050014005001400C9A4486279256091A29666270001C9343761A4DBB23E4BF885E2593C55E27B9BFC9FB2AFEEAD90FF0C60F07EA7A9FAD7818AADED67E47EA192E0160B0E93F89EACE6AB98F5C2803A0F07784F53F166A1F66D322C468479D70E311C43DCF73E80735D1430F2ACF4D8F2F32CD68E021796B2E88FA33C13F0FF46F0AC6B24117DA750C7CD773005FFE023A28FA7E66BD9A5878525A6E7E7B8FCD6BE3A5EFBB2EC7602B73CD0A00A3A96AFA6E96A1B52D42D2CD4F7B89963FFD088A00C98FC77E1291F62789F442DE9F6E8BFC68036ECAFED2FA3F32C6EA0B98FF00BD0C81C7E60D0059A002800A006C88B22323AAB230C15619047A1A069DB54787FC54F85A904536B1E1880AA2E5EE2C906703BB463F9AFE5E95E6E2B069FBF03EB725CFE5092A189775D1FF0099E2B5E4B3EE534F54140CB7A66A57DA55C09F4CBB9ED251FC50B95FCC0E0FE35A42ACE1AC59CB88C150C42B558A67AFF813E31C9E6C767E2C0A5188517D1AE36FFD7451DBDC7E55E950C7733E5A87C8667C34E9A7530BAAEC7B7C32A4D124913ABC6E032B29C820F420D7A47C8B4D3B31F4082800A002800A002800A002800A002800A002800A00F31F8F5E207D2BC2C9A75BB159F53631B1079112E0BFE7C0FC4D71E36AFB3A765D4F7F87B04B138AE796D1D4F9C6BC33F490A00E8BC0DE16BBF16EB89636A4C70A8DF713E32224CF5F727A01FE15D187A0EB4ADD0F2B36CCE380A5CDBC9EC8FAA3C3FA2D8E81A543A7E990086DE21D3BB1EECC7B93EB5EEC20A0AD13F32AF5EA622A3A951DDB34AACC4C5F17789F4AF0968936ABAEDD2DB5A45C0CF2D2376445EACC7D05007C9BF113E3E7897C473496FA048FA1697D008581B8907AB49FC3F45FCCD4DCA48F1FB9964BB99A6BB91E7998E5A4958BB13EE4E4D0322DABFDD1F950059D3EF2EB4DB859F4EB99ECE7539125BC8D1B0FC548A00F66F875FB41F883439E2B6F1496D6B4CC80D29005CC63D43701FE8DCFBD17158FABFC37AEE9DE24D1ADB55D1AE92EACAE177248BFA823A823A107915449A74005000466803E68F8D7E144F0F78896F2CA30961A86E91540E23907DE51EC7391F8D78D8EA3C92E75B33F41E1BCC5E2293A151FBD1FC8F3AAE03E9C2800A00F71FD9FBC5324A27F0E5E485844866B42C7A2E7E64FA0C823EA6BD7C0D7E65C8CF83E26CB9519AC4D35A3DFD4F6BAF44F930A002800A002800A002800A002800A002800A002803E76FDA1EECCDE31B3B6CFCB6F660E3DD9893FC8579198CBDE48FBCE13A76A339F76796579C7D6076A2D713692BB3EA8F84FE194F0DF84EDD64402FAEC0B8B96EFB88E17FE0238FCEBE830D49538247E579BE35E331329F45A23B4AE83CC21BDB986CAD26B9BA9162B7851A492463808A06493EC00A00F83BE2EF8FEEFE2078A65BD7774D2E0263B0B727848FF00BE47F7DBA93F41DAA4A48E1A8185003E28E49A548E14792473854452CCC7D001C9A0075CDBCD6B3343750CB04CBD63950A30FC0F340115007B27ECCBE389BC39E368B44B9958E95AC3888A13C47718F91C7D7EE9F5CAFA5084D1F665512140050079D7C79B15BAF004F39037DA4F1CAA7D32769FD1AB931B1E6A4CF6F87AABA78D8A5D743E68AF08FD342800A00EB3E14DC3DB7C43D0D90E37CE623F46520D7560DDAAA3C5E20829E0677E87D602BDE3F310A002800A002800A002800A002800A002800A002803E6CF8FF1347E3D0EC3892CE223F02C2BC6CC17EF133F40E159278592ECCF36AE03EA0D6F0959AEA3E29D22CDC6526BB89187A8DC09FD056D875CD5123CFCD2AFB2C2549AEC7D8A38AFA23F2716803C7FF6A6D75F49F85F2DA40E565D52E12D0E3AF97CBBFE6171F8D2635B9F1793D49A451EC5F0FBE01F88FC53A7C3A8EA13C5A2D8CC03C5E7C65E6914F4611823683FED107DA8B0AE741AF7ECC9ACDADA3CBA2EBB677F328CF933C2602DEC1B2C33F5C53B073107ECD57BA27843C67AED8F8C445A56BA1561B792F70823C13E626E3C2939539EE07069207A8FFDAABC5BE1BF105CE8F65A1DC5B5FEA166EED3DD5B90CA8846047BC7DEE79C0CE31EF4D823C0690CB3A6DC3DA6A56773092B2C33C72291D8AB023F95007E9321CA83EA335440B40050079EFC76BB5B6F87B771B1F9AE668A251EBF36E3FA29AE5C64AD499ED70FD37531D0B74D4F996BC13F4E0A002803B7F83162D7DF1134C20652DB7DC31F40AA40FD48AECC0C6F553EC7CFF125654F04E3DF43EA515EE1F9B8500140050014005001400500140050014005001401E2BFB46E90CF0695AC46A4AC6CD6B29F40DF32FEA08FC6BCECC29DE2A67D6F0AE2542ACA8BEBA9E1B5E41F766BF846F174EF1568F79210121BB89D89EC37007F9D6D87972D44CF3F35A4EAE12A41763EC507D2BE88FC9C2803E7CFDB1A091BC2BE1F9D41F2A3BF656FAB4471FC8D26544F09F82BA45A6BBF14BC3B61A82ABDAB5C195E36E43EC4670A7D412A38A486F63EF9038AA202803E3BFDADE2B34F89968D6C13ED1269B19B9C7760EE173EFB47E4054B291E2740C28037BC07A3C9E20F1A687A54409375791A363B206DCC7F0504D00CFD121D2A880A002803E78F8FBE244D4B5E8347B57DD069F93291D0CCC3A7FC047EA4D7919855BB505D0FBAE17C0B841E264B7D17A1E555E71F5C14005007BEFECF5E1E6B5D2AEF5CB84224BC3E54191FF2CD4F27F16FFD06BD9C052E58F33EA7E7DC4F8D55ABAA117A47F33D7EBBCF980A002800A002800A002800A002800A002800A0028032BC53A2DBF88740BDD2EEB88EE13686EE8DD5587D0E0D454829C5C59BE17112C3558D586E8F91358D36EB48D4EE74FBF8FCBB9B7728E3FA8F62391F5AF9EA94DD3938B3F58C1E2A18AA4AAC1E8CA759DEC743575667D49F093C549E25F0B42B2C80EA366A21B853D4E07CAFF461FA835F4186ACAAC2FD4FCB738C04B058871FB2F547715D0794711F19BC24DE33F87BA9E976EA0DE851716993FF002D93951F8F2BFF0002A4C68F85B47D4AFBC3FAE5A6A3645ADF50B19C489BD794753CAB0FCC11F5148A3EC3F04FC7AF07EB9A6C4758BD4D17510A04B05D6426EEE524C608FAE0FB53B9361BE35F8FDE10D12C65FEC6BB1ADEA04111C36A0F960FFB7211803E993ED45C2C7C87E28D7AFF00C4FAFDEEB1ABCA25BDBB7DEE40C2A8E8154765000007B5228CAA002803E9FF00D94FE1F4B6C9278CB5684A3CD198B4E471CF967EFCBFF02E83DB27B8A684D9F48D3242803CFBE2AF8FA1F0B58359D83A49AD4EBFBB4EA2053FC6C3F90EFF004AE5C4E21518D96E7B393E533C754BCB482DDFE87CCD23BCB23C92B33C8E4B3331C9627924FBD784E4E4EECFD329D38D38A8455921B48B0A00E8BC09E17B8F1678821B08432DB8C3DCCC07FAB8FBFE27A0F7FA57461A83AB2B743CACDF318E068397DA7B1F59585A41616505A5A4622B7810471A0E8AA0600AF7D249591F974E6E727296ECB14C90A002800A002800A002800A002800A002800A002800A00F3AF8B3E005F14D98BED3955359B75C2E7813A7F709F5F43F874AE4C561956575B9EDE4D9B4B0153965AC1EFE5E67CD97104B6D71241711BC5346C51E37186523A822BC4945C5D99FA4D1AB0AD05383BA66A7857C437DE18D662D474D70245F95E36FBB2A7756F6FE479AD28D695295D1C998E5F4F1F49D39EFD19F4FF827C65A5F8B6C04D6126CB9403CEB573FBC88FF0051EE38AF769568D55789F99E3B2FAD829F2555F3E8CE97AD6A711F3DFC7BF8292EB97571E24F0844A7527F9EEEC410A2E0FF007D3B07F51FC5F5EA9A1A67CB3756F3DA5CCB6D750CB05C44DB648A5528E87D083C8A451150312810F8629279A38608DE59A43B523452CCC7D001C93401F42FC1EF80377797106AFE3B80DBD9A90F1E96DFEB25F4F37FBABFECF53DF1D0BB09B3EA68A3486248E25548D00555518000E800A6484922468CEEC151464B138007BD1704AFA23C93E20FC5DB5B0596C7C2EC97579CAB5D9198A3FF0077FBE7F4FAD706231B18690D59F4B95F0F54C4B552BFBB1EDD59E0D77733DE5D4B737734935C4AC5A492439663EA4D79129B9BBC8FBEA1421420A9D3564886A4D4280357C35A06A1E23D563B0D2A1324CDCB31E1235FEF31EC3F9F6AD695195595A270E3F30A581A6E751FA2EE7D4BE05F0A59F847455B2B4FDE4CC77CF3918695FD7D80E8076AF7A8D28D28F2A3F32C7E3AA636ABAB53E4BB1D156A710500140050014005001400500140050014005001400500140050070DF113E1DE9FE2D8CDC4645A6ACAB84B955E1C0E8AE3B8F7EA3F4AE6AF868D65E67AD9666F5B012D358F63E74F13787354F0D5F7D9757B56858FDC90731C83D55BBFF3F6AF1AAD09D276923F42C0E67431B1BD37AF6EA6758DE5CD85DC773633CB6F7319CA4B131565FC6B384E50778B3AABE1E9E221C9555D1EB5E14F8D5776CA907892D3ED6838FB4DBE164FAB2F43F862BD2A59874A88F91C770B6BCD8697C99EA5A1F8FF00C33AD05169AB5BACA7FE594E7CA71ED86C7E95DD0AF4E7B33E6B119662B0EFF79062F8AFC11E18F1942A75ED2AD6F5B1849C0DB228F69170DFAD6BB9C3AA3CCF51FD9A7C253C85ACF51D66D01FE012A4807FDF4B9FD68B05C769DFB357846DDC35EDF6B3798FE133246A7FEF9507F5A2C173D2FC29E04F0C784549D0347B4B3931869C2EE94FD646CB7EB40B72E6ADE2BD074752751D5ACA023F84CA0B7FDF2326A255610DD9D347075EB3B53837F23CFBC43F1B34BB7578F43B29EFA5E82497F751FF00F147F215C9531F08FC3A9EEE1786313575AAF957E2792F8ABC6FAEF89CB2EA57856D49C8B687E4887D47F17E24D79F571552AEFB1F5781C930D83B4A2AF2EECE66B98F5C28003C0C9E9409B4B73BBF03FC34D63C4CD1DC4E8DA7E98793712AFCCE3FD85EFF0053C7D6BB6860A55359688F9ECCB8868E153852F7A5F81F44785BC37A678634E167A4DB88D0F2EE79791BD58F73FCBB57AF4E9C69AB44F82C562EAE2E7ED2ABBB366B43982800A002800A002800A002800A002800A002800A002800A002800A002802A6A7A759EA966F6BA8DB45736EFF007A39543034A51525665D3A93A52E683B33C8BC59F052290BCFE19BBF25BAFD96E4965FA2BF51F8E6BCFAB808CB58687D46078A2AD3B4710B9977EA792EBFE16D6FC3EE5756D36E2041FF002D76EE8CFD1C64579F530F529EE8FABC2E6D85C52F727AF6317861D88FCEB03D1D196ACF51BEB239B3BDBAB7FF00AE53327F235A2AB38ECCE6A982C3D5F8E09FC8D78BC6BE2789709AFEA58F79C9FE75A2C555FE6391E4B8197FCBB439FC6FE287521BC41A960FA4D8FE543C555FE605926057FCBB465DE6B3A9DEE7ED9A95ECE0F5125C3B0FCB359BAD51EECE9A797E1A9FC34D2F9140000E4000D436DEE75462A3A24148A168026B2B4B9BE9843636F35CCA7A24285CFE42AE34E52D91856C551A2AF52491DF7873E11788F552AF7C91E976E7A99CEE931EC83FA915D94F01396B2D0F0317C4F86A5A525CCFF03D73C25F0BBC3FE1F68E7784EA17ABC89AE40214FAAA741FA9F7AF4296169D3D6DA9F298DCEF158CD24ECBB23BB0315D279014005001400500140050014005001400500140050014005001400500140050014005001400D745742AE0329E082320D009DB54729AD7C3BF0BEAE59EE34982394FFCB4B7CC4DFF008EE05633C3D39EE8F42866B8BC3FC137F99C76A3F03B4B9493A7EAB7B6FE8B2AACA3FA1AE6965F4DECCF5E8F14E261F1C53306E7E066A4A4FD9B59B371DBCC8597F91358BCB9F491DF0E2D5F6A9FE2536F825E2019DB7FA5B7FC09C7FECB53FD9D3EE6CB8B28758304F823E2038DD7FA5AFF00C09CFF00ECB47F674BB89F1651E9065DB7F819A8923ED1AD5A20EFE5C0CDFCC8AA59777918CF8B57D9A7F89B563F0374D420DF6B17937A88A358C7EB9AD6397C16ECE2A9C558997C1148EA34BF857E12B0C13A6FDA9C7F15D48D27E9D3F4ADE184A51D91E656CEF1B5B473B7A1D858D85A5845E558DB416D1FF7618C20FD2BA1452D8F36752751DE4EE590314C80A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002800A002803FFD9, '4afbfbedab64034f9015f1bca8c379310b551dab', null, '2016-12-16 22:26:07', 'jpg', null, 'upload/files/20161216222607YvbDnX3S.jpg', 'org.jeecgframework.web.system.pojo.base.TSDocument', 'upload/files/20161216222607YvbDnX3S.swf', null, null, null);
+INSERT INTO `t_s_attachment` VALUES ('402881865907db74015908069bf6000c', null, '4afbfbedab64034f9015f1bca8c379310b551dab', null, '2016-12-16 22:26:07', 'jpg', null, 'upload/files/20161216222607YvbDnX3S.jpg', 'org.jeecgframework.web.system.pojo.base.TSDocument', 'upload/files/20161216222607YvbDnX3S.swf', null, null, null);
+INSERT INTO `t_s_attachment` VALUES ('402881e86223f2de016223f48bb20004', null, '20170823190022AS4zjxbQ', null, '2018-03-14 18:00:51', 'png', null, 'upload/files/20180314180051BzZiGwyV.png', 'org.jeecgframework.web.system.pojo.base.TSDocument', 'upload/files/20180314180051BzZiGwyV.swf', null, null, null);
+INSERT INTO `t_s_attachment` VALUES ('402881e8622405c101622407a4f20001', null, '20170823190022AS4zjxbQ', null, '2018-03-14 18:21:43', 'png', null, 'upload/files/20180314182143NbxL6IkH.png', 'org.jeecgframework.web.system.pojo.base.TSDocument', 'upload/files/20180314182143NbxL6IkH.swf', null, null, null);
+INSERT INTO `t_s_attachment` VALUES ('402881e8622405c1016224083f0f0003', null, '20180314111124jUmrvtaw', null, '2018-03-14 18:22:22', 'jpg', null, 'upload/files/20180314182222ADWKc2dN.jpg', 'org.jeecgframework.web.system.pojo.base.TSDocument', 'upload/files/20180314182222ADWKc2dN.swf', null, null, null);
+INSERT INTO `t_s_attachment` VALUES ('402881e8622405c101622408a0600005', null, '20180314112305d7mI1I7k', null, '2018-03-14 18:22:47', 'jpg', null, 'upload/files/20180314182247ZR3HVe9B.jpg', 'org.jeecgframework.web.system.pojo.base.TSDocument', 'upload/files/20180314182247ZR3HVe9B.swf', null, null, null);
+INSERT INTO `t_s_attachment` VALUES ('402881e8622405c101622408ce030007', null, '20180314112305d7mI1I7k', null, '2018-03-14 18:22:59', 'jpg', null, 'upload/files/20180314182259bWOKOVH5.jpg', 'org.jeecgframework.web.system.pojo.base.TSDocument', 'upload/files/20180314182259bWOKOVH5.swf', null, null, null);
+INSERT INTO `t_s_attachment` VALUES ('402881e8622405c101622408fbb70009', null, '20180314110154ZkWNdEWE', null, '2018-03-14 18:23:11', 'png', null, 'upload/files/20180314182311zTY0A5TW.png', 'org.jeecgframework.web.system.pojo.base.TSDocument', 'upload/files/20180314182311zTY0A5TW.swf', null, null, null);
+INSERT INTO `t_s_attachment` VALUES ('402881e8622405c101622409d84d000b', null, '20180314110154ZkWNdEWE', null, '2018-03-14 18:24:07', 'png', null, 'upload/files/20180314182407ZiEC8Cug.png', 'org.jeecgframework.web.system.pojo.base.TSDocument', 'upload/files/20180314182407ZiEC8Cug.swf', null, null, null);
 INSERT INTO `t_s_attachment` VALUES ('4028948151dc770f0151dc7e8c5a0005', null, 'u=2838363326,1449558984&fm=21&gp=0', null, null, 'jpg', null, 'upload/files/20151226121419XByRRIAP.jpg', null, 'upload/files/20151226121419XByRRIAP.swf', null, null, null);
 INSERT INTO `t_s_attachment` VALUES ('4028948151dc770f0151dc7e8d050006', null, 'u=1363640605,4248245426&fm=21&gp=0', null, null, 'jpg', null, 'upload/files/20151226121419g57TQ4dt.jpg', null, 'upload/files/20151226121419g57TQ4dt.swf', null, null, null);
 INSERT INTO `t_s_attachment` VALUES ('4028948151dc770f0151dc7e8d7e0007', null, 'u=3142339483,1901057718&fm=21&gp=0', null, null, 'jpg', null, 'upload/files/20151226121420U1FbymIQ.jpg', null, 'upload/files/20151226121420U1FbymIQ.swf', null, null, null);
@@ -1632,16 +1639,16 @@ INSERT INTO `t_s_attachment` VALUES ('4028948151dc770f0151dc7e8e8b0009', null, '
 DROP TABLE IF EXISTS `t_s_base_user`;
 CREATE TABLE `t_s_base_user` (
   `ID` varchar(32) NOT NULL,
-  `activitiSync` smallint(6) default NULL,
-  `browser` varchar(20) default NULL,
-  `password` varchar(100) default NULL,
-  `realname` varchar(50) default NULL,
+  `activitiSync` smallint(6) DEFAULT NULL,
+  `browser` varchar(20) DEFAULT NULL,
+  `password` varchar(100) DEFAULT NULL,
+  `realname` varchar(50) DEFAULT NULL,
   `signature` blob,
-  `status` smallint(6) default NULL,
-  `userkey` varchar(200) default NULL,
+  `status` smallint(6) DEFAULT NULL,
+  `userkey` varchar(200) DEFAULT NULL,
   `username` varchar(10) NOT NULL,
-  `departid` varchar(32) default NULL,
-  PRIMARY KEY  (`ID`),
+  `departid` varchar(32) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
   KEY `FK_15jh1g4iem1857546ggor42et` (`departid`),
   CONSTRAINT `FK_15jh1g4iem1857546ggor42et` FOREIGN KEY (`departid`) REFERENCES `t_s_depart` (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -1662,12 +1669,12 @@ INSERT INTO `t_s_base_user` VALUES ('4028d881436d514601436d5215bc0046', '1', nul
 DROP TABLE IF EXISTS `t_s_config`;
 CREATE TABLE `t_s_config` (
   `ID` varchar(32) NOT NULL,
-  `code` varchar(100) default NULL,
+  `code` varchar(100) DEFAULT NULL,
   `content` longtext,
   `name` varchar(100) NOT NULL,
   `note` longtext,
-  `userid` varchar(32) default NULL,
-  PRIMARY KEY  (`ID`),
+  `userid` varchar(32) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
   KEY `FK_m3q8r50ror4fl7fjkvd82tqgn` (`userid`),
   CONSTRAINT `FK_m3q8r50ror4fl7fjkvd82tqgn` FOREIGN KEY (`userid`) REFERENCES `t_s_user` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -1683,11 +1690,11 @@ DROP TABLE IF EXISTS `t_s_demo`;
 CREATE TABLE `t_s_demo` (
   `ID` varchar(32) NOT NULL,
   `democode` longtext,
-  `demoorder` smallint(6) default NULL,
-  `demotitle` varchar(200) default NULL,
-  `demourl` varchar(200) default NULL,
-  `demopid` varchar(32) default NULL,
-  PRIMARY KEY  (`ID`),
+  `demoorder` smallint(6) DEFAULT NULL,
+  `demotitle` varchar(200) DEFAULT NULL,
+  `demourl` varchar(200) DEFAULT NULL,
+  `demopid` varchar(32) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
   KEY `FK_fni8e3v88wcf2sahhlv57u4nm` (`demopid`),
   CONSTRAINT `FK_fni8e3v88wcf2sahhlv57u4nm` FOREIGN KEY (`demopid`) REFERENCES `t_s_demo` (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -1705,8 +1712,8 @@ CREATE TABLE `t_s_depart` (
   `ID` varchar(32) NOT NULL,
   `departname` varchar(100) NOT NULL,
   `description` longtext,
-  `parentdepartid` varchar(32) default NULL,
-  PRIMARY KEY  (`ID`),
+  `parentdepartid` varchar(32) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
   KEY `FK_knnm3wb0bembwvm0il7tf6686` (`parentdepartid`),
   CONSTRAINT `FK_knnm3wb0bembwvm0il7tf6686` FOREIGN KEY (`parentdepartid`) REFERENCES `t_s_depart` (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -1723,13 +1730,13 @@ INSERT INTO `t_s_depart` VALUES ('4028d881436d514601436d5214f30017', '研发室'
 -- ----------------------------
 DROP TABLE IF EXISTS `t_s_document`;
 CREATE TABLE `t_s_document` (
-  `documentstate` smallint(6) default NULL,
-  `documenttitle` varchar(100) default NULL,
+  `documentstate` smallint(6) DEFAULT NULL,
+  `documenttitle` varchar(100) DEFAULT NULL,
   `pictureindex` blob,
-  `showhome` smallint(6) default NULL,
+  `showhome` smallint(6) DEFAULT NULL,
   `id` varchar(32) NOT NULL,
-  `typeid` varchar(32) default NULL,
-  PRIMARY KEY  (`id`),
+  `typeid` varchar(32) DEFAULT NULL,
+  PRIMARY KEY (`id`),
   KEY `FK_qr3qlmgkflj35m5ci1xv0vvg3` (`typeid`),
   KEY `FK_f2mc12eu0umghp2i70apmtxjl` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -1790,6 +1797,13 @@ INSERT INTO `t_s_document` VALUES (null, null, null, null, '402881e44695ebe30146
 INSERT INTO `t_s_document` VALUES (null, null, null, null, '402881e44695ebe3014695f494290015', '4028d881436d514601436d5216190053');
 INSERT INTO `t_s_document` VALUES (null, null, null, null, '402881e44695ebe3014695f4d5570017', '4028d881436d514601436d5216190053');
 INSERT INTO `t_s_document` VALUES (null, '11111', null, null, '402881e845d1723e0145d18fef940019', '4028d881436d514601436d5216190053');
+INSERT INTO `t_s_document` VALUES (null, null, null, null, '402881e86223f2de016223f48bb20004', '4028d881436d514601436d5216190053');
+INSERT INTO `t_s_document` VALUES (null, null, null, null, '402881e8622405c101622407a4f20001', '4028d881436d514601436d5216190053');
+INSERT INTO `t_s_document` VALUES (null, null, null, null, '402881e8622405c1016224083f0f0003', '4028d881436d514601436d5216190053');
+INSERT INTO `t_s_document` VALUES (null, null, null, null, '402881e8622405c101622408a0600005', '4028d881436d514601436d5216190053');
+INSERT INTO `t_s_document` VALUES (null, null, null, null, '402881e8622405c101622408ce030007', '4028d881436d514601436d5216190053');
+INSERT INTO `t_s_document` VALUES (null, null, null, null, '402881e8622405c101622408fbb70009', '4028d881436d514601436d5216190053');
+INSERT INTO `t_s_document` VALUES (null, null, null, null, '402881e8622405c101622409d84d000b', '4028d881436d514601436d5216190053');
 INSERT INTO `t_s_document` VALUES (null, null, null, null, '402881e946ddea480146ddf061b50001', '4028d881436d514601436d5216190053');
 INSERT INTO `t_s_document` VALUES (null, null, null, null, '402881e946ddea480146ddf730350003', '4028d881436d514601436d5216190053');
 INSERT INTO `t_s_document` VALUES (null, null, null, null, '402881e946ddea480146ddf991610005', '4028d881436d514601436d5216190053');
@@ -1890,11 +1904,11 @@ INSERT INTO `t_s_document` VALUES (null, null, null, null, '4028d88147359f510147
 DROP TABLE IF EXISTS `t_s_fileno`;
 CREATE TABLE `t_s_fileno` (
   `ID` varchar(32) NOT NULL,
-  `filenobefore` varchar(32) default NULL,
-  `filenonum` int(11) default NULL,
-  `filenotype` varchar(32) default NULL,
-  `filenoYear` date default NULL,
-  PRIMARY KEY  (`ID`)
+  `filenobefore` varchar(32) DEFAULT NULL,
+  `filenonum` int(11) DEFAULT NULL,
+  `filenotype` varchar(32) DEFAULT NULL,
+  `filenoYear` date DEFAULT NULL,
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -1907,15 +1921,15 @@ CREATE TABLE `t_s_fileno` (
 DROP TABLE IF EXISTS `t_s_function`;
 CREATE TABLE `t_s_function` (
   `ID` varchar(32) NOT NULL,
-  `functioniframe` smallint(6) default NULL,
-  `functionlevel` smallint(6) default NULL,
+  `functioniframe` smallint(6) DEFAULT NULL,
+  `functionlevel` smallint(6) DEFAULT NULL,
   `functionname` varchar(50) NOT NULL,
-  `functionorder` varchar(255) default NULL,
-  `functionurl` varchar(100) default NULL,
-  `parentfunctionid` varchar(32) default NULL,
-  `iconid` varchar(32) default NULL,
-  `desk_iconid` varchar(32) default NULL,
-  PRIMARY KEY  (`ID`),
+  `functionorder` varchar(255) DEFAULT NULL,
+  `functionurl` varchar(100) DEFAULT NULL,
+  `parentfunctionid` varchar(32) DEFAULT NULL,
+  `iconid` varchar(32) DEFAULT NULL,
+  `desk_iconid` varchar(32) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
   KEY `FK_brd7b3keorj8pmxcv8bpahnxp` (`parentfunctionid`),
   KEY `FK_q5tqo3v4ltsp1pehdxd59rccx` (`iconid`),
   KEY `FK_gbdacaoju6d5u53rp4jo4rbs9` (`desk_iconid`),
@@ -1928,6 +1942,7 @@ CREATE TABLE `t_s_function` (
 -- Records of t_s_function
 -- ----------------------------
 INSERT INTO `t_s_function` VALUES ('297e7eb6469a4a8901469a54eff60006', null, '2', '文章管理', '3', 'cmsArticleController.do?cmsArticle', '402881e44695183a0146951af2b70004', '4028d881436d514601436d5214b30002', null);
+INSERT INTO `t_s_function` VALUES ('297edb62621d0e3d01621d42e2da0004', null, '2', '长链接转短链接', '6', 'weixinLong2shortController.do?weixinLong2short', '4028d881436d514601436d5449330189', '4028d881436d514601436d5214b30002', null);
 INSERT INTO `t_s_function` VALUES ('402880e6477d61da01477d71430f001a', null, '1', 'JqueryFile示例', '10', 'fileUploadController.do?fileUploadSample', '4028d881436d514601436d52150d001b', '4028d881436d514601436d5214b30002', null);
 INSERT INTO `t_s_function` VALUES ('402880e6478c6d8201478c71c5460001', null, '2', '微相册', '03', 'weixinPhotoAlbumController.do?weixinPhotoAlbum', '4028d881436d514601436d5449330189', '4028d881436d514601436d5214b30002', null);
 INSERT INTO `t_s_function` VALUES ('402880f25906117601590614ca94000a', null, '0', '支付窗平台', '3', '', null, '4028d881436d514601436d5214b30002', null);
@@ -2032,13 +2047,13 @@ INSERT INTO `t_s_function` VALUES ('4028ef8156b0c68f0156b0d4cf390045', null, '0'
 DROP TABLE IF EXISTS `t_s_icon`;
 CREATE TABLE `t_s_icon` (
   `ID` varchar(32) NOT NULL,
-  `extend` varchar(255) default NULL,
-  `iconclas` varchar(200) default NULL,
+  `extend` varchar(255) DEFAULT NULL,
+  `iconclas` varchar(200) DEFAULT NULL,
   `content` blob,
   `name` varchar(100) NOT NULL,
   `path` longtext,
-  `type` smallint(6) default NULL,
-  PRIMARY KEY  (`ID`)
+  `type` smallint(6) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -2059,14 +2074,14 @@ INSERT INTO `t_s_icon` VALUES ('4028d881436d514601436d5214ba0007', 'png', 'folde
 DROP TABLE IF EXISTS `t_s_log`;
 CREATE TABLE `t_s_log` (
   `ID` varchar(32) NOT NULL,
-  `broswer` varchar(100) default NULL,
+  `broswer` varchar(100) DEFAULT NULL,
   `logcontent` longtext NOT NULL,
-  `loglevel` smallint(6) default NULL,
+  `loglevel` smallint(6) DEFAULT NULL,
   `note` longtext,
   `operatetime` datetime NOT NULL,
-  `operatetype` smallint(6) default NULL,
-  `userid` varchar(32) default NULL,
-  PRIMARY KEY  (`ID`),
+  `operatetype` smallint(6) DEFAULT NULL,
+  `userid` varchar(32) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
   KEY `FK_oe64k4852uylhyc5a00rfwtay` (`userid`),
   CONSTRAINT `FK_oe64k4852uylhyc5a00rfwtay` FOREIGN KEY (`userid`) REFERENCES `t_s_user` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -2225,6 +2240,28 @@ INSERT INTO `t_s_log` VALUES ('40288186591caa1001591cc6b31f0002', 'Chrome', '微
 INSERT INTO `t_s_log` VALUES ('40288186591caa1001591cc774de0004', 'Chrome', '用户: scott更新成功', '5', '192.168.1.6', '2016-12-20 23:09:10', '1', '4028d881436d514601436d5215ac0043');
 INSERT INTO `t_s_log` VALUES ('40288186591caa1001591cc793650006', 'Chrome', '用户: scott更新成功', '5', '192.168.1.6', '2016-12-20 23:09:18', '1', '4028d881436d514601436d5215ac0043');
 INSERT INTO `t_s_log` VALUES ('40288186591caa1001591cc7c4990008', 'Chrome', '用户: scott更新成功', '5', '192.168.1.6', '2016-12-20 23:09:31', '1', '4028d881436d514601436d5215ac0043');
+INSERT INTO `t_s_log` VALUES ('402881e86223f2de016223f332f80000', 'Chrome', '用户: admin[信息部]登录成功', '1', '192.168.1.104', '2018-03-14 17:59:23', '1', '4028d881436d514601436d5215ac0043');
+INSERT INTO `t_s_log` VALUES ('402881e86223f2de016223f432510002', 'Chrome', '用户admin已退出', '2', '192.168.1.104', '2018-03-14 18:00:29', '1', '4028d881436d514601436d5215ac0043');
+INSERT INTO `t_s_log` VALUES ('402881e86223f2de016223f44b6b0003', 'Chrome', '用户: admin[信息部]登录成功', '1', '192.168.1.104', '2018-03-14 18:00:35', '1', '4028d881436d514601436d5215ac0043');
+INSERT INTO `t_s_log` VALUES ('402881e86223f2de016223f4f36b0006', 'Chrome', '微站点信息添加成功', '3', '192.168.1.104', '2018-03-14 18:01:18', '1', '4028d881436d514601436d5215ac0043');
+INSERT INTO `t_s_log` VALUES ('402881e86223f2de016223f6537f0008', 'Chrome', '添加小程序的信息成功！', '3', '192.168.1.104', '2018-03-14 18:02:48', '1', '4028d881436d514601436d5215ac0043');
+INSERT INTO `t_s_log` VALUES ('402881e86223f2de016223fa8b1e0009', 'Chrome', '微信公众帐号信息更新成功', '5', '192.168.1.104', '2018-03-14 18:07:24', '1', '4028d881436d514601436d5215ac0043');
+INSERT INTO `t_s_log` VALUES ('402881e86223f2de016223fb2c28000a', 'Chrome', '微信单图消息更新成功', '5', '192.168.1.104', '2018-03-14 18:08:06', '1', '4028d881436d514601436d5215ac0043');
+INSERT INTO `t_s_log` VALUES ('402881e86223f2de016223fb4f54000b', 'Chrome', '微信单图消息更新成功', '5', '192.168.1.104', '2018-03-14 18:08:15', '1', '4028d881436d514601436d5215ac0043');
+INSERT INTO `t_s_log` VALUES ('402881e86223f2de016223fbdc28000d', 'Chrome', '长连接转短链接添加成功', '3', '192.168.1.104', '2018-03-14 18:08:51', '1', '4028d881436d514601436d5215ac0043');
+INSERT INTO `t_s_log` VALUES ('402881e86223f2de016223fbe4ae000e', 'Chrome', '链接转换成功', '5', '192.168.1.104', '2018-03-14 18:08:53', '1', '4028d881436d514601436d5215ac0043');
+INSERT INTO `t_s_log` VALUES ('402881e86223f2de016223fce18d000f', 'Chrome', '微信公众帐号信息更新成功', '5', '192.168.1.104', '2018-03-14 18:09:58', '1', '4028d881436d514601436d5215ac0043');
+INSERT INTO `t_s_log` VALUES ('402881e86223f2de016223fd64c50011', 'Chrome', '回复信息成功！', '5', '192.168.1.104', '2018-03-14 18:10:31', '1', '4028d881436d514601436d5215ac0043');
+INSERT INTO `t_s_log` VALUES ('402881e8622405c10162240622140000', 'Chrome', '用户: admin[信息部]登录成功', '1', '192.168.1.104', '2018-03-14 18:20:04', '1', '4028d881436d514601436d5215ac0043');
+INSERT INTO `t_s_log` VALUES ('402881e8622405c101622407ab730002', 'Chrome', '信息更新成功', '5', '192.168.1.104', '2018-03-14 18:21:45', '1', '4028d881436d514601436d5215ac0043');
+INSERT INTO `t_s_log` VALUES ('402881e8622405c10162240843570004', 'Chrome', '信息更新成功', '5', '192.168.1.104', '2018-03-14 18:22:24', '1', '4028d881436d514601436d5215ac0043');
+INSERT INTO `t_s_log` VALUES ('402881e8622405c101622408a67d0006', 'Chrome', '信息更新成功', '5', '192.168.1.104', '2018-03-14 18:22:49', '1', '4028d881436d514601436d5215ac0043');
+INSERT INTO `t_s_log` VALUES ('402881e8622405c101622408d48b0008', 'Chrome', '信息更新成功', '5', '192.168.1.104', '2018-03-14 18:23:01', '1', '4028d881436d514601436d5215ac0043');
+INSERT INTO `t_s_log` VALUES ('402881e8622405c101622409077f000a', 'Chrome', '信息更新成功', '5', '192.168.1.104', '2018-03-14 18:23:14', '1', '4028d881436d514601436d5215ac0043');
+INSERT INTO `t_s_log` VALUES ('402881e8622405c101622409ddbd000c', 'Chrome', '微站点信息更新成功', '5', '192.168.1.104', '2018-03-14 18:24:09', '1', '4028d881436d514601436d5215ac0043');
+INSERT INTO `t_s_log` VALUES ('402881e8622405c10162240be831000d', 'Chrome', '微信公众帐号信息更新成功', '5', '192.168.1.104', '2018-03-14 18:26:22', '1', '4028d881436d514601436d5215ac0043');
+INSERT INTO `t_s_log` VALUES ('402881e8622405c10162240eb8e1000e', 'Chrome', '信息删除成功', '4', '192.168.1.104', '2018-03-14 18:29:27', '1', '4028d881436d514601436d5215ac0043');
+INSERT INTO `t_s_log` VALUES ('402881e8622405c10162242f71c6000f', 'Chrome', '用户: admin[信息部]登录成功', '1', '192.168.1.104', '2018-03-14 19:05:11', '1', '4028d881436d514601436d5215ac0043');
 INSERT INTO `t_s_log` VALUES ('4028948151d85f5c0151d86164480000', 'Chrome', '用户: admin[信息部]登录成功', '1', '192.168.20.1', '2015-12-25 17:04:00', '1', '4028d881436d514601436d5215ac0043');
 INSERT INTO `t_s_log` VALUES ('4028948151dc628d0151dc643c080000', 'Chrome', '用户: admin[信息部]登录成功', '1', '192.168.20.1', '2015-12-26 11:45:35', '1', '4028d881436d514601436d5215ac0043');
 INSERT INTO `t_s_log` VALUES ('4028948151dc6b1f0151dc6dfe7b0005', 'Chrome', '用户: admin[信息部]登录成功', '1', '192.168.20.1', '2015-12-26 11:56:14', '1', '4028d881436d514601436d5215ac0043');
@@ -2434,13 +2471,13 @@ INSERT INTO `t_s_log` VALUES ('4028ef8156b143e40156b1446e0c0000', 'Chrome', '用
 DROP TABLE IF EXISTS `t_s_operation`;
 CREATE TABLE `t_s_operation` (
   `ID` varchar(32) NOT NULL,
-  `operationcode` varchar(50) default NULL,
-  `operationicon` varchar(100) default NULL,
-  `operationname` varchar(50) default NULL,
-  `status` smallint(6) default NULL,
-  `functionid` varchar(32) default NULL,
-  `iconid` varchar(32) default NULL,
-  PRIMARY KEY  (`ID`),
+  `operationcode` varchar(50) DEFAULT NULL,
+  `operationicon` varchar(100) DEFAULT NULL,
+  `operationname` varchar(50) DEFAULT NULL,
+  `status` smallint(6) DEFAULT NULL,
+  `functionid` varchar(32) DEFAULT NULL,
+  `iconid` varchar(32) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
   KEY `FK_pceuy41wr2fjbcilyc7mk3m1f` (`functionid`),
   KEY `FK_ny5de7922l39ta2pkhyspd5f` (`iconid`),
   CONSTRAINT `FK_ny5de7922l39ta2pkhyspd5f` FOREIGN KEY (`iconid`) REFERENCES `t_s_icon` (`ID`),
@@ -2463,8 +2500,8 @@ INSERT INTO `t_s_operation` VALUES ('4028d881436d514601436d52167f006c', 'szqm', 
 DROP TABLE IF EXISTS `t_s_opintemplate`;
 CREATE TABLE `t_s_opintemplate` (
   `ID` varchar(32) NOT NULL,
-  `descript` varchar(100) default NULL,
-  PRIMARY KEY  (`ID`)
+  `descript` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -2477,9 +2514,9 @@ CREATE TABLE `t_s_opintemplate` (
 DROP TABLE IF EXISTS `t_s_role`;
 CREATE TABLE `t_s_role` (
   `ID` varchar(32) NOT NULL,
-  `rolecode` varchar(10) default NULL,
+  `rolecode` varchar(10) DEFAULT NULL,
   `rolename` varchar(100) NOT NULL,
-  PRIMARY KEY  (`ID`)
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -2495,10 +2532,10 @@ INSERT INTO `t_s_role` VALUES ('4028d881436d514601436d5215a00042', 'manager', '�
 DROP TABLE IF EXISTS `t_s_role_function`;
 CREATE TABLE `t_s_role_function` (
   `ID` varchar(32) NOT NULL,
-  `operation` varchar(100) default NULL,
-  `functionid` varchar(32) default NULL,
-  `roleid` varchar(32) default NULL,
-  PRIMARY KEY  (`ID`),
+  `operation` varchar(100) DEFAULT NULL,
+  `functionid` varchar(32) DEFAULT NULL,
+  `roleid` varchar(32) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
   KEY `FK_fvsillj2cxyk5thnuu625urab` (`functionid`),
   KEY `FK_9dww3p4w8jwvlrgwhpitsbfif` (`roleid`),
   CONSTRAINT `FK_9dww3p4w8jwvlrgwhpitsbfif` FOREIGN KEY (`roleid`) REFERENCES `t_s_role` (`ID`),
@@ -2527,6 +2564,7 @@ INSERT INTO `t_s_role_function` VALUES ('40288186590896200159089cf152000a', null
 INSERT INTO `t_s_role_function` VALUES ('40288186590896200159089cf155000b', null, '40288186590896200159089c8a360006', '4028d881436d514601436d52159c0041');
 INSERT INTO `t_s_role_function` VALUES ('40288186590896200159089cf155000c', null, '40288186590896200159089bc6510002', '4028d881436d514601436d52159c0041');
 INSERT INTO `t_s_role_function` VALUES ('40288186590896200159089ef47e0012', null, '40288186590896200159089ccf5b0008', '4028d881436d514601436d52159c0041');
+INSERT INTO `t_s_role_function` VALUES ('402881e86223f2de016223f410680001', null, '297edb62621d0e3d01621d42e2da0004', '4028d881436d514601436d52159c0041');
 INSERT INTO `t_s_role_function` VALUES ('402889ff4728a293014728b3fab70021', null, '4028d881436d514601436d52151f0020', '4028d881436d514601436d52159c0041');
 INSERT INTO `t_s_role_function` VALUES ('4028d881436d514601436d521699006f', null, '4028d881436d514601436d52150a0019', '4028d881436d514601436d52159c0041');
 INSERT INTO `t_s_role_function` VALUES ('4028d881436d514601436d52169e0070', null, '4028d881436d514601436d52150a0019', '4028d881436d514601436d5215a00042');
@@ -2606,9 +2644,9 @@ INSERT INTO `t_s_role_function` VALUES ('4028ef8156b0d8e00156b0dcdd720020', null
 DROP TABLE IF EXISTS `t_s_role_user`;
 CREATE TABLE `t_s_role_user` (
   `ID` varchar(32) NOT NULL,
-  `roleid` varchar(32) default NULL,
-  `userid` varchar(32) default NULL,
-  PRIMARY KEY  (`ID`),
+  `roleid` varchar(32) DEFAULT NULL,
+  `userid` varchar(32) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
   KEY `FK_n2ucxeorvpjy7qhnmuem01kbx` (`roleid`),
   KEY `FK_d4qb5xld2pfb0bkjx9iwtolda` (`userid`),
   CONSTRAINT `FK_d4qb5xld2pfb0bkjx9iwtolda` FOREIGN KEY (`userid`) REFERENCES `t_s_user` (`id`),
@@ -2631,10 +2669,10 @@ INSERT INTO `t_s_role_user` VALUES ('4028ef8153f4151f0153f423b228000b', '4028d88
 DROP TABLE IF EXISTS `t_s_student`;
 CREATE TABLE `t_s_student` (
   `ID` varchar(32) NOT NULL,
-  `classname` varchar(255) default NULL,
-  `name` varchar(255) default NULL,
-  `sex` varchar(255) default NULL,
-  PRIMARY KEY  (`ID`)
+  `classname` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `sex` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -2677,12 +2715,12 @@ CREATE TABLE `t_s_territory` (
   `territorycode` varchar(10) NOT NULL,
   `territorylevel` smallint(6) NOT NULL,
   `territoryname` varchar(50) NOT NULL,
-  `territory_pinyin` varchar(40) default NULL,
+  `territory_pinyin` varchar(40) DEFAULT NULL,
   `territorysort` varchar(3) NOT NULL,
   `x_wgs84` double NOT NULL,
   `y_wgs84` double NOT NULL,
-  `territoryparentid` varchar(32) default NULL,
-  PRIMARY KEY  (`ID`)
+  `territoryparentid` varchar(32) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -2994,18 +3032,18 @@ INSERT INTO `t_s_territory` VALUES ('999', '370902', '4', '泰山区', 'TSQ', '0
 DROP TABLE IF EXISTS `t_s_timetask`;
 CREATE TABLE `t_s_timetask` (
   `ID` varchar(32) NOT NULL,
-  `CREATE_BY` varchar(32) default NULL,
-  `CREATE_DATE` datetime default NULL,
-  `CREATE_NAME` varchar(32) default NULL,
+  `CREATE_BY` varchar(32) DEFAULT NULL,
+  `CREATE_DATE` datetime DEFAULT NULL,
+  `CREATE_NAME` varchar(32) DEFAULT NULL,
   `CRON_EXPRESSION` varchar(100) NOT NULL,
   `IS_EFFECT` varchar(1) NOT NULL,
   `IS_START` varchar(1) NOT NULL,
   `TASK_DESCRIBE` varchar(50) NOT NULL,
   `TASK_ID` varchar(100) NOT NULL,
-  `UPDATE_BY` varchar(32) default NULL,
-  `UPDATE_DATE` datetime default NULL,
-  `UPDATE_NAME` varchar(32) default NULL,
-  PRIMARY KEY  (`ID`)
+  `UPDATE_BY` varchar(32) DEFAULT NULL,
+  `UPDATE_DATE` datetime DEFAULT NULL,
+  `UPDATE_NAME` varchar(32) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -3019,11 +3057,11 @@ INSERT INTO `t_s_timetask` VALUES ('4028ef8156b0d8e00156b1002aea0026', '4028d881
 DROP TABLE IF EXISTS `t_s_type`;
 CREATE TABLE `t_s_type` (
   `ID` varchar(32) NOT NULL,
-  `typecode` varchar(50) default NULL,
-  `typename` varchar(50) default NULL,
-  `typepid` varchar(32) default NULL,
-  `typegroupid` varchar(32) default NULL,
-  PRIMARY KEY  (`ID`),
+  `typecode` varchar(50) DEFAULT NULL,
+  `typename` varchar(50) DEFAULT NULL,
+  `typepid` varchar(32) DEFAULT NULL,
+  `typegroupid` varchar(32) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
   KEY `FK_nw2b22gy7plh7pqows186odmq` (`typepid`),
   KEY `FK_3q40mr4ebtd0cvx79matl39x1` (`typegroupid`),
   CONSTRAINT `FK_3q40mr4ebtd0cvx79matl39x1` FOREIGN KEY (`typegroupid`) REFERENCES `t_s_typegroup` (`ID`),
@@ -3068,9 +3106,9 @@ INSERT INTO `t_s_type` VALUES ('4028d881436d514601436d52166a0068', '1', '女性'
 DROP TABLE IF EXISTS `t_s_typegroup`;
 CREATE TABLE `t_s_typegroup` (
   `ID` varchar(32) NOT NULL,
-  `typegroupcode` varchar(50) default NULL,
-  `typegroupname` varchar(50) default NULL,
-  PRIMARY KEY  (`ID`)
+  `typegroupcode` varchar(50) DEFAULT NULL,
+  `typegroupname` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -3094,14 +3132,14 @@ INSERT INTO `t_s_typegroup` VALUES ('4028d881436d514601436d5215e90050', 'sex', '
 -- ----------------------------
 DROP TABLE IF EXISTS `t_s_user`;
 CREATE TABLE `t_s_user` (
-  `email` varchar(50) default NULL,
-  `mobilePhone` varchar(30) default NULL,
-  `officePhone` varchar(20) default NULL,
-  `signatureFile` varchar(100) default NULL,
+  `email` varchar(50) DEFAULT NULL,
+  `mobilePhone` varchar(30) DEFAULT NULL,
+  `officePhone` varchar(20) DEFAULT NULL,
+  `signatureFile` varchar(100) DEFAULT NULL,
   `id` varchar(32) NOT NULL,
-  `accountid` varchar(36) default NULL,
-  `type` varchar(2) default '1',
-  PRIMARY KEY  (`id`),
+  `accountid` varchar(36) DEFAULT NULL,
+  `type` varchar(2) DEFAULT '1',
+  PRIMARY KEY (`id`),
   KEY `FK_2cuji5h6yorrxgsr8ojndlmal` (`id`),
   CONSTRAINT `FK_2cuji5h6yorrxgsr8ojndlmal` FOREIGN KEY (`id`) REFERENCES `t_s_base_user` (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -3122,11 +3160,11 @@ INSERT INTO `t_s_user` VALUES (null, null, null, null, '4028d881436d514601436d52
 DROP TABLE IF EXISTS `t_s_version`;
 CREATE TABLE `t_s_version` (
   `ID` varchar(32) NOT NULL,
-  `loginpage` varchar(100) default NULL,
-  `versioncode` varchar(50) default NULL,
-  `versionname` varchar(30) default NULL,
-  `versionnum` varchar(20) default NULL,
-  PRIMARY KEY  (`ID`)
+  `loginpage` varchar(100) DEFAULT NULL,
+  `versioncode` varchar(50) DEFAULT NULL,
+  `versionname` varchar(30) DEFAULT NULL,
+  `versionnum` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -3139,10 +3177,10 @@ CREATE TABLE `t_s_version` (
 DROP TABLE IF EXISTS `weixin_accesstoken`;
 CREATE TABLE `weixin_accesstoken` (
   `ID` varchar(32) NOT NULL,
-  `access_token` varchar(255) default NULL,
-  `addtime` datetime default NULL,
-  `expires_ib` int(11) default NULL,
-  PRIMARY KEY  (`ID`)
+  `access_token` varchar(255) DEFAULT NULL,
+  `addtime` datetime DEFAULT NULL,
+  `expires_ib` int(11) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -3155,29 +3193,29 @@ CREATE TABLE `weixin_accesstoken` (
 DROP TABLE IF EXISTS `weixin_account`;
 CREATE TABLE `weixin_account` (
   `id` varchar(36) NOT NULL COMMENT '主键',
-  `accountname` varchar(200) default NULL COMMENT '公众帐号名称',
-  `accounttoken` varchar(200) default NULL COMMENT '公众帐号TOKEN',
-  `accountnumber` varchar(200) default NULL COMMENT '公众微信号',
-  `accounttype` varchar(50) default NULL COMMENT '公众号类型',
-  `accountemail` varchar(200) default NULL COMMENT '电子邮箱',
-  `accountdesc` varchar(500) default NULL COMMENT '公众帐号描述',
-  `accountaccesstoken` varchar(1000) default NULL COMMENT 'ACCESS_TOKEN',
-  `accountappid` varchar(200) default NULL COMMENT '公众帐号APPID',
-  `accountappsecret` varchar(500) default NULL COMMENT '公众帐号APPSECRET',
-  `ADDTOEKNTIME` datetime default NULL,
-  `USERNAME` varchar(50) default NULL,
-  `WEIXIN_ACCOUNTID` varchar(100) default NULL,
-  `apiticket` varchar(200) default NULL,
-  `apiticketttime` datetime default NULL,
-  `jsapiticket` varchar(200) default NULL,
-  `jsapitickettime` datetime default NULL,
-  PRIMARY KEY  (`id`)
+  `accountname` varchar(200) DEFAULT NULL COMMENT '公众帐号名称',
+  `accounttoken` varchar(200) DEFAULT NULL COMMENT '公众帐号TOKEN',
+  `accountnumber` varchar(200) DEFAULT NULL COMMENT '公众微信号',
+  `accounttype` varchar(50) DEFAULT NULL COMMENT '公众号类型',
+  `accountemail` varchar(200) DEFAULT NULL COMMENT '电子邮箱',
+  `accountdesc` varchar(500) DEFAULT NULL COMMENT '公众帐号描述',
+  `accountaccesstoken` varchar(1000) DEFAULT NULL COMMENT 'ACCESS_TOKEN',
+  `accountappid` varchar(200) DEFAULT NULL COMMENT '公众帐号APPID',
+  `accountappsecret` varchar(500) DEFAULT NULL COMMENT '公众帐号APPSECRET',
+  `ADDTOEKNTIME` datetime DEFAULT NULL,
+  `USERNAME` varchar(50) DEFAULT NULL,
+  `WEIXIN_ACCOUNTID` varchar(100) DEFAULT NULL,
+  `apiticket` varchar(200) DEFAULT NULL,
+  `apiticketttime` datetime DEFAULT NULL,
+  `jsapiticket` varchar(200) DEFAULT NULL,
+  `jsapitickettime` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of weixin_account
 -- ----------------------------
-INSERT INTO `weixin_account` VALUES ('402881e8461795c201461795c2e90000', 'Jeewx演示账号', 'jeewx', 'guojusoft', '1', 'jeecg@sina.com', '无', 'UudfmlPWU-fSHa5vl1KBt1hMnhQLQL53UxTjcZj_6h0zK3Ar_8QMArQAnypjMq-OMelg69XwZ1RPpCY3la6aM_q3s9w25LjsVq2R3Nj9rPO12TqrNtfYkpv0YhjjITkfIBWfCGAXQL', 'wxc60a4d9cbac8092d', '?', '2016-12-20 23:08:22', 'admin', '?', 'IpK_1T69hDhZkLQTlwsAXyjkZaTEYbX_kE6IkQ8b5Waw7uX8zbeFp34lurpnPaSKLMQZZ1RsvceEiMn6_ft3cA', '2016-08-22 14:48:38', 'kgt8ON7yVITDhtdwci0qeeC2RWfOAQ1Sc_HMdjrzSlpbgBEpB7t7JQlTHnS-4WyK2Jnp3m5UbeKswqZoKKNDBw', '2016-12-20 23:08:22');
+INSERT INTO `weixin_account` VALUES ('402881e8461795c201461795c2e90000', 'Jeewx演示账号', 'jeewx', 'guojusoft', '1', 'jeecg@sina.com', '无', '7_0Ihe5B-WTF0P07L2IfxX3yNZcthPkLTrsiSyC1jXRJi8ozYht4VJ-pHxMxs_mYkltpQ7Iejm8Y1qj2qc8tkMm0MTeTtNjbuOjQvmbqUBNoJ95YLQmfMexPm9HB-5IXTO-C0BSCdTGe-FZBLTPXLlCAABJX', 'wxc60a4d9cbac8092d', '?', '2018-03-14 18:07:27', 'admin', '?', 'IpK_1T69hDhZkLQTlwsAXyjkZaTEYbX_kE6IkQ8b5Waw7uX8zbeFp34lurpnPaSKLMQZZ1RsvceEiMn6_ft3cA', '2016-08-22 14:48:38', 'kgt8ON7yVITDhtdwci0qeeC2RWfOAQ1Sc_HMdjrzSlrCrMnOPzBTmb9VWOz9dMwnZ_jpSYfOnKEppyjOl0YKKg', '2018-03-14 18:07:27');
 
 -- ----------------------------
 -- Table structure for weixin_autoresponse
@@ -3185,13 +3223,13 @@ INSERT INTO `weixin_account` VALUES ('402881e8461795c201461795c2e90000', 'Jeewx�
 DROP TABLE IF EXISTS `weixin_autoresponse`;
 CREATE TABLE `weixin_autoresponse` (
   `ID` varchar(32) NOT NULL,
-  `addtime` varchar(255) default NULL,
-  `keyword` varchar(255) default NULL,
-  `msgtype` varchar(255) default NULL,
-  `rescontent` varchar(255) default NULL,
-  `templatename` varchar(255) default NULL,
-  `accountid` varchar(100) default NULL,
-  PRIMARY KEY  (`ID`)
+  `addtime` varchar(255) DEFAULT NULL,
+  `keyword` varchar(255) DEFAULT NULL,
+  `msgtype` varchar(255) DEFAULT NULL,
+  `rescontent` varchar(255) DEFAULT NULL,
+  `templatename` varchar(255) DEFAULT NULL,
+  `accountid` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -3210,14 +3248,14 @@ INSERT INTO `weixin_autoresponse` VALUES ('f7a8a3a946e55a940146e5a656150055', '2
 DROP TABLE IF EXISTS `weixin_cms_ad`;
 CREATE TABLE `weixin_cms_ad` (
   `ID` varchar(36) NOT NULL,
-  `ACCOUNTID` varchar(100) default NULL,
-  `CREATE_BY` varchar(255) default NULL,
-  `CREATE_DATE` datetime default NULL,
-  `CREATE_NAME` varchar(255) default NULL,
-  `IMAGE_HREF` varchar(255) default NULL,
-  `IMAGE_NAME` varchar(255) default NULL,
-  `TITLE` varchar(20) default NULL,
-  PRIMARY KEY  (`ID`)
+  `ACCOUNTID` varchar(100) DEFAULT NULL,
+  `CREATE_BY` varchar(255) DEFAULT NULL,
+  `CREATE_DATE` datetime DEFAULT NULL,
+  `CREATE_NAME` varchar(255) DEFAULT NULL,
+  `IMAGE_HREF` varchar(255) DEFAULT NULL,
+  `IMAGE_NAME` varchar(255) DEFAULT NULL,
+  `TITLE` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -3234,24 +3272,29 @@ INSERT INTO `weixin_cms_ad` VALUES ('402881e946ddea480146de0f3a810011', '402881e
 DROP TABLE IF EXISTS `weixin_cms_article`;
 CREATE TABLE `weixin_cms_article` (
   `id` varchar(36) NOT NULL COMMENT '主键',
-  `title` varchar(50) default NULL COMMENT '标题',
-  `image_name` varchar(255) default NULL COMMENT '图片名称',
-  `image_href` varchar(255) default NULL COMMENT '图片地址',
-  `summary` varchar(255) default NULL,
-  `content` varchar(20000) default NULL COMMENT '内容',
-  `column_id` varchar(36) default NULL COMMENT '栏目id',
-  `accountid` varchar(100) default NULL COMMENT '微信账户',
-  `create_name` varchar(255) default NULL COMMENT '创建人',
-  `create_by` varchar(255) default NULL COMMENT '创建人id',
-  `create_date` datetime default NULL COMMENT '创建日期',
-  PRIMARY KEY  (`id`)
+  `title` varchar(50) DEFAULT NULL COMMENT '标题',
+  `image_name` varchar(255) DEFAULT NULL COMMENT '图片名称',
+  `image_href` varchar(255) DEFAULT NULL COMMENT '图片地址',
+  `summary` varchar(255) DEFAULT NULL,
+  `content` text COMMENT '内容',
+  `column_id` varchar(36) DEFAULT NULL COMMENT '栏目id',
+  `accountid` varchar(100) DEFAULT NULL COMMENT '微信账户',
+  `create_name` varchar(255) DEFAULT NULL COMMENT '创建人',
+  `create_by` varchar(255) DEFAULT NULL COMMENT '创建人id',
+  `create_date` datetime DEFAULT NULL COMMENT '创建日期',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of weixin_cms_article
 -- ----------------------------
-INSERT INTO `weixin_cms_article` VALUES ('297e7eb6469a4a8901469a5e58c0000e', '测试一个小黄人的图片', '19343396_845725.jpg', 'upload/files/20140613235146eEgyESpy.jpg', '你看看这个小黄人美不美？', '<p><strong>我的小黄人是不是很好看啊</strong></p><p><strong><br/></strong></p><p><strong><br/></strong></p><p><span style=\"background-color: rgb(255, 255, 0);\"><strong>这个颜色怎么样啊。</strong></span></p>', '402881e44695183a01469522f7d20019', '402881e8461795c201461795c2e90000', '管理员', 'admin', '2014-06-14 20:33:33');
-INSERT INTO `weixin_cms_article` VALUES ('297e7eb6469a4a8901469a5ef95c0011', '这个杀手帅不帅？', '1384480985636.jpg', 'upload/files/20140613235146eEgyESpy.jpg', '这个杀手帅不帅？', '<p><strong><em>这个杀手帅不帅？这个杀手帅不帅？这个杀手帅不帅？这个杀手帅不帅？</em></strong></p><p><strong><em>这个杀手帅不帅？这个杀手帅不帅？这个杀手帅不帅？这个杀手帅不帅？这个杀手帅不帅？这个杀手帅不帅？这个杀手帅不帅？这个杀手帅不帅？这个杀手帅不帅？</em></strong></p>', '402881e44695183a01469522f7d20019', '402881e8461795c201461795c2e90000', '管理员', 'admin', '2014-06-14 20:34:14');
+INSERT INTO `weixin_cms_article` VALUES ('402881e8622272aa01622287183c0027', 'JEEWX微信管家系统', '20180314110154ZkWNdEWE.png', 'upload/files/20180314182311zTY0A5TW.png', 'JeeWx  捷微管家系统，是一个高效，敏捷，智能的微信管家系统，采用JAVA语言，业内独一份java版本。\r\n    JeeWx的目标是优化微信应用开发的流程，使开发者能把更多的精力放到业务逻辑的设计而不是淹没在卷帙浩繁的代码海洋中，打造一个高效敏捷的微信应用开发平台。JeeWx采用插件的方式实现微信各类功能，如微网站，微商城，微活动，为公众账号提供一站式微信开发、管理服务。\r\n', '<p style=\"white-space: normal; line-height: 33px;\"><span style=\"color: rgb(255, 0, 0); letter-spacing: 0px; font-family: 微软雅黑; font-weight: bold;\">[产品简介]</span></p><p style=\"white-space: normal; line-height: 33px;\"><span style=\"letter-spacing: 0px; font-family: 微软雅黑; font-size: 15px;\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JEEWX是一个开源，高效，敏捷的微信开发平台，采用JAVA语言，基于jeecg企业级快速开发框架实现。&nbsp;jeewx的目的是最大化的简化微信开发的流程，使用开发者能把最好的精力放到微信具体业务开发，并能以最快的时间完成。把一些常规而频繁的工作交由jeewx来处理即可，平台兼备的代码生成器，在线开发，可以快速的完成企业应用。jeewx采用插件的方式实现微信功能，不同的插件实现不同的微信功能。</span></p><p style=\"white-space: normal; line-height: 33px;\"><span style=\"letter-spacing: 0px; font-family: 微软雅黑; font-size: 15px;\">&nbsp;&nbsp;</span><span style=\"letter-spacing: 0px; font-family: 微软雅黑; font-size: 15px; font-weight: bold;\">&nbsp;&nbsp;JEEWX独有集团化管理模式：&nbsp;</span><span style=\"letter-spacing: 0px; font-family: 微软雅黑; font-size: 15px;\">随着微信运营的普及发展，逐渐出现不同的领域需求。对于集团化公司和连锁公司，分布于全国省市县的每个分公司运营着自己的公众号，每个公众号都有自己的运营需求，就这样形成了一个树状网的微信公众号集群（全国几百甚至上万个公众号）。集团公司迫切需要统一集中管理微信公众号集群：通过统一权限管控（类似组织机构上下级）、统一素材中心、统一群发机制、集中报表分析，形成集团化营销模式和公司战略布局。</span></p><p hiragino=\"\" sans=\"\" microsoft=\"\" wenquanyi=\"\" micro=\"\" segoe=\"\" ui=\"\" font-size:=\"\" margin-top:=\"\" margin-bottom:=\"\" white-space:=\"\" -ms-word-wrap:=\"\" box-sizing:=\"\" background-color:=\"\" style=\"white-space: normal; outline: 0px; color: rgb(51, 51, 51); line-height: 22px; letter-spacing: 0.5px;\"><span style=\"color: rgb(255, 0, 0); font-weight: 700;\"></span></p><p style=\"white-space: normal; line-height: 33px;\"><span style=\"color: rgb(255, 0, 0); letter-spacing: 0px; font-weight: bold;\">[产品功能]</span></p><p style=\"white-space: normal; line-height: 33px;\"><span style=\"letter-spacing: 0px; font-family: 微软雅黑; font-size: 15px;\">1</span><span style=\"letter-spacing: 0px; font-family: 微软雅黑; font-size: 15px;\">.&nbsp;微信营销活动</span></p><p style=\"white-space: normal; line-height: 33px;\"><span style=\"letter-spacing: 0px; font-family: 微软雅黑; font-size: 15px;\">&nbsp; &nbsp;抽奖活动（幸运水果机、砸金蛋、大转盘、刮刮乐、摇一摇等）、调研问卷、竞选投票、微信墙、微社区、微签到、微视频、微相册、二维码推广等</span></p><ul class=\" list-paddingleft-2\" style=\"width: 504.638px; white-space: normal;\"><li><p style=\"margin-top: auto; margin-bottom: auto;\"><span style=\"letter-spacing: 0px; font-family: 微软雅黑; font-size: 15px;\">&nbsp;幸运水果机—动动手指，好礼送不停！</span></p></li></ul><p hiragino=\"\" sans=\"\" microsoft=\"\" wenquanyi=\"\" micro=\"\" segoe=\"\" ui=\"\" font-size:=\"\" margin-top:=\"\" margin-bottom:=\"\" white-space:=\"\" -ms-word-wrap:=\"\" box-sizing:=\"\" background-color:=\"\" style=\"white-space: normal; outline: 0px; color: rgb(51, 51, 51); line-height: 22px; letter-spacing: 0.5px;\"><img width=\"300\" height=\"534\" alt=\"水果机.jpg\" src=\"http://www.jeewx.com/jeewx/upload/ueditor/upload/image/20151030/1446192768086012596.jpg\" style=\"margin: 0px 5px; outline: 0px; border: currentcolor; width: 300px; height: auto; vertical-align: middle; cursor: pointer; box-sizing: border-box;\"/></p><ul class=\" list-paddingleft-2\" hiragino=\"\" sans=\"\" microsoft=\"\" wenquanyi=\"\" micro=\"\" segoe=\"\" ui=\"\" font-size:=\"\" margin-top:=\"\" margin-bottom:=\"\" white-space:=\"\" box-sizing:=\"\" background-color:=\"\" style=\"width: 504.638px; padding: 0px 0px 0px 40px; white-space: normal; outline: 0px; color: rgb(51, 51, 51); line-height: 1.6;\"><li><p>&nbsp;砸金蛋，赢好礼</p></li></ul><p hiragino=\"\" sans=\"\" microsoft=\"\" wenquanyi=\"\" micro=\"\" segoe=\"\" ui=\"\" font-size:=\"\" margin-top:=\"\" margin-bottom:=\"\" white-space:=\"\" -ms-word-wrap:=\"\" box-sizing:=\"\" background-color:=\"\" style=\"white-space: normal; outline: 0px; color: rgb(51, 51, 51); line-height: 22px; letter-spacing: 0.5px;\"><img width=\"300\" height=\"534\" alt=\"砸金蛋.jpg\" src=\"http://www.jeewx.com/jeewx/upload/ueditor/upload/image/20151030/1446192768128031441.jpg\" style=\"margin: 0px 5px; outline: 0px; border: currentcolor; width: 300px; height: auto; vertical-align: middle; cursor: pointer; box-sizing: border-box;\"/></p><ul class=\" list-paddingleft-2\" hiragino=\"\" sans=\"\" microsoft=\"\" wenquanyi=\"\" micro=\"\" segoe=\"\" ui=\"\" font-size:=\"\" margin-top:=\"\" margin-bottom:=\"\" white-space:=\"\" box-sizing:=\"\" background-color:=\"\" style=\"width: 504.638px; padding: 0px 0px 0px 40px; white-space: normal; outline: 0px; color: rgb(51, 51, 51); line-height: 1.6;\"><li><p>&nbsp;&nbsp;快乐大转盘，幸运落谁家</p></li></ul><p hiragino=\"\" sans=\"\" microsoft=\"\" wenquanyi=\"\" micro=\"\" segoe=\"\" ui=\"\" font-size:=\"\" margin-top:=\"\" margin-bottom:=\"\" white-space:=\"\" -ms-word-wrap:=\"\" box-sizing:=\"\" background-color:=\"\" style=\"white-space: normal; outline: 0px; color: rgb(51, 51, 51); line-height: 22px; letter-spacing: 0.5px;\"><img width=\"300\" height=\"534\" alt=\"大转盘.jpg\" src=\"http://www.jeewx.com/jeewx/upload/ueditor/upload/image/20151030/1446192768158036708.jpg\" style=\"margin: 0px 5px; outline: 0px; border: currentcolor; width: 300px; height: auto; vertical-align: middle; cursor: pointer; box-sizing: border-box;\"/><br style=\"outline: 0px; box-sizing: border-box;\"/></p><ul class=\" list-paddingleft-2\" hiragino=\"\" sans=\"\" microsoft=\"\" wenquanyi=\"\" micro=\"\" segoe=\"\" ui=\"\" font-size:=\"\" margin-top:=\"\" margin-bottom:=\"\" white-space:=\"\" box-sizing:=\"\" background-color:=\"\" style=\"width: 504.638px; padding: 0px 0px 0px 40px; white-space: normal; outline: 0px; color: rgb(51, 51, 51); line-height: 1.6;\"><li><p>&nbsp;&nbsp;好运赢好礼，乐享刮不停</p></li></ul><p hiragino=\"\" sans=\"\" microsoft=\"\" wenquanyi=\"\" micro=\"\" segoe=\"\" ui=\"\" font-size:=\"\" margin-top:=\"\" margin-bottom:=\"\" white-space:=\"\" -ms-word-wrap:=\"\" box-sizing:=\"\" background-color:=\"\" style=\"white-space: normal; outline: 0px; color: rgb(51, 51, 51); line-height: 22px; letter-spacing: 0.5px;\"><img width=\"300\" height=\"534\" alt=\"刮刮乐.jpg\" src=\"http://www.jeewx.com/jeewx/upload/ueditor/upload/image/20151030/1446192768199035116.jpg\" style=\"margin: 0px 5px; outline: 0px; border: currentcolor; width: 300px; height: auto; vertical-align: middle; cursor: pointer; box-sizing: border-box;\"/><br style=\"outline: 0px; box-sizing: border-box;\"/></p><ul class=\" list-paddingleft-2\" hiragino=\"\" sans=\"\" microsoft=\"\" wenquanyi=\"\" micro=\"\" segoe=\"\" ui=\"\" font-size:=\"\" margin-top:=\"\" margin-bottom:=\"\" white-space:=\"\" box-sizing:=\"\" background-color:=\"\" style=\"width: 504.638px; padding: 0px 0px 0px 40px; white-space: normal; outline: 0px; color: rgb(51, 51, 51); line-height: 1.6;\"><li><p>全民摇一摇，好礼大派送！</p></li></ul><p hiragino=\"\" sans=\"\" microsoft=\"\" wenquanyi=\"\" micro=\"\" segoe=\"\" ui=\"\" font-size:=\"\" margin-top:=\"\" margin-bottom:=\"\" white-space:=\"\" -ms-word-wrap:=\"\" box-sizing:=\"\" background-color:=\"\" style=\"white-space: normal; outline: 0px; color: rgb(51, 51, 51); line-height: 22px; letter-spacing: 0.5px;\"><img width=\"300\" height=\"534\" alt=\"摇一摇.jpg\" src=\"http://www.jeewx.com/jeewx/upload/ueditor/upload/image/20151030/1446192768231071568.jpg\" style=\"margin: 0px 5px; outline: 0px; border: currentcolor; width: 300px; height: auto; vertical-align: middle; cursor: pointer; box-sizing: border-box;\"/></p><ul class=\" list-paddingleft-2\" hiragino=\"\" sans=\"\" microsoft=\"\" wenquanyi=\"\" micro=\"\" segoe=\"\" ui=\"\" font-size:=\"\" margin-top:=\"\" margin-bottom:=\"\" white-space:=\"\" box-sizing:=\"\" background-color:=\"\" style=\"width: 504.638px; padding: 0px 0px 0px 40px; white-space: normal; outline: 0px; color: rgb(51, 51, 51); line-height: 1.6;\"><li><p>实时统计数据，方便获取民意</p></li></ul><p hiragino=\"\" sans=\"\" microsoft=\"\" wenquanyi=\"\" micro=\"\" segoe=\"\" ui=\"\" font-size:=\"\" margin-top:=\"\" margin-bottom:=\"\" white-space:=\"\" -ms-word-wrap:=\"\" box-sizing:=\"\" background-color:=\"\" style=\"white-space: normal; outline: 0px; color: rgb(51, 51, 51); line-height: 22px; letter-spacing: 0.5px;\"><img width=\"300\" height=\"534\" alt=\"调研.jpg\" src=\"http://www.jeewx.com/jeewx/upload/ueditor/upload/image/20151030/1446192768251011985.jpg\" style=\"margin: 0px 5px; outline: 0px; border: currentcolor; width: 300px; height: auto; vertical-align: middle; cursor: pointer; box-sizing: border-box;\"/></p><ul class=\" list-paddingleft-2\" hiragino=\"\" sans=\"\" microsoft=\"\" wenquanyi=\"\" micro=\"\" segoe=\"\" ui=\"\" font-size:=\"\" margin-top:=\"\" margin-bottom:=\"\" white-space:=\"\" box-sizing:=\"\" background-color:=\"\" style=\"width: 504.638px; padding: 0px 0px 0px 40px; white-space: normal; outline: 0px; color: rgb(51, 51, 51); line-height: 1.6;\"><li><p><span style=\"outline: 0px; color: rgb(255, 0, 0); box-sizing: border-box;\"><span style=\"outline: 0px; color: rgb(51, 51, 51); box-sizing: border-box;\">微信墙，有效在线交流平台</span></span></p></li></ul><p hiragino=\"\" sans=\"\" microsoft=\"\" wenquanyi=\"\" micro=\"\" segoe=\"\" ui=\"\" font-size:=\"\" margin-top:=\"\" margin-bottom:=\"\" white-space:=\"\" -ms-word-wrap:=\"\" box-sizing:=\"\" background-color:=\"\" style=\"white-space: normal; outline: 0px; color: rgb(51, 51, 51); line-height: 22px; letter-spacing: 0.5px;\"><img width=\"300\" height=\"160\" alt=\"微信墙.jpg\" src=\"http://www.jeewx.com/jeewx/upload/ueditor/upload/image/20151030/1446192768269052683.jpg\" style=\"margin: 0px 5px; outline: 0px; border: currentcolor; width: 300px; height: auto; vertical-align: middle; cursor: pointer; box-sizing: border-box;\"/></p><ul class=\" list-paddingleft-2\" hiragino=\"\" sans=\"\" microsoft=\"\" wenquanyi=\"\" micro=\"\" segoe=\"\" ui=\"\" font-size:=\"\" margin-top:=\"\" margin-bottom:=\"\" white-space:=\"\" box-sizing:=\"\" background-color:=\"\" style=\"width: 504.638px; padding: 0px 0px 0px 40px; white-space: normal; outline: 0px; color: rgb(51, 51, 51); line-height: 1.6;\"><li><p><span style=\"outline: 0px; color: rgb(255, 0, 0); box-sizing: border-box;\"><span style=\"outline: 0px; color: rgb(51, 51, 51); box-sizing: border-box;\">微社区便于扩展</span></span></p></li></ul><p hiragino=\"\" sans=\"\" microsoft=\"\" wenquanyi=\"\" micro=\"\" segoe=\"\" ui=\"\" font-size:=\"\" margin-top:=\"\" margin-bottom:=\"\" white-space:=\"\" -ms-word-wrap:=\"\" box-sizing:=\"\" background-color:=\"\" style=\"white-space: normal; outline: 0px; color: rgb(51, 51, 51); line-height: 22px; letter-spacing: 0.5px;\"><img width=\"300\" height=\"203\" alt=\"微社区.jpg\" src=\"http://www.jeewx.com/jeewx/upload/ueditor/upload/image/20151030/1446192768300091184.jpg\" style=\"margin: 0px 5px; outline: 0px; border: currentcolor; width: 300px; height: auto; vertical-align: middle; cursor: pointer; box-sizing: border-box;\"/></p><ul class=\" list-paddingleft-2\" hiragino=\"\" sans=\"\" microsoft=\"\" wenquanyi=\"\" micro=\"\" segoe=\"\" ui=\"\" font-size:=\"\" margin-top:=\"\" margin-bottom:=\"\" white-space:=\"\" box-sizing:=\"\" background-color:=\"\" style=\"width: 504.638px; padding: 0px 0px 0px 40px; white-space: normal; outline: 0px; color: rgb(51, 51, 51); line-height: 1.6;\"><li><p style=\"margin-top: 8px; margin-bottom: 8px; outline: 0px; line-height: 22px; letter-spacing: 0.5px; font-size: 0.87rem; box-sizing: border-box;\">微签到</p></li></ul><p hiragino=\"\" sans=\"\" microsoft=\"\" wenquanyi=\"\" micro=\"\" segoe=\"\" ui=\"\" font-size:=\"\" margin-top:=\"\" margin-bottom:=\"\" white-space:=\"\" -ms-word-wrap:=\"\" box-sizing:=\"\" background-color:=\"\" style=\"white-space: normal; outline: 0px; color: rgb(51, 51, 51); line-height: 22px; letter-spacing: 0.5px;\"><img width=\"300\" height=\"210\" alt=\"微信签到.jpg\" src=\"http://www.jeewx.com/jeewx/upload/ueditor/upload/image/20151030/1446192768336085396.jpg\" style=\"margin: 0px 5px; outline: 0px; border: currentcolor; width: 300px; height: auto; vertical-align: middle; cursor: pointer; box-sizing: border-box;\"/></p><ul class=\" list-paddingleft-2\" hiragino=\"\" sans=\"\" microsoft=\"\" wenquanyi=\"\" micro=\"\" segoe=\"\" ui=\"\" font-size:=\"\" margin-top:=\"\" margin-bottom:=\"\" white-space:=\"\" box-sizing:=\"\" background-color:=\"\" style=\"width: 504.638px; padding: 0px 0px 0px 40px; white-space: normal; outline: 0px; color: rgb(51, 51, 51); line-height: 1.6;\"><li><p>微相册</p></li></ul><p hiragino=\"\" sans=\"\" microsoft=\"\" wenquanyi=\"\" micro=\"\" segoe=\"\" ui=\"\" font-size:=\"\" margin-top:=\"\" margin-bottom:=\"\" white-space:=\"\" -ms-word-wrap:=\"\" box-sizing:=\"\" background-color:=\"\" style=\"white-space: normal; outline: 0px; color: rgb(51, 51, 51); line-height: 22px; letter-spacing: 0.5px;\"><img width=\"300\" height=\"534\" alt=\"微相册.jpg\" src=\"http://www.jeewx.com/jeewx/upload/ueditor/upload/image/20151030/1446192768391007669.jpg\" style=\"margin: 0px 5px; outline: 0px; border: currentcolor; width: 300px; height: auto; vertical-align: middle; cursor: pointer; box-sizing: border-box;\"/></p><p hiragino=\"\" sans=\"\" microsoft=\"\" wenquanyi=\"\" micro=\"\" segoe=\"\" ui=\"\" font-size:=\"\" margin-top:=\"\" margin-bottom:=\"\" white-space:=\"\" -ms-word-wrap:=\"\" box-sizing:=\"\" background-color:=\"\" style=\"white-space: normal; outline: 0px; color: rgb(51, 51, 51); line-height: 22px; letter-spacing: 0.5px;\"><span style=\"outline: 0px; font-weight: 700; box-sizing: border-box;\">2、微网站</span></p><p hiragino=\"\" sans=\"\" microsoft=\"\" wenquanyi=\"\" micro=\"\" segoe=\"\" ui=\"\" font-size:=\"\" margin-top:=\"\" margin-bottom:=\"\" white-space:=\"\" -ms-word-wrap:=\"\" box-sizing:=\"\" background-color:=\"\" style=\"white-space: normal; outline: 0px; color: rgb(51, 51, 51); line-height: 22px; letter-spacing: 0.5px;\"><span style=\"outline: 0px; box-sizing: border-box;\">&nbsp; &nbsp; 三网通智能建站系统，一个平台发布所有站点(PC站、微信网站、手机网站），响应式网站实现PC端和移动终端完美兼容。后台系统包括广告管理、栏目管理、文章管理、网站信息、友情链接等菜单。</span></p><p hiragino=\"\" sans=\"\" microsoft=\"\" wenquanyi=\"\" micro=\"\" segoe=\"\" ui=\"\" font-size:=\"\" margin-top:=\"\" margin-bottom:=\"\" white-space:=\"\" -ms-word-wrap:=\"\" box-sizing:=\"\" background-color:=\"\" style=\"white-space: normal; outline: 0px; color: rgb(51, 51, 51); line-height: 22px; letter-spacing: 0.5px;\"><span style=\"outline: 0px; box-sizing: border-box;\"><img width=\"300\" height=\"491\" alt=\"微网站1.jpg\" src=\"http://www.jeewx.com/jeewx/upload/ueditor/upload/image/20151030/1446192768437001858.jpg\" style=\"margin: 0px 5px; outline: 0px; border: currentcolor; width: 300px; height: auto; vertical-align: middle; cursor: pointer; box-sizing: border-box;\"/><br style=\"outline: 0px; box-sizing: border-box;\"/><br style=\"outline: 0px; box-sizing: border-box;\"/><br style=\"outline: 0px; box-sizing: border-box;\"/><img width=\"300\" height=\"533\" alt=\"微网站2.jpg\" src=\"http://www.jeewx.com/jeewx/upload/ueditor/upload/image/20151030/1446192768480022322.jpg\" style=\"margin: 0px 5px; outline: 0px; border: currentcolor; width: 300px; height: auto; vertical-align: middle; cursor: pointer; box-sizing: border-box;\"/><br style=\"outline: 0px; box-sizing: border-box;\"/><br style=\"outline: 0px; box-sizing: border-box;\"/></span></p><p hiragino=\"\" sans=\"\" microsoft=\"\" wenquanyi=\"\" micro=\"\" segoe=\"\" ui=\"\" font-size:=\"\" margin-top:=\"\" margin-bottom:=\"\" white-space:=\"\" -ms-word-wrap:=\"\" box-sizing:=\"\" background-color:=\"\" style=\"white-space: normal; outline: 0px; color: rgb(51, 51, 51); line-height: 22px; letter-spacing: 0.5px;\"><img width=\"300\" height=\"473\" alt=\"微网站3.jpg\" src=\"http://www.jeewx.com/jeewx/upload/ueditor/upload/image/20151030/1446192768525061163.jpg\" style=\"margin: 0px 5px; outline: 0px; border: currentcolor; width: 300px; height: auto; vertical-align: middle; cursor: pointer; box-sizing: border-box;\"/></p><p hiragino=\"\" sans=\"\" microsoft=\"\" wenquanyi=\"\" micro=\"\" segoe=\"\" ui=\"\" font-size:=\"\" margin-top:=\"\" margin-bottom:=\"\" white-space:=\"\" -ms-word-wrap:=\"\" box-sizing:=\"\" background-color:=\"\" style=\"white-space: normal; outline: 0px; color: rgb(51, 51, 51); line-height: 22px; letter-spacing: 0.5px;\"><img width=\"300\" height=\"437\" alt=\"微网站4.jpg\" src=\"http://www.jeewx.com/jeewx/upload/ueditor/upload/image/20151030/1446192768577096882.jpg\" style=\"margin: 0px 5px; outline: 0px; border: currentcolor; width: 300px; height: auto; vertical-align: middle; cursor: pointer; box-sizing: border-box;\"/></p><p hiragino=\"\" sans=\"\" microsoft=\"\" wenquanyi=\"\" micro=\"\" segoe=\"\" ui=\"\" font-size:=\"\" margin-top:=\"\" margin-bottom:=\"\" white-space:=\"\" -ms-word-wrap:=\"\" box-sizing:=\"\" background-color:=\"\" style=\"white-space: normal; outline: 0px; color: rgb(51, 51, 51); line-height: 22px; letter-spacing: 0.5px;\"><span style=\"outline: 0px; box-sizing: border-box;\"><span style=\"outline: 0px; font-weight: 700; box-sizing: border-box;\">3、微商城</span></span></p><ul class=\" list-paddingleft-2\" hiragino=\"\" sans=\"\" microsoft=\"\" wenquanyi=\"\" micro=\"\" segoe=\"\" ui=\"\" font-size:=\"\" margin-top:=\"\" margin-bottom:=\"\" white-space:=\"\" box-sizing:=\"\" background-color:=\"\" style=\"width: 504.638px; padding: 0px 0px 0px 40px; white-space: normal; outline: 0px; color: rgb(51, 51, 51); line-height: 1.6;\"><li><p>店铺商品整合</p></li></ul><p hiragino=\"\" sans=\"\" microsoft=\"\" wenquanyi=\"\" micro=\"\" segoe=\"\" ui=\"\" font-size:=\"\" margin-top:=\"\" margin-bottom:=\"\" white-space:=\"\" -ms-word-wrap:=\"\" box-sizing:=\"\" background-color:=\"\" style=\"white-space: normal; outline: 0px; color: rgb(51, 51, 51); line-height: 22px; letter-spacing: 0.5px;\"><img width=\"300\" height=\"401\" alt=\"微商城1.jpg\" src=\"http://www.jeewx.com/jeewx/upload/ueditor/upload/image/20151030/1446192768627041714.jpg\" style=\"margin: 0px 5px; outline: 0px; border: currentcolor; width: 300px; height: auto; vertical-align: middle; cursor: pointer; box-sizing: border-box;\"/></p><ul class=\" list-paddingleft-2\" hiragino=\"\" sans=\"\" microsoft=\"\" wenquanyi=\"\" micro=\"\" segoe=\"\" ui=\"\" font-size:=\"\" margin-top:=\"\" margin-bottom:=\"\" white-space:=\"\" box-sizing:=\"\" background-color:=\"\" style=\"width: 504.638px; padding: 0px 0px 0px 40px; white-space: normal; outline: 0px; color: rgb(51, 51, 51); line-height: 1.6;\"><li><p>商品属性自定义</p></li></ul><p hiragino=\"\" sans=\"\" microsoft=\"\" wenquanyi=\"\" micro=\"\" segoe=\"\" ui=\"\" font-size:=\"\" margin-top:=\"\" margin-bottom:=\"\" white-space:=\"\" -ms-word-wrap:=\"\" box-sizing:=\"\" background-color:=\"\" style=\"white-space: normal; outline: 0px; color: rgb(51, 51, 51); line-height: 22px; letter-spacing: 0.5px;\"><img width=\"300\" height=\"428\" alt=\"微商城2.jpg\" src=\"http://www.jeewx.com/jeewx/upload/ueditor/upload/image/20151030/1446192768676074559.jpg\" style=\"margin: 0px 5px; outline: 0px; border: currentcolor; width: 300px; height: auto; vertical-align: middle; cursor: pointer; box-sizing: border-box;\"/></p><p style=\"white-space: normal;\"><br/></p><p hiragino=\"\" sans=\"\" microsoft=\"\" wenquanyi=\"\" micro=\"\" segoe=\"\" ui=\"\" font-size:=\"\" margin-top:=\"\" margin-bottom:=\"\" white-space:=\"\" -ms-word-wrap:=\"\" box-sizing:=\"\" background-color:=\"\" style=\"white-space: normal; outline: 0px; color: rgb(51, 51, 51); line-height: 22px; letter-spacing: 0.5px;\"><span style=\"outline: 0px; color: rgb(255, 0, 0); box-sizing: border-box;\"><span style=\"outline: 0px; font-weight: 700; box-sizing: border-box;\">【运行环境】</span></span></p><ol class=\" list-paddingleft-2\" hiragino=\"\" sans=\"\" microsoft=\"\" wenquanyi=\"\" micro=\"\" segoe=\"\" ui=\"\" font-size:=\"\" margin-top:=\"\" margin-bottom:=\"\" white-space:=\"\" box-sizing:=\"\" background-color:=\"\" style=\"width: 504.638px; padding: 0px 0px 0px 40px; white-space: normal; outline: 0px; color: rgb(51, 51, 51); line-height: 1.6;\"><li><p>java</p></li><li><p>window/linux</p></li></ol><p hiragino=\"\" sans=\"\" microsoft=\"\" wenquanyi=\"\" micro=\"\" segoe=\"\" ui=\"\" font-size:=\"\" margin-top:=\"\" margin-bottom:=\"\" white-space:=\"\" -ms-word-wrap:=\"\" box-sizing:=\"\" background-color:=\"\" style=\"white-space: normal; outline: 0px; color: rgb(51, 51, 51); line-height: 22px; letter-spacing: 0.5px;\"><a href=\"http://xxxxx.xxxx/\" rel=\"nofollow\" style=\"outline: 0px; border: currentcolor; color: rgb(66, 152, 186); text-decoration-line: none; box-sizing: border-box;\"><span style=\"outline: 0px; font-weight: 700; box-sizing: border-box;\"><span style=\"outline: 0px; color: rgb(255, 0, 0); box-sizing: border-box;\">【演示地址】</span></span></a></p><p hiragino=\"\" sans=\"\" microsoft=\"\" wenquanyi=\"\" micro=\"\" segoe=\"\" ui=\"\" font-size:=\"\" margin-top:=\"\" margin-bottom:=\"\" white-space:=\"\" -ms-word-wrap:=\"\" box-sizing:=\"\" background-color:=\"\" style=\"white-space: normal; outline: 0px; color: rgb(51, 51, 51); line-height: 22px; letter-spacing: 0.5px;\">&nbsp; &nbsp;&nbsp;<a href=\"http://www.jeewx.com/jeewx\" target=\"_self\">http://www.jeewx.com/jeewx</a></p><p><br/></p>', '402881e8622272aa0162227f55760013', '402881e8461795c201461795c2e90000', 'admin', '4028d881436d514601436d5215ac0043', '2018-03-14 11:21:41');
+INSERT INTO `weixin_cms_article` VALUES ('402881e8622272aa01622288e620002a', 'JeeWx多触点管理平台（支持微信、支付窗、企业号等）', '20180314112305d7mI1I7k.jpg', 'upload/files/20180314182259bWOKOVH5.jpg', 'JeeWx 微信管家平台，简称“捷微”.\r\n（一款免费开源的JAVA多触点管理平台）', '<p>http://git.oschina.net/jeecg/jeewx</p>', '402881e8622272aa016222805b74001a', '402881e8461795c201461795c2e90000', 'admin', '4028d881436d514601436d5215ac0043', '2018-03-14 11:23:39');
+INSERT INTO `weixin_cms_article` VALUES ('402881e8622272aa01622289a59e002c', 'JEEWX-API 微信极速SDK', '20180314112305d7mI1I7k.jpg', 'upload/files/20180314182247ZR3HVe9B.jpg', 'JEEWX-API 微信极速SDK', '<p>http://git.oschina.net/jeecg/jeewx-api</p>', '402881e8622272aa016222805b74001a', '402881e8461795c201461795c2e90000', 'admin', '4028d881436d514601436d5215ac0043', '2018-03-14 11:24:28');
+INSERT INTO `weixin_cms_article` VALUES ('402881e8622272aa0162228a2d3b002e', 'JEEWX又双叒有新亮点！升级大盘点', '20180302114506uahy2mJM.png', 'upload/files/20180314112643vjuuLxaE.png', 'JEEWX又双叒有新亮点！升级大盘点', '<p>http://mp.weixin.qq.com/s/s0MrtXM6l14Ay1gvEZer-A</p>', '402881e8622272aa0162228028330018', '402881e8461795c201461795c2e90000', 'admin', '4028d881436d514601436d5215ac0043', '2018-03-14 11:25:03');
+INSERT INTO `weixin_cms_article` VALUES ('402881e8622272aa0162228b61cc0033', '微信企业号 Java SDK', '20180314111124jUmrvtaw.jpg', 'upload/files/20180314182222ADWKc2dN.jpg', '微信企业号 Java SDK', '<p>http://git.oschina.net/jeecg/jeewx-qywx-api</p>', '402881e8622272aa016222805b74001a', '402881e8461795c201461795c2e90000', 'admin', '4028d881436d514601436d5215ac0043', '2018-03-14 11:26:22');
+INSERT INTO `weixin_cms_article` VALUES ('402881e8622272aa0162228caeaa003c', 'jeewx经典案例', '20170823190022AS4zjxbQ.png', 'upload/files/20180314182143NbxL6IkH.png', 'jeewx经典案例', '<p>http://jeewx.com/works.html</p>', '402881e8622272aa0162227fcad70015', '402881e8461795c201461795c2e90000', 'admin', '4028d881436d514601436d5215ac0043', '2018-03-14 11:27:47');
+INSERT INTO `weixin_cms_article` VALUES ('402881e8622272aa0162228d5888003e', '关于我们', '', '', '我们是JEECG开源社区', '<p>我们是JEECG开源社区，捷微管家平台</p>', '402881e8622272aa0162228419a50021', '402881e8461795c201461795c2e90000', 'admin', '4028d881436d514601436d5215ac0043', '2018-03-14 11:28:31');
 
 -- ----------------------------
 -- Table structure for weixin_cms_menu
@@ -3259,28 +3302,26 @@ INSERT INTO `weixin_cms_article` VALUES ('297e7eb6469a4a8901469a5ef95c0011', '�
 DROP TABLE IF EXISTS `weixin_cms_menu`;
 CREATE TABLE `weixin_cms_menu` (
   `ID` varchar(36) NOT NULL,
-  `ACCOUNTID` varchar(100) default NULL,
-  `CREATE_BY` varchar(255) default NULL,
-  `CREATE_DATE` datetime default NULL,
-  `CREATE_NAME` varchar(255) default NULL,
-  `IMAGE_HREF` varchar(255) default NULL,
-  `IMAGE_NAME` varchar(255) default NULL,
-  `NAME` varchar(20) default NULL,
-  `TYPE` varchar(20) default NULL COMMENT '类型',
-  PRIMARY KEY  (`ID`)
+  `ACCOUNTID` varchar(100) DEFAULT NULL,
+  `CREATE_BY` varchar(255) DEFAULT NULL,
+  `CREATE_DATE` datetime DEFAULT NULL,
+  `CREATE_NAME` varchar(255) DEFAULT NULL,
+  `IMAGE_HREF` varchar(255) DEFAULT NULL,
+  `IMAGE_NAME` varchar(255) DEFAULT NULL,
+  `NAME` varchar(20) DEFAULT NULL,
+  `TYPE` varchar(20) DEFAULT NULL COMMENT '类型',
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of weixin_cms_menu
 -- ----------------------------
-INSERT INTO `weixin_cms_menu` VALUES ('402881e44695183a01469522f7d20019', '402881e8461795c201461795c2e90000', 'admin', '2014-06-13 20:10:35', '管理员', 'upload/files/201406132357343zuaHgX4.jpg', '537f1f63dd1c9.jpg', '关于JEECG', '01');
-INSERT INTO `weixin_cms_menu` VALUES ('402881e44695183a014695234880001c', '402881e8461795c201461795c2e90000', 'admin', '2014-06-13 20:10:56', '管理员', 'upload/files/20140613235754hLRC87rF.jpg', '537f1f86602b3.jpg', '渠道代理', '01');
-INSERT INTO `weixin_cms_menu` VALUES ('402881e44695183a01469523f03a001f', '402881e8461795c201461795c2e90000', 'admin', '2014-06-13 20:11:39', '管理员', 'upload/files/201406132358039IpFSyet.jpg', '537f1f74d031c.jpg', '功能说明', '01');
-INSERT INTO `weixin_cms_menu` VALUES ('402881e44695183a0146952426ce0022', '402881e8461795c201461795c2e90000', 'admin', '2014-06-13 20:11:53', '管理员', 'upload/files/20140613235830M96wj4Lr.jpg', '537f1f98d6f42.jpg', '企业文化', '01');
-INSERT INTO `weixin_cms_menu` VALUES ('402881e446955c7c014695a72a610029', '402881e8461795c201461795c2e90000', 'admin', '2014-06-13 22:34:59', '管理员', 'upload/files/20140613235852gBTueAWO.jpg', '537f1faf595dd.jpg', '案例分享', '01');
-INSERT INTO `weixin_cms_menu` VALUES ('402881e446955c7c014695a774f9002c', '402881e8461795c201461795c2e90000', 'admin', '2014-06-13 22:35:18', '管理员', 'upload/files/20140613235911chsAs0Md.jpg', '537f1ca3cd562.jpg', '联系我们', '01');
-INSERT INTO `weixin_cms_menu` VALUES ('402881e446955c7c014695a7bc45002f', '402881e8461795c201461795c2e90000', 'admin', '2014-06-13 22:35:36', '管理员', 'upload/files/20140613235918OA8vt546.jpg', '537f1cb75c597.jpg', '轻松一刻', '01');
-INSERT INTO `weixin_cms_menu` VALUES ('402881e446955c7c014695a7f08b0032', '402881e8461795c201461795c2e90000', 'admin', '2014-06-13 22:35:50', '管理员', 'upload/files/20140613235932htqZFtCs.jpg', '537f1fc8d750b.jpg', '互动推广', '01');
+INSERT INTO `weixin_cms_menu` VALUES ('402881e8622272aa0162227f55760013', '402881e8461795c201461795c2e90000', '4028d881436d514601436d5215ac0043', '2018-03-14 11:13:13', 'admin', 'upload/files/20180314111309hCiF0491.jpg', '20180302114759Trx1Z5k4.jpg', '产品介绍', '01');
+INSERT INTO `weixin_cms_menu` VALUES ('402881e8622272aa0162227fcad70015', '402881e8461795c201461795c2e90000', '4028d881436d514601436d5215ac0043', '2018-03-14 11:13:43', 'admin', 'upload/files/20180314111556OKjDvbGp.jpg', '20140613235852gBTueAWO.jpg', '经典案例', '01');
+INSERT INTO `weixin_cms_menu` VALUES ('402881e8622272aa0162228028330018', '402881e8461795c201461795c2e90000', '4028d881436d514601436d5215ac0043', '2018-03-14 11:14:07', 'admin', 'upload/files/20180314111405ku5BgntL.png', '20151105205236CUF2Dwwv.png', '新闻动态', '01');
+INSERT INTO `weixin_cms_menu` VALUES ('402881e8622272aa016222805b74001a', '402881e8461795c201461795c2e90000', '4028d881436d514601436d5215ac0043', '2018-03-14 11:14:20', 'admin', 'upload/files/20180314111712GE7YGfdf.png', '20140628131752uHYw9KLU.png', '开源项目', '01');
+INSERT INTO `weixin_cms_menu` VALUES ('402881e8622272aa0162228419a50021', '402881e8461795c201461795c2e90000', '4028d881436d514601436d5215ac0043', '2018-03-14 11:18:25', 'admin', 'upload/files/20180314111823PUSdqYu7.jpg', '20140613235911chsAs0Md.jpg', '关于我们', '01');
+INSERT INTO `weixin_cms_menu` VALUES ('402881e8622272aa01622284c6b90024', '402881e8461795c201461795c2e90000', '4028d881436d514601436d5215ac0043', '2018-03-14 11:19:09', 'admin', 'upload/files/20180314111908wIvem8Wk.jpg', '20151201175716Q7tIXj7S.jpg', '其他', '01');
 
 -- ----------------------------
 -- Table structure for weixin_cms_site
@@ -3288,21 +3329,22 @@ INSERT INTO `weixin_cms_menu` VALUES ('402881e446955c7c014695a7f08b0032', '40288
 DROP TABLE IF EXISTS `weixin_cms_site`;
 CREATE TABLE `weixin_cms_site` (
   `ID` varchar(36) NOT NULL,
-  `ACCOUNTID` varchar(32) default NULL,
-  `COMPANY_TEL` varchar(50) default NULL,
-  `CREATE_DATE` datetime default NULL,
-  `CREATE_NAME` varchar(50) default NULL,
-  `SITE_LOGO` varchar(200) default NULL,
-  `SITE_NAME` varchar(100) default NULL,
-  `SITE_TEMPLATE_STYLE` varchar(50) default NULL,
-  `UPDATE_DATE` datetime default NULL,
-  `UPDATE_NAME` varchar(50) default NULL,
-  PRIMARY KEY  (`ID`)
+  `ACCOUNTID` varchar(32) DEFAULT NULL,
+  `COMPANY_TEL` varchar(50) DEFAULT NULL,
+  `CREATE_DATE` datetime DEFAULT NULL,
+  `CREATE_NAME` varchar(50) DEFAULT NULL,
+  `SITE_LOGO` varchar(200) DEFAULT NULL,
+  `SITE_NAME` varchar(100) DEFAULT NULL,
+  `SITE_TEMPLATE_STYLE` varchar(50) DEFAULT NULL,
+  `UPDATE_DATE` datetime DEFAULT NULL,
+  `UPDATE_NAME` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of weixin_cms_site
 -- ----------------------------
+INSERT INTO `weixin_cms_site` VALUES ('402881e86223f2de016223f4f33e0005', '402881e8461795c201461795c2e90000', '010-64808099', '2018-03-14 18:01:18', 'admin', 'upload/files/20180314182407ZiEC8Cug.png', 'JEEWX官网', '', '2018-03-14 18:24:09', 'admin');
 
 -- ----------------------------
 -- Table structure for weixin_cms_style
@@ -3310,15 +3352,15 @@ CREATE TABLE `weixin_cms_site` (
 DROP TABLE IF EXISTS `weixin_cms_style`;
 CREATE TABLE `weixin_cms_style` (
   `ID` varchar(36) NOT NULL,
-  `ACCOUNTID` varchar(50) default NULL,
-  `CREATE_DATE` datetime default NULL,
-  `CREATE_NAME` varchar(50) default NULL,
-  `REVIEW_IMG_URL` varchar(100) default NULL,
-  `TEMPLATE_NAME` varchar(100) default NULL,
-  `TEMPLATE_URL` varchar(200) default NULL,
-  `UPDATE_DATE` datetime default NULL,
-  `UPDATE_NAME` varchar(50) default NULL,
-  PRIMARY KEY  (`ID`)
+  `ACCOUNTID` varchar(50) DEFAULT NULL,
+  `CREATE_DATE` datetime DEFAULT NULL,
+  `CREATE_NAME` varchar(50) DEFAULT NULL,
+  `REVIEW_IMG_URL` varchar(100) DEFAULT NULL,
+  `TEMPLATE_NAME` varchar(100) DEFAULT NULL,
+  `TEMPLATE_URL` varchar(200) DEFAULT NULL,
+  `UPDATE_DATE` datetime DEFAULT NULL,
+  `UPDATE_NAME` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -3331,12 +3373,12 @@ CREATE TABLE `weixin_cms_style` (
 DROP TABLE IF EXISTS `weixin_expandconfig`;
 CREATE TABLE `weixin_expandconfig` (
   `ID` varchar(36) NOT NULL,
-  `ACCOUNTID` varchar(200) default NULL,
+  `ACCOUNTID` varchar(200) DEFAULT NULL,
   `CLASSNAME` varchar(100) NOT NULL,
   `CONTENT` longtext,
   `KEYWORD` varchar(100) NOT NULL,
-  `NAME` varchar(100) default NULL,
-  PRIMARY KEY  (`ID`)
+  `NAME` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -3355,13 +3397,13 @@ INSERT INTO `weixin_expandconfig` VALUES ('402881e747baf1ea0147bb79d2330007', '4
 DROP TABLE IF EXISTS `weixin_hdrecord`;
 CREATE TABLE `weixin_hdrecord` (
   `ID` varchar(100) NOT NULL,
-  `ADDTIME` datetime default NULL,
-  `HDID` varchar(100) default NULL,
-  `NICKNAME` varchar(200) default NULL,
-  `OPENDID` varchar(100) default NULL,
-  `TOTAL` int(11) default NULL,
-  `accountid` varchar(100) default NULL,
-  PRIMARY KEY  (`ID`)
+  `ADDTIME` datetime DEFAULT NULL,
+  `HDID` varchar(100) DEFAULT NULL,
+  `NICKNAME` varchar(200) DEFAULT NULL,
+  `OPENDID` varchar(100) DEFAULT NULL,
+  `TOTAL` int(11) DEFAULT NULL,
+  `accountid` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -3377,21 +3419,21 @@ INSERT INTO `weixin_hdrecord` VALUES ('402881865907db74015908295ef70032', '2016-
 DROP TABLE IF EXISTS `weixin_huodong`;
 CREATE TABLE `weixin_huodong` (
   `id` varchar(100) NOT NULL COMMENT '键主',
-  `title` varchar(400) default NULL COMMENT '活动名称',
+  `title` varchar(400) DEFAULT NULL COMMENT '活动名称',
   `description` text COMMENT '活动描述',
-  `priceone` varchar(400) default NULL COMMENT '一等奖奖品',
-  `onetotal` int(4) default NULL COMMENT '一等奖数量',
-  `pricetwo` varchar(400) default NULL COMMENT '二等奖奖品',
-  `twototal` int(4) default NULL COMMENT '二等奖数量',
-  `pricethree` varchar(400) default NULL COMMENT '三等奖奖品',
-  `threetotal` int(4) default NULL COMMENT '三等奖数量',
-  `starttime` timestamp NULL default NULL COMMENT '开始时间',
-  `endtime` timestamp NULL default NULL on update CURRENT_TIMESTAMP COMMENT '结束时间',
-  `type` varchar(100) default NULL COMMENT '活动类型',
-  `gl` varchar(100) default NULL,
-  `count` varchar(10) default NULL,
-  `accountid` varchar(100) default NULL,
-  PRIMARY KEY  (`id`)
+  `priceone` varchar(400) DEFAULT NULL COMMENT '一等奖奖品',
+  `onetotal` int(4) DEFAULT NULL COMMENT '一等奖数量',
+  `pricetwo` varchar(400) DEFAULT NULL COMMENT '二等奖奖品',
+  `twototal` int(4) DEFAULT NULL COMMENT '二等奖数量',
+  `pricethree` varchar(400) DEFAULT NULL COMMENT '三等奖奖品',
+  `threetotal` int(4) DEFAULT NULL COMMENT '三等奖数量',
+  `starttime` timestamp NULL DEFAULT NULL COMMENT '开始时间',
+  `endtime` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '结束时间',
+  `type` varchar(100) DEFAULT NULL COMMENT '活动类型',
+  `gl` varchar(100) DEFAULT NULL,
+  `count` varchar(10) DEFAULT NULL,
+  `accountid` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -3406,26 +3448,48 @@ INSERT INTO `weixin_huodong` VALUES ('402881e6469a13b901469a1e9e420001', '微信
 DROP TABLE IF EXISTS `weixin_linksucai`;
 CREATE TABLE `weixin_linksucai` (
   `id` varchar(36) NOT NULL,
-  `create_name` varchar(50) default NULL COMMENT '创建人名称',
-  `create_date` datetime default NULL COMMENT '创建日期',
-  `update_name` varchar(50) default NULL COMMENT '修改人名称',
-  `update_date` datetime default NULL COMMENT '修改日期',
-  `name` varchar(100) default NULL COMMENT '链接名称',
+  `create_name` varchar(50) DEFAULT NULL COMMENT '创建人名称',
+  `create_date` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_name` varchar(50) DEFAULT NULL COMMENT '修改人名称',
+  `update_date` datetime DEFAULT NULL COMMENT '修改日期',
+  `name` varchar(100) DEFAULT NULL COMMENT '链接名称',
   `outer_link` longtext COMMENT '外部链接',
   `content` longtext COMMENT '功能描述',
   `inner_link` longtext COMMENT '内部链接',
-  `transfer_sign` int(11) default NULL COMMENT '转换标志',
-  `accountid` varchar(100) default NULL COMMENT '微信账户id',
-  `post_code` varchar(200) default NULL COMMENT '账号邮编',
-  `share_status` varchar(10) default 'N' COMMENT '分享状态',
-  `is_encrypt` int(2) default '0' COMMENT '是否加密（0：不加密，1：加密）',
-  PRIMARY KEY  (`id`)
+  `transfer_sign` int(11) DEFAULT NULL COMMENT '转换标志',
+  `accountid` varchar(100) DEFAULT NULL COMMENT '微信账户id',
+  `post_code` varchar(200) DEFAULT NULL COMMENT '账号邮编',
+  `share_status` varchar(10) DEFAULT 'N' COMMENT '分享状态',
+  `is_encrypt` int(2) DEFAULT '0' COMMENT '是否加密（0：不加密，1：加密）',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of weixin_linksucai
 -- ----------------------------
-INSERT INTO `weixin_linksucai` VALUES ('4028948151d769f20151d76c11e10002', 'admin', '2015-12-25 12:36:02', 'admin', '2016-12-16 23:05:31', '九宫格', 'http://www.h5huodong.com/jiugongge/toIndex.do?openid=${openid}&subscribe=${subscribe}&appid=${appid}', '九宫格', 'http://zhangdaiscott.oicp.net/jeewx/weixinLinksucaiController.do?link&id=4028948151d769f20151d76c11e10002', null, '402881e8461795c201461795c2e90000', null, null, null);
+INSERT INTO `weixin_linksucai` VALUES ('4028948151d769f20151d76c11e10002', 'admin', '2015-12-25 12:36:02', 'admin', '2018-03-14 18:01:39', '九宫格', 'http://www.h5huodong.com/jiugongge/toIndex.do?openid=${openid}&subscribe=${subscribe}&appid=${appid}', '九宫格', 'http://ileida.xicp.net/jeewx/weixinLinksucaiController.do?link&id=4028948151d769f20151d76c11e10002', null, '402881e8461795c201461795c2e90000', null, null, null);
+
+-- ----------------------------
+-- Table structure for weixin_long2short
+-- ----------------------------
+DROP TABLE IF EXISTS `weixin_long2short`;
+CREATE TABLE `weixin_long2short` (
+  `id` varchar(36) NOT NULL,
+  `create_name` varchar(50) DEFAULT NULL COMMENT '创建人名称',
+  `create_date` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_name` varchar(50) DEFAULT NULL COMMENT '修改人名称',
+  `update_date` datetime DEFAULT NULL COMMENT '修改日期',
+  `long_url` longtext COMMENT '长链接',
+  `short_url` varchar(255) DEFAULT NULL COMMENT '短链接',
+  `account_id` varchar(50) DEFAULT NULL COMMENT '公众号ID',
+  `wx_name` varchar(32) DEFAULT NULL COMMENT '名称',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of weixin_long2short
+-- ----------------------------
+INSERT INTO `weixin_long2short` VALUES ('402881e86223f2de016223fbdc18000c', 'admin', '2018-03-14 18:08:51', 'admin', '2018-03-14 18:08:53', 'http://www.jeewx.com', 'https://w.url.cn/s/AqpptRa', null, 'JEEWX官网');
 
 -- ----------------------------
 -- Table structure for weixin_menuentity
@@ -3433,36 +3497,39 @@ INSERT INTO `weixin_linksucai` VALUES ('4028948151d769f20151d76c11e10002', 'admi
 DROP TABLE IF EXISTS `weixin_menuentity`;
 CREATE TABLE `weixin_menuentity` (
   `ID` varchar(32) NOT NULL,
-  `menukey` varchar(255) default NULL,
-  `msgtype` varchar(255) default NULL,
-  `name` varchar(255) default NULL,
-  `orders` varchar(11) default NULL,
-  `templateid` varchar(255) default NULL,
-  `type` varchar(255) default NULL,
-  `url` varchar(255) default NULL,
-  `fatherid` varchar(32) default NULL,
-  `accountid` varchar(255) default NULL,
-  PRIMARY KEY  (`ID`),
+  `menukey` varchar(255) DEFAULT NULL,
+  `msgtype` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `orders` varchar(11) DEFAULT NULL,
+  `templateid` varchar(255) DEFAULT NULL,
+  `type` varchar(255) DEFAULT NULL,
+  `url` varchar(2000) DEFAULT NULL,
+  `fatherid` varchar(32) DEFAULT NULL,
+  `accountid` varchar(255) DEFAULT NULL,
+  `appid` varchar(255) DEFAULT NULL COMMENT 'appid',
+  `pagepath` varchar(255) DEFAULT NULL COMMENT 'pagepath',
+  PRIMARY KEY (`ID`),
   KEY `FK_astulwpsla864at9igbas3eic` (`fatherid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of weixin_menuentity
 -- ----------------------------
-INSERT INTO `weixin_menuentity` VALUES ('402880f2590749060159074eb9ab0009', 'c05', 'expand', '微相册', '5', '402881e747baf1ea0147bb79d2330007', 'click', '', '402881e4464d026901464d05ab600001', '402881e8461795c201461795c2e90000');
-INSERT INTO `weixin_menuentity` VALUES ('402880f25907490601590757810f0019', 'd01', 'news', '触发图文', '1', '4028d881472f356e01472f36461b0001', 'click', '', '402889ff4728a293014728bc62250036', '402881e8461795c201461795c2e90000');
-INSERT INTO `weixin_menuentity` VALUES ('402880f259074906015907593688001e', 'a01', 'text', '联系我们', '4', 'f7a8a3a946e55a940146e5c317f6005f', 'click', '', '402889ff4728f237014728f2d39f0001', '402881e8461795c201461795c2e90000');
-INSERT INTO `weixin_menuentity` VALUES ('402881e4464d026901464d05ab600001', 'c02', 'text', '微活动', '2', 'f7a8a3a946e249c20146e25c4dc7000c', 'click', null, null, '402881e8461795c201461795c2e90000');
-INSERT INTO `weixin_menuentity` VALUES ('402881e4464df45f01464df707760004', 'c0202', 'expand', '大转盘', '0', '402881e446950f86014695120f810001', 'click', 'http://123.165.130.173/jeecg-weixin-steward/webpage/weixin/guanjia/other/dazhuanpan/index.html', '402881e4464d026901464d05ab600001', '402881e8461795c201461795c2e90000');
-INSERT INTO `weixin_menuentity` VALUES ('402881e446a4f9400146a50183620008', 'c0203', 'expand', '微网站', '1', '402881e446950f8601469513ec670003', 'click', null, '402881e4464d026901464d05ab600001', '402881e8461795c201461795c2e90000');
-INSERT INTO `weixin_menuentity` VALUES ('402889ff4728a293014728bc62250036', 'c03', 'text', '触发功能', '3', 'f7a8a3a946e55a940146e5c317f6005f', 'click', '', null, '402881e8461795c201461795c2e90000');
-INSERT INTO `weixin_menuentity` VALUES ('402889ff4728a293014728bcb3020038', 'c0302', 'text', '访问链接', '1', 'f7a8a3a946e55a940146e5c317f6005f', 'view', 'http://www.jeewx.com', '402889ff4728a293014728bc62250036', '402881e8461795c201461795c2e90000');
-INSERT INTO `weixin_menuentity` VALUES ('402889ff4728f237014728f2d39f0001', 'c01', null, '开源项目', '1', null, 'click', '', null, '402881e8461795c201461795c2e90000');
-INSERT INTO `weixin_menuentity` VALUES ('402889ff4728f237014728f52c0b0008', 'c0102', null, 'Jeecg快速开发平台', '2', null, 'view', 'http://mp.weixin.qq.com/s?__biz=MjM5NjA2OTkxMg==&mid=200275454&idx=2&sn=a4a4bd237aff404b8044e59105b74c69#rd', '402889ff4728f237014728f2d39f0001', '402881e8461795c201461795c2e90000');
-INSERT INTO `weixin_menuentity` VALUES ('402889ff4728f237014728f60f0f000b', 'c0301', 'text', '触发文本', '1', 'f7a8a3a946e55a940146e5cfa5660070', 'click', 'http://mp.weixin.qq.com/s?__biz=MjM5NjA2OTkxMg==&mid=200211928&idx=1&sn=18baf4ad4076f2f42c7db938c1277b08#rd', '402889ff4728a293014728bc62250036', '402881e8461795c201461795c2e90000');
-INSERT INTO `weixin_menuentity` VALUES ('402889ff4728f237014729029d940010', 'c0204', 'expand', '刮刮乐', '1', '402881e4469ffe7a0146a000090d0001', 'click', null, '402881e4464d026901464d05ab600001', '402881e8461795c201461795c2e90000');
-INSERT INTO `weixin_menuentity` VALUES ('402889ff4728f237014729039c7c0014', 'c0201', 'text', '营销工具', '', 'f7a8a3a946e55a940146e5cfa5660070', 'click', null, '402881e4464d026901464d05ab600001', '402881e8461795c201461795c2e90000');
-INSERT INTO `weixin_menuentity` VALUES ('40289481515d5e1201515d6009020005', 'jeewx', null, 'Jeewx微信管家', '1', null, 'view', 'http://mp.weixin.qq.com/s?__biz=MjM5NjA2OTkxMg==&mid=201250688&idx=4&sn=6aa38b2e0a3cd1bc770e6fca732cf04f#rd', '402889ff4728f237014728f2d39f0001', '402881e8461795c201461795c2e90000');
+INSERT INTO `weixin_menuentity` VALUES ('402880f2590749060159074eb9ab0009', 'c05', 'expand', '微相册', '5', '402881e747baf1ea0147bb79d2330007', 'click', '', '402881e4464d026901464d05ab600001', '402881e8461795c201461795c2e90000', null, null);
+INSERT INTO `weixin_menuentity` VALUES ('402880f25907490601590757810f0019', 'd01', 'news', '触发图文', '1', '4028d881472f356e01472f36461b0001', 'click', '', '402889ff4728a293014728bc62250036', '402881e8461795c201461795c2e90000', null, null);
+INSERT INTO `weixin_menuentity` VALUES ('402880f259074906015907593688001e', 'a01', 'text', '联系我们', '4', 'f7a8a3a946e55a940146e5c317f6005f', 'click', '', '402889ff4728f237014728f2d39f0001', '402881e8461795c201461795c2e90000', null, null);
+INSERT INTO `weixin_menuentity` VALUES ('402881e4464d026901464d05ab600001', 'c02', 'text', '微活动', '2', 'f7a8a3a946e249c20146e25c4dc7000c', 'click', null, null, '402881e8461795c201461795c2e90000', null, null);
+INSERT INTO `weixin_menuentity` VALUES ('402881e4464df45f01464df707760004', 'c0202', 'expand', '大转盘', '0', '402881e446950f86014695120f810001', 'click', 'http://123.165.130.173/jeecg-weixin-steward/webpage/weixin/guanjia/other/dazhuanpan/index.html', '402881e4464d026901464d05ab600001', '402881e8461795c201461795c2e90000', null, null);
+INSERT INTO `weixin_menuentity` VALUES ('402881e446a4f9400146a50183620008', 'c0203', 'expand', '微网站', '1', '402881e446950f8601469513ec670003', 'click', null, '402881e4464d026901464d05ab600001', '402881e8461795c201461795c2e90000', null, null);
+INSERT INTO `weixin_menuentity` VALUES ('402881e86223f2de016223f6536e0007', '', null, '小程序', '3', null, 'miniprogram', 'http://www.jeecg.org', '402889ff4728f237014728f2d39f0001', '402881e8461795c201461795c2e90000', 'wx313490c64bc53c00', 'pages/index/index');
+INSERT INTO `weixin_menuentity` VALUES ('402889ff4728a293014728bc62250036', 'c03', 'text', '触发功能', '3', 'f7a8a3a946e55a940146e5c317f6005f', 'click', '', null, '402881e8461795c201461795c2e90000', null, null);
+INSERT INTO `weixin_menuentity` VALUES ('402889ff4728a293014728bcb3020038', 'c0302', 'text', '访问链接', '1', 'f7a8a3a946e55a940146e5c317f6005f', 'view', 'http://www.jeewx.com', '402889ff4728a293014728bc62250036', '402881e8461795c201461795c2e90000', null, null);
+INSERT INTO `weixin_menuentity` VALUES ('402889ff4728f237014728f2d39f0001', 'c01', null, '开源项目', '1', null, 'click', '', null, '402881e8461795c201461795c2e90000', null, null);
+INSERT INTO `weixin_menuentity` VALUES ('402889ff4728f237014728f52c0b0008', 'c0102', null, 'Jeecg快速开发平台', '2', null, 'view', 'http://mp.weixin.qq.com/s?__biz=MjM5NjA2OTkxMg==&mid=200275454&idx=2&sn=a4a4bd237aff404b8044e59105b74c69#rd', '402889ff4728f237014728f2d39f0001', '402881e8461795c201461795c2e90000', null, null);
+INSERT INTO `weixin_menuentity` VALUES ('402889ff4728f237014728f60f0f000b', 'c0301', 'text', '触发文本', '1', 'f7a8a3a946e55a940146e5cfa5660070', 'click', 'http://mp.weixin.qq.com/s?__biz=MjM5NjA2OTkxMg==&mid=200211928&idx=1&sn=18baf4ad4076f2f42c7db938c1277b08#rd', '402889ff4728a293014728bc62250036', '402881e8461795c201461795c2e90000', null, null);
+INSERT INTO `weixin_menuentity` VALUES ('402889ff4728f237014729029d940010', 'c0204', 'expand', '刮刮乐', '1', '402881e4469ffe7a0146a000090d0001', 'click', null, '402881e4464d026901464d05ab600001', '402881e8461795c201461795c2e90000', null, null);
+INSERT INTO `weixin_menuentity` VALUES ('402889ff4728f237014729039c7c0014', 'c0201', 'text', '营销工具', '', 'f7a8a3a946e55a940146e5cfa5660070', 'click', null, '402881e4464d026901464d05ab600001', '402881e8461795c201461795c2e90000', null, null);
+INSERT INTO `weixin_menuentity` VALUES ('40289481515d5e1201515d6009020005', 'jeewx', null, 'Jeewx微信管家', '1', null, 'view', 'http://mp.weixin.qq.com/s?__biz=MjM5NjA2OTkxMg==&mid=201250688&idx=4&sn=6aa38b2e0a3cd1bc770e6fca732cf04f#rd', '402889ff4728f237014728f2d39f0001', '402881e8461795c201461795c2e90000', null, null);
 
 -- ----------------------------
 -- Table structure for weixin_newsitem
@@ -3470,18 +3537,18 @@ INSERT INTO `weixin_menuentity` VALUES ('40289481515d5e1201515d6009020005', 'jee
 DROP TABLE IF EXISTS `weixin_newsitem`;
 CREATE TABLE `weixin_newsitem` (
   `ID` varchar(32) NOT NULL,
-  `new_type` varchar(255) default NULL COMMENT '图文类型：图文还是外部url',
-  `author` varchar(255) default NULL,
+  `new_type` varchar(255) DEFAULT NULL COMMENT '图文类型：图文还是外部url',
+  `author` varchar(255) DEFAULT NULL,
   `content` text,
-  `description` varchar(255) default NULL,
-  `imagepath` varchar(255) default NULL,
-  `orders` varchar(255) default NULL,
-  `title` varchar(255) default NULL,
-  `templateid` varchar(32) default NULL,
-  `url` varchar(255) default NULL COMMENT '外部URL',
-  `create_date` date default NULL,
-  `accountid` varchar(100) default NULL,
-  PRIMARY KEY  (`ID`),
+  `description` varchar(255) DEFAULT NULL,
+  `imagepath` varchar(255) DEFAULT NULL,
+  `orders` varchar(255) DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `templateid` varchar(32) DEFAULT NULL,
+  `url` varchar(255) DEFAULT NULL COMMENT '外部URL',
+  `create_date` date DEFAULT NULL,
+  `accountid` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
   KEY `FK_m8qs8ufeqkk5cx17budto66r0` (`templateid`),
   CONSTRAINT `FK_m8qs8ufeqkk5cx17budto66r0` FOREIGN KEY (`templateid`) REFERENCES `weixin_newstemplate` (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -3490,7 +3557,7 @@ CREATE TABLE `weixin_newsitem` (
 -- Records of weixin_newsitem
 -- ----------------------------
 INSERT INTO `weixin_newsitem` VALUES ('402881865907db7401590806c526000d', null, '33', '<p><img src=\"http://localhost/jeewx/plug-in/ueditor/jsp/upload1/20161216/4211481898373334.jpg\" title=\"4afbfbedab64034f9015f1bca8c379310b551dab.jpg\"/></p>', '33', 'upload/files/20161216222607YvbDnX3S.jpg', '1', '333', '4028d881472f356e01472f36461b0001', '', '2016-12-16', '402881e8461795c201461795c2e90000');
-INSERT INTO `weixin_newsitem` VALUES ('40289481515cf0fe01515cfb24c5001b', null, 'jeecg', '', 'Jeewx商业版本介绍', 'upload/files/20151201175834RttNvMaW.jpg', '2', 'Jeewx商业版本介绍', '4028d881472f356e01472f36461b0001', 'http://mp.weixin.qq.com/s?__biz=MjM5NjA2OTkxMg==&mid=201250688&idx=4&sn=6aa38b2e0a3cd1bc770e6fca732cf04f#rd', '2015-12-01', '402881e8461795c201461795c2e90000');
+INSERT INTO `weixin_newsitem` VALUES ('40289481515cf0fe01515cfb24c5001b', null, 'jeecg', '<p>JEEWX介绍</p>', 'Jeewx商业版本介绍', 'upload/files/20151201175834RttNvMaW.jpg', '2', 'Jeewx商业版本介绍', '4028d881472f356e01472f36461b0001', 'http://mp.weixin.qq.com/s?__biz=MjM5NjA2OTkxMg==&mid=201250688&idx=4&sn=6aa38b2e0a3cd1bc770e6fca732cf04f#rd', '2015-12-01', '402881e8461795c201461795c2e90000');
 INSERT INTO `weixin_newsitem` VALUES ('4028d881472f356e01472f36d0a00003', null, 'Jeecg', '<h2 style=\"box-sizing: inherit; font-family: Lato, &#39;Helvetica Neue&#39;, &#39;Microsoft YaHei&#39;, Arial, Helvetica, sans-serif; line-height: 1.33em; margin: 20px 0px 10px; padding: 0px; font-size: 24px; -webkit-font-smoothing: antialiased; cursor: text; position: relative; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(204, 204, 204); white-space: normal; background-color: rgb(250, 250, 250);\">一、简介</h2><p style=\"box-sizing: inherit; margin-top: 0px; margin-bottom: 15px; line-height: 1.33; color: rgba(0, 0, 0, 0.8); font-family: Lato, &#39;Helvetica Neue&#39;, &#39;Microsoft YaHei&#39;, Arial, Helvetica, sans-serif; font-size: 15px; white-space: normal; background-color: rgb(250, 250, 250);\">jeewx是一个开源，高效，敏捷的微信开发平台采用JAVA语言，它是基于jeecg这个企业级快速开发框架实现的。 jeewx的目的是最大化的简化微信开发的流程，使用开发者能把最好的精力放到微信具体业务开发，并能以最快的时间完成。把一些常规而频繁的工作交由jeewx来处理即可，平台兼备的代码生成器，在线开发，可以快速的完成企业应用。为此jeewx提供了详细的二次开发文档，关键代码里还是相关的注释说明。jeewx采用插件的方式实现微信功能，不同的插件实现不同的微信功能。</p><h2 style=\"box-sizing: inherit; font-family: Lato, &#39;Helvetica Neue&#39;, &#39;Microsoft YaHei&#39;, Arial, Helvetica, sans-serif; line-height: 1.33em; margin: 20px 0px 10px; padding: 0px; font-size: 24px; -webkit-font-smoothing: antialiased; cursor: text; position: relative; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(204, 204, 204); white-space: normal; background-color: rgb(250, 250, 250);\"><a class=\"anchor\" id=\"主要特性\" href=\"http://git.oschina.net/jeecg/jeewx#主要特性\" style=\"box-sizing: inherit; color: rgb(65, 131, 196); text-decoration: none; background-color: transparent; cursor: pointer; word-wrap: break-word; display: block; padding-left: 30px; margin-left: -20px; position: absolute; top: 0px; left: 0px; bottom: 0px; background-position: initial initial; background-repeat: initial initial;\"></a>主要特性</h2><ul class=\"task-list list-paddingleft-2\" style=\"box-sizing: inherit; font-size: 14px; line-height: 24px; margin-bottom: 15px; padding-left: 30px; color: rgba(0, 0, 0, 0.8); font-family: Lato, &#39;Helvetica Neue&#39;, &#39;Microsoft YaHei&#39;, Arial, Helvetica, sans-serif; white-space: normal; background-color: rgb(250, 250, 250);\"><li><p>1、基于快速开发平台jeecg 3.4.4最新版本，采用SpringMVC+Hibernate4+UI库+代码生成器+Jquery+Ehcache等主流架构技术</p></li><li><p>2、支持企业快速开发，完善的用户组织机构，报表，强大的代码生成器快速有效的提高开发效率</p></li><li><p>3、开源免费，jeewx遵循Apache2开源协议,免费提供使用。</p></li><li><p>4、支持多用户多公众号管理</p></li><li><p>5、详细的二次开发文档，并不断更新增加相关开发案例提供学习参考</p></li><li><p>6、微信功能插件化开发，更易于定制和二次开发</p></li><li><p>7、提供丰富的微信插件下载安装使用，总有一些是符合或接近你的需求</p></li></ul><h2 style=\"box-sizing: inherit; font-family: Lato, &#39;Helvetica Neue&#39;, &#39;Microsoft YaHei&#39;, Arial, Helvetica, sans-serif; line-height: 1.33em; margin: 20px 0px 10px; padding: 0px; font-size: 24px; -webkit-font-smoothing: antialiased; cursor: text; position: relative; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(204, 204, 204); white-space: normal; background-color: rgb(250, 250, 250);\"><a class=\"anchor\" id=\"主要功能\" href=\"http://git.oschina.net/jeecg/jeewx#主要功能\" style=\"box-sizing: inherit; color: rgb(65, 131, 196); text-decoration: none; background-color: transparent; cursor: pointer; word-wrap: break-word; display: block; padding-left: 30px; margin-left: -20px; position: absolute; top: 0px; left: 0px; bottom: 0px; background-position: initial initial; background-repeat: initial initial;\"></a>主要功能</h2><ul class=\"task-list list-paddingleft-2\" style=\"box-sizing: inherit; font-size: 14px; line-height: 24px; margin-bottom: 15px; padding-left: 30px; color: rgba(0, 0, 0, 0.8); font-family: Lato, &#39;Helvetica Neue&#39;, &#39;Microsoft YaHei&#39;, Arial, Helvetica, sans-serif; white-space: normal; background-color: rgb(250, 250, 250);\"><li><p>1，微信接口认证</p></li><li><p>2，菜单自定义</p></li><li><p>3，文本管理和回复</p></li><li><p>4，关注欢迎语</p></li><li><p>5，关键字管理</p></li><li><p>6，文本模板管理</p></li><li><p>7，图文模板管理</p></li><li><p>8，账号管理</p></li><li><p>9，用户管理</p></li><li><p>10，角色管理</p></li><li><p>11，菜单管理</p></li><li><p>12, 微信支持多用户多公众号</p></li><li><p>13，微信大转盘</p></li><li><p>14，微信刮刮乐</p></li><li><p>15，微信CMS</p></li><li><p>16，自定义接口回复</p></li><li><p>17，翻译</p></li><li><p>18，天气 更多功能参考官方：www.jeecg.org</p></li></ul><p><br/></p>', 'Jeewx管家介绍', 'upload/files/20151201175716Q7tIXj7S.jpg', '1', 'Jeewx管家介绍', '4028d881472f356e01472f36461b0001', '', '2014-07-13', '402881e8461795c201461795c2e90000');
 
 -- ----------------------------
@@ -3499,17 +3566,19 @@ INSERT INTO `weixin_newsitem` VALUES ('4028d881472f356e01472f36d0a00003', null, 
 DROP TABLE IF EXISTS `weixin_newstemplate`;
 CREATE TABLE `weixin_newstemplate` (
   `ID` varchar(32) NOT NULL,
-  `addtime` varchar(255) default NULL,
-  `tempatename` varchar(255) default NULL,
-  `type` varchar(255) default NULL,
-  `accountid` varchar(100) default NULL,
-  PRIMARY KEY  (`ID`)
+  `addtime` varchar(255) DEFAULT NULL,
+  `tempatename` varchar(255) DEFAULT NULL,
+  `type` varchar(255) DEFAULT NULL,
+  `accountid` varchar(100) DEFAULT NULL,
+  `mediaid` varchar(100) DEFAULT NULL COMMENT 'mediaid',
+  `isup` varchar(3) DEFAULT NULL COMMENT '是否上传',
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of weixin_newstemplate
 -- ----------------------------
-INSERT INTO `weixin_newstemplate` VALUES ('4028d881472f356e01472f36461b0001', '2014-07-13 18:13:11', 'jeecg图文', 'common', '402881e8461795c201461795c2e90000');
+INSERT INTO `weixin_newstemplate` VALUES ('4028d881472f356e01472f36461b0001', '2018-03-14 18:08:25', 'jeecg图文', 'common', '402881e8461795c201461795c2e90000', 'H_uPGqjRnC8O9yXEwfd7eK8SM95My-Ma0PqMG_bArkI', '1');
 
 -- ----------------------------
 -- Table structure for weixin_open_account
@@ -3517,10 +3586,10 @@ INSERT INTO `weixin_newstemplate` VALUES ('4028d881472f356e01472f36461b0001', '2
 DROP TABLE IF EXISTS `weixin_open_account`;
 CREATE TABLE `weixin_open_account` (
   `id` varchar(36) NOT NULL COMMENT '主键',
-  `appid` varchar(200) default NULL,
-  `ticket` varchar(200) default NULL COMMENT '第三方平台推送 : ticket',
-  `get_ticket_time` datetime default NULL,
-  PRIMARY KEY  (`id`)
+  `appid` varchar(200) DEFAULT NULL,
+  `ticket` varchar(200) DEFAULT NULL COMMENT '第三方平台推送 : ticket',
+  `get_ticket_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -3533,14 +3602,14 @@ CREATE TABLE `weixin_open_account` (
 DROP TABLE IF EXISTS `weixin_photo`;
 CREATE TABLE `weixin_photo` (
   `ID` varchar(32) NOT NULL,
-  `PHOTO_ALBUM_ID` varchar(32) default NULL COMMENT '对应相册',
-  `CONTENT` varchar(255) default NULL COMMENT '相片描述',
-  `CREATE_BY` varchar(32) default NULL,
-  `CREATE_DATE` datetime default NULL,
-  `NAME` varchar(100) default NULL COMMENT '相片名字',
-  `UPDATE_BY` varchar(32) default NULL,
-  `UPDATE_DATE` datetime default NULL,
-  PRIMARY KEY  (`ID`)
+  `PHOTO_ALBUM_ID` varchar(32) DEFAULT NULL COMMENT '对应相册',
+  `CONTENT` varchar(255) DEFAULT NULL COMMENT '相片描述',
+  `CREATE_BY` varchar(32) DEFAULT NULL,
+  `CREATE_DATE` datetime DEFAULT NULL,
+  `NAME` varchar(100) DEFAULT NULL COMMENT '相片名字',
+  `UPDATE_BY` varchar(32) DEFAULT NULL,
+  `UPDATE_DATE` datetime DEFAULT NULL,
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -3562,15 +3631,15 @@ INSERT INTO `weixin_photo` VALUES ('4028948151dc770f0151dc7e8e8b0009', '40289481
 DROP TABLE IF EXISTS `weixin_photo_album`;
 CREATE TABLE `weixin_photo_album` (
   `ID` varchar(32) NOT NULL,
-  `NAME` varchar(100) default NULL COMMENT '相册名称',
-  `CONTENT` varchar(255) default NULL COMMENT '相册描述',
-  `ACCOUNTID` varchar(100) default NULL,
-  `CREATE_DATE` datetime default NULL COMMENT '创建时间',
-  `CREATE_BY` varchar(32) default NULL COMMENT '创建人',
-  `UPDATE_DATE` datetime default NULL COMMENT '修改时间',
-  `UPDATE_BY` varchar(32) default NULL COMMENT '修改人',
-  `PHOTO_ID` varchar(32) default NULL COMMENT '封面相片',
-  PRIMARY KEY  (`ID`)
+  `NAME` varchar(100) DEFAULT NULL COMMENT '相册名称',
+  `CONTENT` varchar(255) DEFAULT NULL COMMENT '相册描述',
+  `ACCOUNTID` varchar(100) DEFAULT NULL,
+  `CREATE_DATE` datetime DEFAULT NULL COMMENT '创建时间',
+  `CREATE_BY` varchar(32) DEFAULT NULL COMMENT '创建人',
+  `UPDATE_DATE` datetime DEFAULT NULL COMMENT '修改时间',
+  `UPDATE_BY` varchar(32) DEFAULT NULL COMMENT '修改人',
+  `PHOTO_ID` varchar(32) DEFAULT NULL COMMENT '封面相片',
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -3585,13 +3654,13 @@ INSERT INTO `weixin_photo_album` VALUES ('4028948151dc770f0151dc7d6f0f0001', '�
 DROP TABLE IF EXISTS `weixin_prizerecord`;
 CREATE TABLE `weixin_prizerecord` (
   `ID` varchar(100) NOT NULL,
-  `ADDTIME` datetime default NULL,
-  `HDID` varchar(100) default NULL,
-  `MOBILE` varchar(100) default NULL,
-  `openid` varchar(255) default NULL,
-  `PRIZE` varchar(100) default NULL,
-  `accountid` varchar(100) default NULL,
-  PRIMARY KEY  (`ID`)
+  `ADDTIME` datetime DEFAULT NULL,
+  `HDID` varchar(100) DEFAULT NULL,
+  `MOBILE` varchar(100) DEFAULT NULL,
+  `openid` varchar(255) DEFAULT NULL,
+  `PRIZE` varchar(100) DEFAULT NULL,
+  `accountid` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -3605,17 +3674,17 @@ INSERT INTO `weixin_prizerecord` VALUES ('402881865907db740159082a0e690033', '20
 DROP TABLE IF EXISTS `weixin_receivetext`;
 CREATE TABLE `weixin_receivetext` (
   `ID` varchar(32) NOT NULL,
-  `content` varchar(255) default NULL,
-  `createtime` datetime default NULL,
-  `fromusername` varchar(255) default NULL,
-  `msgid` varchar(255) default NULL,
-  `msgtype` varchar(255) default NULL,
-  `rescontent` varchar(255) default NULL,
-  `response` varchar(255) default NULL,
-  `tousername` varchar(255) default NULL,
-  `accountid` varchar(100) default NULL,
-  `nickname` varchar(200) default NULL,
-  PRIMARY KEY  (`ID`)
+  `content` varchar(255) DEFAULT NULL,
+  `createtime` datetime DEFAULT NULL,
+  `fromusername` varchar(255) DEFAULT NULL,
+  `msgid` varchar(255) DEFAULT NULL,
+  `msgtype` varchar(255) DEFAULT NULL,
+  `rescontent` varchar(255) DEFAULT NULL,
+  `response` varchar(255) DEFAULT NULL,
+  `tousername` varchar(255) DEFAULT NULL,
+  `accountid` varchar(100) DEFAULT NULL,
+  `nickname` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -3626,19 +3695,20 @@ INSERT INTO `weixin_receivetext` VALUES ('402880f2590749060159074be5b40006', '�
 INSERT INTO `weixin_receivetext` VALUES ('402880f2590749060159074d69490007', '大转盘', '2016-12-16 19:03:50', 'o94BGv4wkjYm7GV6tnh1IHC_F0Z4', '6364652911832789078', 'text', null, '0', 'gh_20419b74f848', 'gh_20419b74f848', null);
 INSERT INTO `weixin_receivetext` VALUES ('402880f3591b2a3001591b32e7c50001', '你好', '2016-12-20 15:47:18', 'o94BGv4wkjYm7GV6tnh1IHC_F0Z4', '6366086537556470254', 'text', null, '0', 'gh_20419b74f848', 'gh_20419b74f848', null);
 INSERT INTO `weixin_receivetext` VALUES ('402880f3591bc49901591bc76e220001', '你好', '2016-12-20 18:29:31', 'o94BGv4wkjYm7GV6tnh1IHC_F0Z4', '6366128383422835970', 'text', null, '0', 'gh_20419b74f848', 'gh_20419b74f848', null);
+INSERT INTO `weixin_receivetext` VALUES ('402881e86223f2de016223fd02410010', '你好', '2018-03-14 18:10:06', 'on8V9jg-se_b0JgU5Q3V23pgU0wQ', '1234567890123456', 'text', '欢迎关注jeewx！', '1', 'gh_6f548a0d82d4', 'gh_6f548a0d82d4', null);
 
 -- ----------------------------
 -- Table structure for weixin_subscribe
 -- ----------------------------
 DROP TABLE IF EXISTS `weixin_subscribe`;
 CREATE TABLE `weixin_subscribe` (
-  `ID` varchar(32) character set utf8 NOT NULL,
-  `accountid` varchar(255) character set utf8 default NULL,
-  `addTime` varchar(255) character set utf8 default NULL,
-  `msgType` varchar(255) character set utf8 default NULL,
-  `templateId` varchar(255) character set utf8 default NULL,
-  `templateName` varchar(255) character set utf8 default NULL,
-  PRIMARY KEY  (`ID`)
+  `ID` varchar(32) CHARACTER SET utf8 NOT NULL,
+  `accountid` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `addTime` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `msgType` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `templateId` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `templateName` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- ----------------------------
@@ -3652,11 +3722,11 @@ INSERT INTO `weixin_subscribe` VALUES ('402889ff472978290147297b54350004', '4028
 DROP TABLE IF EXISTS `weixin_texttemplate`;
 CREATE TABLE `weixin_texttemplate` (
   `ID` varchar(32) NOT NULL,
-  `addtime` varchar(255) default NULL,
-  `content` varchar(255) default NULL,
-  `templatename` varchar(255) default NULL,
-  `accountid` varchar(100) default NULL,
-  PRIMARY KEY  (`ID`)
+  `addtime` varchar(255) DEFAULT NULL,
+  `content` varchar(255) DEFAULT NULL,
+  `templatename` varchar(255) DEFAULT NULL,
+  `accountid` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------

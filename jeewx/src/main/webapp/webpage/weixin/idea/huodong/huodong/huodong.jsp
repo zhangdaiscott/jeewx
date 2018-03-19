@@ -36,18 +36,7 @@
 						<span class="Validform_checktip"></span>
 					</td>
 				</tr>
-				<tr>
-					<td align="right">
-						<label class="Validform_label">
-							活动描述:
-						</label>
-					</td>
-					<td class="value">
-						<input class="inputxt" id="description" name="description" ignore="ignore"
-							   value="${huodongPage.description}">
-						<span class="Validform_checktip"></span>
-					</td>
-				</tr>
+				
 				<tr>
 					<td align="right">
 						<label class="Validform_label">
@@ -169,6 +158,19 @@
 						<span class="Validform_checktip"></span>
 					</td>
 				</tr>
+				<!-- update-begin-author:taoYan date:20180313 for:活动描述改成textarea -->
+				<tr>
+					<td align="right">
+						<label class="Validform_label">
+							活动说明:
+						</label>
+					</td>
+					<td class="value">
+						<textarea rows="4" style="width:81%" name="description">${huodongPage.description}</textarea>
+						<span class="Validform_checktip"></span>
+					</td>
+				</tr>
+				<!-- update-end-author:taoYan date:20180313 for:活动描述改成textarea -->
 			</table>
 		</t:formvalid>
  </body>

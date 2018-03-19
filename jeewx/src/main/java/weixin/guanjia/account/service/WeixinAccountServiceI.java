@@ -37,9 +37,9 @@ public interface WeixinAccountServiceI extends CommonService{
  	public boolean doDelSql(WeixinAccountEntity t);
  	
  	public String getAccessToken();
- 	
- 	public String getAccessToken(String accountId);
- 	
+
+ 	public String getAccessToken(String accountId,boolean isOrgWxid);
+
  	@Deprecated
  	public WeixinAccountEntity findLoginWeixinAccount();
  	public List<WeixinAccountEntity> findByUsername(String username);

@@ -161,7 +161,6 @@ public class WeixinLinksucaiServiceImpl extends CommonServiceImpl implements Wei
 // 	 			mpLinkPrams.put("appsecret", weixinAccount.getAccountappsecret());
 // 	 			mpLinkPrams.put("accesstoken", weixinAccount.getAccounttoken());
 // 	 			
-// 	 			//update-start--Author:yiming.zhang  Date:20150317 for：【微信用户昵称】【是否关注微信公众号】----------------------
 //				try {
 //					Wxuser wxuser =  JwUserAPI.getWxuser(weixinAccount.getAccountaccesstoken(), oConvertUtils.getString(openid));
 //					mpLinkPrams.put("subscribe", wxuser.getSubscribe());
@@ -169,7 +168,6 @@ public class WeixinLinksucaiServiceImpl extends CommonServiceImpl implements Wei
 //				} catch (WexinReqException e) {
 //					e.printStackTrace();
 //				}
-// 	 			//update-end--Author:yiming.zhang  Date:20150317 for：【微信用户昵称】【是否关注微信公众号】----------------------
 // 	 		}
 // 		}
 // 		//用户手机号
@@ -222,8 +220,6 @@ public class WeixinLinksucaiServiceImpl extends CommonServiceImpl implements Wei
 	 	 			mpLinkPrams.put("appsecret", weixinAccount.getAccountappsecret());
 	 	 			mpLinkPrams.put("accesstoken", weixinAccount.getAccounttoken());
 	 	 			System.out.println("----------------------------setp2-------------------");
-	 	 			
-	 	 			//update-start--Author:yiming.zhang  Date:20150317 for：【微信用户昵称】【是否关注微信公众号】----------------------
 					try {
 						System.out.println("----------------------------setp3-------------------");
 						Wxuser wxuser =  JwUserAPI.getWxuser(weixinAccount.getAccountaccesstoken(), oConvertUtils.getString(openid));
@@ -238,7 +234,6 @@ public class WeixinLinksucaiServiceImpl extends CommonServiceImpl implements Wei
 						mpLinkPrams.put("subscribe", "0");
 					}
 					System.out.println("----------------------------setp3-------------------");
-	 	 			//update-end--Author:yiming.zhang  Date:20150317 for：【微信用户昵称】【是否关注微信公众号】----------------------
 	 	 		}
 	 		}
 	 		outlink = cmsFreemarkerHelper.parseTemplateContent(url, mpLinkPrams);

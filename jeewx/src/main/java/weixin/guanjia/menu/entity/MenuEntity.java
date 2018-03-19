@@ -28,7 +28,10 @@ public class MenuEntity extends IdEntity {
 	private List<MenuEntity> menuList; 
 	
 	private String accountId;
-	
+
+	private String appid;
+	private String pagepath;
+
 	@Column(name="name")
 	public String getName() {
 		return name;
@@ -104,5 +107,19 @@ public class MenuEntity extends IdEntity {
 	}
 	public void setAccountId(String accountId) {
 		this.accountId = accountId;
+	}
+	@Column(name="appid")
+	public String getAppid() {
+		return appid;
+	}
+	public void setAppid(String appid) {
+		this.appid = appid;
+	}
+	@Column(name="pagepath")
+	public String getPagepath() {
+		return pagepath;
+	}
+	public void setPagepath(String pagepath) {
+		this.pagepath = pagepath;
 	}
 }

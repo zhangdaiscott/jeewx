@@ -8,11 +8,6 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
-import net.sf.json.JsonConfig;
-import net.sf.json.util.PropertyFilter;
-
 import org.jeecgframework.core.common.hibernate.qbc.CriteriaQuery;
 import org.jeecgframework.core.common.model.json.AjaxJson;
 import org.jeecgframework.core.common.model.json.ComboTree;
@@ -34,13 +29,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import weixin.guanjia.account.entity.WeixinAccountEntity;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+import net.sf.json.JsonConfig;
+import net.sf.json.util.PropertyFilter;
 import weixin.guanjia.account.service.WeixinAccountServiceI;
 import weixin.guanjia.base.service.WeixinExpandconfigServiceI;
 import weixin.guanjia.core.entity.common.Button;
 import weixin.guanjia.core.entity.common.CommonButton;
 import weixin.guanjia.core.entity.common.ComplexButton;
 import weixin.guanjia.core.entity.common.Menu;
+import weixin.guanjia.core.entity.common.ProgramButton;
 import weixin.guanjia.core.entity.common.ViewButton;
 import weixin.guanjia.core.util.WeixinUtil;
 import weixin.guanjia.menu.entity.MenuEntity;
@@ -206,6 +205,10 @@ public class MenuManagerController {
 			req.setAttribute("orders", menuEntity.getOrders());
 			req.setAttribute("templateId", menuEntity.getTemplateId());
 			req.setAttribute("msgType", menuEntity.getMsgType());
+
+			req.setAttribute("appid", menuEntity.getAppid());
+			req.setAttribute("pagepath", menuEntity.getPagepath());
+
 		}
 		String fatherId = req.getParameter("fatherId");
 		if (StringUtil.isNotEmpty(fatherId)) {
@@ -228,7 +231,7 @@ public class MenuManagerController {
 		if (StringUtil.isNotEmpty(menuEntity.getId())) {
 			
 			MenuEntity tempMenu = this.systemService.getEntity(MenuEntity.class, menuEntity.getId());
-			//update-begin--author:zhangjiaqiang date:20161213 for:修订bug 对已有的一级菜单进行编辑后保存无效 
+
 		    if(oConvertUtils.isNotEmpty(fatherName)){
 		    	MenuEntity menuTemp=new MenuEntity();
 		    	menuTemp.setId(fatherName);
@@ -237,7 +240,7 @@ public class MenuManagerController {
 		    }else{
 		    	tempMenu.setMenuEntity(null);
 		    }
-		    //update-end--author:zhangjiaqiang date:20161213 for:修订bug 对已有的一级菜单进行编辑后保存无效
+
 			this.message = "更新" + tempMenu.getName() + "的菜单信息信息成功！";
 			try {
 				MyBeanUtils.copyBeanNotNull2Bean(menuEntity, tempMenu);
@@ -321,7 +324,12 @@ public class MenuManagerController {
 					cb.setName(entity.getName());
 					cb.setType(entity.getType());
 					firstArr[a] = cb;
+
+				}else if("miniprogram".equals(entity.getType())){
+					ProgramButton pb = new ProgramButton(entity);
+					firstArr[a] = pb;
 				}
+
 			
 			} else {
 				ComplexButton complexButton = new ComplexButton();
@@ -348,6 +356,12 @@ public class MenuManagerController {
 
 					}
 
+					else if("miniprogram".equals(type)){
+						ProgramButton pb1 = new ProgramButton(children);
+						secondARR[i] = pb1;
+					}
+
+
 				}
 				complexButton.setSub_button(secondARR);
 				firstArr[a] = complexButton;
@@ -359,6 +373,7 @@ public class MenuManagerController {
 		String url = WeixinUtil.menu_create_url.replace("ACCESS_TOKEN",
 				accessToken);
 		JSONObject jsonObject= new JSONObject();
+		org.jeecgframework.core.util.LogUtil.info("同步菜单信息参数:"+jsonMenu.toString());
 		try {
 			jsonObject = WeixinUtil.httpRequest(url, "POST", jsonMenu.toString());
 			LogUtil.info(jsonObject);

@@ -607,9 +607,9 @@ public class ListtoMenu {
 		int curIndex = 0;
 		for (TSFunction function : list) {
 			menuString.append("<li>");
-	           //        update-begin--Author:chenj  Date:20160722 for：添加菜单图标样式
+
 				menuString.append("<a href=\"#\" class=\"\" ><i class=\"fa fa-columns\"></i>");
-	           //        update-begin--Author:chenj  Date:20160722 for：添加菜单图标样式
+
 			menuString.append("<span class=\"menu-text\">");
 			menuString.append(function.getFunctionName());
 			menuString.append("</span>");

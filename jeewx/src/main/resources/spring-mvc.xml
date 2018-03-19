@@ -143,10 +143,11 @@
 					<list>
 						<value>rest/openwx</value>
 						<value>openDataController</value>
-						<!-- 支付窗图文 -->
+						<!-- 支付窗排除URL -->
 						<value>alipay/alipayNewsitem.do?goContent</value>
+						<value>alipay/alipayGzuserinfo.do?userinfo</value>
+						<!-- 微信企业号排除URL -->
 						<value>qywx/qywxNewsitem.do?goContent</value>
-						<!-- 微信企业号激活 -->
 						<value>weixinCoreController.do?wechat</value>
 					</list>
 				</property>

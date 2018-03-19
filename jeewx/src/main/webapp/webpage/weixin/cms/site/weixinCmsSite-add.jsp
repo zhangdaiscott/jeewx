@@ -8,7 +8,6 @@
   <link type="text/css" rel="stylesheet" href="plug-in/weixin/css/appmsg_edit.css" />
   <link type="text/css" rel="stylesheet" href="plug-in/weixin/css/jquery.fileupload.css" />
     <link type="text/css" rel="stylesheet" href="plug-in/bootstrap/css/bootstrap.min.css" />
-  <script type="text/javascript" src="plug-in/ckfinder/ckfinder.js"></script>
   
   <!--fileupload-->
   <script type="text/javascript" src="plug-in/weixin/js/vendor/jquery.ui.widget.js"></script>
@@ -24,7 +23,9 @@
   $(function () {
       'use strict';
       // Change this to the location of your server-side upload handler:
-      var url = 'weixinShopCategoryController.do?upload',
+
+      var url = 'weixinCmsSiteController.do?uploadFile',
+
           uploadButton = $('<button/>')
               .addClass('btn btn-primary')
               .prop('disabled', true)
@@ -124,6 +125,7 @@
   function setimageTitle(obj){
 	  $("#imageTitle").html($(obj).val());
   }
+  
   </script>
  </head>
  <body>

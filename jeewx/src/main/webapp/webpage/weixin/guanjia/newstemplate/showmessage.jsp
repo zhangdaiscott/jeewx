@@ -17,22 +17,29 @@
 <div id="appmsg200159594" class="pp">
 <div class="appmsg multi" data-fileid="200159570" data-id="200159594">
 <div class="appmsg_content">
-<div class="appmsg_info">
-	<em class="appmsg_date">${addtime}</em>
-</div>
-
-<div class="cover_appmsg_item" onmouseover="mouseover('header')" onmouseout="mouseout('header')">
-	<h4 class="appmsg_title">
-		<a target="_blank" href="#">${headerNews.title}</a>
-	</h4>
-	<div class="appmsg_thumb_wrp">
-		<img class="appmsg_thumb" alt="" src="${headerNews.imagePath}">
+<!-- update-begin-author:taoYan date:20180314 for:当模板下无图文,编辑图文时bug -->
+<c:if test="${empty headerNews}">
+	<div class="appmsg_info">
+		<em class="appmsg_date">无图文可编辑,请先添加图文!</em>
 	</div>
-	<div class="fe" style="display: none">
-		<a class="edit1" href="#" onclick="goUpate('${headerNews.id}')"></a>
+</c:if>
+<c:if test="${not empty headerNews}">
+	<div class="appmsg_info">
+		<em class="appmsg_date">${addtime}</em>
 	</div>
-</div>
-
+	<div class="cover_appmsg_item" onmouseover="mouseover('header')" onmouseout="mouseout('header')">
+		<h4 class="appmsg_title">
+			<a target="_blank" href="#">${headerNews.title}</a>
+		</h4>
+		<div class="appmsg_thumb_wrp">
+			<img class="appmsg_thumb" alt="" src="${headerNews.imagePath}">
+		</div>
+		<div class="fe" style="display: none">
+			<a class="edit1" href="#" onclick="goUpate('${headerNews.id}')"></a>
+		</div>
+	</div>
+</c:if>
+<!-- update-end-author:taoYan date:20180314 for:当模板下无图文,编辑图文时bug -->
 <c:forEach items="${newsList}" var="news">
 	<div class="appmsg_item" onmouseover="mouseover('item')" onmouseout="mouseout('item')">
 		<div class="fd" style="display: none">

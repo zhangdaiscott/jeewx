@@ -121,9 +121,9 @@ public class WeixinLinksucaiController extends BaseController {
 			String inner_link = baseurl+"/weixinLinksucaiController.do?link&id="+t.getId();
 			t.setInnerLink(inner_link);
 		}
-		//update-begin--Author:macaholin  Date:20150404 for：新增微信公众账号邮编名称（不存储数据库，只有用于显示），用于区分相同素材标题情况下是哪个父亲账号分享下来的
+
 		List<WeixinAccountEntity> accountList = weixinAccountService.loadAll(WeixinAccountEntity.class);
-		//update-end--Author:macaholin  Date:20150404 for：新增微信公众账号邮编名称（不存储数据库，只有用于显示），用于区分相同素材标题情况下是哪个父亲账号分享下来的
+
 		TagUtil.datagrid(response, dataGrid);
 	}
     
@@ -140,8 +140,7 @@ public class WeixinLinksucaiController extends BaseController {
 		weixinLinksucai = systemService.getEntity(WeixinLinksucaiEntity.class, id);
 		//微信公众账号ID
 		String accountid = weixinLinksucai.getAccountid();
-		
-		//update-begin-------author:scott-----------date:20151012--------for:如果连接带参数jwid，则通过jwid原始ID获取公众号信息------------
+
 		//如果带有参数jwid，标示指定公众号，逻辑如下
 		String jwid = request.getParameter("jwid");
 		if(oConvertUtils.isNotEmpty(jwid)){
@@ -150,23 +149,18 @@ public class WeixinLinksucaiController extends BaseController {
 				accountid = weixinAccountEntity.getId();
 			}
 		}
-		//update-end-------author:scott-----------date:20151012--------for:如果连接带参数jwid，则通过jwid原始ID获取公众号信息--------------
+
 		
 		
 		//微信用户 Openid
 		String openid = ResourceUtil.getUserOpenId();
 		//跳转出链接
 		String outer_link_deal = null;
-		
-		//update-start--Author:scott  Date:20150809 for：【判断访问地址是否有附加参数，有的话原样带回去】----------------------
 	    String requestQueryString = (request.getRequestURL() + "?" + request.getQueryString()).replace(weixinLinksucai.getInnerLink(), "");
 	    String outUrl = weixinLinksucai.getOuterLink();
 	    if(oConvertUtils.isNotEmpty(requestQueryString)){
 	    	outUrl = outUrl + requestQueryString;
 	    }
-	    //update-start--Author:scott  Date:20150809 for：【判断访问地址是否有附加参数，有的话原样带回去】----------------------
-	    
-		//-------------------------------------------------------------------------------------------------------------
 		//如果为空则调用author2.0接口
 		if(oConvertUtils.isEmpty(openid)){
 			 outer_link_deal = remoteWeixinMethod.callWeixinAuthor2ReturnUrl(request, accountid, backUrl);
@@ -177,10 +171,8 @@ public class WeixinLinksucaiController extends BaseController {
 			outer_link_deal = weixinLinksucaiService.installOuterLinkWithSysParams(outUrl, openid, accountid,null);
 			System.out.println("------------------begin----------begin2-------------------");
 		}
-		//-------------------------------------------------------------------------------------------------------------
 		
 		try {
-			//---update-begin--author:scott-----date:20151127-----for:参数加签名----------------------------------
 			if(outer_link_deal.indexOf("https://open.weixin.qq.com")!=-1){
 				//针对调整到auth2.0链接不加签名
 				response.sendRedirect(outer_link_deal);
@@ -189,7 +181,6 @@ public class WeixinLinksucaiController extends BaseController {
 				String sign = SignatureUtil.sign(SignatureUtil.getSignMap(outer_link_deal), SIGN_KEY);
 				response.sendRedirect(outer_link_deal+"&sign="+sign);
 			}
-			//---update-end--author:scott-----date:20151127-----for:参数加签名----------------------------------
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

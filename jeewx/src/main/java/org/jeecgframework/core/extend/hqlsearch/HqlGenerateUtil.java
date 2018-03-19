@@ -151,7 +151,7 @@ public class HqlGenerateUtil {
 					if (isNotEmpty(param) && itIsNotAllEmpty(param)) {
 						// 如果是实体类,创建别名,继续创建查询条件
 						cq.createAlias(aliasName, aliasName.replaceAll("\\.","_"));
-                        //------------end--Author:JueYue  Date:20140521 for：用户反馈
+
 						installHqlJoinAlias(cq, param,parameterMap,aliasName);
 					}
 				}

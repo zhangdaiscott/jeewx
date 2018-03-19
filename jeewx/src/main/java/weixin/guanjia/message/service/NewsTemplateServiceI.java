@@ -4,7 +4,9 @@ import java.io.Serializable;
 
 import org.jeecgframework.core.common.service.CommonService;
 
+import net.sf.json.JSONObject;
 import weixin.guanjia.message.entity.NewsTemplate;
+import weixin.guanjia.message.model.UploadGraphic;
 
 public interface NewsTemplateServiceI extends CommonService{
 	@Override
@@ -32,5 +34,12 @@ public interface NewsTemplateServiceI extends CommonService{
 	 * @return
 	 */
  	public boolean doDelSql(NewsTemplate t);
+ 	
+ 	/**
+	 * 上传图文消息接口
+	 * @param graphic 图文消息内容
+	 * @return
+	 */
+	public JSONObject uploadNewsTemplate(UploadGraphic graphic);
  	
 }

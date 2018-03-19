@@ -411,10 +411,11 @@ public class WeixinCmsSiteController extends BaseController {
 		return j;
 	}
 
-	@RequestMapping(params = "upload", method = RequestMethod.POST)
+	@RequestMapping(params = "uploadFile", method = RequestMethod.POST)
 	@ResponseBody
-	public AjaxJson upload(MultipartHttpServletRequest request,
+	public AjaxJson uploadFile(MultipartHttpServletRequest request,
 			HttpServletResponse response) {
+
 		AjaxJson j = new AjaxJson();
 		Map<String, Object> attributes = new HashMap<String, Object>();
 		TSTypegroup tsTypegroup = systemService
