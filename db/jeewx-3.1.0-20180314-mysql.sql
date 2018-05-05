@@ -1380,8 +1380,8 @@ CREATE TABLE `qywx_menu` (
   `update_by` varchar(50) DEFAULT NULL COMMENT '更新人登录名称',
   `update_date` datetime DEFAULT NULL COMMENT '更新日期',
   PRIMARY KEY (`ID`),
-  KEY `menu_key` (`menu_key`) USING BTREE,
-  KEY `order` (`orders`) USING BTREE
+  KEY `menu_key` (`menu_key`) ,
+  KEY `order` (`orders`) 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='自定义菜单表';
 
 -- ----------------------------
