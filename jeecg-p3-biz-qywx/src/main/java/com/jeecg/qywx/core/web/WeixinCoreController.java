@@ -64,7 +64,8 @@ public class WeixinCoreController {
 
 	@RequestMapping(params="wechat", method = RequestMethod.POST)
 	public void wechatPost(HttpServletResponse response,
-			HttpServletRequest request,@RequestParam(value = "msg_signature") String msg_signature,
+			HttpServletRequest request,
+			@RequestParam(value = "msg_signature") String msg_signature,
 			@RequestParam(value = "timestamp") String timestamp,
 			@RequestParam(value = "nonce") String nonce) throws Exception {
 		try {

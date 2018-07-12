@@ -217,25 +217,42 @@ public class QywxMenuController extends BaseController{
 			 		if(mainMenulist!=null && mainMenulist.size()!=0){
 			 			List<Button> mainList = new ArrayList<Button>();
 			 			for(QywxMenu po:mainMenulist){
-			 				ComplexButton mainBtn = new ComplexButton();  
-						    mainBtn.setName(po.getMenuName());
+			 				
 						    //获取二级菜单
 						    List<Button> subList = new ArrayList<Button>();
 						    List<QywxMenu> subMenulist = qywxMenuDao.getAllMenuByParentid(po.getId());
-						    for(QywxMenu sub:subMenulist){
-						    	 CommonButton btn = new CommonButton();  
-							     btn.setName(sub.getMenuName());  
-							     btn.setType(sub.getMenuType());
-							     if("view".equals(sub.getMenuType())){
-							    	 btn.setUrl(sub.getUrl());
-							     }else{
-							    	 btn.setKey(sub.getMenuKey());
-							     }
-							    
-							     subList.add(btn);
+						    
+						    //区分一级菜单是否有下级
+						    if(subMenulist!=null && subMenulist.size()>0){
+						    	//有下级
+						    	ComplexButton mainBtn = new ComplexButton();  
+							    mainBtn.setName(po.getMenuName());
+						    	for(QywxMenu sub:subMenulist){
+						    		CommonButton btn = new CommonButton();  
+						    		btn.setName(sub.getMenuName());  
+						    		btn.setType(sub.getMenuType());
+						    		if("view".equals(sub.getMenuType())){
+						    			btn.setUrl(sub.getUrl());
+						    		}else{
+						    			btn.setKey(sub.getMenuKey());
+						    		}
+						    		
+						    		subList.add(btn);
+						    	}
+						    	mainBtn.setSub_button(subList.toArray(new Button[mainList.size()]));
+						    	mainList.add(mainBtn);
+						    }else{
+						    	//无下级
+						    	CommonButton mainBtn = new CommonButton(); 
+						    	mainBtn.setName(po.getMenuName());
+						    	mainBtn.setType(po.getMenuType());
+					    		if("view".equals(po.getMenuType())){
+					    			mainBtn.setUrl(po.getUrl());
+					    		}else{
+					    			mainBtn.setKey(po.getMenuKey());
+					    		}
+					    		mainList.add(mainBtn);
 						    }
-						    mainBtn.setSub_button(subList.toArray(new Button[mainList.size()]));
-						    mainList.add(mainBtn);
 			 			}
 			 			menu.setButton(mainList.toArray(new Button[mainList.size()]));
 			 		}
