@@ -28,8 +28,6 @@ import com.jeecg.qywx.account.dao.QywxAccountDao;
 import com.jeecg.qywx.account.dao.QywxAgentDao;
 import com.jeecg.qywx.account.entity.QywxAgent;
 import com.jeecg.qywx.account.service.AccountService;
-import com.jeecg.qywx.api.base.JwAccessTokenAPI;
-import com.jeecg.qywx.api.base.JwParamesAPI;
 import com.jeecg.qywx.api.core.common.AccessToken;
 import com.jeecg.qywx.api.message.JwMessageAPI;
 import com.jeecg.qywx.api.message.vo.News;
@@ -51,7 +49,7 @@ import com.jeecg.qywx.util.ConfigUtil;
 
 
  /**
- * 描述：</b>QywxMenuController<br>自定义菜单表
+ * 描述：群发推送功能
  * @author p3.jeecg
  * @since：2016年03月28日 13时37分49秒 星期一 
  * @version:1.0
