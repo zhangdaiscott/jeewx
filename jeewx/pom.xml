@@ -6,7 +6,7 @@
 	<artifactId>jeewx-os</artifactId>
 	<packaging>war</packaging>
 	<properties>
-        <minidao.version>1.6.3</minidao.version>
+        <minidao.version>1.6.7</minidao.version>
         <jeewx-api.version>1.2.0-SNAPSHOT</jeewx-api.version>
 
 		<!-- 主要依赖库的版本定义 -->
@@ -133,22 +133,6 @@
 			<groupId>org.jeecgframework</groupId>
 			<artifactId>minidao-pe</artifactId>
 			<version>${minidao.version}</version>
-			<scope>system</scope>
-            <systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/minidao-pe-1.6.3-20180320.jar</systemPath>
-			<exclusions>  
-		        <exclusion>  
-			        <groupId>org.freemarker</groupId>  
-			        <artifactId>freemarker</artifactId>  
-		        </exclusion>  
-		        <exclusion>  
-			        <groupId>org.apache.xmlgraphics</groupId>  
-			        <artifactId>fop</artifactId>  
-		        </exclusion>
-		        <exclusion>  
-			        <groupId>opensymphony</groupId>  
-			        <artifactId>ognl</artifactId>  
-		        </exclusion>
-		    </exclusions>  
 		</dependency>
 		<!-- ckfinder start -->
 		<dependency>
@@ -187,11 +171,11 @@
 			<artifactId>thumbnailator</artifactId>
 			<version>${thumbnailator.version}</version>
 		</dependency>
-		<dependency>
+		<!--<dependency>
 			<groupId>org.jboss</groupId>
 			<artifactId>jboss-vfs</artifactId>
 			<version>3.1.0.Final</version>
-		</dependency>
+		</dependency>-->
 
 		<dependency>
 			<groupId>pinyin4j</groupId>
