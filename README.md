@@ -5,6 +5,8 @@ JeeWx 微信管家平台，简称“捷微”.
 当前最新版本： 3.2.0（发布日期：20180712）
 官网：[www.jeewx.com](http://www.jeewx.com) 
 
+从2018年7月捷微管家推出二代产品（微服务化、bootstrapUI，更强大的功能、高并发大数据） [https://gitee.com/jeecg/h5huodong](https://gitee.com/jeecg/h5huodong)
+
 ![jeewx](https://static.oschina.net/uploads/img/201807/26192621_ou91.png "jeewx")
 <br>
 
@@ -91,9 +93,10 @@ Jeewx是一款开源、免费的微信管家系统（多触点管理平台），
   * [JEEWX 开发环境搭建入门](http://blog.csdn.net/zhangdaiscott/article/details/50915206)
   * [JEEWX 常见问题贴](http://www.jeecg.org/forum.php?mod=viewthread&tid=1830&extra=page%3D1)
   * [JEEWX Maven本地仓库下载](http://git.oschina.net/jeecg/jeecg-local-maven)
-  * [JEEWX 视频教程](https://edu.csdn.net/course/detail/8109)
   * [微信公众账号第三方平台全网发布源码（java）](http://blog.csdn.net/zhangdaiscott/article/details/48269837)
   * [JEEWX 非maven版源码下载](https://github.com/zhangdaiscott/jeewx-nomaven)
+ * JEEWX 视频教程
+     链接: https://pan.baidu.com/s/1S2SUgGv6p3xoFeElNye1eQ 提取码: nxe8
 
 五、技术交流
 -----------------------------------
@@ -115,6 +118,8 @@ Jeewx是一款开源、免费的微信管家系统（多触点管理平台），
 -----------------------------------
 ![jeewx](https://static.oschina.net/uploads/img/201807/26192218_JhGj.png "jeewx")
 ![jeewx](https://static.oschina.net/uploads/img/201807/26192231_JVRQ.png "jeewx")
+![jeewx](https://camo.githubusercontent.com/eaeb5055fa7703fb2fd272e03d7bd74cab9bbffb/687474703a2f2f696d672e626c6f672e6373646e2e6e65742f32303136303832323137333832383338313f77617465726d61726b2f322f746578742f6148523063446f764c324a736232637559334e6b626935755a5851762f666f6e742f3561364c354c32542f666f6e7473697a652f3430302f66696c6c2f49304a42516b46434d413d3d2f646973736f6c76652f37302f677261766974792f43656e746572 "jeewx")
+![jeewx](https://camo.githubusercontent.com/e08dc94ca72e7ae671cee5dd732b5737c4a79f70/687474703a2f2f696d672e626c6f672e6373646e2e6e65742f32303136303332333135323530383832373f77617465726d61726b2f322f746578742f6148523063446f764c324a736232637559334e6b626935755a5851762f666f6e742f3561364c354c32542f666f6e7473697a652f3430302f66696c6c2f49304a42516b46434d413d3d2f646973736f6c76652f37302f677261766974792f43656e746572 "jeewx")
 ![jeewx](https://static.oschina.net/uploads/img/201807/26192243_Z6kP.png "jeewx")
 ![jeewx](https://static.oschina.net/uploads/img/201807/26192252_wNNj.png "jeewx")
 ![jeewx](https://static.oschina.net/uploads/img/201807/26192259_xGJx.png "jeewx")
