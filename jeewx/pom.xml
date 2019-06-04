@@ -23,7 +23,6 @@
 		
 		<!-- 工具包 -->
         <!-- json start -->
-		<json-lib.version>2.1</json-lib.version>
 		<fastjson-lib.version>1.1.37</fastjson-lib.version>
 		<gson.version>2.2.4</gson.version>
         <!-- json start -->
@@ -37,7 +36,7 @@
         <jodconverter.version>3.0-beta-4</jodconverter.version>
 
 		<!-- 数据库组件包 _start -->
-		<druid.version>0.2.9</druid.version>
+		<druid.version>1.1.9</druid.version>
         <mysql.version>5.1.27</mysql.version>
 
 		<!-- 测试依赖包 -->
@@ -47,7 +46,7 @@
         <thumbnailator.version>0.4.6</thumbnailator.version>
 		<pinyin4j.version>2.5.0</pinyin4j.version>
 		<org.quartz.version>1.6.2</org.quartz.version>
-		<xstream.version>1.4.4</xstream.version>
+		<xstream.version>1.4.6</xstream.version>
 		<groovy.version>2.3.3</groovy.version>
 	</properties>
 
@@ -272,17 +271,17 @@
 		<dependency>
 		    <groupId>com.fasterxml.jackson.core</groupId>
 		    <artifactId>jackson-databind</artifactId>
-		    <version>2.7.4</version>
+		    <version>2.9.9</version>
 		</dependency>
 		<dependency>
 		    <groupId>com.fasterxml.jackson.core</groupId>
 		    <artifactId>jackson-core</artifactId>
-		    <version>2.7.4</version>
+		    <version>2.9.9</version>
 		</dependency>
 		<dependency>
 		    <groupId>com.fasterxml.jackson.core</groupId>
 		    <artifactId>jackson-annotations</artifactId>
-		    <version>2.7.4</version>
+		    <version>2.9.9</version>
 		</dependency>
 		<!-- /Spring 升级4+ 依赖的JSON包 -->
 
