@@ -7,16 +7,16 @@
 	idField="id" fit="true" queryMode="group" checkbox="true">
 	<%--   update-end--Author:tanghan  Date:20130713 for添加checkbox--%>
 	<t:dgCol title="编号" field="id" hidden="false"></t:dgCol>
-	<t:dgCol title="用户名" field="userName" query="true" frozenColumn="true"></t:dgCol>
-	<t:dgCol title="电话号码" sortable="false" field="mobilePhone" query="true"></t:dgCol>
-	<t:dgCol title="办公电话" field="officePhone" query="true"></t:dgCol>
-	<t:dgCol title="创建日期" field="createDate" formatter="yyyy-MM-dd hh:mm:ss" query="true" queryMode="group"></t:dgCol>
-	<t:dgCol title="邮箱" field="email" query="true"></t:dgCol>
-	<t:dgCol title="年龄" sortable="true" field="age" query="true"></t:dgCol>
-	<t:dgCol title="工资" field="salary" query="true"></t:dgCol>
-	<t:dgCol title="生日" field="birthday" formatter="yyyy/MM/dd" query="true"></t:dgCol>
-	<t:dgCol title="性别" sortable="true" field="sex" dictionary="sex" query="true"></t:dgCol>
-	<t:dgCol title="状态" field="status" query="true" replace="未处理_0,已处理_1"></t:dgCol>
+	<t:dgCol title="用户名" field="userName" query="true" frozenColumn="true" width="120"></t:dgCol>
+	<t:dgCol title="电话号码" sortable="false" field="mobilePhone" query="true" width="120"></t:dgCol>
+	<t:dgCol title="办公电话" field="officePhone" query="true" width="120"></t:dgCol>
+	<t:dgCol title="创建日期" field="createDate" formatter="yyyy-MM-dd hh:mm:ss" query="true" queryMode="group" width="120"></t:dgCol>
+	<t:dgCol title="邮箱" field="email" query="true" width="120"></t:dgCol>
+	<t:dgCol title="年龄" sortable="true" field="age" query="true" width="120"></t:dgCol>
+	<t:dgCol title="工资" field="salary" query="true" width="120"></t:dgCol>
+	<t:dgCol title="生日" field="birthday" formatter="yyyy/MM/dd" query="true" width="120"></t:dgCol>
+	<t:dgCol title="性别" sortable="true" field="sex" dictionary="sex" query="true" width="120"></t:dgCol>
+	<t:dgCol title="状态" field="status" query="true" replace="未处理_0,已处理_1" width="120"></t:dgCol>
 	<t:dgCol title="操作" field="opt" width="80"></t:dgCol>
 	<t:dgFunOpt exp="status#eq#0" operationCode="szqm" funname="szqm(id)" title="审核" />
 	<t:dgDelOpt operationCode="del" title="删除" url="jeecgDemoController.do?del&id={id}" />
@@ -54,9 +54,9 @@
 		openuploadwin('Xml导入', 'transdata.do?toMigrate', "jeecgDemoList");
 	}
 	$(document).ready(function(){
-		$("input[name='createDate_begin']").attr("class","Wdate").attr("style","height:20px;width:90px;").click(function(){WdatePicker({dateFmt:'yyyy-MM-dd'});});
-		$("input[name='createDate_end']").attr("class","Wdate").attr("style","height:20px;width:90px;").click(function(){WdatePicker({dateFmt:'yyyy-MM-dd'});});
-		$("input[name='birthday']").attr("class","Wdate").attr("style","height:20px;width:90px;").click(function(){WdatePicker({dateFmt:'yyyy-MM-dd'});});
+		$("input[name='createDate_begin']").attr("class","Wdate").attr("style","width:90px;").click(function(){WdatePicker({dateFmt:'yyyy-MM-dd'});});
+		$("input[name='createDate_end']").attr("class","Wdate").attr("style","width:90px;").click(function(){WdatePicker({dateFmt:'yyyy-MM-dd'});});
+		$("input[name='birthday']").attr("class","Wdate").attr("style","width:90px;").click(function(){WdatePicker({dateFmt:'yyyy-MM-dd'});});
 	});
 
 	function addMobile(title,addurl,gname,width,height){

@@ -45,7 +45,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import java.util.Map;
 import org.jeecgframework.core.util.ExceptionUtil;
-
+import org.springframework.context.annotation.Scope;
 
 
 /**   

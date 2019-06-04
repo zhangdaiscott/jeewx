@@ -25,6 +25,7 @@ function addItem(id){
 	add('添加图文','weixinArticleController.do?goAdd&templateId='+id,'newstemplatelist' ,'100%', '100%');
 }
 
+//update-begin-author:taoYan date:20180313 for:上传图文消息--
 function doUpNews(id){
 	$.ajax({
         type: 'post',
@@ -39,6 +40,6 @@ function doUpNews(id){
        }
     });
 }
-
+//update-end-author:taoYan date:20180313 for:上传图文消息--
 </script>
 

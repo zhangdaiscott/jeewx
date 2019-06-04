@@ -2,24 +2,20 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.jeecgframework</groupId>
-	<version>3.1.0</version>
-	<artifactId>jeewx-os</artifactId>
+	<version>3.3</version>
+	<artifactId>jeewx</artifactId>
 	<packaging>war</packaging>
 	<properties>
         <minidao.version>1.6.7</minidao.version>
-        <jeewx-api.version>1.2.0-SNAPSHOT</jeewx-api.version>
+        <jeewx-api.version>1.3</jeewx-api.version>
 
 		<!-- 主要依赖库的版本定义 -->
-		<spring.version>3.1.1.RELEASE</spring.version>
+		<spring.version>4.0.9.RELEASE</spring.version>
 		<hibernate.version>4.1.0.Final</hibernate.version>
-		<hibernate-common-annotations.version>4.0.2.Final</hibernate-common-annotations.version>
-		<hibernate-jpa.version>1.0.1.Final</hibernate-jpa.version>
-
-		<mybatis.version>3.1.1</mybatis.version>
+		<hibernate-validator.version>4.2.0.Final</hibernate-validator.version>
+		<xwork-core.version>2.1.6</xwork-core.version>
 
 		<!-- 辅助依赖包 -->
-		<cglib.version>2.2</cglib.version>
-		<aspectj.version>1.6.9</aspectj.version>
 		<jodd.version>3.3.7</jodd.version>
 		<javassist.version>3.15.0-GA</javassist.version>
 		<ant.version>1.6.5</ant.version>
@@ -27,43 +23,20 @@
 		
 		<!-- 工具包 -->
         <!-- json start -->
-		<jackson.version>1.8.4</jackson.version>
-        <jacksonframework.version>1.84</jacksonframework.version>
 		<json-lib.version>2.1</json-lib.version>
 		<fastjson-lib.version>1.1.37</fastjson-lib.version>
 		<gson.version>2.2.4</gson.version>
         <!-- json start -->
 		<dom4j.version>1.6.1</dom4j.version>
 		<slf4j.version>1.6.1</slf4j.version>
-		<log4j.version>1.2.16</log4j.version>
-		<classmate.version>0.5.4</classmate.version>
-		<commons-beanutils.version>1.7.0</commons-beanutils.version>
-		<commons-collections.version>3.2.1</commons-collections.version>
-		<commons-chain.version>1.2</commons-chain.version>
-		<!-- <commons-codec.version>1.3</commons-codec.version> -->
-		<commons-digester.version>2.0</commons-digester.version>
-		<commons-io.version>1.3.2</commons-io.version>
-		<commons-fileupload.version>1.2.1</commons-fileupload.version>
-		<commons-lang.version>2.6</commons-lang.version>
-		<commons-lang3.version>3.1</commons-lang3.version>
-        <commons-email.version>1.2</commons-email.version>
-		<commons-logging.version>1.0.4</commons-logging.version>
-		<commons-logging-api.version>1.1</commons-logging-api.version>
-		<commons-validator.version>1.3.1</commons-validator.version>
+		<commons-email.version>1.2</commons-email.version>
 		<ehcache.version>2.4.3</ehcache.version>
 		<freemarker.version>2.3.19</freemarker.version>
-		<hibernate-validator.version>4.2.0.Final</hibernate-validator.version>
 		<poi.version>3.9</poi.version>
-		<antlr.version>3.5.2</antlr.version>
 		<openoffice.version>3.2.1</openoffice.version>
         <jodconverter.version>3.0-beta-4</jodconverter.version>
-        <!-- todo 为什么要引入struts的lib呢？-->
-        <xwork-core.version>2.1.6</xwork-core.version>
 
 		<!-- 数据库组件包 _start -->
-		<proxool.version>0.9.1</proxool.version>
-		<commons-pool.version>1.6</commons-pool.version>
-		<commons-dbcp.version>1.4</commons-dbcp.version>
 		<druid.version>0.2.9</druid.version>
         <mysql.version>5.1.27</mysql.version>
 
@@ -74,8 +47,6 @@
         <thumbnailator.version>0.4.6</thumbnailator.version>
 		<pinyin4j.version>2.5.0</pinyin4j.version>
 		<org.quartz.version>1.6.2</org.quartz.version>
-		<activation.version>1.1.1</activation.version>
-		<aopalliance.version>1.0</aopalliance.version>
 		<xstream.version>1.4.4</xstream.version>
 		<groovy.version>2.3.3</groovy.version>
 	</properties>
@@ -108,19 +79,6 @@
 	</repositories>
 
 	<dependencies>
-		<!-- activation -->
-		<dependency>
-			<groupId>javax.activation</groupId>
-			<artifactId>activation</artifactId>
-			<version>${activation.version}</version>
-		</dependency>
-		<!-- aopalliance -->
-		<dependency>
-			<groupId>aopalliance</groupId>
-			<artifactId>aopalliance</artifactId>
-			<version>${aopalliance.version}</version>
-		</dependency>
-
 		<!-- 自定义的依赖包 -->
 		<dependency>
 			<groupId>org.jeewxframework</groupId>
@@ -171,11 +129,6 @@
 			<artifactId>thumbnailator</artifactId>
 			<version>${thumbnailator.version}</version>
 		</dependency>
-		<!--<dependency>
-			<groupId>org.jboss</groupId>
-			<artifactId>jboss-vfs</artifactId>
-			<version>3.1.0.Final</version>
-		</dependency>-->
 
 		<dependency>
 			<groupId>pinyin4j</groupId>
@@ -192,7 +145,14 @@
 			<scope>system</scope>
             <systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/org.quartz-1.6.2-20170917.jar</systemPath>
 		</dependency>
+		
 		<!-- SPRING start -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${spring.version}</version>
+			<scope>test</scope>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
@@ -200,47 +160,31 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
-			<artifactId>spring-beans</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-aop</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-tx</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-expression</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-aspects</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
 			<artifactId>spring-context-support</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
 		<!-- SPRING end -->
-
+		
 		<!-- hibernate -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
-			<version>4.2.3.Final</version>
+			<version>${hibernate.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>
@@ -253,104 +197,37 @@
 			<version>${hibernate.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>org.hibernate.common</groupId>
-			<artifactId>hibernate-commons-annotations</artifactId>
-			<version>${hibernate-common-annotations.version}</version>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>${hibernate-validator.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>org.hibernate.javax.persistence</groupId>
-			<artifactId>hibernate-jpa-2.0-api</artifactId>
-			<version>${hibernate-jpa.version}</version>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator-annotation-processor</artifactId>
+			<version>${hibernate-validator.version}</version>
 		</dependency>
-
-		<!--语词分析 anltr -->
-		<dependency>
-			<groupId>org.antlr</groupId>
-			<artifactId>antlr</artifactId>
-			<version>${antlr.version}</version>
-		</dependency>
-		<!-- spring orm -->
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-orm</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-jdbc</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
+        <dependency>
+            <groupId>com.opensymphony</groupId>
+            <artifactId>xwork-core</artifactId>
+            <version>${xwork-core.version}</version>
+        </dependency>
 
 
 		<!-- 数据库相关依赖包 _start -->
-        <!--proxool start -->
-        <dependency>
-            <groupId>com.cloudhopper.proxool</groupId>
-            <artifactId>proxool</artifactId>
-            <version>${proxool.version}</version>
-            <exclusions>
-            	<exclusion>
-            		<artifactId>geronimo-spec-javamail</artifactId>
-            		<groupId>geronimo-spec</groupId>
-            	</exclusion>
-            	<exclusion>
-            		<artifactId>avalon-framework-api</artifactId>
-            		<groupId>avalon-framework</groupId>
-            	</exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>com.cloudhopper.proxool</groupId>
-            <artifactId>proxool-cglib</artifactId>
-            <version>${proxool.version}</version>
-        </dependency>
-        <!-- proxool end-->
-		<dependency>
-			<groupId>commons-pool</groupId>
-			<artifactId>commons-pool</artifactId>
-			<version>${commons-pool.version}</version>
-			<scope>runtime</scope>
-		</dependency>
-		<dependency>
-			<groupId>commons-dbcp</groupId>
-			<artifactId>commons-dbcp</artifactId>
-			<version>${commons-dbcp.version}</version>
-			<scope>runtime</scope>
-		</dependency>
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>druid</artifactId>
 			<version>${druid.version}</version>
 			<scope>runtime</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>${mysql.version}</version>
 			<scope>runtime</scope>
 		</dependency>
-		<dependency>
-		  <groupId>org.jeewx</groupId>
-		  <artifactId>p3-extend</artifactId>
-		  <version>1.0-SNAPSHOT</version>
-		  <scope>system</scope>
-          <systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/p3-extend-1.0-20151226.jar</systemPath>
-		</dependency>
         <!-- 数据库相关依赖包 _end -->
 
-		<!-- WEB begin -->
-		<!-- spring mvc -->
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-web</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-webmvc</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
 
 		<!-- web依赖包 -->
 		<dependency>
@@ -374,22 +251,6 @@
 
 		<!-- 辅助依赖包 _start -->
 		<dependency>
-			<groupId>cglib</groupId>
-			<artifactId>cglib-nodep</artifactId>
-			<version>${cglib.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.aspectj</groupId>
-			<artifactId>aspectjrt</artifactId>
-			<version>${aspectj.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.aspectj</groupId>
-			<artifactId>aspectjweaver</artifactId>
-			<version>${aspectj.version}</version>
-			<scope>runtime</scope>
-		</dependency>
-		<dependency>
 			<groupId>org.jodd</groupId>
 			<artifactId>jodd</artifactId>
 			<version>${jodd.version}</version>
@@ -407,30 +268,24 @@
         <!-- 辅助依赖包 _end -->
 
 		<!-- 工具包 -->
-		<!-- JSON begin -->
+		<!-- Spring 升级4+ 依赖的JSON包 -->
 		<dependency>
-			<groupId>org.codehaus.jackson</groupId>
-			<artifactId>jackson-mapper-asl</artifactId>
-			<version>${jackson.version}</version>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-databind</artifactId>
+		    <version>2.7.4</version>
 		</dependency>
 		<dependency>
-			<groupId>org.codehaus.jackson</groupId>
-			<artifactId>jackson-core-asl</artifactId>
-			<version>${jackson.version}</version>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-core</artifactId>
+		    <version>2.7.4</version>
 		</dependency>
 		<dependency>
-			<groupId>org.jeecgframework</groupId>
-			<artifactId>jackson</artifactId>
-			<version>${jacksonframework.version}</version>
-			<scope>system</scope>
-            <systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/jackson-1.84-20170917.jar</systemPath>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-annotations</artifactId>
+		    <version>2.7.4</version>
 		</dependency>
-		<dependency>
-			<groupId>net.sf.json-lib</groupId>
-			<artifactId>json-lib</artifactId>
-			<version>${json-lib.version}</version>
-			<classifier>jdk15</classifier>
-		</dependency>
+		<!-- /Spring 升级4+ 依赖的JSON包 -->
+
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>fastjson</artifactId>
@@ -457,109 +312,15 @@
 		<!-- slf4j -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>${slf4j.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
 			<version>${slf4j.version}</version>
 		</dependency>
-		<!-- log4j -->
-		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>${log4j.version}</version>
-		</dependency>
-		<!-- classmate -->
-		<dependency>
-			<groupId>com.fasterxml</groupId>
-			<artifactId>classmate</artifactId>
-			<version>${classmate.version}</version>
-		</dependency>
 
-		<!-- commons-beanutils -->
-		<dependency>
-			<groupId>commons-beanutils</groupId>
-			<artifactId>commons-beanutils</artifactId>
-			<version>${commons-beanutils.version}</version>
-			<exclusions>
-				<exclusion>
-					<groupId>commons-logging</groupId>
-					<artifactId>commons-logging</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		<!-- commons-collections -->
-		<dependency>
-			<groupId>commons-collections</groupId>
-			<artifactId>commons-collections</artifactId>
-			<version>${commons-collections.version}</version>
-		</dependency>
-		<!-- commons-chain -->
-		<dependency>
-			<groupId>commons-chain</groupId>
-			<artifactId>commons-chain</artifactId>
-			<version>${commons-chain.version}</version>
-		</dependency>
-		<!-- commons-codec -->
-		<!-- <dependency>
-			<groupId>commons-codec</groupId>
-			<artifactId>commons-codec</artifactId>
-			<version>${commons-codec.version}</version>
-		</dependency> -->
-		<!-- commons-digester -->
-		<dependency>
-			<groupId>commons-digester</groupId>
-			<artifactId>commons-digester</artifactId>
-			<version>${commons-digester.version}</version>
-		</dependency>
-		<!-- commons-io -->
-		<dependency>
-			<groupId>commons-io</groupId>
-			<artifactId>commons-io</artifactId>
-			<version>${commons-io.version}</version>
-		</dependency>
-		<!-- commons-fileupload -->
-		<dependency>
-			<groupId>commons-fileupload</groupId>
-			<artifactId>commons-fileupload</artifactId>
-			<version>${commons-fileupload.version}</version>
-		</dependency>
-		<!-- commons-lang -->
-		<dependency>
-			<groupId>commons-lang</groupId>
-			<artifactId>commons-lang</artifactId>
-			<version>${commons-lang.version}</version>
-		</dependency>
-		<!-- commons-lang3 -->
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-lang3</artifactId>
-			<version>${commons-lang3.version}</version>
-		</dependency>
 		<!-- commons-email -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-email</artifactId>
 			<version>${commons-email.version}</version>
-		</dependency>
-		<!-- commons-logging -->
-		<dependency>
-			<groupId>commons-logging</groupId>
-			<artifactId>commons-logging</artifactId>
-			<version>${commons-logging.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>commons-logging</groupId>
-			<artifactId>commons-logging-api</artifactId>
-			<version>${commons-logging-api.version}</version>
-		</dependency>
-		<!-- commons-validator -->
-		<dependency>
-			<groupId>commons-validator</groupId>
-			<artifactId>commons-validator</artifactId>
-			<version>${commons-validator.version}</version>
 		</dependency>
 		<!-- ehcache -->
 		<dependency>
@@ -573,17 +334,7 @@
 			<artifactId>freemarker</artifactId>
 			<version>${freemarker.version}</version>
 		</dependency>
-		<!-- JSR303 Bean Validator -->
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-validator</artifactId>
-			<version>${hibernate-validator.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-validator-annotation-processor</artifactId>
-			<version>${hibernate-validator.version}</version>
-		</dependency>
+		
         <!-- poi start -->
         <dependency>
             <groupId>org.apache.poi</groupId>
@@ -630,11 +381,6 @@
             <systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/jodconverter-3.0-beta-4-20170917.jar</systemPath>
         </dependency>
         <!-- openoffice end -->
-        <dependency>
-            <groupId>com.opensymphony</groupId>
-            <artifactId>xwork-core</artifactId>
-            <version>${xwork-core.version}</version>
-        </dependency>
 
 		<!-- TEST begin -->
 		<!-- junit -->
@@ -645,13 +391,6 @@
 		</dependency>
         <!-- hamcrest -->
 
-		<!-- spring -->
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-test</artifactId>
-			<version>${spring.version}</version>
-			<scope>test</scope>
-		</dependency>
 		<!-- jacob -->
 		<dependency>
 			<groupId>org.jeecg</groupId>
@@ -719,24 +458,6 @@
 			<scope>system</scope>
             <systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/baidu-sdk-1.4.5-20170917.jar</systemPath>
 		</dependency>
-		<!-- httpclient -->
-		<dependency>
-		  <groupId>commons-httpclient</groupId>
-		  <artifactId>commons-httpclient</artifactId>
-		  <version>3.0.1</version>
-		</dependency>
-		<!-- jaxen -->
-		<dependency>
-		  <groupId>jaxen</groupId>
-		  <artifactId>jaxen</artifactId>
-		  <version>1.1.6</version>
-		</dependency>
-		<!-- jaxen -->
-		<dependency>
-		  <groupId>commons-codec</groupId>
-		  <artifactId>commons-codec</artifactId>
-		  <version>1.6</version>
-		</dependency>
 		<!-- 阿里SDK -->
 		<dependency>
 		  <groupId>org.jeecgframework</groupId>
@@ -747,17 +468,9 @@
 		</dependency>
 		<!-- jeewx-api -->
 		<dependency>
-		  <groupId>org.jeewx</groupId>
+		  <groupId>org.jeecgframework</groupId>
 		  <artifactId>jeewx-api</artifactId>
 		  <version>${jeewx-api.version}</version>
-		  <scope>system</scope>
-          <systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/jeewx-api-1.2.0-20180330.jar</systemPath>
-		  <exclusions>
-		  	<exclusion>
-		  		<groupId>org.freemarker</groupId>
-		  		<artifactId>freemarker</artifactId>
-		  	</exclusion>
-		  </exclusions>
 		</dependency>
 		
 		<!-- jeecg plugin  -->

@@ -203,7 +203,7 @@ a:hover {
 </div>
 <!-- 底部 -->
 <div region="south" border="false" style="height: 25px; overflow: hidden;">
-<div align="center" style="color: #CC99FF; padding-top: 2px">&copy; 版权所有 <span class="tip"><a href="http://www.jeewx.com" title="Jeewx 捷微管家系统" target="_blank">JEEWX_3.1.0捷微官网</a> (推荐谷歌浏览器，获得更快响应速度) &nbsp;&nbsp;技术支持: <a href="http://www.jeecg.org" title="Jeecg论坛" target="_blank">JEECG技术论坛</a> </span></div>
+<div align="center" style="color: #CC99FF; padding-top: 2px">&copy; 版权所有 <span class="tip"><a href="http://www.jeewx.com" title="Jeewx 捷微管家系统" target="_blank">JeeWx 3.3 捷微官网</a> (推荐谷歌浏览器，获得更快响应速度) &nbsp;&nbsp;技术支持: <a href="http://www.jeecg.org" title="Jeecg论坛" target="_blank">JEECG技术论坛</a> </span></div>
 </div>
 <div id="mm" class="easyui-menu" style="width: 150px;">
 <div id="mm-tabupdate">刷新</div>

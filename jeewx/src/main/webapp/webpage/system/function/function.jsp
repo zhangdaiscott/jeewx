@@ -78,6 +78,15 @@
     </div>
     <%--update-end--Author:zhangguoming  Date:20140509 for：云桌面图标管理--%>
 	<div class="form" id="funorder"><label class="Validform_label"> 菜单顺序: </label> <input name="functionOrder" class="inputxt" value="${function.functionOrder}" datatype="n1-3"></div>
+	
+	<div class="form" id="funiconstyle">
+        <label class="Validform_label">
+          	 菜单图标样式:
+        </label>
+        <input name="functionIconStyle" class="inputxt" value="${function.functionIconStyle}" />
+        <a href="http://fontawesome.dashgame.com" target="_blank"> <i class="fa fa-eye-slash"></i>选择图标库 </a>
+    </div>
+	
 	</fieldset>
 </t:formvalid>
 </body>

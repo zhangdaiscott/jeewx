@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -20,6 +21,7 @@ import org.jeecgframework.web.cgform.service.config.CgFormFieldServiceI;
 import org.jeecgframework.web.cgform.util.QueryParamUtil;
 import org.jeecgframework.web.system.pojo.base.DictEntity;
 import org.jeecgframework.web.system.service.SystemService;
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.jeecgframework.core.common.controller.BaseController;
 import org.jeecgframework.core.common.model.json.AjaxJson;
@@ -314,19 +316,37 @@ public class CgAutoListController extends BaseController{
 		//如果列表以iframe形式的话，需要加入样式文件
 		StringBuilder sb= new StringBuilder("");
 		if(!request.getQueryString().contains("isHref")){
+			String indexStyle = "hplus";// 默认风格
+			Cookie[] cookies = request.getCookies();
+			for (Cookie cookie : cookies) {
+				if (cookie == null || StringUtils.isEmpty(cookie.getName())) {
+					continue;
+				}
+				if (cookie.getName().equalsIgnoreCase("JEECGINDEXSTYLE")) {
+					indexStyle = cookie.getValue();
+				}
+			}
+			if("hplus".equals(indexStyle)){
+				sb.append("<link id=\"easyuiTheme\" rel=\"stylesheet\" href=\"plug-in/easyui/themes/hplus/easyui.css\" type=\"text/css\"></link>");
+				sb.append("<link id=\"easyuiTheme\" rel=\"stylesheet\" href=\"plug-in/easyui/themes/hplus/main.css\" type=\"text/css\"></link>");
+				sb.append("<link id=\"easyuiTheme\" rel=\"stylesheet\" href=\"plug-in/easyui/themes/hplus/icon.css\" type=\"text/css\"></link>");
+				sb.append("<link rel=\"stylesheet\" href=\"plug-in/tools/css/hplus/common.css\" type=\"text/css\"></link>");
+			}else{
+				sb.append("<link id=\"easyuiTheme\" rel=\"stylesheet\" href=\"plug-in/easyui/themes/default/easyui.css\" type=\"text/css\"></link>");
+				sb.append("<link rel=\"stylesheet\" href=\"plug-in/easyui/themes/icon.css\" type=\"text/css\"></link>");
+				sb.append("<link rel=\"stylesheet\" href=\"plug-in/tools/css/common.css\" type=\"text/css\"></link>");
+			}
 			sb.append("<script type=\"text/javascript\" src=\"plug-in/jquery/jquery-1.8.3.js\"></script>");
 			sb.append("<script type=\"text/javascript\" src=\"plug-in/tools/dataformat.js\"></script>");
-			sb.append("<link id=\"easyuiTheme\" rel=\"stylesheet\" href=\"plug-in/easyui/themes/default/easyui.css\" type=\"text/css\"></link>");
-			sb.append("<link rel=\"stylesheet\" href=\"plug-in/easyui/themes/icon.css\" type=\"text/css\"></link>");
 			sb.append("<link rel=\"stylesheet\" type=\"text/css\" href=\"plug-in/accordion/css/accordion.css\">");
 			sb.append("<link rel=\"stylesheet\" type=\"text/css\" href=\"plug-in/accordion/css/icons.css\">");
 			sb.append("<script type=\"text/javascript\" src=\"plug-in/easyui/jquery.easyui.min.1.3.2.js\"></script>");
 			sb.append("<script type=\"text/javascript\" src=\"plug-in/easyui/locale/easyui-lang-zh_CN.js\"></script>");
 			sb.append("<script type=\"text/javascript\" src=\"plug-in/tools/syUtil.js\"></script>");
 			sb.append("<script type=\"text/javascript\" src=\"plug-in/My97DatePicker/WdatePicker.js\"></script>");
-			sb.append("<link rel=\"stylesheet\" href=\"plug-in/tools/css/common.css\" type=\"text/css\"></link>");
 			sb.append("<script type=\"text/javascript\" src=\"plug-in/lhgDialog/lhgdialog.min.js\"></script>");
 			sb.append("<script type=\"text/javascript\" src=\"plug-in/tools/curdtools.js\"></script>");
+			sb.append("<script type=\"text/javascript\" src=\"plug-in/layer/layer.js\">");
 			sb.append("<script type=\"text/javascript\" src=\"plug-in/tools/easyuiextend.js\"></script>");
 		}else{
 		}

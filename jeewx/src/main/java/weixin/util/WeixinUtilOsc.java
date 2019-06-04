@@ -54,9 +54,11 @@ public class WeixinUtilOsc {
 				    con.setDoInput(true);  
 				    con.setDoOutput(true);  
 				    con.setUseCaches(false); // post方式不能使用缓存  
+				    //--update-begin---author：zhoujf-------date:20170112--------for:设置网络超时时间-------------------------
 				    //设置网络超时
 	                con.setConnectTimeout(8000);  
 	                con.setReadTimeout(8000);
+	                //--update-begin---author：zhoujf-------date:20170112--------for:设置网络超时时间-------------------------
 				    con.setRequestProperty("Connection", "Keep-Alive");// 设置请求头信息
 				    con.setRequestProperty("Charset", "UTF-8");  
 				    String BOUNDARY = "----------" + System.currentTimeMillis();// 设置边界  

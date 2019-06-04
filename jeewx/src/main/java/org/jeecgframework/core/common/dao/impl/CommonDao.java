@@ -595,7 +595,12 @@ public class CommonDao extends GenericBaseCommonDao implements ICommonDao, IGene
 				}
 				tg.setOperations(attributes.toString());
 			}
-
+			
+			if(treeGridModel.getIconStyle() != null){
+            	String iconStyle = oConvertUtils.getString(reflectHelper.getMethodValue(treeGridModel.getIconStyle()));
+            	tg.setIconStyle(iconStyle);
+            }
+			
 			treegrid.add(tg);
 		}
 		return treegrid;

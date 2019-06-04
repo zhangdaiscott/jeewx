@@ -20,6 +20,8 @@ public class TreeGridModel implements java.io.Serializable {
  	private String icon;
  	private String order;
  	
+ 	private String iconStyle;//图标样式
+ 	
 	public String getOrder() {
 		return order;
 	}
@@ -81,4 +83,12 @@ public class TreeGridModel implements java.io.Serializable {
 	public void setChildList(String childList) {
 		this.childList = childList;
 	}
+	
+	public String getIconStyle() {
+		return iconStyle;
+	}
+	public void setIconStyle(String iconStyle) {
+		this.iconStyle = iconStyle;
+	}
+	
 }

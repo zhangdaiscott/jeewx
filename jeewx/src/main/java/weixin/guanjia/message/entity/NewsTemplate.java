@@ -21,10 +21,10 @@ public class NewsTemplate extends IdEntity{
 	private String type;
 	private List<NewsItem> newsItemList;
 	private String accountId;
-
+	//update-begin-author:taoYan date:20180312 for：图文消息上传到微信---
 	private String isup;//上传状态：已经上传_1,未上传_0
 	private String mediaid;
-
+	//update-end-author:taoYan date:20180312 for：图文消息上传到微信---
 	@Column(name = "accountid",length=100)
 	public String getAccountId() {
 		return accountId;

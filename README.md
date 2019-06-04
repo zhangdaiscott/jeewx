@@ -2,7 +2,7 @@ JeeWx 微信管家平台，简称“捷微”.
 ===============
   （一款免费开源的JAVA多触点管理平台）
 ===============
-当前最新版本： 3.2.0（发布日期：20180712）
+当前最新版本： 3.3（发布日期：20190604）
 官网：[www.jeewx.com](http://www.jeewx.com) 
 
 从2018年7月捷微管家推出二代产品（微服务化、bootstrapUI，更强大的功能、高并发大数据） [https://gitee.com/jeecg/h5huodong](https://gitee.com/jeecg/h5huodong)
@@ -88,7 +88,7 @@ Jeewx是一款开源、免费的微信管家系统（多触点管理平台），
 
 四、开发环境
 -----------------------------------
-  * eclipse + jdk7 + tomcat6 + maven + mysql （注意：暂时不支持jdk8）
+  * eclipse + jdk7 + tomcat7 + maven + mysql 
   * [JEEWX_开发工具](http://blog.csdn.net/zhangdaiscott/article/details/78072438)
   * [JEEWX 开发环境搭建入门](http://blog.csdn.net/zhangdaiscott/article/details/50915206)
   * [JEEWX 常见问题贴](http://www.jeecg.org/forum.php?mod=viewthread&tid=7811&page=1&extra=#pid21231)
@@ -101,8 +101,8 @@ Jeewx是一款开源、免费的微信管家系统（多触点管理平台），
 五、技术交流
 -----------------------------------
 * 	官 网:  www.jeewx.com
-* 	邮 箱： jeecg@sina.com
-* 	QQ交流群:  ④289709451、②129190229（满）、③175449166(满)、①287090836（满）
+* 	邮 箱： jeecgos@163.com
+* 	QQ交流群:  ①287090836、④289709451（满）、②129190229（满）、③175449166(满)
 
 
 六、在线体验

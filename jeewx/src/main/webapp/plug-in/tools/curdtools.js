@@ -272,12 +272,37 @@ function tip_old(msg) {
  * 提示信息
  */
 function tip(msg) {
-	$.dialog.setting.zIndex = getzIndex(true);
-	$.messager.show({
-		title : '提示信息',
-		msg : msg,
-		timeout : 1000 * 6
-	});
+	try{
+		//console.log(getCookie("JEECGINDEXSTYLE"));
+		$.dialog.setting.zIndex = getzIndex(true);
+		var navigatorName = "Microsoft Internet Explorer"; 
+		if(navigator.appName == navigatorName||"default,shortcut".indexOf(getCookie("JEECGINDEXSTYLE"))>=0){
+			$.messager.show({
+				title : '提示信息',
+				msg : msg,
+				timeout : 1000 * 6
+			});
+		}else{
+			var icon = 7;
+			if(msg.indexOf("成功") > -1){
+				icon = 1;
+			}else if(msg.indexOf("失败") > -1){
+				icon = 2;
+			}
+			var aa = layer.open({
+				title:'<span style="font-size:12px">提示信息</span>',
+				offset:'rb',
+				content:'<span style="font-size:12px">'+msg+'</span>',
+				time:3000,
+				btn:false,
+				shade:false,
+				icon:icon,
+				shift:2
+			});
+		}
+	}catch(e){
+		alertTipTop(msg,'10%');
+	}
 }
 /**
  * 提示信息像alert一样

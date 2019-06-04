@@ -67,20 +67,21 @@ public class BaseTag extends TagSupport {
 				sb.append("<script type=\"text/javascript\" src=\"plug-in/tools/ckfinderTool.js\"></script>");
 			}
 			if (oConvertUtils.isIn("easyui", types)) {
-				if("hplus".equals(indexStyle)){
-					sb.append("<link id=\"easyuiTheme\" rel=\"stylesheet\" href=\"plug-in/easyui/themes/hplus/easyui.css\" type=\"text/css\"></link>");
-					sb.append("<link id=\"easyuiTheme\" rel=\"stylesheet\" href=\"plug-in/easyui/themes/hplus/main.css\" type=\"text/css\"></link>");
-					sb.append("<link id=\"easyuiTheme\" rel=\"stylesheet\" href=\"plug-in/easyui/themes/hplus/icon.css\" type=\"text/css\"></link>");
-				}else{
-					sb.append("<link id=\"easyuiTheme\" rel=\"stylesheet\" href=\"plug-in/easyui/themes/default/easyui.css\" type=\"text/css\"></link>");
-					sb.append("<link rel=\"stylesheet\" href=\"plug-in/easyui/themes/icon.css\" type=\"text/css\"></link>");
-				}
 				sb.append("<script type=\"text/javascript\" src=\"plug-in/tools/dataformat.js\"></script>");
 				sb.append("<link rel=\"stylesheet\" type=\"text/css\" href=\"plug-in/accordion/css/accordion.css\">");
 				sb.append("<script type=\"text/javascript\" src=\"plug-in/easyui/jquery.easyui.min.1.3.2.js\"></script>");
 				sb.append("<script type=\"text/javascript\" src=\"plug-in/easyui/locale/easyui-lang-zh_CN.js\"></script>");
 				sb.append("<script type=\"text/javascript\" src=\"plug-in/tools/syUtil.js\"></script>");
 				sb.append("<script type=\"text/javascript\" src=\"plug-in/easyui/extends/datagrid-scrollview.js\"></script>");
+				if("hplus".equals(indexStyle)){
+					sb.append("<link id=\"easyuiTheme\" rel=\"stylesheet\" href=\"plug-in/easyui/themes/hplus/easyui.css\" type=\"text/css\"></link>");
+					sb.append("<link id=\"easyuiTheme\" rel=\"stylesheet\" href=\"plug-in/easyui/themes/hplus/main.css\" type=\"text/css\"></link>");
+					sb.append("<link id=\"easyuiTheme\" rel=\"stylesheet\" href=\"plug-in/easyui/themes/hplus/icon.css\" type=\"text/css\"></link>");
+					sb.append("<link rel=\"stylesheet\" href=\"plug-in-ui/hplus/css/font-awesome.min.css?v=4.4.0\" type=\"text/css\"></link>");
+				}else{
+					sb.append("<link id=\"easyuiTheme\" rel=\"stylesheet\" href=\"plug-in/easyui/themes/default/easyui.css\" type=\"text/css\"></link>");
+					sb.append("<link rel=\"stylesheet\" href=\"plug-in/easyui/themes/icon.css\" type=\"text/css\"></link>");
+				}
 			}
 			if (oConvertUtils.isIn("DatePicker", types)) {
 				sb.append("<script type=\"text/javascript\" src=\"plug-in/My97DatePicker/WdatePicker.js\"></script>");
@@ -147,6 +148,7 @@ public class BaseTag extends TagSupport {
 				sb.append("<script type=\"text/javascript\" src=\"plug-in/lhgDialog/lhgdialog.min.js\"></script>");
 				sb.append("<script type=\"text/javascript\" src=\"plug-in/tools/curdtools.js\"></script>");
 				sb.append("<script type=\"text/javascript\" src=\"plug-in/tools/easyuiextend.js\"></script>");
+				sb.append("<script type=\"text/javascript\" src=\"plug-in/layer/layer.js\">");
 				sb.append("<script type=\"text/javascript\" src=\"plug-in/jquery-plugs/hftable/jquery-hftable.js\"></script>");
 			}
 			if (oConvertUtils.isIn("toptip", types)) {

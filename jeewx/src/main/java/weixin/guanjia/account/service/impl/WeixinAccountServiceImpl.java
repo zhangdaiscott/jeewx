@@ -140,7 +140,8 @@ public class WeixinAccountServiceImpl extends CommonServiceImpl implements
 		}
 		return token;
 	}
-
+	
+	//update-begin-author:taoYan date:20180312 for:原方法根据原始id查询 现扩展可以根据id查询--
 	@Override
 	public String getAccessToken(String accountId,boolean isOrgWxid) {
 		WeixinAccountEntity weixinAccountEntity = new WeixinAccountEntity();
@@ -149,7 +150,7 @@ public class WeixinAccountServiceImpl extends CommonServiceImpl implements
 		}else{
 			weixinAccountEntity = this.findUniqueByProperty(WeixinAccountEntity.class, "id", accountId);
 		}
-
+	//update-end-author:taoYan date:20180312 for:原方法根据原始id查询 现扩展可以根据id查询--
 		String token = weixinAccountEntity.getAccountaccesstoken();
 		if (token != null && !"".equals(token)) {
 			// 判断有效时间 是否超过2小时
@@ -302,13 +303,13 @@ public class WeixinAccountServiceImpl extends CommonServiceImpl implements
 		
 		if (null != jsonObject) {
 			if (jsonObject.has("errcode") && jsonObject.getInt("errcode") != 0) {
-
+				//update-begin----author:scott---------date:20150719-------for:提示信息优化----------------------
 				String errormsg = "很抱歉，系统异常，请联系管理员!";
 				if(jsonObject.containsKey("errcode")){
 					errormsg = errormsg + "　错误码:"+jsonObject.get("errcode");
 				}
 				json.setMsg(errormsg);
-
+				//update-end----author:scott---------date:20150719-------for:提示信息优化----------------------
 				json.setSuccess(false);
 				return json;
 			}
@@ -318,7 +319,8 @@ public class WeixinAccountServiceImpl extends CommonServiceImpl implements
 				account.setAccountaccesstoken(token);
 				// 重置事件
 				account.setAddtoekntime(getAccessTokenDate);
-
+				
+				//--update-begin---author：scott-------date:20151026--------for:重置Token扩展支持Apiticket、jsapi_ticket-------------------------
 				try {
 					//[2].获取api凭证
 //					GetticketRtn getticketRtn = JwQrcodeAPI.doGetticket(token);
@@ -360,7 +362,7 @@ public class WeixinAccountServiceImpl extends CommonServiceImpl implements
 				} catch (Exception e) {
 					LogUtil.info("---------------------定时任务异常--【获取jsapi凭证】--------------"+e.toString());
 				}
-
+				//--update-end---author：scott-------date:20151026--------for:重置Token扩展支持Apiticket、jsapi_ticket-------------------------
 				this.saveOrUpdate(account);
 			} catch (Exception e) {
 				token = null;

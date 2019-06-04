@@ -8,6 +8,7 @@ div.formDetails label input { border : 1px solid #54A5D5; padding:2px; }
 
 div.formDetails label textarea,
 select { border : 1px solid #D7D7D7; padding:6px; width:157px; border-radius: 3px;}
+span select{padding:4px;margin-top:2px}
 
 div.formDetails { background-color: #f2f7fe; border: solid 1px #5BB5FD; padding:5px; line-height:20px; visibility:visible; overflow:hidden; }
 
@@ -46,6 +47,11 @@ input[type="text"] {
 	line-height: 14PX;
 	font-size: 12px;
 	display: inline-block;
+}
+span input[type="text"]{
+	height:20px ;
+	padding-top:12px;
+	padding-bottom:12px;
 }
 /*	//update-start--Author: chenj  Date:20160815 for：TASK #1040 【UI按钮标签ace样式】列表后面的操作按钮支持按钮标签样式设置，*/
 a[class="ace_button"]:hover{ color:#DDDDDD!important; text-decoration:none;}

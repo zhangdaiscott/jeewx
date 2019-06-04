@@ -9,13 +9,18 @@
 	<t:dgCol title="图标" field="TSIcon_iconPath" treefield="code" image="true"></t:dgCol>
 	<t:dgCol title="菜单地址" field="functionUrl" treefield="src"></t:dgCol>
 	<t:dgCol title="菜单顺序" field="functionOrder" treefield="order"></t:dgCol>
+	
+	<t:dgCol title="菜单图标样式" field="functionIconStyle" treefield="iconStyle"></t:dgCol>
+	
 	<t:dgCol title="操作" field="opt" width="100"></t:dgCol>
 	<t:dgDelOpt url="functionController.do?del&id={id}" title="删除"></t:dgDelOpt>
 	<%--   update-start--Author:anchao  Date:20130415 for：按钮权限控制--%>
 	<t:dgFunOpt funname="operationDetail(id)" title="按钮设置"></t:dgFunOpt>
 	<%--   update-end--Author:anchao  Date:20130415 for：按钮权限控制--%>
-	<t:dgToolBar title="菜单录入" icon="icon-add" url="functionController.do?addorupdate" funname="addFun"></t:dgToolBar>
-	<t:dgToolBar title="菜单编辑" icon="icon-edit" url="functionController.do?addorupdate" funname="update"></t:dgToolBar>
+	
+	<t:dgToolBar title="菜单录入" icon="icon-add" url="functionController.do?addorupdate" funname="addFun" height="430"></t:dgToolBar>
+	<t:dgToolBar title="菜单编辑" icon="icon-edit" url="functionController.do?addorupdate" funname="update" height="430"></t:dgToolBar>
+	
 </t:datagrid></div>
 </div>
 <%--   update-start--Author:duanql  Date:20130619 for：操作按钮窗口显示控制--%>
@@ -49,12 +54,12 @@ function operationDetail(functionId)
 }
 <%--   update-end--Author:anchao  Date:20130415 for：按钮权限控制--%>
 <%--   update-start--Author:jueyue  Date:20130622 for：菜单录入代入父菜单--%>
-function addFun(title,url, id) {
+function addFun(title,url, id,w,h) {
 	var rowData = $('#'+id).datagrid('getSelected');
 	if (rowData) {
 		url += '&TSFunction.id='+rowData.id;
 	}
-	add(title,url,'functionList');
+	add(title,url,'functionList',w,h);
 }
 <%--   update-end--Author:jueyue  Date:20130622 for：菜单录入代入父菜单--%>
 </script>

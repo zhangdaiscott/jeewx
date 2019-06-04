@@ -607,9 +607,13 @@ public class ListtoMenu {
 		int curIndex = 0;
 		for (TSFunction function : list) {
 			menuString.append("<li>");
-
+			
+			if(function.getFunctionIconStyle()!=null&&!function.getFunctionIconStyle().trim().equals("")){
+				menuString.append("<a href=\"#\" class=\"\" ><i class=\"fa "+function.getFunctionIconStyle()+"\"></i>");
+			}else{
 				menuString.append("<a href=\"#\" class=\"\" ><i class=\"fa fa-columns\"></i>");
-
+			}	
+				
 			menuString.append("<span class=\"menu-text\">");
 			menuString.append(function.getFunctionName());
 			menuString.append("</span>");
@@ -651,12 +655,22 @@ public class ListtoMenu {
 		//addTabs({id:'home',title:'首页',close: false,url: 'loginController.do?home'});
 		String name = function.getFunctionName() ;
 		menuString.append("<li> <a class=\"J_menuItem\" href=\"").append(function.getFunctionUrl()).append("\">");
+			
 		if(!function.hasSubFunction(map)){
+			if(function.getFunctionIconStyle()!=null&&!function.getFunctionIconStyle().trim().equals("")){
+				menuString.append("<i class=\"fa "+function.getFunctionIconStyle()+"\"></i>");
+			}
+			menuString.append("<span class=\"menu-text\">");
 			menuString.append(name);
+			menuString.append("</span>");
 			menuString.append("</a>");
 			menuString.append("</li>");
 		}else {
-			menuString.append("<i class=\"fa fa-columns\"></i>");
+			if(function.getFunctionIconStyle()!=null&&!function.getFunctionIconStyle().trim().equals("")){
+				menuString.append("<i class=\"fa "+function.getFunctionIconStyle()+"\"></i>");
+			}else{
+				menuString.append("<i class=\"fa fa-columns\"></i>");
+			}	
 			menuString.append("<span class=\"menu-text\">");
 			menuString.append(name);
 			menuString.append("</span>");
@@ -667,6 +681,7 @@ public class ListtoMenu {
 			menuString.append(getHplusSubMenu(function,2,map));
 			menuString.append("</ul></li>");
 		}
+			
 		return menuString.toString();
 	}
     

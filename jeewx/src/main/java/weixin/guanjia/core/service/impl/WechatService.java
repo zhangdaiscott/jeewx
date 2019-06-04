@@ -379,10 +379,10 @@ public class WechatService {
 					if (oConvertUtils.isEmpty(news.getUrl())) {
 						url = bundler.getString("domain")+ "/newsItemController.do?goContent&id="+ news.getId();
 					} else {
-						url = news.getContent();
+						url = news.getUrl();
 					}
 					article.setUrl(url);
-					article.setDescription(news.getContent());
+					article.setDescription(news.getDescription());
 					articleList.add(article);
 				}
 				NewsMessageResp newsResp = new NewsMessageResp();

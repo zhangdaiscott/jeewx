@@ -55,6 +55,7 @@ public class RemoteWeixinMethod extends RemoteWeixinMethodBase implements Remote
 				openId = ResourceUtil.getUserOpenId();
 		}
 		if(StringUtil.isEmpty(openId)){
+			//-------------------------------------------------------------------------------------------------------------------------------------
 			WeixinAccountEntity account = weixinAccountService.get(WeixinAccountEntity.class, accountId);
 			String code = request.getParameter("code");
 			LogUtil.info("code的值="+code);
@@ -77,6 +78,7 @@ public class RemoteWeixinMethod extends RemoteWeixinMethodBase implements Remote
 			return "weixin/idea/huodong2/zp/zhuanpanover";
 		}
 		/**通过Oauth2.0获取openid_end**/
+		//-------------------------------------------------------------------------------------------------------------------------------------
 		return null;
 	}
 	

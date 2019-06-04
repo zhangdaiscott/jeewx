@@ -358,6 +358,9 @@ public class FunctionController extends BaseController {
 		treeGridModel.setChildList("TSFunctions");
 		// 添加排序字段
 		treeGridModel.setOrder("functionOrder");
+		
+		treeGridModel.setIconStyle("functionIconStyle");
+		
 		treeGrids = systemService.treegrid(functionList, treeGridModel);
 		return treeGrids;
 	}

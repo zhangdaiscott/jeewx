@@ -411,11 +411,12 @@ public class WeixinCmsSiteController extends BaseController {
 		return j;
 	}
 
+	//update-begin-author:taoYan date:20180313 for:上传图片地址修改本类中已有upload请求避免重复--
 	@RequestMapping(params = "uploadFile", method = RequestMethod.POST)
 	@ResponseBody
 	public AjaxJson uploadFile(MultipartHttpServletRequest request,
 			HttpServletResponse response) {
-
+	//update-end-author:taoYan date:20180313 for:上传图片地址修改本类中已有upload请求避免重复--
 		AjaxJson j = new AjaxJson();
 		Map<String, Object> attributes = new HashMap<String, Object>();
 		TSTypegroup tsTypegroup = systemService

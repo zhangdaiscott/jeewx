@@ -85,9 +85,9 @@ public class LogController extends BaseController {
 			cq.eq("loglevel", oConvertUtils.getShort(loglevel));
 			cq.add();
 		}
-
+//        add-begin--Author:zhangguoming  Date:20140427 for：添加查询条件  操作时间
         String operatetime_begin = request.getParameter("operatetime_begin");
-        if(operatetime_begin != null) {
+        if(oConvertUtils.isNotEmpty(operatetime_begin)) {
             Timestamp beginValue = null;
             try {
                 beginValue = DataUtils.parseTimestamp(operatetime_begin, "yyyy-MM-dd");
@@ -97,7 +97,7 @@ public class LogController extends BaseController {
             cq.ge("operatetime", beginValue);
         }
         String operatetime_end = request.getParameter("operatetime_end");
-        if(operatetime_end != null) {
+        if(oConvertUtils.isNotEmpty(operatetime_end)) {
             if (operatetime_end.length() == 10) {
                 operatetime_end =operatetime_end + " 23:59:59";
             }
@@ -110,7 +110,7 @@ public class LogController extends BaseController {
             cq.le("operatetime", endValue);
         }
         cq.add();
-
+//        add-end--Author:zhangguoming  Date:20140427 for：添加查询条件  操作时间
         this.systemService.getDataGridReturn(cq, true);
 		TagUtil.datagrid(response, dataGrid);
 	}

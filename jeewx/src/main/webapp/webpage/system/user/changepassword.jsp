@@ -22,7 +22,7 @@
 			</tr>
 			<tr>
 				<td align="right"><span class="filedzt">重复密码:</span></td>
-				<td class="value"><input id="newpassword" type="password" recheck="newpassword" datatype="*6-18" errormsg="两次输入的密码不一致！"> <span class="Validform_checktip"></span></td>
+				<td class="value"><input id="newpassword" type="password" class="inputxt"  recheck="newpassword" datatype="*6-18" errormsg="两次输入的密码不一致！"> <span class="Validform_checktip"></span></td>
 			</tr>
 		</tbody>
 	</table>

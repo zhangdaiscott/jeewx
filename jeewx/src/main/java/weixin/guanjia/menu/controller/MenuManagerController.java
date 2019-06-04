@@ -205,10 +205,10 @@ public class MenuManagerController {
 			req.setAttribute("orders", menuEntity.getOrders());
 			req.setAttribute("templateId", menuEntity.getTemplateId());
 			req.setAttribute("msgType", menuEntity.getMsgType());
-
+			//update-begin-author:taoYan date:20180312 for：自定义菜单增加小程序类型---
 			req.setAttribute("appid", menuEntity.getAppid());
 			req.setAttribute("pagepath", menuEntity.getPagepath());
-
+			//update-end-author:taoYan date:20180312 for：自定义菜单增加小程序类型---
 		}
 		String fatherId = req.getParameter("fatherId");
 		if (StringUtil.isNotEmpty(fatherId)) {
@@ -231,7 +231,7 @@ public class MenuManagerController {
 		if (StringUtil.isNotEmpty(menuEntity.getId())) {
 			
 			MenuEntity tempMenu = this.systemService.getEntity(MenuEntity.class, menuEntity.getId());
-
+			//update-begin--author:zhangjiaqiang date:20161213 for:修订bug 对已有的一级菜单进行编辑后保存无效 
 		    if(oConvertUtils.isNotEmpty(fatherName)){
 		    	MenuEntity menuTemp=new MenuEntity();
 		    	menuTemp.setId(fatherName);
@@ -240,7 +240,7 @@ public class MenuManagerController {
 		    }else{
 		    	tempMenu.setMenuEntity(null);
 		    }
-
+		    //update-end--author:zhangjiaqiang date:20161213 for:修订bug 对已有的一级菜单进行编辑后保存无效
 			this.message = "更新" + tempMenu.getName() + "的菜单信息信息成功！";
 			try {
 				MyBeanUtils.copyBeanNotNull2Bean(menuEntity, tempMenu);
@@ -324,12 +324,12 @@ public class MenuManagerController {
 					cb.setName(entity.getName());
 					cb.setType(entity.getType());
 					firstArr[a] = cb;
-
+				//update-begin-author:taoYan date:20180312 for：自定义菜单增加小程序类型---
 				}else if("miniprogram".equals(entity.getType())){
 					ProgramButton pb = new ProgramButton(entity);
 					firstArr[a] = pb;
 				}
-
+				//update-end-author:taoYan date:20180312 for：自定义菜单增加小程序类型---
 			
 			} else {
 				ComplexButton complexButton = new ComplexButton();
@@ -355,12 +355,12 @@ public class MenuManagerController {
 						secondARR[i] = cb1;
 
 					}
-
+					//update-begin-author:taoYan date:20180312 for：自定义菜单增加小程序类型---
 					else if("miniprogram".equals(type)){
 						ProgramButton pb1 = new ProgramButton(children);
 						secondARR[i] = pb1;
 					}
-
+					//update-end-author:taoYan date:20180312 for：自定义菜单增加小程序类型---
 
 				}
 				complexButton.setSub_button(secondARR);

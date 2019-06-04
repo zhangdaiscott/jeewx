@@ -159,6 +159,7 @@ public class OpenDataController {
 	@RequestMapping(params = "getUserInfo")
 	public void getUserInfo(HttpServletRequest request, HttpServletResponse response) {
 		Map<String, String> map = new HashMap<String, String>();
+		// -------------------------------------------------------------------------------
 		String openid = request.getParameter("openid");
 		String weixinId = request.getParameter("weixinId");
 
@@ -189,6 +190,7 @@ public class OpenDataController {
 				map.put("error", "openid无效");
 			}
 		}
+		// -------------------------------------------------------------------------------
 		try {
 			response.setContentType("application/json");
 			response.setHeader("Cache-Control", "no-store");

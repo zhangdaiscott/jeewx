@@ -22,7 +22,7 @@
     <link rel="shortcut icon" href="images/favicon.ico">
     <link href="plug-in-ui/hplus/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
     <link href="plug-in-ui/hplus/css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
-    <link rel="stylesheet" href="plug-in/ace/assets/css/font-awesome.min.css" />
+    
     <!--[if IE 7]>
     <link rel="stylesheet" href="plug-in/ace/assets/css/font-awesome-ie7.min.css" />
     <![endif]-->
@@ -91,6 +91,7 @@
                 
                 
                 <ul class="nav navbar-top-links navbar-right">
+                <!-- update-start--Author: chenj Date:20160812 for: TASK #1269 【ace h+】风格无用的右上角功能隐藏，暂时注释掉 -->
                    <%--  <li class="dropdown">
                         <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
                             <i class="fa fa-envelope"></i> <span class="label label-warning">0</span>
@@ -138,6 +139,9 @@
                             </li>
                         </ul>
                     </li> --%>
+                    <!-- update-end--Author: chenj Date:20160812 for: TASK #1269 【ace h+】风格无用的右上角功能隐藏，暂时注释掉 -->
+                    
+                    <!-- //update-start--Author: chenj Date:20160726 for: TASK #1207 [改造]h+风格下，去掉logo下面的内容，迁移位置到右上角，主题位置 -->
                     <li class="dropdown">
                     	<a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
                     	<i class="fa fa-user" style="color:green"></i> 
@@ -161,6 +165,7 @@
                             <li><a href="javascript:window.open('http://yun.jeecg.org')">云插件中心</a></li>
                         </ul>
                     </li>
+                    <!-- //update-end--Author: chenj Date:20160726 for: TASK #1207 [改造]h+风格下，去掉logo下面的内容，迁移位置到右上角，主题位置 -->
                     
                      
                    <!--  <li class="dropdown hidden-xs">
@@ -174,9 +179,11 @@
                             <i class="fa fa fa-sign-out"></i> 退出
                         </a>
                     </li>
+                   <!-- //update-begin--Author: chenj Date:20160729 for: TASK #1207 [改造]h+风格下，修改 退出 按钮的位置 -->
                       <!--  <li class="dropdown">
                      <a href="javascript:logout()" class="roll-nav roll-right J_tabExit"><i class="fa fa fa-sign-out"></i> 退出</a>
                      </li>  --> 
+                     <!-- //update-end--Author: chenj Date:20160729 for: TASK #1207 [改造]h+风格下，修改 退出 按钮的位置 -->
                 </ul>
             </nav>
         </div>
@@ -228,6 +235,7 @@
                         <i class="fa fa-gear"></i> 主题
                     </a>
                 </li>
+                <!-- update-start--Author: chenj Date:20160812 for: TASK #1269 【ace h+】风格无用的右上角功能隐藏，暂时注释掉 -->
                <!--  <li class=""><a data-toggle="tab" href="#tab-2">
                     通知
                 </a>
@@ -236,6 +244,7 @@
                     项目进度
                 </a>
                 </li> -->
+                <!-- update-end--Author: chenj Date:20160812 for: TASK #1269 【ace h+】风格无用的右上角功能隐藏，暂时注释掉 -->
             </ul>
 
             <div class="tab-content">
@@ -646,7 +655,7 @@
 <script src="plug-in/jquery-plugs/storage/jquery.storageapi.min.js"></script>
 <!-- 弹出TAB -->
 <script type="text/javascript" src="plug-in/hplus/hplus-tab.js"></script>
-<%@include file="/context/layui.jsp"%>
+
 <script>
     function logout(){
         /*bootbox.confirm("", function(result) {

@@ -12,6 +12,7 @@ import java.util.Map.Entry;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.jeecgframework.core.common.controller.BaseController;
@@ -176,7 +177,7 @@ public class LoginController extends BaseController{
 	 * @return
 	 */
 	@RequestMapping(params = "login")
-	public String login(ModelMap modelMap,HttpServletRequest request) {
+	public String login(ModelMap modelMap,HttpServletRequest request,HttpServletResponse response) {
 		DataSourceContextHolder.setDataSourceType(DataSourceType.dataSource_jeecg);
 		TSUser user = ResourceUtil.getSessionUserName();
 		String roles = "";
@@ -195,7 +196,8 @@ public class LoginController extends BaseController{
             modelMap.put("userName", user.getUserName());
 			request.getSession().setAttribute("CKFinder_UserRole", "admin");
 			// 默认风格
-			String indexStyle = "shortcut";
+
+			String indexStyle = "hplus";
 			Cookie[] cookies = request.getCookies();
 			for (Cookie cookie : cookies) {
 				if (cookie == null || StringUtils.isEmpty(cookie.getName())) {
@@ -205,6 +207,11 @@ public class LoginController extends BaseController{
 					indexStyle = cookie.getValue();
 				}
 			}
+			Cookie cookie = new Cookie("JEECGINDEXSTYLE", indexStyle);
+			//设置cookie有效期为一个月
+			cookie.setMaxAge(3600*24*30);
+			response.addCookie(cookie);
+			
 			// 要添加自己的风格，复制下面三行即可
 			if (StringUtils.isNotEmpty(indexStyle)
 					&& indexStyle.equalsIgnoreCase("bootstrap")) {

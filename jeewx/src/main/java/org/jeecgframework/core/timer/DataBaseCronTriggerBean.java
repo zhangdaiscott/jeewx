@@ -1,5 +1,7 @@
 package org.jeecgframework.core.timer;
 
+import java.text.ParseException;
+
 import org.jeecgframework.web.system.pojo.base.TSTimeTaskEntity;
 import org.jeecgframework.web.system.service.TimeTaskServiceI;
 
@@ -20,13 +22,17 @@ public class DataBaseCronTriggerBean extends CronTriggerBean{
 	/**
 	 * 读取数据库更新文件
 	 */
-	public void afterPropertiesSet() throws Exception {
+	public void afterPropertiesSet() {
 		super.afterPropertiesSet();
 		TSTimeTaskEntity task = timeTaskService.findUniqueByProperty
 				(TSTimeTaskEntity.class,"taskId",this.getName());
 		if(task!=null&&task.getIsEffect().equals("1")
 				&&!task.getCronExpression().equals(this.getCronExpression())){
-			this.setCronExpression(task.getCronExpression());
+			try {
+				this.setCronExpression(task.getCronExpression());
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
 			DynamicTask.updateSpringMvcTaskXML(this,task.getCronExpression());
 		}
 	}

@@ -23,9 +23,9 @@
   $(function () {
       'use strict';
       // Change this to the location of your server-side upload handler:
-
+      //update-begin-author:taoYan date:20180313 for:上传图片地址修改--
       var url = 'weixinCmsSiteController.do?uploadFile',
-
+      //update-end-author:taoYan date:20180313 for:上传图片地址修改--
           uploadButton = $('<button/>')
               .addClass('btn btn-primary')
               .prop('disabled', true)

@@ -96,11 +96,11 @@
   //返回到相册列表页
   function goPhotoAlbumList(){
   	var url = 'weixinPhotoAlbumController.do?weixinPhotoAlbum';
-
+  	//update-begin-author:taoYan date:20180313 for:微相册返回到相册列表页bug----
   	window.location.href=url;
   	/* formobj.action=url
   	formobj.submit(); */
-
+	//update-end-author:taoYan date:20180313 for:微相册返回到相册列表页bug----
   }
 
 </script>

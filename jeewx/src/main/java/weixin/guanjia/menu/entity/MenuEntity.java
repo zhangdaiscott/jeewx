@@ -28,10 +28,10 @@ public class MenuEntity extends IdEntity {
 	private List<MenuEntity> menuList; 
 	
 	private String accountId;
-
+	//update-begin-author:taoYan date:20180312 for：自定义菜单增加小程序类型---
 	private String appid;
 	private String pagepath;
-
+	//update-end-author:taoYan date:20180312 for：自定义菜单增加小程序类型---
 	@Column(name="name")
 	public String getName() {
 		return name;

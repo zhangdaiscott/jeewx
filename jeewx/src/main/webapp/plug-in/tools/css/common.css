@@ -7,8 +7,10 @@
 div.formDetails label input { border : 1px solid #54A5D5; padding:2px; }
 
 div.formDetails label textarea,
-select { border : 1px solid #54A5D5; padding:2px; width:157px; }
-
+select { border : 1px solid #54A5D5; padding:2.5px; width:157px; }
+span select{margin-top:3px}
+span input[type="text"]{padding:3px}
+	
 div.formDetails { background-color: #f2f7fe; border: solid 1px #5BB5FD; padding:5px; line-height:20px; visibility:visible; overflow:hidden; }
 
 div.formDetails label {text-align: right; width:300px; display: inline-block; visibility:visible; padding:0; margin-right:10px; margin-top:5px; }

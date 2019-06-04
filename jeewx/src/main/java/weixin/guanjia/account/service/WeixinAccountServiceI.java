@@ -37,9 +37,9 @@ public interface WeixinAccountServiceI extends CommonService{
  	public boolean doDelSql(WeixinAccountEntity t);
  	
  	public String getAccessToken();
-
+ 	//update-begin-author:taoYan date:20180312 for:原方法根据原始id查询 现扩展可以根据id查询--
  	public String getAccessToken(String accountId,boolean isOrgWxid);
-
+ 	//update-end-author:taoYan date:20180312 for:原方法根据原始id查询 现扩展可以根据id查询--	
  	@Deprecated
  	public WeixinAccountEntity findLoginWeixinAccount();
  	public List<WeixinAccountEntity> findByUsername(String username);

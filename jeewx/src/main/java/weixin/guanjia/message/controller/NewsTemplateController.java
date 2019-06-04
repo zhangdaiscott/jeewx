@@ -173,9 +173,9 @@ public class NewsTemplateController {
 		}else{
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			newsTemplate.setAddTime(sdf.format(new Date()));
-
+			//update-begin-author:taoYan date:20180312 for：图文消息上传到微信增加上传标识设置默认值---
 			newsTemplate.setIsup("0");
-
+			//update-end-author:taoYan date:20180312 for：图文消息上传到微信增加上传标识设置默认值---
 			String accountId = ResourceUtil.getWeiXinAccountId();
 			if (!"-1".equals(accountId)) {
 				this.newsTemplateService.save(newsTemplate);
@@ -262,7 +262,8 @@ public class NewsTemplateController {
 		}
 		return j;
 	}
-
+	
+	//update-begin-author:taoYan date:20180312 for：图文消息上传到微信---
 	@RequestMapping(params = "doUpNews")
 	@ResponseBody
 	public AjaxJson doUploadwx(HttpServletRequest request, HttpServletResponse response) {
@@ -344,7 +345,7 @@ public class NewsTemplateController {
 		}
 		return media_id;
 	}
-
+	//update-end-author:taoYan date:20180312 for：图文消息上传到微信---
 	public String getMessage() {
 		return message;
 	}
