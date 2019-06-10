@@ -3491,6 +3491,7 @@ CREATE TABLE `weixin_long2short` (
 -- ----------------------------
 INSERT INTO `weixin_long2short` VALUES ('402881e86223f2de016223fbdc18000c', 'admin', '2018-03-14 18:08:51', 'admin', '2018-03-14 18:08:53', 'http://www.jeewx.com', 'https://w.url.cn/s/AqpptRa', null, 'JEEWX官网');
 
+
 -- ----------------------------
 -- Table structure for weixin_menuentity
 -- ----------------------------
@@ -3740,3 +3741,33 @@ INSERT INTO `weixin_texttemplate` VALUES ('f7a8a3a946e55a940146e5a53e6b0051', '2
 INSERT INTO `weixin_texttemplate` VALUES ('f7a8a3a946e55a940146e5a584da0052', '2014-06-29 11:22:48', '请输入\"刮刮乐\"，参与抽奖活动', '刮刮乐指南', '402881e8461795c201461795c2e90000');
 INSERT INTO `weixin_texttemplate` VALUES ('f7a8a3a946e55a940146e5c317f6005f', '2014-06-29 11:55:06', '官方网站：www.jeewx.com\r\n商务购买联系QQ: 418799587', '联系我们', '402881e8461795c201461795c2e90000');
 INSERT INTO `weixin_texttemplate` VALUES ('f7a8a3a946e55a940146e5cfa5660070', '2014-06-29 12:08:49', '01  翻译\r\n02  天气\r\n03  大转盘\r\n04  刮刮乐', '营销工具', '402881e8461795c201461795c2e90000');
+
+
+
+
+-- update-begin-Author:taoYan  Date:20180319 for：添加菜单图标样式
+ALTER TABLE `t_s_function`
+ADD COLUMN `function_icon_style`  varchar(255) NULL AFTER `desk_iconid`;
+UPDATE `t_s_function` SET `function_icon_style`='fa-paypal' WHERE (`ID`='402880f25906117601590614ca94000a');
+UPDATE `t_s_function` SET `function_icon_style`='fa-gears' WHERE (`ID`='402880f2590623420159062581630001');
+UPDATE `t_s_function` SET `function_icon_style`='fa-newspaper-o' WHERE (`ID`='402880f25906234201590626596e0004');
+UPDATE `t_s_function` SET `function_icon_style`='fa-user' WHERE (`ID`='402880f2590623420159062692fc0006');
+UPDATE `t_s_function` SET `function_icon_style`='fa-commenting-o' WHERE (`ID`='402880f25906234201590626c28e0008');
+UPDATE `t_s_function` SET `function_icon_style`='fa-graduation-cap' WHERE (`ID`='40288186590896200159089c30620004');
+UPDATE `t_s_function` SET `function_icon_style`='fa-sitemap' WHERE (`ID`='402881e44695183a0146951af2b70004');
+UPDATE `t_s_function` SET `function_icon_style`='fa-newspaper-o' WHERE (`ID`='402881e545f5dd1a0145f5de9bb60001');
+UPDATE `t_s_function` SET `function_icon_style`='fa-cloud' WHERE (`ID`='4028d881436d514601436d5215070018');
+UPDATE `t_s_function` SET `function_icon_style`='fa-home' WHERE (`ID`='4028d881436d514601436d52150a0019');
+UPDATE `t_s_function` SET `function_icon_style`='fa-bar-chart-o' WHERE (`ID`='4028d881436d514601436d52150b001a');
+UPDATE `t_s_function` SET `function_icon_style`='fa-twitch' WHERE (`ID`='4028d881436d514601436d52150d001b');
+UPDATE `t_s_function` SET `function_icon_style`='fa-headphones' WHERE (`ID`='4028d881436d514601436d52150f001c');
+UPDATE `t_s_function` SET `function_icon_style`='fa-gears' WHERE (`ID`='4028d881436d514601436d52c2fb0181');
+UPDATE `t_s_function` SET `function_icon_style`='fa-trophy' WHERE (`ID`='4028d881436d514601436d5449330189');
+UPDATE `t_s_function` SET `function_icon_style`='fa-cubes' WHERE (`ID`='4028ef8156b07fa50156b082a1100005');
+UPDATE `t_s_function` SET `function_icon_style`='fa-weixin' WHERE (`ID`='4028ef8156b0c68f0156b0c88eb10001');
+UPDATE `t_s_function` SET `function_icon_style`='fa-user-plus' WHERE (`ID`='4028ef8156b0c68f0156b0c8c0c60003');
+UPDATE `t_s_function` SET `function_icon_style`='fa-gears' WHERE (`ID`='4028ef8156b0c68f0156b0ca47730011');
+UPDATE `t_s_function` SET `function_icon_style`='fa-newspaper-o' WHERE (`ID`='4028ef8156b0c68f0156b0ca69760013');
+UPDATE `t_s_function` SET `function_icon_style`='fa-commenting-o' WHERE (`ID`='4028ef8156b0c68f0156b0ca9d800015');
+UPDATE `t_s_function` SET `function_icon_style`='fa-weixin' WHERE (`ID`='4028ef8156b0c68f0156b0d4cf390045');
+-- update-end-Author:taoYan  Date:20180319 for：添加菜单图标样式
