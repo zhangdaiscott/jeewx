@@ -3,7 +3,7 @@ JeeWx 微信管家平台，简称“捷微”.
 
 当前最新版本： 3.3（发布日期：20190604）
 
-##### JeeWx全新架构版本已经发布，强烈建议(Spring2.x+Mybatis+Velicity 插件开发版本)： [jeewx-boot](https://github.com/zhangdaiscott/jeewx-boot)
+#### JeeWx更新换代版本已发布，强烈建议(Spring2.x+Mybatis+Velicity 插件开发版)： [Jeewx-Boot](https://github.com/zhangdaiscott/jeewx-boot)
 
 
 
