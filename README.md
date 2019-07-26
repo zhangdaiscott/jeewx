@@ -1,10 +1,12 @@
+# 新版本已出，强烈推荐：https://gitee.com/jeecg/jeewx-boot
+======================================================================================
+
+
+
 JeeWx 微信管家平台，简称“捷微”.
 ===============
 
 当前最新版本： 3.3（发布日期：20190604）
-
-#### JeeWx更新换代版本已发布，强烈建议(Spring2.x+Mybatis+Velicity 插件开发版)： [Jeewx-Boot](https://github.com/zhangdaiscott/jeewx-boot)
-
 
 
 一、平台简介
