@@ -12,7 +12,7 @@
 		<!-- 主要依赖库的版本定义 -->
 		<spring.version>4.0.9.RELEASE</spring.version>
 		<hibernate.version>4.1.0.Final</hibernate.version>
-		<hibernate-validator.version>4.2.0.Final</hibernate-validator.version>
+		<hibernate-validator.version>6.1.5.Final</hibernate-validator.version>
 		<xwork-core.version>2.1.6</xwork-core.version>
 
 		<!-- 辅助依赖包 -->
