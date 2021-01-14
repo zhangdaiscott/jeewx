@@ -31,7 +31,7 @@
 		<commons-email.version>1.2</commons-email.version>
 		<ehcache.version>2.4.3</ehcache.version>
 		<freemarker.version>2.3.19</freemarker.version>
-		<poi.version>3.9</poi.version>
+		<poi.version>4.1.2</poi.version>
 		<openoffice.version>3.2.1</openoffice.version>
         <jodconverter.version>3.0-beta-4</jodconverter.version>
 
